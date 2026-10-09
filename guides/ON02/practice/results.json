@@ -1,0 +1,255 @@
+{
+  "scope": "synthetic personal learning; not an official benchmark",
+  "sourceMeasurements": [
+    {
+      "id": "A",
+      "pair": "virtual-A/T",
+      "assay": "assay-1",
+      "type": "Kd",
+      "relation": "=",
+      "value": 10,
+      "unit": "nM"
+    },
+    {
+      "id": "B",
+      "pair": "virtual-B/T",
+      "assay": "assay-1",
+      "type": "Kd",
+      "relation": "=",
+      "value": 0.5,
+      "unit": "µM"
+    },
+    {
+      "id": "C",
+      "pair": "virtual-C/T",
+      "assay": "assay-1",
+      "type": "Kd",
+      "relation": "=",
+      "value": 100,
+      "unit": "nM"
+    },
+    {
+      "id": "D",
+      "pair": "virtual-D/T",
+      "assay": "assay-1",
+      "type": "Kd",
+      "relation": ">",
+      "value": 10,
+      "unit": "µM"
+    },
+    {
+      "id": "E",
+      "pair": "virtual-E/T",
+      "assay": "assay-1",
+      "type": "Kd",
+      "relation": "=",
+      "value": 10,
+      "unit": null
+    },
+    {
+      "id": "F",
+      "pair": "virtual-F/T",
+      "assay": "assay-2",
+      "type": "IC50",
+      "relation": "=",
+      "value": 10,
+      "unit": "nM"
+    },
+    {
+      "id": "G",
+      "pair": "virtual-G/T",
+      "assay": "assay-1",
+      "type": "Kd",
+      "relation": "=",
+      "value": 0,
+      "unit": "nM"
+    },
+    {
+      "id": "A-repeat",
+      "pair": "virtual-A/T",
+      "assay": "assay-3",
+      "type": "Kd",
+      "relation": "=",
+      "value": 100,
+      "unit": "nM"
+    },
+    {
+      "id": "A-citation",
+      "pair": "virtual-A/T",
+      "assay": "assay-1",
+      "type": "Kd",
+      "relation": "=",
+      "value": 10,
+      "unit": "nM",
+      "potentialDuplicate": true
+    }
+  ],
+  "converted": [
+    {
+      "id": "A",
+      "pair": "virtual-A/T",
+      "assay": "assay-1",
+      "type": "Kd",
+      "relation": "=",
+      "value": 10,
+      "unit": "nM",
+      "valueM": 1e-08,
+      "valueNM": 10.0,
+      "logType": "pKd",
+      "pValue": 8.0,
+      "pRelation": "=",
+      "status": "exact-Kd",
+      "exampleLabel": "양성",
+      "rule": "개인 예시: pKd >= 7"
+    },
+    {
+      "id": "B",
+      "pair": "virtual-B/T",
+      "assay": "assay-1",
+      "type": "Kd",
+      "relation": "=",
+      "value": 0.5,
+      "unit": "µM",
+      "valueM": 5e-07,
+      "valueNM": 500.0,
+      "logType": "pKd",
+      "pValue": 6.301029995663981,
+      "pRelation": "=",
+      "status": "exact-Kd",
+      "exampleLabel": "음성",
+      "rule": "개인 예시: pKd >= 7"
+    },
+    {
+      "id": "C",
+      "pair": "virtual-C/T",
+      "assay": "assay-1",
+      "type": "Kd",
+      "relation": "=",
+      "value": 100,
+      "unit": "nM",
+      "valueM": 1.0000000000000001e-07,
+      "valueNM": 100.00000000000001,
+      "logType": "pKd",
+      "pValue": 7.0,
+      "pRelation": "=",
+      "status": "exact-Kd",
+      "exampleLabel": "양성",
+      "rule": "개인 예시: pKd >= 7"
+    },
+    {
+      "id": "D",
+      "pair": "virtual-D/T",
+      "assay": "assay-1",
+      "type": "Kd",
+      "relation": ">",
+      "value": 10,
+      "unit": "µM",
+      "valueM": 9.999999999999999e-06,
+      "valueNM": 10000.0,
+      "logType": "pKd",
+      "pValue": 5.0,
+      "pRelation": "<",
+      "status": "bound",
+      "reason": "정확한 회귀 정답이 아닌 경계 정보",
+      "exampleLabel": null
+    },
+    {
+      "id": "E",
+      "pair": "virtual-E/T",
+      "assay": "assay-1",
+      "type": "Kd",
+      "relation": "=",
+      "value": 10,
+      "unit": null,
+      "status": "review",
+      "reason": "단위 누락 또는 미지원"
+    },
+    {
+      "id": "F",
+      "pair": "virtual-F/T",
+      "assay": "assay-2",
+      "type": "IC50",
+      "relation": "=",
+      "value": 10,
+      "unit": "nM",
+      "valueM": 1e-08,
+      "valueNM": 10.0,
+      "logType": "pIC50",
+      "pValue": 8.0,
+      "pRelation": "=",
+      "status": "separate-endpoint",
+      "reason": "pKd 회귀 예시에서 제외; 원측정 종류 보존"
+    },
+    {
+      "id": "G",
+      "pair": "virtual-G/T",
+      "assay": "assay-1",
+      "type": "Kd",
+      "relation": "=",
+      "value": 0,
+      "unit": "nM",
+      "status": "review",
+      "reason": "양의 측정값이 아님: 로그 변환 보류"
+    },
+    {
+      "id": "A-repeat",
+      "pair": "virtual-A/T",
+      "assay": "assay-3",
+      "type": "Kd",
+      "relation": "=",
+      "value": 100,
+      "unit": "nM",
+      "valueM": 1.0000000000000001e-07,
+      "valueNM": 100.00000000000001,
+      "logType": "pKd",
+      "pValue": 7.0,
+      "pRelation": "=",
+      "status": "exact-Kd",
+      "exampleLabel": "양성",
+      "rule": "개인 예시: pKd >= 7"
+    },
+    {
+      "id": "A-citation",
+      "pair": "virtual-A/T",
+      "assay": "assay-1",
+      "type": "Kd",
+      "relation": "=",
+      "value": 10,
+      "unit": "nM",
+      "potentialDuplicate": true,
+      "valueM": 1e-08,
+      "valueNM": 10.0,
+      "logType": "pKd",
+      "pValue": 8.0,
+      "pRelation": "=",
+      "status": "review-duplicate",
+      "reason": "재인용 의심: 독립 측정 여부 확인 전 학습 정답 병합 보류",
+      "exampleLabel": null
+    }
+  ],
+  "comparison": {
+    "kdRatio": 50.0,
+    "higherAffinity": "A",
+    "assumption": "same target and comparable conditions"
+  },
+  "aggregation": {
+    "valuesNM": [
+      10,
+      1000
+    ],
+    "arithmeticMeanNM": 505.0,
+    "meanP": 7.0,
+    "backTransformedNM": 100.0,
+    "decision": "Illustration only; no automatic aggregation"
+  },
+  "pairReview": {
+    "pair": "virtual-A/T",
+    "rows": [
+      "A",
+      "A-repeat",
+      "A-citation"
+    ],
+    "notes": "같은 측정의 재인용과 독립 측정을 구분; 평균으로 자동 병합하지 않음"
+  },
+  "learnerObservation": "pending"
+}

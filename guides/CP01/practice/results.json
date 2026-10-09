@@ -1,0 +1,125 @@
+{
+  "protocol": {
+    "alpha": 0.1,
+    "score": "1 - raw model probability of the true class",
+    "quantile": "k=ceil((n+1)*(1-alpha)); kth sorted score (1-based); +infinity if k>n",
+    "calibrationPartition": "valid only",
+    "baseProbability": "Frozen DT03 paired XGBoost, before temperature scaling",
+    "reason": "Do not reuse the same valid rows to fit temperature and calibrate prediction sets.",
+    "policy": "Predict a singleton only; abstain for size 0 or 2. Coverage means true label in set, not singleton accuracy.",
+    "scope": "Conditional numerical study label Kd<=100nM, supplied Kd=10000nM excluded; not official biological labels."
+  },
+  "results": [
+    {
+      "split": "random",
+      "sourceSha256": "569475b6a692db03e3a607b3c63681e6637baacde0140d895584b3771f60729e",
+      "calibrationRows": 755,
+      "k": 681,
+      "qhat": 0.7427501082420349,
+      "testRows": 1511,
+      "empiricalSetCoverage": 0.900727994705493,
+      "singletonRate": 0.6611515552614163,
+      "singletonAccuracy": 0.8498498498498499,
+      "sizes": {
+        "0": 0,
+        "1": 999,
+        "2": 512
+      },
+      "positiveSetCoverage": 0.5983827493261455,
+      "negativeSetCoverage": 0.9991228070175439
+    },
+    {
+      "split": "cold-drug",
+      "sourceSha256": "a900ba77234a3f3e1df36536c82bedd91193f3fcc7f8c206f33f5d2777436cb9",
+      "calibrationRows": 494,
+      "k": 446,
+      "qhat": 0.8380390256643295,
+      "testRows": 2004,
+      "empiricalSetCoverage": 0.8857285429141717,
+      "singletonRate": 0.5084830339321357,
+      "singletonAccuracy": 0.7752698724239451,
+      "sizes": {
+        "0": 0,
+        "1": 1019,
+        "2": 985
+      },
+      "positiveSetCoverage": 0.596830985915493,
+      "negativeSetCoverage": 1.0
+    },
+    {
+      "split": "cold-target",
+      "sourceSha256": "6f31bd63512ed60b0059a1b71bee6ab03b7b98c9c52e0d7b8359a4aa6c0307cb",
+      "calibrationRows": 724,
+      "k": 653,
+      "qhat": 0.7782285213470459,
+      "testRows": 1631,
+      "empiricalSetCoverage": 0.8896382587369712,
+      "singletonRate": 0.6112814224402208,
+      "singletonAccuracy": 0.8194583751253761,
+      "sizes": {
+        "0": 0,
+        "1": 997,
+        "2": 634
+      },
+      "positiveSetCoverage": 0.5881006864988558,
+      "negativeSetCoverage": 1.0
+    },
+    {
+      "split": "cold-both",
+      "sourceSha256": "e8b6182dc8a66e26a37bb5a9bb466ae82b20eff7391d0319902b5aaac7ed0721",
+      "calibrationRows": 44,
+      "k": 41,
+      "qhat": 0.8477091640233994,
+      "testRows": 436,
+      "empiricalSetCoverage": 0.8738532110091743,
+      "singletonRate": 0.4724770642201835,
+      "singletonAccuracy": 0.7330097087378641,
+      "sizes": {
+        "0": 0,
+        "1": 206,
+        "2": 230
+      },
+      "positiveSetCoverage": 0.5669291338582677,
+      "negativeSetCoverage": 1.0
+    }
+  ],
+  "toy": {
+    "scores": [
+      0.02,
+      0.06,
+      0.1,
+      0.13,
+      0.19,
+      0.25,
+      0.3,
+      0.4,
+      0.51
+    ],
+    "k": 9,
+    "qhat": 0.51,
+    "sets": [
+      {
+        "probability": 0.9,
+        "classes": [
+          1
+        ]
+      },
+      {
+        "probability": 0.5,
+        "classes": [
+          0,
+          1
+        ]
+      },
+      {
+        "probability": 0.1,
+        "classes": [
+          0
+        ]
+      }
+    ]
+  },
+  "guarantee": "Marginal coverage under exchangeability of calibration and test, conditional on a fixed trained predictor. Cold split or clustered pairs do not establish this assumption.",
+  "actualGuaranteeClaimed": false,
+  "createdAtUtc": "2026-10-08T17:32:59.489189+00:00"
+}

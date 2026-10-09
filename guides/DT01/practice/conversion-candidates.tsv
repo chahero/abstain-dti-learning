@@ -1,0 +1,12 @@
+activity_id	molecule	target	published_type	published_relation	published_value	published_units	standard_type	standard_relation	standard_value	standard_units	pchembl_value	potential_duplicate	data_validity_comment	assay	document	confidence_score	relationship_type	assay_description	variant_metadata	numeric_candidate	pkd_numeric	context_review	review_reasons	training_label	training_approved
+1651530	CHEMBL553	CHEMBL203	Kd	=	0.0014	uM	Kd	=	1.4	nM	8.85	0		CHEMBL859867	CHEMBL1144455	9	D	Average Binding Constant for EGFR; NA=Not Active at 10 uM		True	8.853872	conditions-unverified			False
+2898670	CHEMBL553	CHEMBL203	Kd	=	0.67	nM	Kd	=	0.67	nM	9.17	0		CHEMBL1060182	CHEMBL1150977	9	D	Binding constant for EGFR kinase domain		True	9.173925	conditions-unverified			False
+2898708	CHEMBL553	CHEMBL203	Kd	=	0.48	nM	Kd	=	0.48	nM	9.32	0		CHEMBL1061143	CHEMBL1150977	9	D	Binding constant for EGFR(E746-A750del) kinase domain		True	9.318759	variant-described			False
+2898746	CHEMBL553	CHEMBL203	Kd	=	0.85	nM	Kd	=	0.85	nM	9.07	0		CHEMBL1061068	CHEMBL1150977	9	D	Binding constant for EGFR(G719C) kinase domain	G719C	True	9.070581	variant-described			False
+2898784	CHEMBL553	CHEMBL203	Kd	=	0.52	nM	Kd	=	0.52	nM	9.28	0		CHEMBL1060190	CHEMBL1150977	9	D	Binding constant for EGFR(G719S) kinase domain	G719S	True	9.283997	variant-described			False
+2898822	CHEMBL553	CHEMBL203	Kd	=	0.52	nM	Kd	=	0.52	nM	9.28	0		CHEMBL1063796	CHEMBL1150977	9	D	Binding constant for EGFR(L747-E749del, A750P) kinase domain	UNDEFINED MUTATION	True	9.283997	variant-described			False
+2898860	CHEMBL553	CHEMBL203	Kd	=	0.47	nM	Kd	=	0.47	nM	9.33	0		CHEMBL1063797	CHEMBL1150977	9	D	Binding constant for EGFR(L747-S752del, P753S) kinase domain	UNDEFINED MUTATION	True	9.327902	variant-described			False
+2898898	CHEMBL553	CHEMBL203	Kd	=	0.35	nM	Kd	=	0.35	nM	9.46	0		CHEMBL1051285	CHEMBL1150977	9	D	Binding constant for EGFR(L747-T751del,Sins) kinase domain		True	9.455932	conditions-unverified			False
+2898936	CHEMBL553	CHEMBL203	Kd	=	0.97	nM	Kd	=	0.97	nM	9.01	0		CHEMBL1062839	CHEMBL1150977	9	D	Binding constant for EGFR(L858R) kinase domain	L858R	True	9.013228	variant-described			False
+2904720	CHEMBL553	CHEMBL203	Kd	=	1.2	nM	Kd	=	1.2	nM	8.92	0		CHEMBL1051286	CHEMBL1150977	9	D	Binding constant for EGFR(L861Q) kinase domain	L861Q	True	8.920819	variant-described			False
+2904758	CHEMBL553	CHEMBL203	Kd	=	1.6	nM	Kd	=	1.6	nM	8.80	0		CHEMBL1050839	CHEMBL1150977	9	D	Binding constant for EGFR(S752-I759del) kinase domain		True	8.79588	variant-described			False

@@ -1,0 +1,1033 @@
+{
+  "actual": {
+    "queryGroups": 48,
+    "anyAbstentionFlipRate": 0.0,
+    "pairwiseAbstentionFlipRate": 0.0,
+    "labelFlipRate": 0.0,
+    "cases": [
+      {
+        "condition": "A",
+        "query_id": "Q01",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "A",
+        "query_id": "Q02",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "A",
+        "query_id": "Q03",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "A",
+        "query_id": "Q04",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "A",
+        "query_id": "Q05",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "A",
+        "query_id": "Q06",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "A",
+        "query_id": "Q07",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "A",
+        "query_id": "Q08",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "A",
+        "query_id": "Q09",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "A",
+        "query_id": "Q10",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "A",
+        "query_id": "Q11",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "A",
+        "query_id": "Q12",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "B",
+        "query_id": "Q01",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "B",
+        "query_id": "Q02",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "B",
+        "query_id": "Q03",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "B",
+        "query_id": "Q04",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "B",
+        "query_id": "Q05",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "B",
+        "query_id": "Q06",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "B",
+        "query_id": "Q07",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "B",
+        "query_id": "Q08",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "B",
+        "query_id": "Q09",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "B",
+        "query_id": "Q10",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "B",
+        "query_id": "Q11",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "B",
+        "query_id": "Q12",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "C",
+        "query_id": "Q01",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "C",
+        "query_id": "Q02",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "C",
+        "query_id": "Q03",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "C",
+        "query_id": "Q04",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "C",
+        "query_id": "Q05",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "C",
+        "query_id": "Q06",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "C",
+        "query_id": "Q07",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "C",
+        "query_id": "Q08",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "C",
+        "query_id": "Q09",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "C",
+        "query_id": "Q10",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "C",
+        "query_id": "Q11",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          1,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      },
+      {
+        "condition": "C",
+        "query_id": "Q12",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "D",
+        "query_id": "Q01",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "D",
+        "query_id": "Q02",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "D",
+        "query_id": "Q03",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "D",
+        "query_id": "Q04",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "D",
+        "query_id": "Q05",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "D",
+        "query_id": "Q06",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "D",
+        "query_id": "Q07",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "D",
+        "query_id": "Q08",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "D",
+        "query_id": "Q09",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "D",
+        "query_id": "Q10",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "D",
+        "query_id": "Q11",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      },
+      {
+        "condition": "D",
+        "query_id": "Q12",
+        "answers": [
+          false,
+          false,
+          false
+        ],
+        "labels": [
+          null,
+          null,
+          null
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 0,
+        "labelFlips": 0
+      }
+    ]
+  },
+  "actualTrials": 144,
+  "uniqueQueries": 12,
+  "conditions": 4,
+  "repeats": 3,
+  "runner": "deterministic personal checker; observed zero flip is expected, not LLM reproducibility evidence",
+  "designedIllustration": {
+    "synthetic": true,
+    "description": "Designed three-question trace, separate from actual runs",
+    "queryGroups": 3,
+    "anyAbstentionFlipRate": 0.3333333333333333,
+    "pairwiseAbstentionFlipRate": 0.2222222222222222,
+    "labelFlipRate": 0.2857142857142857,
+    "cases": [
+      {
+        "condition": "illustration",
+        "query_id": "toy-1",
+        "answers": [
+          true,
+          false,
+          true
+        ],
+        "labels": [
+          1,
+          null,
+          1
+        ],
+        "anyAbstentionFlip": true,
+        "pairwiseAbstentionFlips": 2,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 1,
+        "labelFlips": 0
+      },
+      {
+        "condition": "illustration",
+        "query_id": "toy-2",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          1,
+          0,
+          1
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 2
+      },
+      {
+        "condition": "illustration",
+        "query_id": "toy-3",
+        "answers": [
+          true,
+          true,
+          true
+        ],
+        "labels": [
+          0,
+          0,
+          0
+        ],
+        "anyAbstentionFlip": false,
+        "pairwiseAbstentionFlips": 0,
+        "abstentionPairs": 3,
+        "comparableLabelPairs": 3,
+        "labelFlips": 0
+      }
+    ]
+  },
+  "corruptionReasons": {
+    "unit_log_inconsistency": 9,
+    "drug_identifier_mismatch": 9,
+    "target_identifier_mismatch": 18,
+    "molecule_identity_mismatch": 18,
+    "target_sequence_mismatch": 9
+  },
+  "strata": [
+    {
+      "stratum": "near",
+      "uniqueQueries": 1,
+      "trials": 3,
+      "answered": 0,
+      "risk": null,
+      "caution": "Repeats reuse the same queries; trials are not independent query samples"
+    },
+    {
+      "stratum": "far",
+      "uniqueQueries": 11,
+      "trials": 33,
+      "answered": 27,
+      "risk": 0.0,
+      "caution": "Repeats reuse the same queries; trials are not independent query samples"
+    }
+  ],
+  "sourceSha256": "6902602f49e8f0abac5cfbf8a1f932a10550ffba9004ca3bd074bbbdfad1f0b4",
+  "absentMetrics": [
+    "LLM ECE: runner has no confidence",
+    "LLM AURC: runner has no meaningful ranking",
+    "LLM token/API cost: no LLM invoked"
+  ],
+  "frozenProtocol": "Four conditions and repeat schedule from AG02 protocol; no post-test prompt optimization",
+  "nextRealBenchmarkNeeds": [
+    "backend/model/prompt versions",
+    "real independent LLM runs",
+    "authored and independently verified queries",
+    "latency, tokens and costs",
+    "query- or entity-cluster-aware uncertainty estimates"
+  ]
+}

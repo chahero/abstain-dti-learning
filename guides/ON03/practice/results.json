@@ -1,0 +1,492 @@
+{
+  "scope": "Personal educational examples, no official DTI split or biological claims",
+  "rdkitVersion": "2026.03.6",
+  "parameters": {
+    "radius": 2,
+    "fpSize": 2048,
+    "includeChirality": true
+  },
+  "canonical": {
+    "ethanol": "CCO",
+    "ethanol_reverse": "CCO",
+    "ether": "COC",
+    "propyl_alcohol": "CCCO",
+    "acetic_acid": "CC(=O)O",
+    "acetate": "CC(=O)[O-]",
+    "sodium_acetate": "CC(=O)[O-].[Na+]",
+    "benzene": "c1ccccc1",
+    "aspirin": "CC(=O)Oc1ccccc1C(=O)O",
+    "acetaminophen": "CC(=O)Nc1ccc(O)cc1",
+    "lactic_a": "C[C@H](O)C(=O)O",
+    "lactic_b": "C[C@@H](O)C(=O)O",
+    "keto": "CC(C)=O",
+    "enol": "C=C(C)O",
+    "butane": "CCCC",
+    "linker_example": "Cc1ccc(CCc2ccccc2O)cc1"
+  },
+  "heavyAtoms": {
+    "ethanol": 3,
+    "ethanol_reverse": 3,
+    "ether": 3,
+    "propyl_alcohol": 4,
+    "acetic_acid": 4,
+    "acetate": 4,
+    "sodium_acetate": 5,
+    "benzene": 6,
+    "aspirin": 13,
+    "acetaminophen": 11,
+    "lactic_a": 6,
+    "lactic_b": 6,
+    "keto": 4,
+    "enol": 4,
+    "butane": 4,
+    "linker_example": 16
+  },
+  "formulaEthanol": "C2H6O",
+  "scaffolds": {
+    "ethanol": "",
+    "ethanol_reverse": "",
+    "ether": "",
+    "propyl_alcohol": "",
+    "acetic_acid": "",
+    "acetate": "",
+    "sodium_acetate": "",
+    "benzene": "c1ccccc1",
+    "aspirin": "c1ccccc1",
+    "acetaminophen": "c1ccccc1",
+    "lactic_a": "",
+    "lactic_b": "",
+    "keto": "",
+    "enol": "",
+    "butane": "",
+    "linker_example": "c1ccc(CCc2ccccc2)cc1"
+  },
+  "comparisons": [
+    {
+      "a": "ethanol",
+      "b": "ethanol_reverse",
+      "tanimoto": 1.0,
+      "intersection": 6,
+      "union": 6
+    },
+    {
+      "a": "ethanol",
+      "b": "ether",
+      "tanimoto": 0.1111111111111111,
+      "intersection": 1,
+      "union": 9
+    },
+    {
+      "a": "ethanol",
+      "b": "propyl_alcohol",
+      "tanimoto": 0.5555555555555556,
+      "intersection": 5,
+      "union": 9
+    },
+    {
+      "a": "aspirin",
+      "b": "acetaminophen",
+      "tanimoto": 0.2222222222222222,
+      "intersection": 8,
+      "union": 36
+    },
+    {
+      "a": "lactic_a",
+      "b": "lactic_b",
+      "tanimoto": 0.6923076923076923,
+      "intersection": 9,
+      "union": 13
+    }
+  ],
+  "stereoIgnoredTanimoto": 1.0,
+  "fragmentParent": "CC(=O)[O-]",
+  "tautomerCanonical": {
+    "keto": "CC(C)=O",
+    "enol": "CC(C)=O"
+  },
+  "invalidSmilesRejected": true,
+  "aspirinSparseIdentifiers": [
+    98513984,
+    132611095,
+    509662800,
+    673156540,
+    864662311,
+    864674487,
+    864942730,
+    951226070,
+    1015506671,
+    1135286194,
+    1510328189,
+    1533864325,
+    1654840205,
+    2014543234,
+    2077658817,
+    2246699815,
+    2246728737,
+    2309124039,
+    2664995851,
+    2784506312,
+    2987120039,
+    3217380708,
+    3218693969,
+    3545365497,
+    3999906991
+  ],
+  "tinyFingerprint": {
+    "size": 16,
+    "onBits": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      15
+    ],
+    "collisions": {
+      "0": [
+        98513984,
+        509662800
+      ],
+      "7": [
+        132611095,
+        864662311,
+        864674487,
+        2246699815,
+        2309124039,
+        2987120039
+      ],
+      "15": [
+        1015506671,
+        3999906991
+      ],
+      "2": [
+        1135286194,
+        2014543234
+      ],
+      "13": [
+        1510328189,
+        1654840205
+      ],
+      "1": [
+        2077658817,
+        2246728737,
+        3218693969
+      ]
+    }
+  },
+  "ethanolOxygenNeighborhoods": [
+    {
+      "radius": 0,
+      "atoms": [
+        2
+      ],
+      "bonds": []
+    },
+    {
+      "radius": 1,
+      "atoms": [
+        1,
+        2
+      ],
+      "bonds": [
+        1
+      ]
+    },
+    {
+      "radius": 2,
+      "atoms": [
+        0,
+        1,
+        2
+      ],
+      "bonds": [
+        1,
+        0
+      ]
+    }
+  ],
+  "conformers": [
+    {
+      "id": 0,
+      "positions": [
+        [
+          -1.561,
+          0.3453,
+          -0.0107
+        ],
+        [
+          -0.5475,
+          -0.5405,
+          -0.6822
+        ],
+        [
+          0.727,
+          -0.6658,
+          0.1194
+        ],
+        [
+          1.7676,
+          -1.5313,
+          -0.4969
+        ]
+      ],
+      "dihedralDegrees": 180.0
+    },
+    {
+      "id": 1,
+      "positions": [
+        [
+          -1.3889,
+          -0.4449,
+          0.4508
+        ],
+        [
+          -0.7252,
+          0.7713,
+          -0.1408
+        ],
+        [
+          0.5739,
+          0.2888,
+          -0.7933
+        ],
+        [
+          0.2481,
+          -0.7208,
+          -1.8627
+        ]
+      ],
+      "dihedralDegrees": 60.0
+    },
+    {
+      "id": 2,
+      "positions": [
+        [
+          -1.3029,
+          -0.1701,
+          0.7159
+        ],
+        [
+          -0.6875,
+          0.6895,
+          -0.3692
+        ],
+        [
+          0.5077,
+          -0.0725,
+          -0.9162
+        ],
+        [
+          1.4561,
+          -0.2835,
+          0.2465
+        ]
+      ],
+      "dihedralDegrees": -60.0
+    }
+  ],
+  "conformerProvenance": "ETKDGv3 seed 42; explicitly set illustrative heavy-atom torsions to -180,+60,-60 degrees; no energy or binding-pose claim",
+  "conformerGraphFpIdentical": true,
+  "bitSets": {
+    "ethanol": [
+      80,
+      222,
+      294,
+      807,
+      1057,
+      1410
+    ],
+    "ethanol_reverse": [
+      80,
+      222,
+      294,
+      807,
+      1057,
+      1410
+    ],
+    "ether": [
+      695,
+      841,
+      975,
+      1057
+    ],
+    "propyl_alcohol": [
+      80,
+      222,
+      294,
+      473,
+      794,
+      807,
+      1057,
+      1277
+    ],
+    "acetic_acid": [
+      389,
+      508,
+      650,
+      807,
+      1017,
+      1057,
+      1917
+    ],
+    "acetate": [
+      650,
+      715,
+      807,
+      1017,
+      1057,
+      1226,
+      1809,
+      1917
+    ],
+    "sodium_acetate": [
+      650,
+      715,
+      807,
+      1017,
+      1057,
+      1213,
+      1226,
+      1809,
+      1917
+    ],
+    "benzene": [
+      389,
+      1088,
+      1873
+    ],
+    "aspirin": [
+      389,
+      456,
+      650,
+      695,
+      807,
+      909,
+      1017,
+      1035,
+      1047,
+      1057,
+      1088,
+      1199,
+      1380,
+      1410,
+      1447,
+      1468,
+      1616,
+      1729,
+      1750,
+      1775,
+      1873,
+      1917,
+      1970,
+      1991
+    ],
+    "acetaminophen": [
+      191,
+      245,
+      530,
+      650,
+      745,
+      807,
+      843,
+      849,
+      1017,
+      1057,
+      1077,
+      1152,
+      1313,
+      1380,
+      1602,
+      1750,
+      1778,
+      1816,
+      1873,
+      1917
+    ],
+    "lactic_a": [
+      1,
+      227,
+      283,
+      389,
+      650,
+      658,
+      704,
+      807,
+      1057,
+      1844,
+      1917
+    ],
+    "lactic_b": [
+      1,
+      227,
+      283,
+      389,
+      650,
+      659,
+      786,
+      807,
+      1057,
+      1844,
+      1917
+    ],
+    "keto": [
+      650,
+      807,
+      1017,
+      1057,
+      1421,
+      1917
+    ],
+    "enol": [
+      389,
+      807,
+      1017,
+      1022,
+      1057,
+      1336,
+      1366
+    ],
+    "butane": [
+      80,
+      294,
+      640,
+      794,
+      1057
+    ],
+    "linker_example": [
+      80,
+      235,
+      310,
+      483,
+      499,
+      807,
+      1045,
+      1057,
+      1088,
+      1199,
+      1243,
+      1349,
+      1380,
+      1537,
+      1597,
+      1602,
+      1607,
+      1722,
+      1750,
+      1754,
+      1823,
+      1831,
+      1873,
+      1920,
+      2024
+    ]
+  }
+}

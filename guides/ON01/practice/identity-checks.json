@@ -1,0 +1,59 @@
+[
+  {
+    "entry": "1IEP",
+    "targetAccession": "P00519",
+    "targetTaxId": 9606,
+    "sourceOrganisms": [
+      "Mus musculus"
+    ],
+    "sourceTaxIds": [
+      10090
+    ],
+    "mappedUniProt": [
+      "P00520"
+    ],
+    "authorChains": [
+      "A",
+      "B"
+    ],
+    "constructLength": 293,
+    "experimentalMethod": [
+      "X-RAY DIFFRACTION"
+    ],
+    "title": "CRYSTAL STRUCTURE OF THE C-ABL KINASE DOMAIN IN COMPLEX WITH STI-571.",
+    "flags": [
+      "species_mismatch",
+      "accession_mismatch"
+    ],
+    "status": "identity-mismatch",
+    "scope": "partial metadata checks; not sequence equality, suitability, affinity or DTI performance"
+  },
+  {
+    "entry": "2HYY",
+    "targetAccession": "P00519",
+    "targetTaxId": 9606,
+    "sourceOrganisms": [
+      "Homo sapiens"
+    ],
+    "sourceTaxIds": [
+      9606
+    ],
+    "mappedUniProt": [
+      "P00519"
+    ],
+    "authorChains": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "constructLength": 273,
+    "experimentalMethod": [
+      "X-RAY DIFFRACTION"
+    ],
+    "title": "Human Abl kinase domain in complex with imatinib (STI571, Glivec)",
+    "flags": [],
+    "status": "identity-fields-match; range/mutations/ligand review remains",
+    "scope": "partial metadata checks; not sequence equality, suitability, affinity or DTI performance"
+  }
+]

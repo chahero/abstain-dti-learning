@@ -1,0 +1,274 @@
+[
+  {
+    "mode": "narrow",
+    "totalCalls": 12,
+    "meanCategoriesPerCandidate": 1.0,
+    "matrix": {
+      "A": {
+        "structure_confidence": 4,
+        "binding_region": 0,
+        "physical_clashes": 0,
+        "learned_affinity": 0
+      },
+      "B": {
+        "structure_confidence": 4,
+        "binding_region": 0,
+        "physical_clashes": 0,
+        "learned_affinity": 0
+      },
+      "C": {
+        "structure_confidence": 4,
+        "binding_region": 0,
+        "physical_clashes": 0,
+        "learned_affinity": 0
+      }
+    },
+    "records": [
+      {
+        "candidate": "A",
+        "call": 1,
+        "category": "structure_confidence",
+        "value": 0.95,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "A",
+        "call": 2,
+        "category": "structure_confidence",
+        "value": 0.95,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "A",
+        "call": 3,
+        "category": "structure_confidence",
+        "value": 0.95,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "A",
+        "call": 4,
+        "category": "structure_confidence",
+        "value": 0.95,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "B",
+        "call": 1,
+        "category": "structure_confidence",
+        "value": 0.9,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "B",
+        "call": 2,
+        "category": "structure_confidence",
+        "value": 0.9,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "B",
+        "call": 3,
+        "category": "structure_confidence",
+        "value": 0.9,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "B",
+        "call": 4,
+        "category": "structure_confidence",
+        "value": 0.9,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "C",
+        "call": 1,
+        "category": "structure_confidence",
+        "value": 0.88,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "C",
+        "call": 2,
+        "category": "structure_confidence",
+        "value": 0.88,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "C",
+        "call": 3,
+        "category": "structure_confidence",
+        "value": 0.88,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "C",
+        "call": 4,
+        "category": "structure_confidence",
+        "value": 0.88,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      }
+    ],
+    "scope": "personal concept exercise; not a paper reproduction or validated depth metric"
+  },
+  {
+    "mode": "diverse",
+    "totalCalls": 12,
+    "meanCategoriesPerCandidate": 4.0,
+    "matrix": {
+      "A": {
+        "structure_confidence": 1,
+        "binding_region": 1,
+        "physical_clashes": 1,
+        "learned_affinity": 1
+      },
+      "B": {
+        "structure_confidence": 1,
+        "binding_region": 1,
+        "physical_clashes": 1,
+        "learned_affinity": 1
+      },
+      "C": {
+        "structure_confidence": 1,
+        "binding_region": 1,
+        "physical_clashes": 1,
+        "learned_affinity": 1
+      }
+    },
+    "records": [
+      {
+        "candidate": "A",
+        "call": 1,
+        "category": "structure_confidence",
+        "value": 0.95,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "A",
+        "call": 2,
+        "category": "binding_region",
+        "value": 0.4,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "A",
+        "call": 3,
+        "category": "physical_clashes",
+        "value": 6,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "A",
+        "call": 4,
+        "category": "learned_affinity",
+        "value": 0.7,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "B",
+        "call": 1,
+        "category": "structure_confidence",
+        "value": 0.9,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "B",
+        "call": 2,
+        "category": "binding_region",
+        "value": 0.8,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "B",
+        "call": 3,
+        "category": "physical_clashes",
+        "value": 0,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "B",
+        "call": 4,
+        "category": "learned_affinity",
+        "value": 0.65,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "C",
+        "call": 1,
+        "category": "structure_confidence",
+        "value": 0.88,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "C",
+        "call": 2,
+        "category": "binding_region",
+        "value": 0.6,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "C",
+        "call": 3,
+        "category": "physical_clashes",
+        "value": 2,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      },
+      {
+        "candidate": "C",
+        "call": 4,
+        "category": "learned_affinity",
+        "value": 0.55,
+        "unit": "invented illustrative scale",
+        "source": "local toy fixture; no real protein or API",
+        "status": "success"
+      }
+    ],
+    "scope": "personal concept exercise; not a paper reproduction or validated depth metric"
+  }
+]

@@ -1,0 +1,167 @@
+{
+  "transport": "actual stdio MCP via ToolUniverse SMCP",
+  "server": {
+    "meta": null,
+    "protocolVersion": "2025-11-25",
+    "capabilities": {
+      "experimental": {},
+      "logging": {},
+      "prompts": {
+        "listChanged": false
+      },
+      "resources": {
+        "subscribe": false,
+        "listChanged": false
+      },
+      "tools": {
+        "listChanged": true
+      },
+      "completions": null,
+      "tasks": null,
+      "extensions": {
+        "io.modelcontextprotocol/ui": {}
+      }
+    },
+    "serverInfo": {
+      "name": "Abstain DTI personal lab",
+      "title": null,
+      "version": "3.4.8",
+      "websiteUrl": null,
+      "icons": null
+    },
+    "instructions": null
+  },
+  "versions": {
+    "tooluniverse": "1.5.6",
+    "mcp": "1.30.0",
+    "fastmcp": "3.4.8"
+  },
+  "exposedTools": [
+    {
+      "name": "Study_Davis_record",
+      "title": "Study Davis record",
+      "description": "Read one supplied local DAVIS record with identifiers, units and provenance.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "row_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "description": "row_id parameter"
+          }
+        },
+        "required": [
+          "row_id"
+        ],
+        "type": "object"
+      },
+      "outputSchema": null,
+      "icons": null,
+      "annotations": {
+        "title": "Study Davis record",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": null
+      },
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      },
+      "execution": null
+    },
+    {
+      "name": "Study_Convert_affinity",
+      "title": "Study Convert affinity",
+      "description": "Convert an explicitly stated positive affinity value/unit to molar, nM and pKd.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "description": "value parameter"
+          },
+          "unit": {
+            "description": "unit parameter",
+            "type": "string"
+          }
+        },
+        "required": [
+          "value",
+          "unit"
+        ],
+        "type": "object"
+      },
+      "outputSchema": null,
+      "icons": null,
+      "annotations": {
+        "title": "Study Convert affinity",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": null
+      },
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      },
+      "execution": null
+    },
+    {
+      "name": "Study_Canonical_molecule",
+      "title": "Study Canonical molecule",
+      "description": "Canonical isomeric SMILES, preserving stereochemistry; no salt/tautomer standardization.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "smiles": {
+            "description": "smiles parameter",
+            "type": "string"
+          }
+        },
+        "required": [
+          "smiles"
+        ],
+        "type": "object"
+      },
+      "outputSchema": null,
+      "icons": null,
+      "annotations": {
+        "title": "Study Canonical molecule",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": null
+      },
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      },
+      "execution": null
+    }
+  ],
+  "calls": 10,
+  "successfulCalls": 9,
+  "invalidInputErrors": 1,
+  "llmInvoked": false,
+  "paidApiCalls": 0,
+  "scope": "Deterministic SDK client and local cached data; no scientific LLM performance claim.",
+  "errorEnvelopeObservation": "The invalid-value call has isError=False but a semantic JSON status=error; classified by both transport and payload.",
+  "rawLogSha256": "2a44eb1b80f4d375168b746536127f68b77e8f68207f44756783f7c93277dea8"
+}

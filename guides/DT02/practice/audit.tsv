@@ -1,0 +1,5 @@
+method	train	valid	test	excluded	pairOverlap	drugOverlap	targetOverlap	scaffoldOverlap
+random	18040	2577	5155	0	0	68	379	68
+cold-drug	17813	2274	5685	0	0	0	379	0
+cold-target	18020	2516	5236	0	0	68	0	68
+cold-both	12455	222	1155	11940	0	0	0	0

@@ -1,0 +1,7 @@
+* text=auto
+*.jpg binary
+*.woff2 binary
+# A trailing tab represents an empty final field in these exercise tables.
+*.tsv text eol=lf whitespace=-blank-at-eol
+# Keep the official font license text as supplied.
+assets/Pretendard-LICENSE.txt text eol=lf whitespace=-blank-at-eol

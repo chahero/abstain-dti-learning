@@ -1,0 +1,3681 @@
+{
+  "scope": "Personal numerical-label DAVIS calibration exercise; not an approved biological benchmark",
+  "protocol": {
+    "scope": "Personal numerical-label DAVIS calibration exercise; not an approved biological benchmark",
+    "baseline": "DT03 fixed paired Morgan + frozen ESM-2 XGBoost model, four existing splits",
+    "labels": "Reuse study_rule_label: supplied Kd <= 100 nM; supplied Kd = 10000 nM excluded by DT03",
+    "fitPartition": "valid only",
+    "evaluationPartition": "test only, used after fitting",
+    "selection": "One preselected calibration method; no model or method selection on test metrics",
+    "method": "Binary temperature scaling: sigmoid(logit(p) / T)",
+    "objective": "Unweighted binary log loss on valid",
+    "temperatureBounds": [
+      0.05,
+      20.0
+    ],
+    "optimizer": "scipy minimize_scalar bounded over log(T), xatol 1e-10",
+    "probabilityClip": 1e-12,
+    "ece": "Positive-class ECE and top-label confidence ECE recorded separately",
+    "binRule": "Equal-width bins over [0,1], left inclusive/right exclusive except final bin includes 1; empty bins omitted from sum",
+    "primaryBins": 10,
+    "sensitivityBins": [
+      5,
+      10,
+      15
+    ],
+    "limitations": "Single existing split assignment; conditional labels; very small cold-both valid set; no formal OOD or individual guarantee",
+    "frozenBeforeCalibration": true
+  },
+  "protocolSha256": "48913c53f424319418732525668df27aece143d75a1580fa21947fe122c866c7",
+  "completedAtUtc": "2026-10-08T16:48:31.446156+00:00",
+  "results": [
+    {
+      "method": "random",
+      "temperature": 0.9674039855650327,
+      "optimizerSuccess": true,
+      "nearOptimizationBound": false,
+      "source": "[로컬 파일 경로]",
+      "sourceSha256": "569475b6a692db03e3a607b3c63681e6637baacde0140d895584b3771f60729e",
+      "frozenModelSha256": "a8fb42f728bdf247307236fc12960ecde82d56191f1245b6d1bf0835e352982f",
+      "validRows": 755,
+      "validPositives": 200,
+      "rankingPreserved": true,
+      "predictionsAtHalfPreserved": true,
+      "scores": {
+        "valid": {
+          "before": {
+            "rows": 755,
+            "positives": 200,
+            "prevalence": 0.26490066225165565,
+            "rocAuc": 0.7607342342342343,
+            "logLoss": 0.49311047380826845,
+            "brier": 0.16136851139051228,
+            "balancedAccuracy": 0.5839864864864865,
+            "positiveEce": 0.031049642933914986,
+            "confidenceEce": 0.012923183622739164,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 73,
+                "meanProbability": 0.08000650471203948,
+                "observed": 0.0410958904109589,
+                "absoluteGap": 0.03891061430108057,
+                "weightedGap": 0.0037622183363958703
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 304,
+                "meanProbability": 0.15029323017714838,
+                "observed": 0.14802631578947367,
+                "absoluteGap": 0.0022669143876747067,
+                "weightedGap": 0.0009127708262955111
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 173,
+                "meanProbability": 0.242561938531826,
+                "observed": 0.2543352601156069,
+                "absoluteGap": 0.011773321583780916,
+                "weightedGap": 0.0026977279920451635
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 89,
+                "meanProbability": 0.3480470706237836,
+                "observed": 0.38202247191011235,
+                "absoluteGap": 0.033975401286328755,
+                "weightedGap": 0.004005047303951337
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 62,
+                "meanProbability": 0.4353301635672969,
+                "observed": 0.5645161290322581,
+                "absoluteGap": 0.1291859654649612,
+                "weightedGap": 0.010608648819639197
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 36,
+                "meanProbability": 0.5471194965971841,
+                "observed": 0.6666666666666666,
+                "absoluteGap": 0.11954717006948257,
+                "weightedGap": 0.0057002624139091025
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 9,
+                "meanProbability": 0.6482352680630155,
+                "observed": 0.8888888888888888,
+                "absoluteGap": 0.24065362082587338,
+                "weightedGap": 0.002868718658851471
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 9,
+                "meanProbability": 0.7363158133294847,
+                "observed": 0.7777777777777778,
+                "absoluteGap": 0.04146196444829309,
+                "weightedGap": 0.0004942485828273349
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 98,
+                "meanProbability": 0.5582227728196553,
+                "observed": 0.5204081632653061,
+                "absoluteGap": 0.03781460955434912,
+                "weightedGap": 0.004908386405730084
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 98,
+                "meanProbability": 0.6516115115005143,
+                "observed": 0.6428571428571429,
+                "absoluteGap": 0.008754368643371424,
+                "weightedGap": 0.0011363286450998668
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 182,
+                "meanProbability": 0.756393554692085,
+                "observed": 0.7472527472527473,
+                "absoluteGap": 0.009140807439337761,
+                "weightedGap": 0.0022034794092178444
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 304,
+                "meanProbability": 0.8497067698228516,
+                "observed": 0.8519736842105263,
+                "absoluteGap": 0.002266914387674679,
+                "weightedGap": 0.0009127708262954998
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 73,
+                "meanProbability": 0.9199934952879605,
+                "observed": 0.958904109589041,
+                "absoluteGap": 0.03891061430108056,
+                "weightedGap": 0.003762218336395869
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.031049642933914996,
+              "10": 0.031049642933914986,
+              "15": 0.038916707394138855
+            }
+          },
+          "after": {
+            "rows": 755,
+            "positives": 200,
+            "prevalence": 0.26490066225165565,
+            "rocAuc": 0.7607342342342343,
+            "logLoss": 0.4929633968647978,
+            "brier": 0.16141618899234755,
+            "balancedAccuracy": 0.5839864864864865,
+            "positiveEce": 0.03437489109250056,
+            "confidenceEce": 0.01666560649633105,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 86,
+                "meanProbability": 0.07771935674804342,
+                "observed": 0.046511627906976744,
+                "absoluteGap": 0.03120772884106668,
+                "weightedGap": 0.003554787656068522
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 313,
+                "meanProbability": 0.148727348789706,
+                "observed": 0.15335463258785942,
+                "absoluteGap": 0.004627283798153414,
+                "weightedGap": 0.0019183308991020114
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 158,
+                "meanProbability": 0.24381455050019724,
+                "observed": 0.25949367088607594,
+                "absoluteGap": 0.01567912038587871,
+                "weightedGap": 0.0032811934052567365
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 83,
+                "meanProbability": 0.34797569795933436,
+                "observed": 0.40963855421686746,
+                "absoluteGap": 0.061662856257533094,
+                "weightedGap": 0.006778830555463903
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 61,
+                "meanProbability": 0.43376614360186694,
+                "observed": 0.5573770491803278,
+                "absoluteGap": 0.12361090557846088,
+                "weightedGap": 0.009987106278524654
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 35,
+                "meanProbability": 0.5471502295028239,
+                "observed": 0.6571428571428571,
+                "absoluteGap": 0.10999262764003326,
+                "weightedGap": 0.0050989959833128
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 9,
+                "meanProbability": 0.6414857089616903,
+                "observed": 0.8888888888888888,
+                "absoluteGap": 0.2474031799271985,
+                "weightedGap": 0.002949176979264618
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 10,
+                "meanProbability": 0.7391115651691977,
+                "observed": 0.8,
+                "absoluteGap": 0.06088843483080231,
+                "weightedGap": 0.0008064693355073154
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 96,
+                "meanProbability": 0.5592762840925515,
+                "observed": 0.5208333333333334,
+                "absoluteGap": 0.03844295075921811,
+                "weightedGap": 0.004888110295211839
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 92,
+                "meanProbability": 0.6509933527177223,
+                "observed": 0.6195652173913043,
+                "absoluteGap": 0.03142813532641797,
+                "weightedGap": 0.0038296535761992764
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 168,
+                "meanProbability": 0.7551691468610763,
+                "observed": 0.7440476190476191,
+                "absoluteGap": 0.01112152781345721,
+                "weightedGap": 0.002474724069749419
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 313,
+                "meanProbability": 0.8512726512102939,
+                "observed": 0.8466453674121406,
+                "absoluteGap": 0.004627283798153359,
+                "weightedGap": 0.0019183308991019884
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 86,
+                "meanProbability": 0.9222806432519566,
+                "observed": 0.9534883720930233,
+                "absoluteGap": 0.031207728841066706,
+                "weightedGap": 0.0035547876560685257
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.030538229294296556,
+              "10": 0.03437489109250056,
+              "15": 0.04018870937943416
+            }
+          }
+        },
+        "test": {
+          "before": {
+            "rows": 1511,
+            "positives": 371,
+            "prevalence": 0.24553275976174718,
+            "rocAuc": 0.734176242493025,
+            "logLoss": 0.4852528822976384,
+            "brier": 0.15639052043500523,
+            "balancedAccuracy": 0.5964451222395611,
+            "positiveEce": 0.027367101118096752,
+            "confidenceEce": 0.01902815116006046,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 103,
+                "meanProbability": 0.08105072918013462,
+                "observed": 0.05825242718446602,
+                "absoluteGap": 0.022798301995668596,
+                "weightedGap": 0.0015540867674082497
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 659,
+                "meanProbability": 0.14941688634918746,
+                "observed": 0.1426403641881639,
+                "absoluteGap": 0.006776522161023563,
+                "weightedGap": 0.002955478559969906
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 340,
+                "meanProbability": 0.24147075015832395,
+                "observed": 0.2235294117647059,
+                "absoluteGap": 0.017941338393618056,
+                "weightedGap": 0.004037097984004063
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 183,
+                "meanProbability": 0.34592441457216855,
+                "observed": 0.30601092896174864,
+                "absoluteGap": 0.03991348561041991,
+                "weightedGap": 0.004833995940904595
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 116,
+                "meanProbability": 0.44568899402330664,
+                "observed": 0.5,
+                "absoluteGap": 0.05431100597669336,
+                "weightedGap": 0.004169474979018153
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 62,
+                "meanProbability": 0.5459860217186713,
+                "observed": 0.6935483870967742,
+                "absoluteGap": 0.14756236537810297,
+                "weightedGap": 0.006054842259061803
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 35,
+                "meanProbability": 0.6480658565248761,
+                "observed": 0.7714285714285715,
+                "absoluteGap": 0.12336271490369533,
+                "weightedGap": 0.002857508286981692
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 13,
+                "meanProbability": 0.7410095930099487,
+                "observed": 0.8461538461538461,
+                "absoluteGap": 0.10514425314389741,
+                "weightedGap": 0.0009046163407482902
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 178,
+                "meanProbability": 0.5514112923587307,
+                "observed": 0.5674157303370787,
+                "absoluteGap": 0.01600443797834805,
+                "weightedGap": 0.0018853672800436486
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 218,
+                "meanProbability": 0.6531107206957056,
+                "observed": 0.7064220183486238,
+                "absoluteGap": 0.0533112976529182,
+                "weightedGap": 0.007691504227886279
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 353,
+                "meanProbability": 0.7578840500150119,
+                "observed": 0.7790368271954674,
+                "absoluteGap": 0.021152777180455495,
+                "weightedGap": 0.004941714324752343
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 659,
+                "meanProbability": 0.8505831136508125,
+                "observed": 0.8573596358118362,
+                "absoluteGap": 0.006776522161023646,
+                "weightedGap": 0.0029554785599699425
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 103,
+                "meanProbability": 0.9189492708198654,
+                "observed": 0.941747572815534,
+                "absoluteGap": 0.02279830199566857,
+                "weightedGap": 0.0015540867674082477
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.027367101118096766,
+              "10": 0.027367101118096752,
+              "15": 0.027367101118096773
+            }
+          },
+          "after": {
+            "rows": 1511,
+            "positives": 371,
+            "prevalence": 0.24553275976174718,
+            "rocAuc": 0.734176242493025,
+            "logLoss": 0.4847673364672127,
+            "brier": 0.15623209298349452,
+            "balancedAccuracy": 0.5964451222395611,
+            "positiveEce": 0.021063447230220977,
+            "confidenceEce": 0.012996091214770293,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 145,
+                "meanProbability": 0.08139423792298141,
+                "observed": 0.07586206896551724,
+                "absoluteGap": 0.0055321689574641675,
+                "weightedGap": 0.0005308831891676401
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 657,
+                "meanProbability": 0.14848932580211258,
+                "observed": 0.1430745814307458,
+                "absoluteGap": 0.00541474437136677,
+                "weightedGap": 0.00235439248973393
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 312,
+                "meanProbability": 0.24176627553077296,
+                "observed": 0.2403846153846154,
+                "absoluteGap": 0.001381660146157565,
+                "weightedGap": 0.00028529316055669115
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 180,
+                "meanProbability": 0.34695545658679805,
+                "observed": 0.3111111111111111,
+                "absoluteGap": 0.035844345475686934,
+                "weightedGap": 0.004270008064608635
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 107,
+                "meanProbability": 0.4477113320591314,
+                "observed": 0.5046728971962616,
+                "absoluteGap": 0.05696156513713024,
+                "weightedGap": 0.004033678007725305
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 59,
+                "meanProbability": 0.5448200193044147,
+                "observed": 0.6949152542372882,
+                "absoluteGap": 0.15009523493287347,
+                "weightedGap": 0.005860766949728349
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 37,
+                "meanProbability": 0.6471125839314101,
+                "observed": 0.7837837837837838,
+                "absoluteGap": 0.13667119985237364,
+                "weightedGap": 0.0033466806052533586
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 13,
+                "meanProbability": 0.7399266028222182,
+                "observed": 0.7692307692307693,
+                "absoluteGap": 0.029304166408551047,
+                "weightedGap": 0.000252120558114602
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 1,
+                "meanProbability": 0.8041378257426457,
+                "observed": 1.0,
+                "absoluteGap": 0.1958621742573543,
+                "weightedGap": 0.0001296242053324648
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 166,
+                "meanProbability": 0.5496341482447796,
+                "observed": 0.5662650602409639,
+                "absoluteGap": 0.016630911996184272,
+                "weightedGap": 0.0018270889420030371
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 217,
+                "meanProbability": 0.6520331033172283,
+                "observed": 0.7050691244239631,
+                "absoluteGap": 0.053036021106734776,
+                "weightedGap": 0.007616688669861977
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 325,
+                "meanProbability": 0.7575014396033467,
+                "observed": 0.76,
+                "absoluteGap": 0.0024985603966533043,
+                "weightedGap": 0.0005374137186712931
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 658,
+                "meanProbability": 0.8514386789874692,
+                "observed": 0.8571428571428571,
+                "absoluteGap": 0.005704178155387929,
+                "weightedGap": 0.0024840166950663516
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 145,
+                "meanProbability": 0.9186057620770186,
+                "observed": 0.9241379310344827,
+                "absoluteGap": 0.005532168957464112,
+                "weightedGap": 0.0005308831891676348
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.021063447230220998,
+              "10": 0.021063447230220977,
+              "15": 0.0224944728142153
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "cold-drug",
+      "temperature": 1.3730096130368108,
+      "optimizerSuccess": true,
+      "nearOptimizationBound": false,
+      "source": "[로컬 파일 경로]",
+      "sourceSha256": "a900ba77234a3f3e1df36536c82bedd91193f3fcc7f8c206f33f5d2777436cb9",
+      "frozenModelSha256": "4ff500c0242b562b0cb83bda64fc87b0e09f43b3529cd149bb564722c724707e",
+      "validRows": 494,
+      "validPositives": 128,
+      "rankingPreserved": true,
+      "predictionsAtHalfPreserved": true,
+      "scores": {
+        "valid": {
+          "before": {
+            "rows": 494,
+            "positives": 128,
+            "prevalence": 0.2591093117408907,
+            "rocAuc": 0.6584912909836066,
+            "logLoss": 0.5563299042246201,
+            "brier": 0.18387151893674913,
+            "balancedAccuracy": 0.5462986680327868,
+            "positiveEce": 0.08273144297090619,
+            "confidenceEce": 0.08264114108947127,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 67,
+                "meanProbability": 0.08631462781731762,
+                "observed": 0.07462686567164178,
+                "absoluteGap": 0.011687762145675837,
+                "weightedGap": 0.0015851823153042127
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 276,
+                "meanProbability": 0.14139404493397562,
+                "observed": 0.2427536231884058,
+                "absoluteGap": 0.10135957825443018,
+                "weightedGap": 0.05663004776968164
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 71,
+                "meanProbability": 0.2321621878466136,
+                "observed": 0.30985915492957744,
+                "absoluteGap": 0.07769696708296384,
+                "weightedGap": 0.011166973001802494
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 29,
+                "meanProbability": 0.34408088696414024,
+                "observed": 0.2413793103448276,
+                "absoluteGap": 0.10270157661931265,
+                "weightedGap": 0.006029039922996087
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 27,
+                "meanProbability": 0.44527053943386785,
+                "observed": 0.4444444444444444,
+                "absoluteGap": 0.0008260949894234315,
+                "weightedGap": 4.515094071747501e-05
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 17,
+                "meanProbability": 0.5383163725628572,
+                "observed": 0.47058823529411764,
+                "absoluteGap": 0.06772813726873961,
+                "weightedGap": 0.0023307253715963024
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 7,
+                "meanProbability": 0.651072016784123,
+                "observed": 1.0,
+                "absoluteGap": 0.34892798321587704,
+                "weightedGap": 0.004944323648807974
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 44,
+                "meanProbability": 0.5483880402012304,
+                "observed": 0.5227272727272727,
+                "absoluteGap": 0.025660767473957735,
+                "weightedGap": 0.0022855744308788264
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 36,
+                "meanProbability": 0.654976622098022,
+                "observed": 0.8055555555555556,
+                "absoluteGap": 0.1505789334575336,
+                "weightedGap": 0.010973363571804066
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 71,
+                "meanProbability": 0.7678378121533864,
+                "observed": 0.6901408450704225,
+                "absoluteGap": 0.07769696708296392,
+                "weightedGap": 0.011166973001802506
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 276,
+                "meanProbability": 0.8586059550660244,
+                "observed": 0.7572463768115942,
+                "absoluteGap": 0.1013595782544302,
+                "weightedGap": 0.05663004776968166
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 67,
+                "meanProbability": 0.9136853721826824,
+                "observed": 0.9253731343283582,
+                "absoluteGap": 0.011687762145675795,
+                "weightedGap": 0.001585182315304207
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.06750299849430559,
+              "10": 0.08273144297090619,
+              "15": 0.09249750085868816
+            }
+          },
+          "after": {
+            "rows": 494,
+            "positives": 128,
+            "prevalence": 0.2591093117408907,
+            "rocAuc": 0.6584912909836066,
+            "logLoss": 0.5412641741688127,
+            "brier": 0.1795968648808941,
+            "balancedAccuracy": 0.5462986680327868,
+            "positiveEce": 0.057321978612551026,
+            "confidenceEce": 0.05732197861255104,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 178,
+                "meanProbability": 0.17224386277825687,
+                "observed": 0.1404494382022472,
+                "absoluteGap": 0.03179442457600967,
+                "weightedGap": 0.011456290636699841
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 211,
+                "meanProbability": 0.2400915182797482,
+                "observed": 0.3033175355450237,
+                "absoluteGap": 0.06322601726527552,
+                "weightedGap": 0.027005444621403106
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 45,
+                "meanProbability": 0.3425124707128527,
+                "observed": 0.2,
+                "absoluteGap": 0.14251247071285267,
+                "weightedGap": 0.012981905226879292
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 36,
+                "meanProbability": 0.44895541599315475,
+                "observed": 0.4166666666666667,
+                "absoluteGap": 0.032288749326488064,
+                "weightedGap": 0.002353026266707632
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 20,
+                "meanProbability": 0.5368398635457997,
+                "observed": 0.55,
+                "absoluteGap": 0.013160136454200333,
+                "weightedGap": 0.0005327990467287584
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 4,
+                "meanProbability": 0.630424667454649,
+                "observed": 1.0,
+                "absoluteGap": 0.369575332545351,
+                "weightedGap": 0.002992512814132397
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 56,
+                "meanProbability": 0.5459714695564718,
+                "observed": 0.5714285714285714,
+                "absoluteGap": 0.025457101872099597,
+                "weightedGap": 0.0028858253134363917
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 49,
+                "meanProbability": 0.6552783160763311,
+                "observed": 0.8163265306122449,
+                "absoluteGap": 0.16104821453591378,
+                "weightedGap": 0.01597441804101169
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 211,
+                "meanProbability": 0.7599084817202518,
+                "observed": 0.6966824644549763,
+                "absoluteGap": 0.06322601726527555,
+                "weightedGap": 0.027005444621403116
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 178,
+                "meanProbability": 0.8277561372217431,
+                "observed": 0.8595505617977528,
+                "absoluteGap": 0.03179442457600967,
+                "weightedGap": 0.011456290636699841
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.030292570065334933,
+              "10": 0.057321978612551026,
+              "15": 0.04947530705441187
+            }
+          }
+        },
+        "test": {
+          "before": {
+            "rows": 2004,
+            "positives": 568,
+            "prevalence": 0.2834331337325349,
+            "rocAuc": 0.5803919092549727,
+            "logLoss": 0.6246729368261866,
+            "brier": 0.21031079951809986,
+            "balancedAccuracy": 0.5181769586880616,
+            "positiveEce": 0.11555829739752049,
+            "confidenceEce": 0.11425176655832758,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 165,
+                "meanProbability": 0.08609101984537008,
+                "observed": 0.21818181818181817,
+                "absoluteGap": 0.1320907983364481,
+                "weightedGap": 0.01087573938398899
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 1237,
+                "meanProbability": 0.1474282574947553,
+                "observed": 0.2611156022635408,
+                "absoluteGap": 0.1136873447687855,
+                "weightedGap": 0.07017527219510364
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 383,
+                "meanProbability": 0.2344273716678196,
+                "observed": 0.3524804177545692,
+                "absoluteGap": 0.11805304608674957,
+                "weightedGap": 0.022562034257098348
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 122,
+                "meanProbability": 0.34714946224064125,
+                "observed": 0.26229508196721313,
+                "absoluteGap": 0.08485438027342812,
+                "weightedGap": 0.005165785625428259
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 61,
+                "meanProbability": 0.43971887182016844,
+                "observed": 0.2786885245901639,
+                "absoluteGap": 0.16103034723000453,
+                "weightedGap": 0.004901622345823491
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 19,
+                "meanProbability": 0.5375917773497733,
+                "observed": 0.5263157894736842,
+                "absoluteGap": 0.011275987876089077,
+                "weightedGap": 0.00010690806868547529
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 13,
+                "meanProbability": 0.6573804112581106,
+                "observed": 0.8461538461538461,
+                "absoluteGap": 0.1887734348957355,
+                "weightedGap": 0.0012245781704813181
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 4,
+                "meanProbability": 0.7262749671936035,
+                "observed": 1.0,
+                "absoluteGap": 0.2737250328063965,
+                "weightedGap": 0.000546357350910971
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 80,
+                "meanProbability": 0.5548924073576927,
+                "observed": 0.675,
+                "absoluteGap": 0.1201075926423073,
+                "weightedGap": 0.004794714277138016
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 135,
+                "meanProbability": 0.6532867477999793,
+                "observed": 0.7481481481481481,
+                "absoluteGap": 0.09486140034816881,
+                "weightedGap": 0.006390363795909576
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 387,
+                "meanProbability": 0.765166450956071,
+                "observed": 0.6511627906976745,
+                "absoluteGap": 0.11400366025839659,
+                "weightedGap": 0.022015676906187366
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 1237,
+                "meanProbability": 0.8525717425052447,
+                "observed": 0.7388843977364592,
+                "absoluteGap": 0.1136873447687855,
+                "weightedGap": 0.07017527219510364
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 165,
+                "meanProbability": 0.91390898015463,
+                "observed": 0.7818181818181819,
+                "absoluteGap": 0.1320907983364481,
+                "weightedGap": 0.01087573938398899
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.10522672614666395,
+              "10": 0.11555829739752049,
+              "15": 0.11968521801699064
+            }
+          },
+          "after": {
+            "rows": 2004,
+            "positives": 568,
+            "prevalence": 0.2834331337325349,
+            "rocAuc": 0.5803919092549727,
+            "logLoss": 0.5924407197673276,
+            "brier": 0.20125232899430873,
+            "balancedAccuracy": 0.5181769586880616,
+            "positiveEce": 0.06025050635312156,
+            "confidenceEce": 0.05945780611076482,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 520,
+                "meanProbability": 0.17484987872106036,
+                "observed": 0.20576923076923076,
+                "absoluteGap": 0.030919352048170395,
+                "weightedGap": 0.0080229855614015
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 1122,
+                "meanProbability": 0.24081823912435696,
+                "observed": 0.3048128342245989,
+                "absoluteGap": 0.06399459510024197,
+                "weightedGap": 0.0358293092327702
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 225,
+                "meanProbability": 0.34094250902861656,
+                "observed": 0.29333333333333333,
+                "absoluteGap": 0.04760917569528322,
+                "weightedGap": 0.005345341582554254
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 101,
+                "meanProbability": 0.4384417138531481,
+                "observed": 0.27722772277227725,
+                "absoluteGap": 0.16121399108087087,
+                "weightedGap": 0.008125056436710557
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 22,
+                "meanProbability": 0.5361038928564305,
+                "observed": 0.5,
+                "absoluteGap": 0.03610389285643045,
+                "weightedGap": 0.0003963501211783782
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 14,
+                "meanProbability": 0.6376390935223306,
+                "observed": 1.0,
+                "absoluteGap": 0.3623609064776694,
+                "weightedGap": 0.0025314634185066723
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 123,
+                "meanProbability": 0.557005467834744,
+                "observed": 0.6829268292682927,
+                "absoluteGap": 0.1259213614335487,
+                "weightedGap": 0.007728706315532181
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 239,
+                "meanProbability": 0.657802856811188,
+                "observed": 0.7238493723849372,
+                "absoluteGap": 0.06604651557374919,
+                "weightedGap": 0.007876805001060905
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 1122,
+                "meanProbability": 0.759181760875643,
+                "observed": 0.6951871657754011,
+                "absoluteGap": 0.06399459510024197,
+                "weightedGap": 0.0358293092327702
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 520,
+                "meanProbability": 0.8251501212789397,
+                "observed": 0.7942307692307692,
+                "absoluteGap": 0.030919352048170534,
+                "weightedGap": 0.008022985561401534
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.04955982318801305,
+              "10": 0.06025050635312156,
+              "15": 0.06053031889567401
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "cold-target",
+      "temperature": 1.012382795382727,
+      "optimizerSuccess": true,
+      "nearOptimizationBound": false,
+      "source": "[로컬 파일 경로]",
+      "sourceSha256": "6f31bd63512ed60b0059a1b71bee6ab03b7b98c9c52e0d7b8359a4aa6c0307cb",
+      "frozenModelSha256": "4ddcfba8867201ef53db1a1ec4e9e5ce476fa9ebb0aa0a640f01e8f97e5a7feb",
+      "validRows": 724,
+      "validPositives": 166,
+      "rankingPreserved": true,
+      "predictionsAtHalfPreserved": true,
+      "scores": {
+        "valid": {
+          "before": {
+            "rows": 724,
+            "positives": 166,
+            "prevalence": 0.2292817679558011,
+            "rocAuc": 0.7005333160599386,
+            "logLoss": 0.4914756003290975,
+            "brier": 0.15936704867392154,
+            "balancedAccuracy": 0.5612881634063134,
+            "positiveEce": 0.02351194704517474,
+            "confidenceEce": 0.02233070762858871,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 41,
+                "meanProbability": 0.07910336226951785,
+                "observed": 0.04878048780487805,
+                "absoluteGap": 0.0303228744646398,
+                "weightedGap": 0.0017171793550417565
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 389,
+                "meanProbability": 0.15170089222471633,
+                "observed": 0.14138817480719795,
+                "absoluteGap": 0.01031271741751838,
+                "weightedGap": 0.005540948999191506
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 148,
+                "meanProbability": 0.24414906580303167,
+                "observed": 0.2972972972972973,
+                "absoluteGap": 0.053148231494265646,
+                "weightedGap": 0.010864555609325022
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 74,
+                "meanProbability": 0.34417776843986,
+                "observed": 0.36486486486486486,
+                "absoluteGap": 0.02068709642500488,
+                "weightedGap": 0.002114426982666245
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 27,
+                "meanProbability": 0.43723577040213124,
+                "observed": 0.4444444444444444,
+                "absoluteGap": 0.007208674042313179,
+                "weightedGap": 0.00026883176677134783
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 26,
+                "meanProbability": 0.5437634724837083,
+                "observed": 0.5,
+                "absoluteGap": 0.043763472483708266,
+                "weightedGap": 0.001571616415160794
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 10,
+                "meanProbability": 0.6610888183116913,
+                "observed": 0.6,
+                "absoluteGap": 0.06108881831169133,
+                "weightedGap": 0.0008437682087250183
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 9,
+                "meanProbability": 0.7302657034662035,
+                "observed": 0.7777777777777778,
+                "absoluteGap": 0.04751207431157434,
+                "weightedGap": 0.0005906197082930512
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 53,
+                "meanProbability": 0.5534431034663938,
+                "observed": 0.5283018867924528,
+                "absoluteGap": 0.02514121667394098,
+                "weightedGap": 0.0018404481819321433
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 84,
+                "meanProbability": 0.65644920617342,
+                "observed": 0.6309523809523809,
+                "absoluteGap": 0.02549682522103902,
+                "weightedGap": 0.0029581951913912677
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 157,
+                "meanProbability": 0.7543842649194086,
+                "observed": 0.7070063694267515,
+                "absoluteGap": 0.04737789549265703,
+                "weightedGap": 0.01027393590103198
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 389,
+                "meanProbability": 0.8482991077752836,
+                "observed": 0.8586118251928021,
+                "absoluteGap": 0.010312717417518491,
+                "weightedGap": 0.005540948999191565
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 41,
+                "meanProbability": 0.9208966377304821,
+                "observed": 0.9512195121951219,
+                "absoluteGap": 0.03032287446463977,
+                "weightedGap": 0.001717179355041755
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.02179304409504595,
+              "10": 0.02351194704517474,
+              "15": 0.03596369512584987
+            }
+          },
+          "after": {
+            "rows": 724,
+            "positives": 166,
+            "prevalence": 0.2292817679558011,
+            "rocAuc": 0.7005333160599386,
+            "logLoss": 0.4914536307654911,
+            "brier": 0.15933735276151983,
+            "balancedAccuracy": 0.5612881634063134,
+            "positiveEce": 0.025142322573137175,
+            "confidenceEce": 0.02473403265329095,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 37,
+                "meanProbability": 0.07914574333093032,
+                "observed": 0.05405405405405406,
+                "absoluteGap": 0.02509168927687626,
+                "weightedGap": 0.0012823100873541734
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 386,
+                "meanProbability": 0.15299266371656695,
+                "observed": 0.13730569948186527,
+                "absoluteGap": 0.015686964234701672,
+                "weightedGap": 0.008363491981484594
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 153,
+                "meanProbability": 0.2438889399766072,
+                "observed": 0.3006535947712418,
+                "absoluteGap": 0.056764654794634606,
+                "weightedGap": 0.011995845557429687
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 76,
+                "meanProbability": 0.34477805898932684,
+                "observed": 0.35526315789473684,
+                "absoluteGap": 0.010485098905409995,
+                "weightedGap": 0.001100645741451878
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 27,
+                "meanProbability": 0.43799018418535524,
+                "observed": 0.4444444444444444,
+                "absoluteGap": 0.006454260259089184,
+                "weightedGap": 0.00024069755109862981
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 26,
+                "meanProbability": 0.5432335996044922,
+                "observed": 0.5,
+                "absoluteGap": 0.043233599604492245,
+                "weightedGap": 0.0015525878311005502
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 11,
+                "meanProbability": 0.662861961547751,
+                "observed": 0.6363636363636364,
+                "absoluteGap": 0.026498325184114657,
+                "weightedGap": 0.0004025988632945597
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 8,
+                "meanProbability": 0.7315248811269593,
+                "observed": 0.75,
+                "absoluteGap": 0.018475118873040652,
+                "weightedGap": 0.00020414495992310112
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 53,
+                "meanProbability": 0.5527988418247586,
+                "observed": 0.5283018867924528,
+                "absoluteGap": 0.024496955032305756,
+                "weightedGap": 0.001793285382199178
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 87,
+                "meanProbability": 0.6561879206188094,
+                "observed": 0.6436781609195402,
+                "absoluteGap": 0.012509759699269152,
+                "weightedGap": 0.0015032446047464313
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 161,
+                "meanProbability": 0.7548893865378558,
+                "observed": 0.7018633540372671,
+                "absoluteGap": 0.05302603250058868,
+                "weightedGap": 0.011791700597506598
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 386,
+                "meanProbability": 0.847007336283433,
+                "observed": 0.8626943005181347,
+                "absoluteGap": 0.015686964234701617,
+                "weightedGap": 0.008363491981484564
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 37,
+                "meanProbability": 0.9208542566690696,
+                "observed": 0.9459459459459459,
+                "absoluteGap": 0.025091689276876328,
+                "weightedGap": 0.001282310087354177
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.0242526375510937,
+              "10": 0.025142322573137175,
+              "15": 0.0345525683788439
+            }
+          }
+        },
+        "test": {
+          "before": {
+            "rows": 1631,
+            "positives": 437,
+            "prevalence": 0.2679337829552422,
+            "rocAuc": 0.7033700156005045,
+            "logLoss": 0.5319553392004035,
+            "brier": 0.17598358868062722,
+            "balancedAccuracy": 0.5536866253464117,
+            "positiveEce": 0.03518653496789244,
+            "confidenceEce": 0.030725658229985648,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 82,
+                "meanProbability": 0.08290687644081872,
+                "observed": 0.0975609756097561,
+                "absoluteGap": 0.014654099168937382,
+                "weightedGap": 0.0007367480881991816
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 802,
+                "meanProbability": 0.1553276589237841,
+                "observed": 0.17830423940149626,
+                "absoluteGap": 0.022976580477712144,
+                "weightedGap": 0.01129811008162179
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 396,
+                "meanProbability": 0.243241526336983,
+                "observed": 0.2803030303030303,
+                "absoluteGap": 0.037061503966047266,
+                "weightedGap": 0.008998378645343174
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 187,
+                "meanProbability": 0.34473690645579985,
+                "observed": 0.39037433155080214,
+                "absoluteGap": 0.04563742509500229,
+                "weightedGap": 0.00523249447747727
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 72,
+                "meanProbability": 0.4459924217727449,
+                "observed": 0.5972222222222222,
+                "absoluteGap": 0.15122980044947731,
+                "weightedGap": 0.006675993643385878
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 53,
+                "meanProbability": 0.5476120789096041,
+                "observed": 0.5471698113207547,
+                "absoluteGap": 0.00044226758884935435,
+                "weightedGap": 1.4371662911720284e-05
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 22,
+                "meanProbability": 0.6305457191033796,
+                "observed": 0.7727272727272727,
+                "absoluteGap": 0.14218155362389306,
+                "weightedGap": 0.001917838246306344
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 17,
+                "meanProbability": 0.7347146588213304,
+                "observed": 0.7647058823529411,
+                "absoluteGap": 0.029991223531610767,
+                "weightedGap": 0.00031260012264707724
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 125,
+                "meanProbability": 0.551295886516571,
+                "observed": 0.464,
+                "absoluteGap": 0.087295886516571,
+                "weightedGap": 0.006690365306297593
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 209,
+                "meanProbability": 0.6526612646556927,
+                "observed": 0.6267942583732058,
+                "absoluteGap": 0.02586700628248695,
+                "weightedGap": 0.0033146562311709214
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 413,
+                "meanProbability": 0.7558511011392672,
+                "observed": 0.7215496368038741,
+                "absoluteGap": 0.03430146433539316,
+                "weightedGap": 0.008685778522696122
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 802,
+                "meanProbability": 0.8446723410762159,
+                "observed": 0.8216957605985037,
+                "absoluteGap": 0.022976580477712227,
+                "weightedGap": 0.011298110081621831
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 82,
+                "meanProbability": 0.9170931235591813,
+                "observed": 0.9024390243902439,
+                "absoluteGap": 0.01465409916893734,
+                "weightedGap": 0.0007367480881991796
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.03515779164206901,
+              "10": 0.03518653496789244,
+              "15": 0.03900167742283852
+            }
+          },
+          "after": {
+            "rows": 1631,
+            "positives": 437,
+            "prevalence": 0.2679337829552422,
+            "rocAuc": 0.7033700156005045,
+            "logLoss": 0.5315951908769412,
+            "brier": 0.17586131773860603,
+            "balancedAccuracy": 0.5536866253464117,
+            "positiveEce": 0.03293172256541868,
+            "confidenceEce": 0.028370712762742268,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 69,
+                "meanProbability": 0.0821761073526204,
+                "observed": 0.10144927536231885,
+                "absoluteGap": 0.019273168009698444,
+                "weightedGap": 0.0008153578127953358
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 799,
+                "meanProbability": 0.1562305865014469,
+                "observed": 0.17146433041301626,
+                "absoluteGap": 0.01523374391156937,
+                "weightedGap": 0.007462759892914731
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 406,
+                "meanProbability": 0.24322192973886048,
+                "observed": 0.27832512315270935,
+                "absoluteGap": 0.03510319341384888,
+                "weightedGap": 0.008738133982846502
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 192,
+                "meanProbability": 0.34480676587944137,
+                "observed": 0.40625,
+                "absoluteGap": 0.06144323412055863,
+                "weightedGap": 0.007233047793468582
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 73,
+                "meanProbability": 0.4460064581516124,
+                "observed": 0.589041095890411,
+                "absoluteGap": 0.1430346377387986,
+                "weightedGap": 0.006401918182055363
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 54,
+                "meanProbability": 0.5480025010952515,
+                "observed": 0.5555555555555556,
+                "absoluteGap": 0.007553054460304076,
+                "weightedGap": 0.00025007047262809326
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 21,
+                "meanProbability": 0.6304502522556475,
+                "observed": 0.7619047619047619,
+                "absoluteGap": 0.13145450964911432,
+                "weightedGap": 0.0016925473345379527
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 17,
+                "meanProbability": 0.7322885970238397,
+                "observed": 0.7647058823529411,
+                "absoluteGap": 0.032417285329101375,
+                "weightedGap": 0.0003378870941721173
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 127,
+                "meanProbability": 0.5514461701895739,
+                "observed": 0.47244094488188976,
+                "absoluteGap": 0.07900522530768411,
+                "weightedGap": 0.006151847709427273
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 213,
+                "meanProbability": 0.6527537852042998,
+                "observed": 0.6103286384976526,
+                "absoluteGap": 0.04242514670664721,
+                "weightedGap": 0.005540500458930628
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 423,
+                "meanProbability": 0.7557938597527846,
+                "observed": 0.723404255319149,
+                "absoluteGap": 0.03238960443363559,
+                "weightedGap": 0.008400246888674343
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 799,
+                "meanProbability": 0.8437694134985531,
+                "observed": 0.8285356695869838,
+                "absoluteGap": 0.015233743911569286,
+                "weightedGap": 0.00746275989291469
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 69,
+                "meanProbability": 0.9178238926473795,
+                "observed": 0.8985507246376812,
+                "absoluteGap": 0.01927316800969836,
+                "weightedGap": 0.0008153578127953322
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.032931722565418674,
+              "10": 0.03293172256541868,
+              "15": 0.033865256953257074
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "cold-both",
+      "temperature": 0.8842663146308551,
+      "optimizerSuccess": true,
+      "nearOptimizationBound": false,
+      "source": "[로컬 파일 경로]",
+      "sourceSha256": "e8b6182dc8a66e26a37bb5a9bb466ae82b20eff7391d0319902b5aaac7ed0721",
+      "frozenModelSha256": "5d8e05d5354dd664ebf77a83056ab12ce1007742db72c221a8fbdadbbeb21ee4",
+      "validRows": 44,
+      "validPositives": 6,
+      "rankingPreserved": true,
+      "predictionsAtHalfPreserved": true,
+      "scores": {
+        "valid": {
+          "before": {
+            "rows": 44,
+            "positives": 6,
+            "prevalence": 0.13636363636363635,
+            "rocAuc": 0.5964912280701754,
+            "logLoss": 0.3945019947671282,
+            "brier": 0.1173399935894618,
+            "balancedAccuracy": 0.5,
+            "positiveEce": 0.09553518738936294,
+            "confidenceEce": 0.09553518738936298,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 8,
+                "meanProbability": 0.08524128422141075,
+                "observed": 0.0,
+                "absoluteGap": 0.08524128422141075,
+                "weightedGap": 0.015498415312983774
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 21,
+                "meanProbability": 0.1393585116380737,
+                "observed": 0.19047619047619047,
+                "absoluteGap": 0.05111767883811677,
+                "weightedGap": 0.02439707399091937
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 13,
+                "meanProbability": 0.24027157861452836,
+                "observed": 0.07692307692307693,
+                "absoluteGap": 0.16334850169145143,
+                "weightedGap": 0.04826205731792883
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 2,
+                "meanProbability": 0.33769190311431885,
+                "observed": 0.5,
+                "absoluteGap": 0.16230809688568115,
+                "weightedGap": 0.007377640767530962
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 2,
+                "meanProbability": 0.6623080968856812,
+                "observed": 0.5,
+                "absoluteGap": 0.16230809688568115,
+                "weightedGap": 0.007377640767530962
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 13,
+                "meanProbability": 0.7597284213854716,
+                "observed": 0.9230769230769231,
+                "absoluteGap": 0.16334850169145154,
+                "weightedGap": 0.04826205731792887
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 21,
+                "meanProbability": 0.8606414883619263,
+                "observed": 0.8095238095238095,
+                "absoluteGap": 0.0511176788381168,
+                "weightedGap": 0.024397073990919383
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 8,
+                "meanProbability": 0.9147587157785892,
+                "observed": 1.0,
+                "absoluteGap": 0.08524128422141075,
+                "weightedGap": 0.015498415312983774
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.04978307522833347,
+              "10": 0.09553518738936294,
+              "15": 0.08455080623653802
+            }
+          },
+          "after": {
+            "rows": 44,
+            "positives": 6,
+            "prevalence": 0.13636363636363635,
+            "rocAuc": 0.5964912280701754,
+            "logLoss": 0.3918855782035338,
+            "brier": 0.11623155435774558,
+            "balancedAccuracy": 0.5,
+            "positiveEce": 0.07649834404933181,
+            "confidenceEce": 0.07649834404933184,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 15,
+                "meanProbability": 0.07535196236204586,
+                "observed": 0.13333333333333333,
+                "absoluteGap": 0.05798137097128747,
+                "weightedGap": 0.019766376467484362
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 18,
+                "meanProbability": 0.1401645126777096,
+                "observed": 0.1111111111111111,
+                "absoluteGap": 0.029053401566598497,
+                "weightedGap": 0.011885482459063023
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 10,
+                "meanProbability": 0.23182541771393636,
+                "observed": 0.1,
+                "absoluteGap": 0.13182541771393635,
+                "weightedGap": 0.029960322207712806
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 1,
+                "meanProbability": 0.34500883173684876,
+                "observed": 1.0,
+                "absoluteGap": 0.6549911682631513,
+                "weightedGap": 0.01488616291507162
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 1,
+                "meanProbability": 0.6549911682631513,
+                "observed": 0.0,
+                "absoluteGap": 0.6549911682631513,
+                "weightedGap": 0.01488616291507162
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 10,
+                "meanProbability": 0.7681745822860637,
+                "observed": 0.9,
+                "absoluteGap": 0.1318254177139363,
+                "weightedGap": 0.029960322207712796
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 18,
+                "meanProbability": 0.8598354873222903,
+                "observed": 0.8888888888888888,
+                "absoluteGap": 0.029053401566598525,
+                "weightedGap": 0.011885482459063033
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 15,
+                "meanProbability": 0.9246480376379542,
+                "observed": 0.8666666666666667,
+                "absoluteGap": 0.05798137097128753,
+                "weightedGap": 0.019766376467484383
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.022955053301062518,
+              "10": 0.07649834404933181,
+              "15": 0.12498782057248914
+            }
+          }
+        },
+        "test": {
+          "before": {
+            "rows": 436,
+            "positives": 127,
+            "prevalence": 0.29128440366972475,
+            "rocAuc": 0.5324006829243432,
+            "logLoss": 0.6615030486383229,
+            "brier": 0.22306815892284065,
+            "balancedAccuracy": 0.5,
+            "positiveEce": 0.13098827194114893,
+            "confidenceEce": 0.13098827194114887,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 34,
+                "meanProbability": 0.08126512739588232,
+                "observed": 0.2647058823529412,
+                "absoluteGap": 0.18344075495705886,
+                "weightedGap": 0.014305013001238535
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 305,
+                "meanProbability": 0.14709280037977657,
+                "observed": 0.28852459016393445,
+                "absoluteGap": 0.14143178978415788,
+                "weightedGap": 0.09893737588111962
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 87,
+                "meanProbability": 0.2361390421102787,
+                "observed": 0.28735632183908044,
+                "absoluteGap": 0.051217279728801746,
+                "weightedGap": 0.010219961780747137
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 8,
+                "meanProbability": 0.3247036561369896,
+                "observed": 0.625,
+                "absoluteGap": 0.3002963438630104,
+                "weightedGap": 0.0055100246580368885
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 2,
+                "meanProbability": 0.4394654631614685,
+                "observed": 0.0,
+                "absoluteGap": 0.4394654631614685,
+                "weightedGap": 0.0020158966200067366
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 2,
+                "meanProbability": 0.5605345368385315,
+                "observed": 1.0,
+                "absoluteGap": 0.4394654631614685,
+                "weightedGap": 0.0020158966200067366
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 8,
+                "meanProbability": 0.6752963438630104,
+                "observed": 0.375,
+                "absoluteGap": 0.3002963438630104,
+                "weightedGap": 0.0055100246580368885
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 87,
+                "meanProbability": 0.7638609578897213,
+                "observed": 0.7126436781609196,
+                "absoluteGap": 0.051217279728801746,
+                "weightedGap": 0.010219961780747137
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 305,
+                "meanProbability": 0.8529071996202234,
+                "observed": 0.7114754098360656,
+                "absoluteGap": 0.14143178978415782,
+                "weightedGap": 0.09893737588111957
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 34,
+                "meanProbability": 0.9187348726041177,
+                "observed": 0.7352941176470589,
+                "absoluteGap": 0.1834407549570588,
+                "weightedGap": 0.014305013001238532
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.13098827194114887,
+              "10": 0.13098827194114893,
+              "15": 0.1309882719411489
+            }
+          },
+          "after": {
+            "rows": 436,
+            "positives": 127,
+            "prevalence": 0.29128440366972475,
+            "rocAuc": 0.5324006829243432,
+            "logLoss": 0.6939790595004187,
+            "brier": 0.23023895056520166,
+            "balancedAccuracy": 0.5,
+            "positiveEce": 0.15648262327847137,
+            "confidenceEce": 0.15648262327847148,
+            "positiveBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 119,
+                "meanProbability": 0.08154123869372852,
+                "observed": 0.2689075630252101,
+                "absoluteGap": 0.18736632433148154,
+                "weightedGap": 0.05113897384276674
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 267,
+                "meanProbability": 0.1424658817454019,
+                "observed": 0.29213483146067415,
+                "absoluteGap": 0.14966894971527225,
+                "weightedGap": 0.09165506783022408
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 45,
+                "meanProbability": 0.2428672472247921,
+                "observed": 0.3333333333333333,
+                "absoluteGap": 0.0904660861085412,
+                "weightedGap": 0.00933709604331274
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 3,
+                "meanProbability": 0.3220092102692069,
+                "observed": 0.6666666666666666,
+                "absoluteGap": 0.3446574563974597,
+                "weightedGap": 0.0023714962596155485
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 2,
+                "meanProbability": 0.4316376679563918,
+                "observed": 0.0,
+                "absoluteGap": 0.4316376679563918,
+                "weightedGap": 0.001979989302552256
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              }
+            ],
+            "confidenceBins": [
+              {
+                "index": 0,
+                "left": 0.0,
+                "right": 0.1,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 1,
+                "left": 0.1,
+                "right": 0.2,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 2,
+                "left": 0.2,
+                "right": 0.3,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 3,
+                "left": 0.3,
+                "right": 0.4,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 4,
+                "left": 0.4,
+                "right": 0.5,
+                "rows": 0,
+                "meanProbability": null,
+                "observed": null,
+                "absoluteGap": 0.0,
+                "weightedGap": 0.0
+              },
+              {
+                "index": 5,
+                "left": 0.5,
+                "right": 0.6,
+                "rows": 2,
+                "meanProbability": 0.5683623320436082,
+                "observed": 1.0,
+                "absoluteGap": 0.4316376679563918,
+                "weightedGap": 0.001979989302552256
+              },
+              {
+                "index": 6,
+                "left": 0.6,
+                "right": 0.7,
+                "rows": 3,
+                "meanProbability": 0.6779907897307931,
+                "observed": 0.3333333333333333,
+                "absoluteGap": 0.34465745639745976,
+                "weightedGap": 0.002371496259615549
+              },
+              {
+                "index": 7,
+                "left": 0.7,
+                "right": 0.8,
+                "rows": 45,
+                "meanProbability": 0.7571327527752079,
+                "observed": 0.6666666666666666,
+                "absoluteGap": 0.09046608610854123,
+                "weightedGap": 0.009337096043312742
+              },
+              {
+                "index": 8,
+                "left": 0.8,
+                "right": 0.9,
+                "rows": 267,
+                "meanProbability": 0.8575341182545981,
+                "observed": 0.7078651685393258,
+                "absoluteGap": 0.14966894971527234,
+                "weightedGap": 0.09165506783022412
+              },
+              {
+                "index": 9,
+                "left": 0.9,
+                "right": 1.0,
+                "rows": 119,
+                "meanProbability": 0.9184587613062717,
+                "observed": 0.7310924369747899,
+                "absoluteGap": 0.18736632433148181,
+                "weightedGap": 0.05113897384276682
+              }
+            ],
+            "binSensitivity": {
+              "5": 0.1564826232784714,
+              "10": 0.15648262327847137,
+              "15": 0.15648262327847137
+            }
+          }
+        }
+      }
+    }
+  ],
+  "toy": {
+    "scope": "Designed illustration, not DAVIS measurements",
+    "bins": [
+      {
+        "index": 0,
+        "left": 0.0,
+        "right": 0.25,
+        "rows": 20,
+        "meanProbability": 0.10000000000000002,
+        "observed": 0.1,
+        "absoluteGap": 1.3877787807814457e-17,
+        "weightedGap": 2.7755575615628915e-18
+      },
+      {
+        "index": 1,
+        "left": 0.25,
+        "right": 0.5,
+        "rows": 40,
+        "meanProbability": 0.4,
+        "observed": 0.25,
+        "absoluteGap": 0.15000000000000002,
+        "weightedGap": 0.06000000000000001
+      },
+      {
+        "index": 2,
+        "left": 0.5,
+        "right": 0.75,
+        "rows": 30,
+        "meanProbability": 0.6999999999999997,
+        "observed": 0.5,
+        "absoluteGap": 0.19999999999999973,
+        "weightedGap": 0.059999999999999915
+      },
+      {
+        "index": 3,
+        "left": 0.75,
+        "right": 1.0,
+        "rows": 10,
+        "meanProbability": 0.9,
+        "observed": 0.7,
+        "absoluteGap": 0.20000000000000007,
+        "weightedGap": 0.020000000000000007
+      }
+    ],
+    "positiveEce": 0.13999999999999993
+  },
+  "learnerStatus": "observation pending",
+  "versions": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1"
+  }
+}

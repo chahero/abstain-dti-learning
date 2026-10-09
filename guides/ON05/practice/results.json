@@ -1,0 +1,4324 @@
+{
+  "scope": "Personal CPU redocking exercise with official prepared 1IEP tutorial inputs; not prospective DTI, affinity, clinical or official benchmark validation",
+  "version": "AutoDock Vina v1.2.7",
+  "inputSha256": {
+    "1iep_ligand.pdbqt": "15fb35648d8c18c70317842f3a0631b73a19429c710a037ab07310084d579bb8",
+    "1iep_ligand.sdf": "051b8742c32adc05c07fb486a4e7c9327f84e131cee33ac4e6a568d07553eb38",
+    "1iep_receptor.box.txt": "3dff08200b5b9c2ca0932c832c9dffc5823b39caec6c92f76be5f7c5ea49d8de",
+    "1iep_receptor.pdbqt": "f13cf3b36f61d87c3b58983e0b8ecf1c3456a685eb86dfe9ccfb139c7bdc2586",
+    "1iep_receptorH.pdb": "5f6aee6029f9a2a2c2be32d4eb948ae70808690573e1b69a0850cdffd7048ca7"
+  },
+  "ligandHeavyAtoms": 37,
+  "receptorCaCount": 274,
+  "box": {
+    "center": [
+      15.19,
+      53.903,
+      16.917
+    ],
+    "size": [
+      20,
+      20,
+      20
+    ],
+    "units": "Angstrom"
+  },
+  "inputCoordinateMatchMaxAngstrom": 0.0,
+  "runs": [
+    {
+      "label": "e8",
+      "exhaustiveness": 8,
+      "seed": 20261009,
+      "cpu": 4,
+      "receipt": {
+        "command": [
+          "[로컬 파일 경로]",
+          "--receptor",
+          "1iep_receptor.pdbqt",
+          "--ligand",
+          "1iep_ligand.pdbqt",
+          "--config",
+          "1iep_receptor.box.txt",
+          "--scoring",
+          "vina",
+          "--seed",
+          "20261009",
+          "--cpu",
+          "4",
+          "--exhaustiveness",
+          "8",
+          "--num_modes",
+          "9",
+          "--out",
+          "..\\..\\..\\outputs\\docking-cofolding\\practice\\e8.pdbqt"
+        ],
+        "cwd": "[로컬 파일 경로]",
+        "elapsedSeconds": 40.71899999998277,
+        "returncode": 0,
+        "completedAtUtc": "2026-10-08T15:21:06.821135+00:00"
+      },
+      "poses": [
+        {
+          "mode": 1,
+          "scoreKcalMol": -13.257,
+          "rmsdLowerFromBest": 0.0,
+          "rmsdUpperFromBest": 0.0,
+          "rmsdToPreparedReferenceAtomId": 0.3147943987962835,
+          "atoms": [
+            {
+              "serial": 1,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                16.676,
+                51.851,
+                14.815
+              ]
+            },
+            {
+              "serial": 2,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.701,
+                51.741,
+                15.794
+              ]
+            },
+            {
+              "serial": 3,
+              "name": "O",
+              "atomType": "OA",
+              "xyz": [
+                14.82,
+                52.565,
+                15.987
+              ]
+            },
+            {
+              "serial": 5,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.718,
+                52.772,
+                13.706
+              ]
+            },
+            {
+              "serial": 6,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.82,
+                54.692,
+                12.376
+              ]
+            },
+            {
+              "serial": 7,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.917,
+                54.555,
+                11.41
+              ]
+            },
+            {
+              "serial": 8,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.732,
+                53.819,
+                13.49
+              ]
+            },
+            {
+              "serial": 9,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.889,
+                53.522,
+                11.63
+              ]
+            },
+            {
+              "serial": 10,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.784,
+                52.644,
+                12.769
+              ]
+            },
+            {
+              "serial": 11,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                17.075,
+                55.463,
+                10.169
+              ]
+            },
+            {
+              "serial": 12,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                14.845,
+                55.679,
+                12.218
+              ]
+            },
+            {
+              "serial": 14,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.101,
+                56.992,
+                12.583
+              ]
+            },
+            {
+              "serial": 15,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.288,
+                59.225,
+                12.749
+              ]
+            },
+            {
+              "serial": 16,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.544,
+                59.669,
+                13.28
+              ]
+            },
+            {
+              "serial": 17,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                14.114,
+                57.899,
+                12.422
+              ]
+            },
+            {
+              "serial": 18,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.56,
+                58.699,
+                13.44
+              ]
+            },
+            {
+              "serial": 19,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                16.325,
+                57.387,
+                13.09
+              ]
+            },
+            {
+              "serial": 20,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                13.118,
+                60.131,
+                12.519
+              ]
+            },
+            {
+              "serial": 21,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                11.859,
+                62.289,
+                12.866
+              ]
+            },
+            {
+              "serial": 22,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                13.01,
+                61.454,
+                13.121
+              ]
+            },
+            {
+              "serial": 23,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                10.824,
+                61.781,
+                12.005
+              ]
+            },
+            {
+              "serial": 24,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                10.94,
+                60.506,
+                11.43
+              ]
+            },
+            {
+              "serial": 25,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                12.036,
+                59.68,
+                11.656
+              ]
+            },
+            {
+              "serial": 26,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.717,
+                50.551,
+                16.698
+              ]
+            },
+            {
+              "serial": 27,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.505,
+                50.107,
+                17.392
+              ]
+            },
+            {
+              "serial": 28,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.96,
+                49.836,
+                16.893
+              ]
+            },
+            {
+              "serial": 29,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.552,
+                48.966,
+                18.271
+              ]
+            },
+            {
+              "serial": 30,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.002,
+                48.717,
+                17.755
+              ]
+            },
+            {
+              "serial": 31,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.817,
+                48.259,
+                18.46
+              ]
+            },
+            {
+              "serial": 32,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.964,
+                47.045,
+                19.396
+              ]
+            },
+            {
+              "serial": 33,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                17.253,
+                46.905,
+                20.137
+              ]
+            },
+            {
+              "serial": 34,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                17.349,
+                47.935,
+                21.235
+              ]
+            },
+            {
+              "serial": 35,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                17.432,
+                45.499,
+                20.717
+              ]
+            },
+            {
+              "serial": 36,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                18.693,
+                47.82,
+                22.005
+              ]
+            },
+            {
+              "serial": 37,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                18.796,
+                45.364,
+                21.47
+              ]
+            },
+            {
+              "serial": 38,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                18.873,
+                46.419,
+                22.574
+              ]
+            },
+            {
+              "serial": 39,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                20.129,
+                46.257,
+                23.321
+              ]
+            }
+          ]
+        },
+        {
+          "mode": 2,
+          "scoreKcalMol": -11.297,
+          "rmsdLowerFromBest": 3.041,
+          "rmsdUpperFromBest": 12.372,
+          "rmsdToPreparedReferenceAtomId": 12.31204597571452,
+          "atoms": [
+            {
+              "serial": 1,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                16.135,
+                51.997,
+                15.779
+              ]
+            },
+            {
+              "serial": 2,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.646,
+                52.233,
+                14.504
+              ]
+            },
+            {
+              "serial": 3,
+              "name": "O",
+              "atomType": "OA",
+              "xyz": [
+                15.193,
+                51.37,
+                13.767
+              ]
+            },
+            {
+              "serial": 5,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.996,
+                50.803,
+                16.575
+              ]
+            },
+            {
+              "serial": 6,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.885,
+                48.706,
+                17.611
+              ]
+            },
+            {
+              "serial": 7,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.568,
+                48.416,
+                18.191
+              ]
+            },
+            {
+              "serial": 8,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.083,
+                49.871,
+                16.826
+              ]
+            },
+            {
+              "serial": 9,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.5,
+                49.341,
+                17.942
+              ]
+            },
+            {
+              "serial": 10,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.719,
+                50.52,
+                17.142
+              ]
+            },
+            {
+              "serial": 11,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.274,
+                47.165,
+                19.051
+              ]
+            },
+            {
+              "serial": 12,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                17.965,
+                47.845,
+                17.82
+              ]
+            },
+            {
+              "serial": 14,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                18.959,
+                48.164,
+                18.732
+              ]
+            },
+            {
+              "serial": 15,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                20.975,
+                49.356,
+                19.171
+              ]
+            },
+            {
+              "serial": 16,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                21.015,
+                48.843,
+                20.51
+              ]
+            },
+            {
+              "serial": 17,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                19.943,
+                48.996,
+                18.332
+              ]
+            },
+            {
+              "serial": 18,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                19.972,
+                47.975,
+                20.904
+              ]
+            },
+            {
+              "serial": 19,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                18.969,
+                47.65,
+                20.016
+              ]
+            },
+            {
+              "serial": 20,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                22.007,
+                50.282,
+                18.606
+              ]
+            },
+            {
+              "serial": 21,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                24.227,
+                50.749,
+                17.502
+              ]
+            },
+            {
+              "serial": 22,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.264,
+                49.813,
+                18.035
+              ]
+            },
+            {
+              "serial": 23,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.913,
+                52.153,
+                17.552
+              ]
+            },
+            {
+              "serial": 24,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                22.7,
+                52.592,
+                18.102
+              ]
+            },
+            {
+              "serial": 25,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                21.753,
+                51.714,
+                18.621
+              ]
+            },
+            {
+              "serial": 26,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.677,
+                53.627,
+                13.966
+              ]
+            },
+            {
+              "serial": 27,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.94,
+                54.351,
+                13.802
+              ]
+            },
+            {
+              "serial": 28,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.429,
+                54.269,
+                13.612
+              ]
+            },
+            {
+              "serial": 29,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.94,
+                55.7,
+                13.296
+              ]
+            },
+            {
+              "serial": 30,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.433,
+                55.592,
+                13.115
+              ]
+            },
+            {
+              "serial": 31,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.671,
+                56.335,
+                12.948
+              ]
+            },
+            {
+              "serial": 32,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.574,
+                57.779,
+                12.422
+              ]
+            },
+            {
+              "serial": 33,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                14.292,
+                58.508,
+                12.655
+              ]
+            },
+            {
+              "serial": 34,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                14.56,
+                59.901,
+                13.17
+              ]
+            },
+            {
+              "serial": 35,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                13.429,
+                58.571,
+                11.392
+              ]
+            },
+            {
+              "serial": 36,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                13.237,
+                60.67,
+                13.44
+              ]
+            },
+            {
+              "serial": 37,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                12.081,
+                59.317,
+                11.66
+              ]
+            },
+            {
+              "serial": 38,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                12.376,
+                60.723,
+                12.186
+              ]
+            },
+            {
+              "serial": 39,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                11.112,
+                61.448,
+                12.384
+              ]
+            }
+          ]
+        },
+        {
+          "mode": 3,
+          "scoreKcalMol": -11.159,
+          "rmsdLowerFromBest": 3.812,
+          "rmsdUpperFromBest": 12.245,
+          "rmsdToPreparedReferenceAtomId": 12.204150483627572,
+          "atoms": [
+            {
+              "serial": 1,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                16.696,
+                50.581,
+                15.965
+              ]
+            },
+            {
+              "serial": 2,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.702,
+                51.54,
+                15.856
+              ]
+            },
+            {
+              "serial": 3,
+              "name": "O",
+              "atomType": "OA",
+              "xyz": [
+                14.693,
+                51.57,
+                16.543
+              ]
+            },
+            {
+              "serial": 5,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.882,
+                49.613,
+                17.018
+              ]
+            },
+            {
+              "serial": 6,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                18.161,
+                48.623,
+                18.927
+              ]
+            },
+            {
+              "serial": 7,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.139,
+                47.583,
+                19.093
+              ]
+            },
+            {
+              "serial": 8,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                18.028,
+                49.607,
+                17.914
+              ]
+            },
+            {
+              "serial": 9,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.01,
+                47.595,
+                18.207
+              ]
+            },
+            {
+              "serial": 10,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.89,
+                48.603,
+                17.183
+              ]
+            },
+            {
+              "serial": 11,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                17.22,
+                46.475,
+                20.168
+              ]
+            },
+            {
+              "serial": 12,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                19.282,
+                48.665,
+                19.76
+              ]
+            },
+            {
+              "serial": 14,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                20.534,
+                48.308,
+                19.282
+              ]
+            },
+            {
+              "serial": 15,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                22.679,
+                49.028,
+                18.538
+              ]
+            },
+            {
+              "serial": 16,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.077,
+                47.67,
+                18.298
+              ]
+            },
+            {
+              "serial": 17,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                21.419,
+                49.294,
+                19.025
+              ]
+            },
+            {
+              "serial": 18,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                22.132,
+                46.658,
+                18.578
+              ]
+            },
+            {
+              "serial": 19,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                20.885,
+                46.989,
+                19.061
+              ]
+            },
+            {
+              "serial": 20,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.565,
+                50.209,
+                18.288
+              ]
+            },
+            {
+              "serial": 21,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                25.058,
+                51.612,
+                16.817
+              ]
+            },
+            {
+              "serial": 22,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                24.212,
+                50.456,
+                17.006
+              ]
+            },
+            {
+              "serial": 23,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                25.245,
+                52.509,
+                17.927
+              ]
+            },
+            {
+              "serial": 24,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                24.615,
+                52.262,
+                19.156
+              ]
+            },
+            {
+              "serial": 25,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.795,
+                51.158,
+                19.367
+              ]
+            },
+            {
+              "serial": 26,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.844,
+                52.611,
+                14.824
+              ]
+            },
+            {
+              "serial": 27,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.805,
+                53.627,
+                14.636
+              ]
+            },
+            {
+              "serial": 28,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.028,
+                52.631,
+                13.991
+              ]
+            },
+            {
+              "serial": 29,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.958,
+                54.64,
+                13.622
+              ]
+            },
+            {
+              "serial": 30,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.175,
+                53.626,
+                12.999
+              ]
+            },
+            {
+              "serial": 31,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.158,
+                54.642,
+                12.788
+              ]
+            },
+            {
+              "serial": 32,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                16.395,
+                55.672,
+                11.667
+              ]
+            },
+            {
+              "serial": 33,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                15.8,
+                57.029,
+                11.849
+              ]
+            },
+            {
+              "serial": 34,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                14.298,
+                56.938,
+                11.972
+              ]
+            },
+            {
+              "serial": 35,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                16.384,
+                57.756,
+                13.063
+              ]
+            },
+            {
+              "serial": 36,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                13.656,
+                58.343,
+                12.141
+              ]
+            },
+            {
+              "serial": 37,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.766,
+                59.183,
+                13.225
+              ]
+            },
+            {
+              "serial": 38,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                14.246,
+                59.067,
+                13.344
+              ]
+            },
+            {
+              "serial": 39,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                13.667,
+                60.402,
+                13.554
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "e32",
+      "exhaustiveness": 32,
+      "seed": 20261009,
+      "cpu": 4,
+      "receipt": {
+        "command": [
+          "[로컬 파일 경로]",
+          "--receptor",
+          "1iep_receptor.pdbqt",
+          "--ligand",
+          "1iep_ligand.pdbqt",
+          "--config",
+          "1iep_receptor.box.txt",
+          "--scoring",
+          "vina",
+          "--seed",
+          "20261009",
+          "--cpu",
+          "4",
+          "--exhaustiveness",
+          "32",
+          "--num_modes",
+          "9",
+          "--out",
+          "..\\..\\..\\outputs\\docking-cofolding\\practice\\e32.pdbqt"
+        ],
+        "cwd": "[로컬 파일 경로]",
+        "elapsedSeconds": 139.9220000000205,
+        "returncode": 0,
+        "completedAtUtc": "2026-10-08T15:23:26.748123+00:00"
+      },
+      "poses": [
+        {
+          "mode": 1,
+          "scoreKcalMol": -13.191,
+          "rmsdLowerFromBest": 0.0,
+          "rmsdUpperFromBest": 0.0,
+          "rmsdToPreparedReferenceAtomId": 0.901439149660442,
+          "atoms": [
+            {
+              "serial": 1,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                16.705,
+                51.951,
+                14.912
+              ]
+            },
+            {
+              "serial": 2,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.653,
+                51.712,
+                15.781
+              ]
+            },
+            {
+              "serial": 3,
+              "name": "O",
+              "atomType": "OA",
+              "xyz": [
+                14.637,
+                52.39,
+                15.838
+              ]
+            },
+            {
+              "serial": 5,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.733,
+                52.837,
+                13.775
+              ]
+            },
+            {
+              "serial": 6,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.819,
+                54.716,
+                12.399
+              ]
+            },
+            {
+              "serial": 7,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.902,
+                54.549,
+                11.423
+              ]
+            },
+            {
+              "serial": 8,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.745,
+                53.878,
+                13.541
+              ]
+            },
+            {
+              "serial": 9,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.876,
+                53.522,
+                11.661
+              ]
+            },
+            {
+              "serial": 10,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.786,
+                52.679,
+                12.827
+              ]
+            },
+            {
+              "serial": 11,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                17.044,
+                55.418,
+                10.152
+              ]
+            },
+            {
+              "serial": 12,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                14.843,
+                55.7,
+                12.224
+              ]
+            },
+            {
+              "serial": 14,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.088,
+                57.015,
+                12.588
+              ]
+            },
+            {
+              "serial": 15,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.257,
+                59.241,
+                12.756
+              ]
+            },
+            {
+              "serial": 16,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.511,
+                59.695,
+                13.284
+              ]
+            },
+            {
+              "serial": 17,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                14.094,
+                57.913,
+                12.43
+              ]
+            },
+            {
+              "serial": 18,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.535,
+                58.734,
+                13.441
+              ]
+            },
+            {
+              "serial": 19,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                16.31,
+                57.42,
+                13.093
+              ]
+            },
+            {
+              "serial": 20,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                13.079,
+                60.137,
+                12.528
+              ]
+            },
+            {
+              "serial": 21,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                11.81,
+                62.291,
+                12.866
+              ]
+            },
+            {
+              "serial": 22,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                12.969,
+                61.465,
+                13.118
+              ]
+            },
+            {
+              "serial": 23,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                10.77,
+                61.767,
+                12.021
+              ]
+            },
+            {
+              "serial": 24,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                10.888,
+                60.487,
+                11.458
+              ]
+            },
+            {
+              "serial": 25,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                11.992,
+                59.671,
+                11.681
+              ]
+            },
+            {
+              "serial": 26,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.748,
+                50.564,
+                16.733
+              ]
+            },
+            {
+              "serial": 27,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.007,
+                49.84,
+                16.927
+              ]
+            },
+            {
+              "serial": 28,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.565,
+                50.16,
+                17.463
+              ]
+            },
+            {
+              "serial": 29,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.067,
+                48.725,
+                17.838
+              ]
+            },
+            {
+              "serial": 30,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.628,
+                49.067,
+                18.357
+              ]
+            },
+            {
+              "serial": 31,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.863,
+                48.328,
+                18.565
+              ]
+            },
+            {
+              "serial": 32,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.829,
+                47.138,
+                19.541
+              ]
+            },
+            {
+              "serial": 33,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                17.107,
+                46.78,
+                20.227
+              ]
+            },
+            {
+              "serial": 34,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                17.438,
+                47.793,
+                21.295
+              ]
+            },
+            {
+              "serial": 35,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                17.06,
+                45.374,
+                20.832
+              ]
+            },
+            {
+              "serial": 36,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                18.776,
+                47.45,
+                22.007
+              ]
+            },
+            {
+              "serial": 37,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                18.412,
+                45.007,
+                21.525
+              ]
+            },
+            {
+              "serial": 38,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                18.73,
+                46.048,
+                22.6
+              ]
+            },
+            {
+              "serial": 39,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                19.971,
+                45.675,
+                23.293
+              ]
+            }
+          ]
+        },
+        {
+          "mode": 2,
+          "scoreKcalMol": -11.264,
+          "rmsdLowerFromBest": 3.035,
+          "rmsdUpperFromBest": 12.409,
+          "rmsdToPreparedReferenceAtomId": 12.31204597571452,
+          "atoms": [
+            {
+              "serial": 1,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                16.135,
+                51.997,
+                15.779
+              ]
+            },
+            {
+              "serial": 2,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.646,
+                52.233,
+                14.504
+              ]
+            },
+            {
+              "serial": 3,
+              "name": "O",
+              "atomType": "OA",
+              "xyz": [
+                15.193,
+                51.37,
+                13.767
+              ]
+            },
+            {
+              "serial": 5,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.996,
+                50.803,
+                16.575
+              ]
+            },
+            {
+              "serial": 6,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.885,
+                48.706,
+                17.611
+              ]
+            },
+            {
+              "serial": 7,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.568,
+                48.416,
+                18.191
+              ]
+            },
+            {
+              "serial": 8,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.083,
+                49.871,
+                16.826
+              ]
+            },
+            {
+              "serial": 9,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.5,
+                49.341,
+                17.942
+              ]
+            },
+            {
+              "serial": 10,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.719,
+                50.52,
+                17.142
+              ]
+            },
+            {
+              "serial": 11,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.274,
+                47.165,
+                19.051
+              ]
+            },
+            {
+              "serial": 12,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                17.965,
+                47.845,
+                17.82
+              ]
+            },
+            {
+              "serial": 14,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                18.959,
+                48.164,
+                18.732
+              ]
+            },
+            {
+              "serial": 15,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                20.975,
+                49.356,
+                19.171
+              ]
+            },
+            {
+              "serial": 16,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                21.015,
+                48.843,
+                20.51
+              ]
+            },
+            {
+              "serial": 17,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                19.943,
+                48.996,
+                18.332
+              ]
+            },
+            {
+              "serial": 18,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                19.972,
+                47.975,
+                20.904
+              ]
+            },
+            {
+              "serial": 19,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                18.969,
+                47.65,
+                20.016
+              ]
+            },
+            {
+              "serial": 20,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                22.007,
+                50.282,
+                18.606
+              ]
+            },
+            {
+              "serial": 21,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                24.227,
+                50.749,
+                17.502
+              ]
+            },
+            {
+              "serial": 22,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.264,
+                49.813,
+                18.035
+              ]
+            },
+            {
+              "serial": 23,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.913,
+                52.153,
+                17.552
+              ]
+            },
+            {
+              "serial": 24,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                22.7,
+                52.592,
+                18.102
+              ]
+            },
+            {
+              "serial": 25,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                21.753,
+                51.714,
+                18.621
+              ]
+            },
+            {
+              "serial": 26,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.677,
+                53.627,
+                13.966
+              ]
+            },
+            {
+              "serial": 27,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.94,
+                54.351,
+                13.802
+              ]
+            },
+            {
+              "serial": 28,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.429,
+                54.269,
+                13.612
+              ]
+            },
+            {
+              "serial": 29,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.94,
+                55.7,
+                13.296
+              ]
+            },
+            {
+              "serial": 30,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.433,
+                55.592,
+                13.115
+              ]
+            },
+            {
+              "serial": 31,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.671,
+                56.335,
+                12.948
+              ]
+            },
+            {
+              "serial": 32,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.574,
+                57.779,
+                12.422
+              ]
+            },
+            {
+              "serial": 33,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                14.292,
+                58.508,
+                12.655
+              ]
+            },
+            {
+              "serial": 34,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                14.56,
+                59.901,
+                13.17
+              ]
+            },
+            {
+              "serial": 35,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                13.429,
+                58.571,
+                11.392
+              ]
+            },
+            {
+              "serial": 36,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                13.237,
+                60.67,
+                13.44
+              ]
+            },
+            {
+              "serial": 37,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                12.081,
+                59.317,
+                11.66
+              ]
+            },
+            {
+              "serial": 38,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                12.376,
+                60.723,
+                12.186
+              ]
+            },
+            {
+              "serial": 39,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                11.112,
+                61.448,
+                12.384
+              ]
+            }
+          ]
+        },
+        {
+          "mode": 3,
+          "scoreKcalMol": -11.128,
+          "rmsdLowerFromBest": 3.801,
+          "rmsdUpperFromBest": 12.239,
+          "rmsdToPreparedReferenceAtomId": 12.101014290747075,
+          "atoms": [
+            {
+              "serial": 1,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                16.694,
+                50.606,
+                15.946
+              ]
+            },
+            {
+              "serial": 2,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.715,
+                51.583,
+                15.861
+              ]
+            },
+            {
+              "serial": 3,
+              "name": "O",
+              "atomType": "OA",
+              "xyz": [
+                14.717,
+                51.624,
+                16.565
+              ]
+            },
+            {
+              "serial": 5,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.879,
+                49.625,
+                16.986
+              ]
+            },
+            {
+              "serial": 6,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                18.146,
+                48.625,
+                18.898
+              ]
+            },
+            {
+              "serial": 7,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.137,
+                47.568,
+                19.034
+              ]
+            },
+            {
+              "serial": 8,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                18.012,
+                49.622,
+                17.898
+              ]
+            },
+            {
+              "serial": 9,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.02,
+                47.577,
+                18.133
+              ]
+            },
+            {
+              "serial": 10,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.899,
+                48.599,
+                17.122
+              ]
+            },
+            {
+              "serial": 11,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                17.219,
+                46.444,
+                20.093
+              ]
+            },
+            {
+              "serial": 12,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                19.254,
+                48.671,
+                19.747
+              ]
+            },
+            {
+              "serial": 14,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                20.523,
+                48.377,
+                19.273
+              ]
+            },
+            {
+              "serial": 15,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                22.611,
+                49.203,
+                18.478
+              ]
+            },
+            {
+              "serial": 16,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.096,
+                47.866,
+                18.291
+              ]
+            },
+            {
+              "serial": 17,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                21.339,
+                49.406,
+                18.965
+              ]
+            },
+            {
+              "serial": 18,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                22.222,
+                46.806,
+                18.621
+              ]
+            },
+            {
+              "serial": 19,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                20.959,
+                47.076,
+                19.102
+              ]
+            },
+            {
+              "serial": 20,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.415,
+                50.428,
+                18.17
+              ]
+            },
+            {
+              "serial": 21,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                25.017,
+                51.75,
+                16.738
+              ]
+            },
+            {
+              "serial": 22,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                24.261,
+                50.545,
+                16.989
+              ]
+            },
+            {
+              "serial": 23,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                24.915,
+                52.829,
+                17.686
+              ]
+            },
+            {
+              "serial": 24,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                24.096,
+                52.706,
+                18.819
+              ]
+            },
+            {
+              "serial": 25,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.356,
+                51.558,
+                19.085
+              ]
+            },
+            {
+              "serial": 26,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.859,
+                52.662,
+                14.837
+              ]
+            },
+            {
+              "serial": 27,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.806,
+                53.66,
+                14.632
+              ]
+            },
+            {
+              "serial": 28,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.06,
+                52.708,
+                14.031
+              ]
+            },
+            {
+              "serial": 29,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.962,
+                54.68,
+                13.625
+              ]
+            },
+            {
+              "serial": 30,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.21,
+                53.71,
+                13.046
+              ]
+            },
+            {
+              "serial": 31,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.179,
+                54.708,
+                12.817
+              ]
+            },
+            {
+              "serial": 32,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                16.422,
+                55.748,
+                11.707
+              ]
+            },
+            {
+              "serial": 33,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                15.789,
+                57.09,
+                11.877
+              ]
+            },
+            {
+              "serial": 34,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                14.295,
+                56.956,
+                12.036
+              ]
+            },
+            {
+              "serial": 35,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                16.378,
+                57.856,
+                13.064
+              ]
+            },
+            {
+              "serial": 36,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                13.615,
+                58.345,
+                12.193
+              ]
+            },
+            {
+              "serial": 37,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.721,
+                59.267,
+                13.213
+              ]
+            },
+            {
+              "serial": 38,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                14.208,
+                59.108,
+                13.368
+              ]
+            },
+            {
+              "serial": 39,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                13.594,
+                60.429,
+                13.567
+              ]
+            }
+          ]
+        },
+        {
+          "mode": 4,
+          "scoreKcalMol": -10.729,
+          "rmsdLowerFromBest": 1.102,
+          "rmsdUpperFromBest": 1.759,
+          "rmsdToPreparedReferenceAtomId": 1.6197663328310579,
+          "atoms": [
+            {
+              "serial": 1,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                16.768,
+                52.411,
+                15.052
+              ]
+            },
+            {
+              "serial": 2,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.652,
+                51.85,
+                15.651
+              ]
+            },
+            {
+              "serial": 3,
+              "name": "O",
+              "atomType": "OA",
+              "xyz": [
+                14.504,
+                52.224,
+                15.46
+              ]
+            },
+            {
+              "serial": 5,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.81,
+                53.332,
+                13.944
+              ]
+            },
+            {
+              "serial": 6,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.36,
+                55.553,
+                12.881
+              ]
+            },
+            {
+              "serial": 7,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.945,
+                55.083,
+                11.618
+              ]
+            },
+            {
+              "serial": 8,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.299,
+                54.693,
+                14.007
+              ]
+            },
+            {
+              "serial": 9,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.45,
+                53.741,
+                11.563
+              ]
+            },
+            {
+              "serial": 10,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.38,
+                52.881,
+                12.718
+              ]
+            },
+            {
+              "serial": 11,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                17.039,
+                55.959,
+                10.347
+              ]
+            },
+            {
+              "serial": 12,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                15.854,
+                56.849,
+                12.997
+              ]
+            },
+            {
+              "serial": 14,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.573,
+                57.152,
+                12.562
+              ]
+            },
+            {
+              "serial": 15,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                12.926,
+                58.83,
+                12.18
+              ]
+            },
+            {
+              "serial": 16,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                11.994,
+                57.843,
+                11.715
+              ]
+            },
+            {
+              "serial": 17,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                14.184,
+                58.444,
+                12.584
+              ]
+            },
+            {
+              "serial": 18,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                12.427,
+                56.498,
+                11.701
+              ]
+            },
+            {
+              "serial": 19,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                13.699,
+                56.175,
+                12.122
+              ]
+            },
+            {
+              "serial": 20,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                12.616,
+                60.292,
+                12.257
+              ]
+            },
+            {
+              "serial": 21,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                13.24,
+                62.688,
+                12.743
+              ]
+            },
+            {
+              "serial": 22,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                13.59,
+                61.287,
+                12.686
+              ]
+            },
+            {
+              "serial": 23,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                11.905,
+                63.072,
+                12.368
+              ]
+            },
+            {
+              "serial": 24,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                10.975,
+                62.106,
+                11.956
+              ]
+            },
+            {
+              "serial": 25,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                11.284,
+                60.751,
+                11.89
+              ]
+            },
+            {
+              "serial": 26,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.839,
+                50.721,
+                16.612
+              ]
+            },
+            {
+              "serial": 27,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.704,
+                50.148,
+                17.341
+              ]
+            },
+            {
+              "serial": 28,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.171,
+                50.197,
+                16.827
+              ]
+            },
+            {
+              "serial": 29,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.915,
+                49.07,
+                18.275
+              ]
+            },
+            {
+              "serial": 30,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.373,
+                49.14,
+                17.742
+              ]
+            },
+            {
+              "serial": 31,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.267,
+                48.556,
+                18.483
+              ]
+            },
+            {
+              "serial": 32,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                16.588,
+                47.423,
+                19.475
+              ]
+            },
+            {
+              "serial": 33,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                17.947,
+                47.42,
+                20.093
+              ]
+            },
+            {
+              "serial": 34,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                17.88,
+                47.894,
+                21.524
+              ]
+            },
+            {
+              "serial": 35,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                18.605,
+                46.038,
+                20.027
+              ]
+            },
+            {
+              "serial": 36,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                19.288,
+                47.918,
+                22.18
+              ]
+            },
+            {
+              "serial": 37,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                20.035,
+                46.058,
+                20.659
+              ]
+            },
+            {
+              "serial": 38,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                19.944,
+                46.547,
+                22.106
+              ]
+            },
+            {
+              "serial": 39,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                21.279,
+                46.511,
+                22.72
+              ]
+            }
+          ]
+        },
+        {
+          "mode": 5,
+          "scoreKcalMol": -10.585,
+          "rmsdLowerFromBest": 2.575,
+          "rmsdUpperFromBest": 12.603,
+          "rmsdToPreparedReferenceAtomId": 12.513153294768605,
+          "atoms": [
+            {
+              "serial": 1,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                14.878,
+                51.309,
+                16.54
+              ]
+            },
+            {
+              "serial": 2,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.957,
+                51.622,
+                15.73
+              ]
+            },
+            {
+              "serial": 3,
+              "name": "O",
+              "atomType": "OA",
+              "xyz": [
+                17.037,
+                51.05,
+                15.766
+              ]
+            },
+            {
+              "serial": 5,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.704,
+                50.147,
+                17.376
+              ]
+            },
+            {
+              "serial": 6,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.513,
+                48.026,
+                18.43
+              ]
+            },
+            {
+              "serial": 7,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.21,
+                47.833,
+                19.077
+              ]
+            },
+            {
+              "serial": 8,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.744,
+                49.155,
+                17.603
+              ]
+            },
+            {
+              "serial": 9,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                13.189,
+                48.816,
+                18.852
+              ]
+            },
+            {
+              "serial": 10,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                13.441,
+                49.958,
+                18.009
+              ]
+            },
+            {
+              "serial": 11,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                13.882,
+                46.625,
+                19.985
+              ]
+            },
+            {
+              "serial": 12,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                16.548,
+                47.106,
+                18.613
+              ]
+            },
+            {
+              "serial": 14,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.56,
+                47.351,
+                19.528
+              ]
+            },
+            {
+              "serial": 15,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                19.808,
+                48.048,
+                19.896
+              ]
+            },
+            {
+              "serial": 16,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                19.663,
+                47.852,
+                21.309
+              ]
+            },
+            {
+              "serial": 17,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                18.746,
+                47.79,
+                19.058
+              ]
+            },
+            {
+              "serial": 18,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                18.411,
+                47.392,
+                21.775
+              ]
+            },
+            {
+              "serial": 19,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                17.387,
+                47.15,
+                20.885
+              ]
+            },
+            {
+              "serial": 20,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                21.072,
+                48.526,
+                19.25
+              ]
+            },
+            {
+              "serial": 21,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.372,
+                48.148,
+                18.287
+              ]
+            },
+            {
+              "serial": 22,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                22.174,
+                47.635,
+                18.91
+              ]
+            },
+            {
+              "serial": 23,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.449,
+                49.559,
+                18.014
+              ]
+            },
+            {
+              "serial": 24,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                22.381,
+                50.406,
+                18.344
+              ]
+            },
+            {
+              "serial": 25,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                21.215,
+                49.941,
+                18.943
+              ]
+            },
+            {
+              "serial": 26,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.823,
+                52.741,
+                14.749
+              ]
+            },
+            {
+              "serial": 27,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.833,
+                52.969,
+                13.713
+              ]
+            },
+            {
+              "serial": 28,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.675,
+                53.618,
+                14.839
+              ]
+            },
+            {
+              "serial": 29,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.688,
+                54.066,
+                12.789
+              ]
+            },
+            {
+              "serial": 30,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.535,
+                54.692,
+                13.931
+              ]
+            },
+            {
+              "serial": 31,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.525,
+                54.944,
+                12.897
+              ]
+            },
+            {
+              "serial": 32,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.3,
+                56.151,
+                11.968
+              ]
+            },
+            {
+              "serial": 33,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                14.597,
+                57.336,
+                12.545
+              ]
+            },
+            {
+              "serial": 34,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.556,
+                58.489,
+                12.719
+              ]
+            },
+            {
+              "serial": 35,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                13.403,
+                57.769,
+                11.69
+              ]
+            },
+            {
+              "serial": 36,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                14.848,
+                59.726,
+                13.339
+              ]
+            },
+            {
+              "serial": 37,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                12.667,
+                58.996,
+                12.32
+              ]
+            },
+            {
+              "serial": 38,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                13.657,
+                60.149,
+                12.491
+              ]
+            },
+            {
+              "serial": 39,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                12.954,
+                61.323,
+                13.029
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "e8-repeat",
+      "exhaustiveness": 8,
+      "seed": 20261009,
+      "cpu": 4,
+      "receipt": {
+        "command": [
+          "[로컬 파일 경로]",
+          "--receptor",
+          "1iep_receptor.pdbqt",
+          "--ligand",
+          "1iep_ligand.pdbqt",
+          "--config",
+          "1iep_receptor.box.txt",
+          "--scoring",
+          "vina",
+          "--seed",
+          "20261009",
+          "--cpu",
+          "4",
+          "--exhaustiveness",
+          "8",
+          "--num_modes",
+          "9",
+          "--out",
+          "..\\..\\..\\outputs\\docking-cofolding\\practice\\e8-repeat.pdbqt"
+        ],
+        "cwd": "[로컬 파일 경로]",
+        "elapsedSeconds": 41.625,
+        "returncode": 0,
+        "completedAtUtc": "2026-10-08T15:24:08.384218+00:00"
+      },
+      "poses": [
+        {
+          "mode": 1,
+          "scoreKcalMol": -13.257,
+          "rmsdLowerFromBest": 0.0,
+          "rmsdUpperFromBest": 0.0,
+          "rmsdToPreparedReferenceAtomId": 0.3147943987962835,
+          "atoms": [
+            {
+              "serial": 1,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                16.676,
+                51.851,
+                14.815
+              ]
+            },
+            {
+              "serial": 2,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.701,
+                51.741,
+                15.794
+              ]
+            },
+            {
+              "serial": 3,
+              "name": "O",
+              "atomType": "OA",
+              "xyz": [
+                14.82,
+                52.565,
+                15.987
+              ]
+            },
+            {
+              "serial": 5,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.718,
+                52.772,
+                13.706
+              ]
+            },
+            {
+              "serial": 6,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.82,
+                54.692,
+                12.376
+              ]
+            },
+            {
+              "serial": 7,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.917,
+                54.555,
+                11.41
+              ]
+            },
+            {
+              "serial": 8,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.732,
+                53.819,
+                13.49
+              ]
+            },
+            {
+              "serial": 9,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.889,
+                53.522,
+                11.63
+              ]
+            },
+            {
+              "serial": 10,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.784,
+                52.644,
+                12.769
+              ]
+            },
+            {
+              "serial": 11,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                17.075,
+                55.463,
+                10.169
+              ]
+            },
+            {
+              "serial": 12,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                14.845,
+                55.679,
+                12.218
+              ]
+            },
+            {
+              "serial": 14,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.101,
+                56.992,
+                12.583
+              ]
+            },
+            {
+              "serial": 15,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.288,
+                59.225,
+                12.749
+              ]
+            },
+            {
+              "serial": 16,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.544,
+                59.669,
+                13.28
+              ]
+            },
+            {
+              "serial": 17,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                14.114,
+                57.899,
+                12.422
+              ]
+            },
+            {
+              "serial": 18,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.56,
+                58.699,
+                13.44
+              ]
+            },
+            {
+              "serial": 19,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                16.325,
+                57.387,
+                13.09
+              ]
+            },
+            {
+              "serial": 20,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                13.118,
+                60.131,
+                12.519
+              ]
+            },
+            {
+              "serial": 21,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                11.859,
+                62.289,
+                12.866
+              ]
+            },
+            {
+              "serial": 22,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                13.01,
+                61.454,
+                13.121
+              ]
+            },
+            {
+              "serial": 23,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                10.824,
+                61.781,
+                12.005
+              ]
+            },
+            {
+              "serial": 24,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                10.94,
+                60.506,
+                11.43
+              ]
+            },
+            {
+              "serial": 25,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                12.036,
+                59.68,
+                11.656
+              ]
+            },
+            {
+              "serial": 26,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.717,
+                50.551,
+                16.698
+              ]
+            },
+            {
+              "serial": 27,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.505,
+                50.107,
+                17.392
+              ]
+            },
+            {
+              "serial": 28,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.96,
+                49.836,
+                16.893
+              ]
+            },
+            {
+              "serial": 29,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.552,
+                48.966,
+                18.271
+              ]
+            },
+            {
+              "serial": 30,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.002,
+                48.717,
+                17.755
+              ]
+            },
+            {
+              "serial": 31,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.817,
+                48.259,
+                18.46
+              ]
+            },
+            {
+              "serial": 32,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.964,
+                47.045,
+                19.396
+              ]
+            },
+            {
+              "serial": 33,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                17.253,
+                46.905,
+                20.137
+              ]
+            },
+            {
+              "serial": 34,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                17.349,
+                47.935,
+                21.235
+              ]
+            },
+            {
+              "serial": 35,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                17.432,
+                45.499,
+                20.717
+              ]
+            },
+            {
+              "serial": 36,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                18.693,
+                47.82,
+                22.005
+              ]
+            },
+            {
+              "serial": 37,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                18.796,
+                45.364,
+                21.47
+              ]
+            },
+            {
+              "serial": 38,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                18.873,
+                46.419,
+                22.574
+              ]
+            },
+            {
+              "serial": 39,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                20.129,
+                46.257,
+                23.321
+              ]
+            }
+          ]
+        },
+        {
+          "mode": 2,
+          "scoreKcalMol": -11.297,
+          "rmsdLowerFromBest": 3.041,
+          "rmsdUpperFromBest": 12.372,
+          "rmsdToPreparedReferenceAtomId": 12.31204597571452,
+          "atoms": [
+            {
+              "serial": 1,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                16.135,
+                51.997,
+                15.779
+              ]
+            },
+            {
+              "serial": 2,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.646,
+                52.233,
+                14.504
+              ]
+            },
+            {
+              "serial": 3,
+              "name": "O",
+              "atomType": "OA",
+              "xyz": [
+                15.193,
+                51.37,
+                13.767
+              ]
+            },
+            {
+              "serial": 5,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.996,
+                50.803,
+                16.575
+              ]
+            },
+            {
+              "serial": 6,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.885,
+                48.706,
+                17.611
+              ]
+            },
+            {
+              "serial": 7,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.568,
+                48.416,
+                18.191
+              ]
+            },
+            {
+              "serial": 8,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.083,
+                49.871,
+                16.826
+              ]
+            },
+            {
+              "serial": 9,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.5,
+                49.341,
+                17.942
+              ]
+            },
+            {
+              "serial": 10,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.719,
+                50.52,
+                17.142
+              ]
+            },
+            {
+              "serial": 11,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.274,
+                47.165,
+                19.051
+              ]
+            },
+            {
+              "serial": 12,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                17.965,
+                47.845,
+                17.82
+              ]
+            },
+            {
+              "serial": 14,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                18.959,
+                48.164,
+                18.732
+              ]
+            },
+            {
+              "serial": 15,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                20.975,
+                49.356,
+                19.171
+              ]
+            },
+            {
+              "serial": 16,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                21.015,
+                48.843,
+                20.51
+              ]
+            },
+            {
+              "serial": 17,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                19.943,
+                48.996,
+                18.332
+              ]
+            },
+            {
+              "serial": 18,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                19.972,
+                47.975,
+                20.904
+              ]
+            },
+            {
+              "serial": 19,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                18.969,
+                47.65,
+                20.016
+              ]
+            },
+            {
+              "serial": 20,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                22.007,
+                50.282,
+                18.606
+              ]
+            },
+            {
+              "serial": 21,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                24.227,
+                50.749,
+                17.502
+              ]
+            },
+            {
+              "serial": 22,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.264,
+                49.813,
+                18.035
+              ]
+            },
+            {
+              "serial": 23,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.913,
+                52.153,
+                17.552
+              ]
+            },
+            {
+              "serial": 24,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                22.7,
+                52.592,
+                18.102
+              ]
+            },
+            {
+              "serial": 25,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                21.753,
+                51.714,
+                18.621
+              ]
+            },
+            {
+              "serial": 26,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.677,
+                53.627,
+                13.966
+              ]
+            },
+            {
+              "serial": 27,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.94,
+                54.351,
+                13.802
+              ]
+            },
+            {
+              "serial": 28,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.429,
+                54.269,
+                13.612
+              ]
+            },
+            {
+              "serial": 29,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.94,
+                55.7,
+                13.296
+              ]
+            },
+            {
+              "serial": 30,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.433,
+                55.592,
+                13.115
+              ]
+            },
+            {
+              "serial": 31,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.671,
+                56.335,
+                12.948
+              ]
+            },
+            {
+              "serial": 32,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.574,
+                57.779,
+                12.422
+              ]
+            },
+            {
+              "serial": 33,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                14.292,
+                58.508,
+                12.655
+              ]
+            },
+            {
+              "serial": 34,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                14.56,
+                59.901,
+                13.17
+              ]
+            },
+            {
+              "serial": 35,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                13.429,
+                58.571,
+                11.392
+              ]
+            },
+            {
+              "serial": 36,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                13.237,
+                60.67,
+                13.44
+              ]
+            },
+            {
+              "serial": 37,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                12.081,
+                59.317,
+                11.66
+              ]
+            },
+            {
+              "serial": 38,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                12.376,
+                60.723,
+                12.186
+              ]
+            },
+            {
+              "serial": 39,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                11.112,
+                61.448,
+                12.384
+              ]
+            }
+          ]
+        },
+        {
+          "mode": 3,
+          "scoreKcalMol": -11.159,
+          "rmsdLowerFromBest": 3.812,
+          "rmsdUpperFromBest": 12.245,
+          "rmsdToPreparedReferenceAtomId": 12.204150483627572,
+          "atoms": [
+            {
+              "serial": 1,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                16.696,
+                50.581,
+                15.965
+              ]
+            },
+            {
+              "serial": 2,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.702,
+                51.54,
+                15.856
+              ]
+            },
+            {
+              "serial": 3,
+              "name": "O",
+              "atomType": "OA",
+              "xyz": [
+                14.693,
+                51.57,
+                16.543
+              ]
+            },
+            {
+              "serial": 5,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.882,
+                49.613,
+                17.018
+              ]
+            },
+            {
+              "serial": 6,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                18.161,
+                48.623,
+                18.927
+              ]
+            },
+            {
+              "serial": 7,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.139,
+                47.583,
+                19.093
+              ]
+            },
+            {
+              "serial": 8,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                18.028,
+                49.607,
+                17.914
+              ]
+            },
+            {
+              "serial": 9,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.01,
+                47.595,
+                18.207
+              ]
+            },
+            {
+              "serial": 10,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.89,
+                48.603,
+                17.183
+              ]
+            },
+            {
+              "serial": 11,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                17.22,
+                46.475,
+                20.168
+              ]
+            },
+            {
+              "serial": 12,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                19.282,
+                48.665,
+                19.76
+              ]
+            },
+            {
+              "serial": 14,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                20.534,
+                48.308,
+                19.282
+              ]
+            },
+            {
+              "serial": 15,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                22.679,
+                49.028,
+                18.538
+              ]
+            },
+            {
+              "serial": 16,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.077,
+                47.67,
+                18.298
+              ]
+            },
+            {
+              "serial": 17,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                21.419,
+                49.294,
+                19.025
+              ]
+            },
+            {
+              "serial": 18,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                22.132,
+                46.658,
+                18.578
+              ]
+            },
+            {
+              "serial": 19,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                20.885,
+                46.989,
+                19.061
+              ]
+            },
+            {
+              "serial": 20,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.565,
+                50.209,
+                18.288
+              ]
+            },
+            {
+              "serial": 21,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                25.058,
+                51.612,
+                16.817
+              ]
+            },
+            {
+              "serial": 22,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                24.212,
+                50.456,
+                17.006
+              ]
+            },
+            {
+              "serial": 23,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                25.245,
+                52.509,
+                17.927
+              ]
+            },
+            {
+              "serial": 24,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                24.615,
+                52.262,
+                19.156
+              ]
+            },
+            {
+              "serial": 25,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                23.795,
+                51.158,
+                19.367
+              ]
+            },
+            {
+              "serial": 26,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                15.844,
+                52.611,
+                14.824
+              ]
+            },
+            {
+              "serial": 27,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.805,
+                53.627,
+                14.636
+              ]
+            },
+            {
+              "serial": 28,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.028,
+                52.631,
+                13.991
+              ]
+            },
+            {
+              "serial": 29,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                14.958,
+                54.64,
+                13.622
+              ]
+            },
+            {
+              "serial": 30,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                17.175,
+                53.626,
+                12.999
+              ]
+            },
+            {
+              "serial": 31,
+              "name": "C",
+              "atomType": "A",
+              "xyz": [
+                16.158,
+                54.642,
+                12.788
+              ]
+            },
+            {
+              "serial": 32,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                16.395,
+                55.672,
+                11.667
+              ]
+            },
+            {
+              "serial": 33,
+              "name": "N",
+              "atomType": "NA",
+              "xyz": [
+                15.8,
+                57.029,
+                11.849
+              ]
+            },
+            {
+              "serial": 34,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                14.298,
+                56.938,
+                11.972
+              ]
+            },
+            {
+              "serial": 35,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                16.384,
+                57.756,
+                13.063
+              ]
+            },
+            {
+              "serial": 36,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                13.656,
+                58.343,
+                12.141
+              ]
+            },
+            {
+              "serial": 37,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                15.766,
+                59.183,
+                13.225
+              ]
+            },
+            {
+              "serial": 38,
+              "name": "N",
+              "atomType": "N",
+              "xyz": [
+                14.246,
+                59.067,
+                13.344
+              ]
+            },
+            {
+              "serial": 39,
+              "name": "C",
+              "atomType": "C",
+              "xyz": [
+                13.667,
+                60.402,
+                13.554
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "repeatCoordinatesAndScoresIdentical": true,
+  "referenceRmsdPolicy": "Same atom serial correspondence, fixed receptor coordinates, no ligand realignment or symmetry correction; reference is prepared tutorial ligand, not independently revalidated PDB ground truth",
+  "nativeRmsdPolicy": "Vina rmsd l.b./u.b. compare each mode with the best predicted mode, not with the experimental structure",
+  "cofoldingExecuted": false,
+  "boltzMathExamples": [
+    {
+      "y": -3,
+      "ic50Micromolar": 0.001,
+      "pIC50": 9
+    },
+    {
+      "y": 0,
+      "ic50Micromolar": 1,
+      "pIC50": 6
+    },
+    {
+      "y": 2,
+      "ic50Micromolar": 100,
+      "pIC50": 4
+    }
+  ]
+}

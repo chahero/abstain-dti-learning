@@ -1,0 +1,170 @@
+{
+  "queryCount": 12,
+  "coordinates": [
+    {
+      "query_id": "Q01",
+      "row_id": "19754",
+      "chemical_distance": 0.8041237113402062,
+      "max_sequence_identity": 1.0,
+      "scaffold_unseen": 1,
+      "pocket_mean_plddt": "NA",
+      "experimental_structure_status": "not_queried",
+      "target_training_count": 47
+    },
+    {
+      "query_id": "Q02",
+      "row_id": "7278",
+      "chemical_distance": 0.7924528301886793,
+      "max_sequence_identity": 1.0,
+      "scaffold_unseen": 1,
+      "pocket_mean_plddt": "NA",
+      "experimental_structure_status": "not_queried",
+      "target_training_count": 47
+    },
+    {
+      "query_id": "Q03",
+      "row_id": "6238",
+      "chemical_distance": 0.8144329896907216,
+      "max_sequence_identity": 1.0,
+      "scaffold_unseen": 1,
+      "pocket_mean_plddt": "NA",
+      "experimental_structure_status": "not_queried",
+      "target_training_count": 47
+    },
+    {
+      "query_id": "Q04",
+      "row_id": "11866",
+      "chemical_distance": 0.4415584415584416,
+      "max_sequence_identity": 1.0,
+      "scaffold_unseen": 1,
+      "pocket_mean_plddt": "NA",
+      "experimental_structure_status": "not_queried",
+      "target_training_count": 47
+    },
+    {
+      "query_id": "Q05",
+      "row_id": "815",
+      "chemical_distance": 0.6,
+      "max_sequence_identity": 1.0,
+      "scaffold_unseen": 1,
+      "pocket_mean_plddt": "NA",
+      "experimental_structure_status": "not_queried",
+      "target_training_count": 47
+    },
+    {
+      "query_id": "Q06",
+      "row_id": "22167",
+      "chemical_distance": 0.6761904761904762,
+      "max_sequence_identity": 1.0,
+      "scaffold_unseen": 1,
+      "pocket_mean_plddt": "NA",
+      "experimental_structure_status": "not_queried",
+      "target_training_count": 47
+    },
+    {
+      "query_id": "Q07",
+      "row_id": "3791",
+      "chemical_distance": 0.6601941747572815,
+      "max_sequence_identity": 1.0,
+      "scaffold_unseen": 1,
+      "pocket_mean_plddt": "NA",
+      "experimental_structure_status": "not_queried",
+      "target_training_count": 47
+    },
+    {
+      "query_id": "Q08",
+      "row_id": "24839",
+      "chemical_distance": 0.6666666666666667,
+      "max_sequence_identity": 1.0,
+      "scaffold_unseen": 1,
+      "pocket_mean_plddt": "NA",
+      "experimental_structure_status": "not_queried",
+      "target_training_count": 47
+    },
+    {
+      "query_id": "Q09",
+      "row_id": "10009",
+      "chemical_distance": 0.5591397849462365,
+      "max_sequence_identity": 1.0,
+      "scaffold_unseen": 1,
+      "pocket_mean_plddt": "NA",
+      "experimental_structure_status": "not_queried",
+      "target_training_count": 47
+    },
+    {
+      "query_id": "Q10",
+      "row_id": "9832",
+      "chemical_distance": 0.8125,
+      "max_sequence_identity": 1.0,
+      "scaffold_unseen": 1,
+      "pocket_mean_plddt": "NA",
+      "experimental_structure_status": "not_queried",
+      "target_training_count": 47
+    },
+    {
+      "query_id": "Q11",
+      "row_id": "17699",
+      "chemical_distance": 0.7962962962962963,
+      "max_sequence_identity": 1.0,
+      "scaffold_unseen": 1,
+      "pocket_mean_plddt": "NA",
+      "experimental_structure_status": "not_queried",
+      "target_training_count": 47
+    },
+    {
+      "query_id": "Q12",
+      "row_id": "23931",
+      "chemical_distance": 0.711340206185567,
+      "max_sequence_identity": 1.0,
+      "scaffold_unseen": 1,
+      "pocket_mean_plddt": "NA",
+      "experimental_structure_status": "not_queried",
+      "target_training_count": 47
+    }
+  ],
+  "fields": [
+    {
+      "name": "chemical_distance",
+      "definition": "1 - max train Morgan radius2/2048-bit Tanimoto",
+      "higher": "more chemically distant"
+    },
+    {
+      "name": "max_sequence_identity",
+      "definition": "Exact target sequence exists in train -> 1.0; no general alignment calculation claimed",
+      "higher": "more familiar"
+    },
+    {
+      "name": "scaffold_unseen",
+      "definition": "Murcko scaffold (chirality=False) absent from training drugs",
+      "higher": "unseen scaffold"
+    },
+    {
+      "name": "pocket_mean_plddt",
+      "definition": "Mean selected AlphaFold pocket pLDDT, residue/source provenance needed",
+      "higher": "higher local model confidence, not affinity confidence"
+    },
+    {
+      "name": "experimental_structure_status",
+      "definition": "matched experimental structure search status; not_queried is not absence",
+      "higher": "categorical evidence availability"
+    },
+    {
+      "name": "target_training_count",
+      "definition": "Number of supplied train records sharing exact target sequence",
+      "higher": "more training support, not independent experiments"
+    }
+  ],
+  "sourceSha256": "ea081146d3f7493e7cdc9925ce91ab36fabf795f96cae4b9ad938c0834b2fb83",
+  "rdkitVersion": "2026.03.6",
+  "pocketComputed": 0,
+  "structureSearchPerformed": false,
+  "caveat": "Coordinates describe familiarity and evidence; do not claim measured prediction error or replace human curation.",
+  "selection": "Twelve distinct cold-drug drugs; designed positive/negative/positive/boundary quota, varied targets. Not a prevalence sample; no model-correctness selection.",
+  "requiredReview": [
+    "chemical stereochemistry and salts",
+    "exact target/variant",
+    "units and censoring",
+    "source/time/version",
+    "independent author/verifier"
+  ]
+}

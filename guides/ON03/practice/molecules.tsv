@@ -1,0 +1,17 @@
+name	smiles	canonical_isomeric	scaffold
+ethanol	CCO	CCO	
+ethanol_reverse	OCC	CCO	
+ether	COC	COC	
+propyl_alcohol	CCCO	CCCO	
+acetic_acid	CC(=O)O	CC(=O)O	
+acetate	CC(=O)[O-]	CC(=O)[O-]	
+sodium_acetate	CC(=O)[O-].[Na+]	CC(=O)[O-].[Na+]	
+benzene	c1ccccc1	c1ccccc1	c1ccccc1
+aspirin	CC(=O)Oc1ccccc1C(=O)O	CC(=O)Oc1ccccc1C(=O)O	c1ccccc1
+acetaminophen	CC(=O)Nc1ccc(O)cc1	CC(=O)Nc1ccc(O)cc1	c1ccccc1
+lactic_a	C[C@H](O)C(=O)O	C[C@H](O)C(=O)O	
+lactic_b	C[C@@H](O)C(=O)O	C[C@@H](O)C(=O)O	
+keto	CC(=O)C	CC(C)=O	
+enol	C=C(O)C	C=C(C)O	
+butane	CCCC	CCCC	
+linker_example	Cc1ccc(CCc2ccccc2O)cc1	Cc1ccc(CCc2ccccc2O)cc1	c1ccc(CCc2ccccc2)cc1

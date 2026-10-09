@@ -1,0 +1,26 @@
+{
+  "scope": "Personal numerical-label DAVIS calibration exercise; not an approved biological benchmark",
+  "baseline": "DT03 fixed paired Morgan + frozen ESM-2 XGBoost model, four existing splits",
+  "labels": "Reuse study_rule_label: supplied Kd <= 100 nM; supplied Kd = 10000 nM excluded by DT03",
+  "fitPartition": "valid only",
+  "evaluationPartition": "test only, used after fitting",
+  "selection": "One preselected calibration method; no model or method selection on test metrics",
+  "method": "Binary temperature scaling: sigmoid(logit(p) / T)",
+  "objective": "Unweighted binary log loss on valid",
+  "temperatureBounds": [
+    0.05,
+    20.0
+  ],
+  "optimizer": "scipy minimize_scalar bounded over log(T), xatol 1e-10",
+  "probabilityClip": 1e-12,
+  "ece": "Positive-class ECE and top-label confidence ECE recorded separately",
+  "binRule": "Equal-width bins over [0,1], left inclusive/right exclusive except final bin includes 1; empty bins omitted from sum",
+  "primaryBins": 10,
+  "sensitivityBins": [
+    5,
+    10,
+    15
+  ],
+  "limitations": "Single existing split assignment; conditional labels; very small cold-both valid set; no formal OOD or individual guarantee",
+  "frozenBeforeCalibration": true
+}

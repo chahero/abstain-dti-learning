@@ -1,0 +1,2000 @@
+[
+  {
+    "number": "OV01",
+    "order": 1,
+    "title": "신약 발굴 AI의 예측, 어디까지 믿을까?",
+    "group": "전체 개요",
+    "topic": "DTI와 기권 · 전체 흐름",
+    "seconds": 769.0333333333333,
+    "poster": "assets/thumbnails/OV01.jpg",
+    "guide": "guides/OV01/index.html",
+    "subtitle": "assets/subtitles/OV01.srt",
+    "source": {
+      "title": "TDC · Data Split",
+      "url": "https://tdcommons.ai/functions/data_split/"
+    },
+    "chapters": [
+      {
+        "title": "DTI와 평가의 질문",
+        "seconds": 0.0
+      },
+      {
+        "title": "데이터를 나누는 네 가지 질문",
+        "seconds": 31.066666666666666
+      },
+      {
+        "title": "분자와 단백질의 숫자 표현",
+        "seconds": 92.3
+      },
+      {
+        "title": "작은 기준 모델",
+        "seconds": 145.3
+      },
+      {
+        "title": "문제의 낯섦과 구조 신뢰도",
+        "seconds": 199.03333333333333
+      },
+      {
+        "title": "확신과 기권의 성적표",
+        "seconds": 254.3
+      },
+      {
+        "title": "확신을 보정하는 방법",
+        "seconds": 317.3666666666667
+      },
+      {
+        "title": "컨포멀 예측과 보장의 조건",
+        "seconds": 379.6
+      },
+      {
+        "title": "도구를 쓰는 AI의 실행 과정",
+        "seconds": 464.23333333333335
+      },
+      {
+        "title": "틀린 도구 출력을 시험하기",
+        "seconds": 562.0
+      },
+      {
+        "title": "반복과 난이도별 평가",
+        "seconds": 622.9
+      },
+      {
+        "title": "실패 로그의 근거 읽기",
+        "seconds": 674.6333333333333
+      },
+      {
+        "title": "핵심 요약과 학습 연결",
+        "seconds": 742.7333333333333
+      }
+    ]
+  },
+  {
+    "number": "ON01",
+    "order": 2,
+    "title": "이 구조가 정말 내가 찾던 타겟일까?",
+    "group": "기초 어휘와 측정",
+    "topic": "단백질과 타겟 · 구조 레코드",
+    "seconds": 601.8666666666667,
+    "poster": "assets/thumbnails/ON01.jpg",
+    "guide": "guides/ON01/index.html",
+    "subtitle": "assets/subtitles/ON01.srt",
+    "source": {
+      "title": "원자료 · W1 온보딩",
+      "url": "https://github.com/Pseudo-Lab/abstain-dti/blob/main/docs/onboarding/w01-onboarding.html"
+    },
+    "chapters": [
+      {
+        "title": "이 구조가 정말 내가 찾던 타겟일까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "잔기: 사슬에 들어간 아미노산 하나",
+        "seconds": 33.4
+      },
+      {
+        "title": "서열과 구조는 서로 다른 정보다",
+        "seconds": 68.23333333333333
+      },
+      {
+        "title": "도메인: 단백질 안의 구조 단위",
+        "seconds": 100.86666666666666
+      },
+      {
+        "title": "타겟과 리간드는 관계를 나타낸다",
+        "seconds": 133.5
+      },
+      {
+        "title": "포켓은 서열 구간이 아니라 공간이다",
+        "seconds": 164.9
+      },
+      {
+        "title": "세 데이터베이스, 세 가지 질문",
+        "seconds": 201.13333333333333
+      },
+      {
+        "title": "UniProt: 이름보다 서열과 종부터",
+        "seconds": 236.9
+      },
+      {
+        "title": "PDB: 한 단백질에 여러 구조 기록",
+        "seconds": 278.2
+      },
+      {
+        "title": "엔트리·엔티티·사슬을 구분하기",
+        "seconds": 317.23333333333335
+      },
+      {
+        "title": "잔기 번호도 번역이 필요하다",
+        "seconds": 352.8666666666667
+      },
+      {
+        "title": "AlphaFold DB: 예측 모델의 출처",
+        "seconds": 388.9
+      },
+      {
+        "title": "apo·holo: 어떤 상대가 있는 구조인가?",
+        "seconds": 424.3
+      },
+      {
+        "title": "같은 Abl 이름, 서로 다른 레코드",
+        "seconds": 457.2
+      },
+      {
+        "title": "하나의 연결 기록에 남길 정보",
+        "seconds": 494.3666666666667
+      },
+      {
+        "title": "작은 실습: 두 구조의 연결 근거 비교",
+        "seconds": 528.3
+      },
+      {
+        "title": "기억할 다섯 가지",
+        "seconds": 562.1
+      }
+    ]
+  },
+  {
+    "number": "ON03",
+    "order": 3,
+    "title": "문자열이 달라도 같은 분자일까?",
+    "group": "기초 어휘와 측정",
+    "topic": "분자 표현 · SMILES와 동일성",
+    "seconds": 867.2,
+    "poster": "assets/thumbnails/ON03.jpg",
+    "guide": "guides/ON03/index.html",
+    "subtitle": "assets/subtitles/ON03.srt",
+    "source": {
+      "id": "rdkit",
+      "title": "RDKit · Getting Started in Python",
+      "url": "https://www.rdkit.org/docs/GettingStartedInPython.html"
+    },
+    "chapters": [
+      {
+        "title": "문자열이 달라도 같은 분자일까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "분자는 원자와 결합의 그래프다",
+        "seconds": 38.233333333333334
+      },
+      {
+        "title": "SMILES는 그래프를 따라 걷는 기록",
+        "seconds": 77.43333333333334
+      },
+      {
+        "title": "괄호는 가지, 등호는 이중결합",
+        "seconds": 115.7
+      },
+      {
+        "title": "고리 숫자는 닫을 결합의 짝이다",
+        "seconds": 149.2
+      },
+      {
+        "title": "canonical SMILES가 해결하는 것",
+        "seconds": 187.0
+      },
+      {
+        "title": "염과 전하는 별도의 처리 정책이다",
+        "seconds": 224.16666666666666
+      },
+      {
+        "title": "입체화학을 지우면 다른 분자가 합쳐진다",
+        "seconds": 260.8
+      },
+      {
+        "title": "tautomer도 canonicalization과 구분한다",
+        "seconds": 297.06666666666666
+      },
+      {
+        "title": "RDKit: 읽기 성공과 데이터 품질은 다르다",
+        "seconds": 331.3333333333333
+      },
+      {
+        "title": "고리·linker·곁가지로 구조를 나눈다",
+        "seconds": 365.3333333333333
+      },
+      {
+        "title": "Murcko scaffold: 골격만 비교하기",
+        "seconds": 400.26666666666665
+      },
+      {
+        "title": "scaffold split과 cold-drug는 다른 질문",
+        "seconds": 436.7
+      },
+      {
+        "title": "같은 분자도 여러 conformer를 갖는다",
+        "seconds": 470.43333333333334
+      },
+      {
+        "title": "표현은 목적에 맞게 선택한다",
+        "seconds": 505.73333333333335
+      },
+      {
+        "title": "Morgan: 원자 주변을 반경별로 확장",
+        "seconds": 541.3666666666667
+      },
+      {
+        "title": "환경 정보를 고정 길이 비트로 접는다",
+        "seconds": 577.1
+      },
+      {
+        "title": "해시 충돌: 다른 환경이 같은 칸에",
+        "seconds": 614.1
+      },
+      {
+        "title": "Tanimoto: 함께 켜진 비트의 비율",
+        "seconds": 649.8333333333334
+      },
+      {
+        "title": "실제 분자로 계산하면 무엇이 보일까?",
+        "seconds": 683.4333333333333
+      },
+      {
+        "title": "신규성은 학습 데이터에 대한 질문",
+        "seconds": 720.5
+      },
+      {
+        "title": "작은 실습: 문자열 → 구조 → 비교",
+        "seconds": 753.8666666666667
+      },
+      {
+        "title": "DTI 입력으로 연결할 때 남길 기록",
+        "seconds": 790.9
+      },
+      {
+        "title": "핵심: 읽기·동일성·골격·모양·유사도",
+        "seconds": 825.8
+      }
+    ]
+  },
+  {
+    "number": "ON02",
+    "order": 4,
+    "title": "10 nM와 0.5 µM, 무엇이 더 강할까?",
+    "group": "기초 어휘와 측정",
+    "topic": "결합 친화도 · 단위와 라벨",
+    "seconds": 727.4,
+    "poster": "assets/thumbnails/ON02.jpg",
+    "guide": "guides/ON02/index.html",
+    "subtitle": "assets/subtitles/ON02.srt",
+    "source": {
+      "title": "원자료 · W1 온보딩",
+      "url": "https://github.com/Pseudo-Lab/abstain-dti/blob/main/docs/onboarding/w01-onboarding.html"
+    },
+    "chapters": [
+      {
+        "title": "10 nM와 0.5 µM, 무엇이 더 강할까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "붙는가, 억제하는가, 약효가 있는가",
+        "seconds": 36.1
+      },
+      {
+        "title": "평형에서도 붙고 떨어지는 일은 계속된다",
+        "seconds": 69.13333333333334
+      },
+      {
+        "title": "Kd: 평형에서의 해리 상수",
+        "seconds": 100.26666666666667
+      },
+      {
+        "title": "Kd와 결합 비율을 연결해 보자",
+        "seconds": 132.96666666666667
+      },
+      {
+        "title": "같은 Kd여도 머무는 시간은 다를 수 있다",
+        "seconds": 165.2
+      },
+      {
+        "title": "Ki: 저해 모형 안에서 읽는 상수",
+        "seconds": 199.56666666666666
+      },
+      {
+        "title": "IC50: 특정 실험에서 절반 억제한 농도",
+        "seconds": 230.8
+      },
+      {
+        "title": "IC50 → Ki 변환에는 조건이 필요하다",
+        "seconds": 263.3666666666667
+      },
+      {
+        "title": "nM와 µM: 단위의 크기가 다르다",
+        "seconds": 301.96666666666664
+      },
+      {
+        "title": "두 후보를 같은 단위로 비교하면",
+        "seconds": 335.1333333333333
+      },
+      {
+        "title": "pKd: 몰러로 바꾼 뒤 음의 로그",
+        "seconds": 366.43333333333334
+      },
+      {
+        "title": "pKd가 한 칸 커지면 Kd는 열 배 작다",
+        "seconds": 396.8
+      },
+      {
+        "title": ">10 µM는 정확한 값이 아니다",
+        "seconds": 430.3
+      },
+      {
+        "title": "pChEMBL이라고 모두 pKd는 아니다",
+        "seconds": 463.7
+      },
+      {
+        "title": "정답은 숫자와 측정 맥락의 묶음이다",
+        "seconds": 496.6333333333333
+      },
+      {
+        "title": "같은 쌍의 여러 측정값을 어떻게 읽을까?",
+        "seconds": 526.8666666666667
+      },
+      {
+        "title": "결합·비결합 라벨은 규칙으로 만든다",
+        "seconds": 560.8666666666667
+      },
+      {
+        "title": "불확실한 정답과 모델의 기권을 구분하자",
+        "seconds": 593.7
+      },
+      {
+        "title": "작은 실습: 변환하고, 보류 이유를 남기기",
+        "seconds": 629.1
+      },
+      {
+        "title": "핵심 요약: 숫자보다 측정의 의미부터",
+        "seconds": 660.6
+      },
+      {
+        "title": "출처와 다음 학습",
+        "seconds": 694.2
+      }
+    ]
+  },
+  {
+    "number": "DT01",
+    "order": 5,
+    "title": "같은 분자·타겟인데 정답이 왜 여러 개일까?",
+    "group": "실제 데이터와 모델",
+    "topic": "실제 DTI 레코드 · 정제와 검토",
+    "seconds": 634.4,
+    "poster": "assets/thumbnails/DT01.jpg",
+    "guide": "guides/DT01/index.html",
+    "subtitle": "assets/subtitles/DT01.srt",
+    "source": {
+      "title": "원자료 · ChEMBL 공식 문서",
+      "url": "https://www.ebi.ac.uk/chembl/api/data/docs"
+    },
+    "chapters": [
+      {
+        "title": "같은 분자·타겟인데 정답이 왜 여러 개일까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "전체 DB가 아닌, 출처가 고정된 작은 표본",
+        "seconds": 26.933333333333334
+      },
+      {
+        "title": "논문 → 실험 → 측정 → 학습 테이블",
+        "seconds": 63.03333333333333
+      },
+      {
+        "title": "같은 타겟 ID가 같은 실험 단백질을 보장할까?",
+        "seconds": 93.8
+      },
+      {
+        "title": "분자 이름에서 구조 식별자로",
+        "seconds": 124.33333333333333
+      },
+      {
+        "title": "한 행을 네 묶음으로 읽는다",
+        "seconds": 155.5
+      },
+      {
+        "title": "0.0014 µM → 1.4 nM",
+        "seconds": 186.4
+      },
+      {
+        "title": "표준 농도 → 계산한 pKd",
+        "seconds": 218.0
+      },
+      {
+        "title": "Kd · Ki · IC50를 먼저 분리한다",
+        "seconds": 248.06666666666666
+      },
+      {
+        "title": ">10,000 nM는 정확한 만이 아니다",
+        "seconds": 279.8666666666667
+      },
+      {
+        "title": "검토 표시가 없다고 모든 조건이 확인된 것은 아니다",
+        "seconds": 310.9
+      },
+      {
+        "title": "변이 필드가 비어도 설명에는 변이가 있다",
+        "seconds": 340.43333333333334
+      },
+      {
+        "title": "같은 숫자가 두 번이면 실험도 두 번일까?",
+        "seconds": 371.76666666666665
+      },
+      {
+        "title": "47행 → 11행, 여기서 정제는 끝났을까?",
+        "seconds": 405.96666666666664
+      },
+      {
+        "title": "측정값 · 점수 · 분류 라벨은 서로 다르다",
+        "seconds": 440.3
+      },
+      {
+        "title": "행을 나누면 같은 쌍이 양쪽에 남는다",
+        "seconds": 474.03333333333336
+      },
+      {
+        "title": "한 번 실행하고도 다시 검토할 수 있는 출력",
+        "seconds": 507.6
+      },
+      {
+        "title": "작은 실습: 행을 읽고 판단 이유를 남기기",
+        "seconds": 539.5
+      },
+      {
+        "title": "핵심 요약: 계산이 가능해도 정답은 아직 검토 중",
+        "seconds": 571.0
+      },
+      {
+        "title": "원자료와 처리 규칙을 함께 공개한다",
+        "seconds": 603.2333333333333
+      }
+    ]
+  },
+  {
+    "number": "DT02",
+    "order": 6,
+    "title": "평가 문제는 정말 처음 보는 문제일까?",
+    "group": "실제 데이터와 모델",
+    "topic": "데이터 분할 · 누출과 일반화",
+    "seconds": 863.6333333333333,
+    "poster": "assets/thumbnails/DT02.jpg",
+    "guide": "guides/DT02/index.html",
+    "subtitle": "assets/subtitles/DT02.srt",
+    "source": {
+      "id": "split",
+      "title": "TDC dataset splits",
+      "url": "https://tdcommons.ai/functions/data_split/"
+    },
+    "chapters": [
+      {
+        "title": "평가 문제는 정말 처음 보는 문제일까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "DT01의 정제 질문에서 분할로",
+        "seconds": 33.733333333333334
+      },
+      {
+        "title": "DAVIS 표를 직접 세어 보자",
+        "seconds": 69.46666666666667
+      },
+      {
+        "title": "정답 컬럼도 분할 전에 읽는다",
+        "seconds": 106.5
+      },
+      {
+        "title": "분할 이름보다 먼저 비교 키",
+        "seconds": 145.43333333333334
+      },
+      {
+        "title": "행을 나누면 같은 쌍이 새어 나갈 수 있다",
+        "seconds": 185.2
+      },
+      {
+        "title": "분자를 행에, 타겟을 열에",
+        "seconds": 222.06666666666666
+      },
+      {
+        "title": "random: 새로운 조합을 묻는다",
+        "seconds": 254.83333333333334
+      },
+      {
+        "title": "cold-drug: 분자 전체를 평가 쪽으로",
+        "seconds": 290.23333333333335
+      },
+      {
+        "title": "cold-target: 타겟의 모든 측정을 함께",
+        "seconds": 325.46666666666664
+      },
+      {
+        "title": "cold-both: 양쪽이 모두 처음이라면",
+        "seconds": 362.43333333333334
+      },
+      {
+        "title": "교차 블록을 조용히 버리지 않는다",
+        "seconds": 400.2
+      },
+      {
+        "title": "이름 대신 겹침을 검사한다",
+        "seconds": 436.46666666666664
+      },
+      {
+        "title": "실제 표에서 네 질문을 나란히",
+        "seconds": 472.6333333333333
+      },
+      {
+        "title": "cold-drug가 먼 화학 구조를 보장할까?",
+        "seconds": 507.93333333333334
+      },
+      {
+        "title": "서열이 다르다고 먼 단백질일까?",
+        "seconds": 545.4
+      },
+      {
+        "title": "분할 뒤에는 정답 분포도 확인한다",
+        "seconds": 583.7666666666667
+      },
+      {
+        "title": "전처리도 학습 쪽에서 배운다",
+        "seconds": 622.2666666666667
+      },
+      {
+        "title": "검증·보정·최종 평가의 역할",
+        "seconds": 660.0
+      },
+      {
+        "title": "seed 하나로 재현이 끝나지 않는다",
+        "seconds": 697.8666666666667
+      },
+      {
+        "title": "작은 실습: 배정 파일과 검사표 읽기",
+        "seconds": 738.5
+      },
+      {
+        "title": "기권 평가도 같은 경계 위에서",
+        "seconds": 780.0
+      },
+      {
+        "title": "네 가지 질문과 다섯 가지 기록",
+        "seconds": 821.1
+      }
+    ]
+  },
+  {
+    "number": "DT03",
+    "order": 7,
+    "title": "분자를 숫자로 바꾸면, 결합을 알 수 있을까?",
+    "group": "실제 데이터와 모델",
+    "topic": "분자·단백질 표현 · baseline",
+    "seconds": 856.5,
+    "poster": "assets/thumbnails/DT03.jpg",
+    "guide": "guides/DT03/index.html",
+    "subtitle": "assets/subtitles/DT03.srt",
+    "source": {
+      "title": "DAVIS / TDC",
+      "url": "https://tdcommons.ai/multi_pred_tasks/dti/"
+    },
+    "chapters": [
+      {
+        "title": "분자를 숫자로 바꾸면, 결합을 알 수 있을까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "학습 전에, 정답의 범위를 먼저 정한다",
+        "seconds": 34.36666666666667
+      },
+      {
+        "title": "100 nM 이하는, 이번 실습의 수치 질문",
+        "seconds": 68.8
+      },
+      {
+        "title": "같은 분할, 달라진 조건부 표본 수",
+        "seconds": 101.9
+      },
+      {
+        "title": "입력은 두 갈래에서 만난다",
+        "seconds": 135.1
+      },
+      {
+        "title": "Morgan: 원자 주변을 펼쳐 보는 방법",
+        "seconds": 170.5
+      },
+      {
+        "title": "켜진 비트는, 원자 하나의 이름표가 아니다",
+        "seconds": 203.4
+      },
+      {
+        "title": "Tanimoto는 표현 사이의 겹침",
+        "seconds": 235.8
+      },
+      {
+        "title": "ESM-2는 단백질 서열을 읽는다",
+        "seconds": 268.1666666666667
+      },
+      {
+        "title": "평균을 낼 때, 특별 토큰을 빼야 한다",
+        "seconds": 302.6
+      },
+      {
+        "title": "긴 서열을 자를 때 생기는 손실",
+        "seconds": 336.06666666666666
+      },
+      {
+        "title": "2048 + 320 = 2368",
+        "seconds": 370.1666666666667
+      },
+      {
+        "title": "스케일러는 train에서만 배운다",
+        "seconds": 402.43333333333334
+      },
+      {
+        "title": "LogReg: 가중합을 확률 모양으로",
+        "seconds": 436.3333333333333
+      },
+      {
+        "title": "XGBoost: 작은 나무를 차례로 더한다",
+        "seconds": 471.43333333333334
+      },
+      {
+        "title": "학습 정답 비율만 사용하는 기준선",
+        "seconds": 506.8333333333333
+      },
+      {
+        "title": "AUC는 순위를, AP는 상위 예측을 읽는다",
+        "seconds": 539.3333333333334
+      },
+      {
+        "title": "실제 실행: 네 분할 × 다섯 조건",
+        "seconds": 574.8333333333334
+      },
+      {
+        "title": "실측 AUC: 추가 입력이 늘 이기지는 않는다",
+        "seconds": 608.8333333333334
+      },
+      {
+        "title": "실측 AP: 양성 비율 옆에서 읽는다",
+        "seconds": 645.1
+      },
+      {
+        "title": "입력 ablation이 묻는 정확한 질문",
+        "seconds": 679.3666666666667
+      },
+      {
+        "title": "낮은 점수의 원인을 하나로 정하지 않는다",
+        "seconds": 714.1333333333333
+      },
+      {
+        "title": "작은 실습: 결과표에서 예측 행까지",
+        "seconds": 747.6666666666666
+      },
+      {
+        "title": "정답 점수와 기권은 다음 질문이다",
+        "seconds": 782.0666666666667
+      },
+      {
+        "title": "핵심 정리: 표현, 경계, 비교",
+        "seconds": 818.3666666666667
+      }
+    ]
+  },
+  {
+    "number": "ON04",
+    "order": 8,
+    "title": "그럴듯한 구조, 어디까지 믿을까?",
+    "group": "구조와 복합체",
+    "topic": "단백질 구조 · confidence와 feature",
+    "seconds": 864.4333333333333,
+    "poster": "assets/thumbnails/ON04.jpg",
+    "guide": "guides/ON04/index.html",
+    "subtitle": "assets/subtitles/ON04.srt",
+    "source": {
+      "title": "AlphaFold DB / P00519",
+      "url": "https://alphafold.ebi.ac.uk/entry/P00519"
+    },
+    "chapters": [
+      {
+        "title": "그럴듯한 구조, 어디까지 믿을까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "같은 ABL1 이름, 같은 입력일까?",
+        "seconds": 36.46666666666667
+      },
+      {
+        "title": "PDB 파일: 점과 번호가 담긴 표",
+        "seconds": 70.2
+      },
+      {
+        "title": "예측 구조와 실험 구조의 범위",
+        "seconds": 105.4
+      },
+      {
+        "title": "pLDDT: 잔기 주변 구조의 신뢰도",
+        "seconds": 142.73333333333332
+      },
+      {
+        "title": "네 색은 읽는 가이드, 절대 보장은 아니다",
+        "seconds": 175.96666666666667
+      },
+      {
+        "title": "B-factor 칸의 의미가 파일마다 다르다",
+        "seconds": 210.16666666666666
+      },
+      {
+        "title": "전체 평균 63.37은 어디에서 왔을까?",
+        "seconds": 244.86666666666667
+      },
+      {
+        "title": "높은 국소 신뢰도, 불확실한 상대 위치",
+        "seconds": 277.46666666666664
+      },
+      {
+        "title": "PAE: 한 부위에 맞췄을 때 다른 위치의 오차",
+        "seconds": 309.23333333333335
+      },
+      {
+        "title": "대각선 블록과 블록 바깥을 비교한다",
+        "seconds": 344.6333333333333
+      },
+      {
+        "title": "pocket은 리간드가 들어갈 후보 부위",
+        "seconds": 378.6666666666667
+      },
+      {
+        "title": "P2Rank를 실제 파일에 실행했다",
+        "seconds": 410.46666666666664
+      },
+      {
+        "title": "후보 1: 25잔기, 도구 확률 0.742",
+        "seconds": 444.3333333333333
+      },
+      {
+        "title": "같은 파일, 부위 평균은 86.70",
+        "seconds": 478.8666666666667
+      },
+      {
+        "title": "평균 아래에 숨은 네 잔기",
+        "seconds": 514.0333333333333
+      },
+      {
+        "title": "부위 내부 PAE도 별도로 계산한다",
+        "seconds": 546.4
+      },
+      {
+        "title": "1IEP: 실제 리간드가 있는 구조",
+        "seconds": 580.6
+      },
+      {
+        "title": "번호를 빼고 더하기보다, 서열을 정렬한다",
+        "seconds": 614.3666666666667
+      },
+      {
+        "title": "리간드와 5 Å 이내의 잔기를 찾는다",
+        "seconds": 651.6
+      },
+      {
+        "title": "pocket과 실험 주변 부위는 완전히 같지 않다",
+        "seconds": 684.1666666666666
+      },
+      {
+        "title": "구조 feature는 값과 출처를 함께 가진다",
+        "seconds": 718.0666666666667
+      },
+      {
+        "title": "구조를 추가한 성능 비교는 다음 실험",
+        "seconds": 756.3666666666667
+      },
+      {
+        "title": "작은 실습: 값 하나를 원본까지 따라가기",
+        "seconds": 791.0666666666667
+      },
+      {
+        "title": "핵심 정리: 위치, 범위, 의미",
+        "seconds": 825.9333333333333
+      }
+    ]
+  },
+  {
+    "number": "ST01",
+    "order": 9,
+    "title": "좋은 단백질 구조는 어떻게 찾아낼까?",
+    "group": "구조와 복합체",
+    "topic": "Rosetta · 구조 탐색과 점수",
+    "seconds": 668.9666666666667,
+    "poster": "assets/thumbnails/ST01.jpg",
+    "guide": "guides/ST01/index.html",
+    "subtitle": "assets/subtitles/ST01.srt",
+    "source": {
+      "title": "Rosetta · scoring tutorial",
+      "url": "https://docs.rosettacommons.org/demos/latest/tutorials/scoring/scoring"
+    },
+    "chapters": [
+      {
+        "title": "좋은 단백질 구조는 어떻게 찾아낼까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "구조 예측과 단백질 설계는 방향이 다르다",
+        "seconds": 33.7
+      },
+      {
+        "title": "Rosetta는 여러 작업을 담는 도구 묶음이다",
+        "seconds": 68.2
+      },
+      {
+        "title": "좌표가 같아도 해석할 정보는 더 있다",
+        "seconds": 101.56666666666666
+      },
+      {
+        "title": "무엇을 움직일지부터 정한다",
+        "seconds": 132.63333333333333
+      },
+      {
+        "title": "겹친 원자는 왜 문제가 될까?",
+        "seconds": 163.3
+      },
+      {
+        "title": "좋은 점수는 여러 항의 합이다",
+        "seconds": 194.3
+      },
+      {
+        "title": "세 후보를 실제로 더해보자",
+        "seconds": 227.93333333333334
+      },
+      {
+        "title": "가중치를 바꾸면 순위도 바뀐다",
+        "seconds": 261.46666666666664
+      },
+      {
+        "title": "Rosetta 점수는 친화도 단위가 아니다",
+        "seconds": 290.73333333333335
+      },
+      {
+        "title": "탐색과 채점은 서로 다른 역할이다",
+        "seconds": 323.3333333333333
+      },
+      {
+        "title": "Monte Carlo는 나쁜 이동도 받아들일 수 있다",
+        "seconds": 356.6666666666667
+      },
+      {
+        "title": "곁사슬은 rotamer 후보에서 고를 수 있다",
+        "seconds": 390.9
+      },
+      {
+        "title": "relax는 구조 주변을 다듬는 프로토콜이다",
+        "seconds": 421.6666666666667
+      },
+      {
+        "title": "점수가 내려가도 정답에 가까워졌을까?",
+        "seconds": 451.6666666666667
+      },
+      {
+        "title": "같은 구조를 돌리면 RMSD는 어떻게 될까?",
+        "seconds": 481.8666666666667
+      },
+      {
+        "title": "전체 모양과 결합 부위는 따로 확인한다",
+        "seconds": 512.7666666666667
+      },
+      {
+        "title": "여러 실행은 탐색의 흔들림을 보여준다",
+        "seconds": 543.7333333333333
+      },
+      {
+        "title": "작은 실습: 계산 기준을 바꿔본다",
+        "seconds": 576.7666666666667
+      },
+      {
+        "title": "핵심 요약: 후보·함수·검증을 함께 본다",
+        "seconds": 607.4666666666667
+      },
+      {
+        "title": "원전과 설명용 계산을 다시 확인한다",
+        "seconds": 638.3666666666667
+      }
+    ]
+  },
+  {
+    "number": "ST02",
+    "order": 10,
+    "title": "문자열에서 입체 구조까지, AlphaFold는 어떻게 할까?",
+    "group": "구조와 복합체",
+    "topic": "AlphaFold 2 · MSA와 Evoformer",
+    "seconds": 751.5666666666667,
+    "poster": "assets/thumbnails/ST02.jpg",
+    "guide": "guides/ST02/index.html",
+    "subtitle": "assets/subtitles/ST02.srt",
+    "source": {
+      "title": "Jumper et al. · AlphaFold 2 (2021)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8371605/"
+    },
+    "chapters": [
+      {
+        "title": "문자열에서 입체 구조까지, 어떻게 가능할까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "예측한 구조와 접히는 시간은 다른 질문이다",
+        "seconds": 33.96666666666667
+      },
+      {
+        "title": "잔기와 원자의 단위를 먼저 나눈다",
+        "seconds": 65.16666666666667
+      },
+      {
+        "title": "MSA는 관련 서열을 나란히 놓은 표다",
+        "seconds": 96.63333333333334
+      },
+      {
+        "title": "같이 변하는 두 위치를 계산해보자",
+        "seconds": 126.56666666666666
+      },
+      {
+        "title": "같이 변한다고 직접 닿는 것은 아니다",
+        "seconds": 157.3
+      },
+      {
+        "title": "template는 이미 알려진 구조의 단서다",
+        "seconds": 189.63333333333333
+      },
+      {
+        "title": "MSA 표현은 글자를 특징으로 바꾼다",
+        "seconds": 220.46666666666667
+      },
+      {
+        "title": "pair 표현은 모든 잔기 쌍을 다룬다",
+        "seconds": 249.33333333333334
+      },
+      {
+        "title": "Evoformer는 두 표현이 대화하는 곳이다",
+        "seconds": 280.5
+      },
+      {
+        "title": "attention은 어떤 정보를 참고할지 정한다",
+        "seconds": 311.23333333333335
+      },
+      {
+        "title": "서열 패턴은 pair 표현으로 전달된다",
+        "seconds": 342.93333333333334
+      },
+      {
+        "title": "세 잔기의 관계를 함께 갱신한다",
+        "seconds": 374.8666666666667
+      },
+      {
+        "title": "structure module이 좌표로 연결한다",
+        "seconds": 403.23333333333335
+      },
+      {
+        "title": "단백질을 돌려도 같은 기하를 다뤄야 한다",
+        "seconds": 434.56666666666666
+      },
+      {
+        "title": "주사슬과 곁사슬이 원자 모형으로 이어진다",
+        "seconds": 467.93333333333334
+      },
+      {
+        "title": "recycling은 이전 예측을 다시 참고한다",
+        "seconds": 498.6
+      },
+      {
+        "title": "학습은 알려진 구조와의 차이에서 출발한다",
+        "seconds": 528.2333333333333
+      },
+      {
+        "title": "confidence도 모델이 예측한 값이다",
+        "seconds": 560.8333333333334
+      },
+      {
+        "title": "실제 AFDB 파일을 입력까지 따라간다",
+        "seconds": 591.3333333333334
+      },
+      {
+        "title": "모델 계열과 입력 범위를 확인한다",
+        "seconds": 622.0333333333333
+      },
+      {
+        "title": "작은 실습: 표와 좌표를 직접 확인한다",
+        "seconds": 653.1
+      },
+      {
+        "title": "핵심 요약: 진화·관계·기하를 연결한다",
+        "seconds": 685.2
+      },
+      {
+        "title": "원논문과 공식 구현을 함께 읽는다",
+        "seconds": 717.0666666666667
+      }
+    ]
+  },
+  {
+    "number": "ST03",
+    "order": 11,
+    "title": "단백질과 약물을 함께 예측하면 무엇이 달라질까?",
+    "group": "구조와 복합체",
+    "topic": "AlphaFold 3 · 복합체와 확산",
+    "seconds": 731.0666666666667,
+    "poster": "assets/thumbnails/ST03.jpg",
+    "guide": "guides/ST03/index.html",
+    "subtitle": "assets/subtitles/ST03.srt",
+    "source": {
+      "title": "Abramson et al. · AlphaFold 3 (2024)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11168924/"
+    },
+    "chapters": [
+      {
+        "title": "단백질과 약물을 함께 예측하면 무엇이 달라질까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "입력 범위가 단백질 사슬을 넘어간다",
+        "seconds": 33.53333333333333
+      },
+      {
+        "title": "같은 이름이어도 다른 화학적 입력일 수 있다",
+        "seconds": 64.26666666666667
+      },
+      {
+        "title": "token은 원자 수와 항상 같지 않다",
+        "seconds": 95.86666666666666
+      },
+      {
+        "title": "잔기 관계와 원자 기하를 함께 다룬다",
+        "seconds": 128.03333333333333
+      },
+      {
+        "title": "MSA는 사라진 것이 아니라 역할이 바뀐다",
+        "seconds": 160.26666666666668
+      },
+      {
+        "title": "Pairformer는 single과 pair를 갱신한다",
+        "seconds": 192.86666666666667
+      },
+      {
+        "title": "관계 표현 다음에는 좌표를 만들어야 한다",
+        "seconds": 222.43333333333334
+      },
+      {
+        "title": "확산을 배우려면 노이즈를 먼저 생각한다",
+        "seconds": 254.5
+      },
+      {
+        "title": "추론에서는 여러 정제 단계를 거친다",
+        "seconds": 288.3333333333333
+      },
+      {
+        "title": "그림의 보간과 실제 diffusion을 구분한다",
+        "seconds": 322.2
+      },
+      {
+        "title": "seed와 sample은 여러 후보를 만든다",
+        "seconds": 353.1666666666667
+      },
+      {
+        "title": "confidence는 질문별로 읽어야 한다",
+        "seconds": 383.6666666666667
+      },
+      {
+        "title": "ranking score는 후보 정렬을 위한 수치다",
+        "seconds": 413.76666666666665
+      },
+      {
+        "title": "높은 ipTM도 충돌 검사를 대신하지 못한다",
+        "seconds": 444.73333333333335
+      },
+      {
+        "title": "분자 자세와 결합 세기는 다른 목표다",
+        "seconds": 473.1666666666667
+      },
+      {
+        "title": "입체 화학과 잘못된 구조도 점검한다",
+        "seconds": 505.56666666666666
+      },
+      {
+        "title": "정적 예측은 모든 상태를 대표하지 않는다",
+        "seconds": 537.1666666666666
+      },
+      {
+        "title": "실험 구조와 비교하려면 정렬 범위를 고른다",
+        "seconds": 567.5333333333333
+      },
+      {
+        "title": "실행 계획에는 입력과 비용 범위를 남긴다",
+        "seconds": 598.9666666666667
+      },
+      {
+        "title": "작은 실습: 토큰과 순위 공식을 읽는다",
+        "seconds": 633.5333333333333
+      },
+      {
+        "title": "핵심 요약: 여러 분자와 여러 근거를 연결한다",
+        "seconds": 665.8333333333334
+      },
+      {
+        "title": "원논문·공식 출력 문서·개인 예제를 남긴다",
+        "seconds": 696.3
+      }
+    ]
+  },
+  {
+    "number": "ON05",
+    "order": 12,
+    "title": "그럴듯한 결합 자세, 실제 결합도 믿을 수 있을까?",
+    "group": "구조와 복합체",
+    "topic": "도킹·co-folding · 출력의 해석",
+    "seconds": 778.2,
+    "poster": "assets/thumbnails/ON05.jpg",
+    "guide": "guides/ON05/index.html",
+    "subtitle": "assets/subtitles/ON05.srt",
+    "source": {
+      "title": "AutoDock Vina 공식 CPU 튜토리얼",
+      "url": "https://autodock-vina.readthedocs.io/en/latest/docking_basic.html"
+    },
+    "chapters": [
+      {
+        "title": "약물이 딱 맞게 들어가면, 믿어도 될까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "위치, 결합 세기, 약효는 다른 질문",
+        "seconds": 33.266666666666666
+      },
+      {
+        "title": "도킹은 준비된 두 구조에서 시작한다",
+        "seconds": 67.53333333333333
+      },
+      {
+        "title": "원자 하나와 수소 상태가 결과를 바꾼다",
+        "seconds": 102.4
+      },
+      {
+        "title": "검색 상자는 도구가 볼 수 있는 범위",
+        "seconds": 138.7
+      },
+      {
+        "title": "이동하고, 돌리고, 결합을 비튼다",
+        "seconds": 172.96666666666667
+      },
+      {
+        "title": "도킹 점수는 후보를 비교하는 근사",
+        "seconds": 205.7
+      },
+      {
+        "title": "탐색을 늘리면, 무엇이 달라질까?",
+        "seconds": 240.73333333333332
+      },
+      {
+        "title": "실제 CPU 실행: 두 탐색 예산의 결과",
+        "seconds": 276.3
+      },
+      {
+        "title": "첫 후보의 RMSD가 영인 이유",
+        "seconds": 311.6
+      },
+      {
+        "title": "참조 자세와 겹쳐 보는 별도 계산",
+        "seconds": 345.73333333333335
+      },
+      {
+        "title": "가까운 자세도, 화학적으로는 틀릴 수 있다",
+        "seconds": 380.26666666666665
+      },
+      {
+        "title": "단백질을 고정하면 놓치는 움직임",
+        "seconds": 414.3666666666667
+      },
+      {
+        "title": "co-folding: 처음부터 함께 배치한다",
+        "seconds": 447.96666666666664
+      },
+      {
+        "title": "확산 모델의 좌표 갱신을 이해하기",
+        "seconds": 484.6333333333333
+      },
+      {
+        "title": "AlphaFold 2와 3의 범위를 구분한다",
+        "seconds": 520.9
+      },
+      {
+        "title": "구조 신뢰도는 결합 확률이 아니다",
+        "seconds": 555.4
+      },
+      {
+        "title": "Boltz-2의 친화도 출력은 별도 질문",
+        "seconds": 592.3666666666667
+      },
+      {
+        "title": "같은 로그라도, 부호와 단위가 다르다",
+        "seconds": 628.3333333333334
+      },
+      {
+        "title": "구조를 추가하면, 평가 질문도 지킨다",
+        "seconds": 663.1666666666666
+      },
+      {
+        "title": "작은 실습: 숫자를 원본까지 따라가기",
+        "seconds": 700.0
+      },
+      {
+        "title": "핵심 정리: 자세, 점수, 근거",
+        "seconds": 737.6333333333333
+      }
+    ]
+  },
+  {
+    "number": "CAL01",
+    "order": 13,
+    "title": "모델의 자신감, 실제 정답률과 맞을까?",
+    "group": "불확실성과 기권",
+    "topic": "Calibration·ECE · 확률 보정",
+    "seconds": 646.4,
+    "poster": "assets/thumbnails/CAL01.jpg",
+    "guide": "guides/CAL01/index.html",
+    "subtitle": "assets/subtitles/CAL01.srt",
+    "source": {
+      "title": "Guo et al. (2017) · On Calibration of Modern Neural Networks",
+      "url": "https://proceedings.mlr.press/v70/guo17a.html"
+    },
+    "chapters": [
+      {
+        "title": "90%라는 숫자, 실제로 믿어도 될까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "먼저, 무엇의 확률인지 정하자",
+        "seconds": 30.566666666666666
+      },
+      {
+        "title": "양성 확률과 정답 신뢰도는 다르다",
+        "seconds": 58.333333333333336
+      },
+      {
+        "title": "80%는 한 후보의 정답을 보장할까?",
+        "seconds": 85.4
+      },
+      {
+        "title": "잘 정렬하는 것과 잘 보정하는 것",
+        "seconds": 114.93333333333334
+      },
+      {
+        "title": "확률과 관측 비율을 한 그림에 놓기",
+        "seconds": 142.36666666666667
+      },
+      {
+        "title": "후보들을 확률 구간으로 모으기",
+        "seconds": 168.53333333333333
+      },
+      {
+        "title": "세로 간격이 보정 오차의 재료다",
+        "seconds": 193.8
+      },
+      {
+        "title": "ECE는 표본 수로 가중한 평균이다",
+        "seconds": 225.23333333333332
+      },
+      {
+        "title": "선택한 답의 confidence ECE도 따로",
+        "seconds": 253.86666666666667
+      },
+      {
+        "title": "구간 수를 바꾸면 숫자도 달라진다",
+        "seconds": 285.6333333333333
+      },
+      {
+        "title": "모델 학습과 확률 보정을 분리하기",
+        "seconds": 314.26666666666665
+      },
+      {
+        "title": "Temperature scaling: 확률 눈금 조절",
+        "seconds": 343.03333333333336
+      },
+      {
+        "title": "온도는 어디서 찾는 걸까?",
+        "seconds": 370.8
+      },
+      {
+        "title": "ECE만 낮아졌다고 끝내지 않기",
+        "seconds": 401.53333333333336
+      },
+      {
+        "title": "실제 네 분할: 보정 전과 후",
+        "seconds": 431.6333333333333
+      },
+      {
+        "title": "cold-drug: 그림에서 변화를 읽기",
+        "seconds": 460.5
+      },
+      {
+        "title": "cold-both: 왜 개선을 보장 못할까?",
+        "seconds": 487.43333333333334
+      },
+      {
+        "title": "평균 보정이 낯선 집단까지 지켜줄까?",
+        "seconds": 518.8666666666667
+      },
+      {
+        "title": "작은 실습: 숫자보다 표를 먼저 읽기",
+        "seconds": 551.0333333333333
+      },
+      {
+        "title": "핵심 요약: 확률의 눈금을 검증하자",
+        "seconds": 583.2666666666667
+      },
+      {
+        "title": "원전과 실제 계산을 함께 남기기",
+        "seconds": 615.4333333333333
+      }
+    ]
+  },
+  {
+    "number": "CP01",
+    "order": 14,
+    "title": "정답 하나 대신, 가능한 답을 모으면?",
+    "group": "불확실성과 기권",
+    "topic": "Conformal prediction · 예측 집합",
+    "seconds": 700.8666666666667,
+    "poster": "assets/thumbnails/CP01.jpg",
+    "guide": "guides/CP01/index.html",
+    "subtitle": "assets/subtitles/CP01.srt",
+    "source": {
+      "title": "Angelopoulos & Bates · Conformal prediction introduction",
+      "url": "https://arxiv.org/abs/2107.07511"
+    },
+    "chapters": [
+      {
+        "title": "정답 하나 대신, 가능한 답을 모으면?",
+        "seconds": 0.0
+      },
+      {
+        "title": "정답은 먼저 정의해야 한다",
+        "seconds": 38.36666666666667
+      },
+      {
+        "title": "모델 학습과 집합 보정은 다른 단계",
+        "seconds": 75.13333333333334
+      },
+      {
+        "title": "틀릴수록 커지는 점수를 만든다",
+        "seconds": 112.26666666666667
+      },
+      {
+        "title": "보정 점수들을 작은 순서로 놓는다",
+        "seconds": 149.06666666666666
+      },
+      {
+        "title": "9개 점수에서 경계는 몇 번째일까?",
+        "seconds": 185.0
+      },
+      {
+        "title": "새 후보에는 가능한 라벨을 각각 시험한다",
+        "seconds": 221.4
+      },
+      {
+        "title": "집합의 크기를 행동으로 연결한다",
+        "seconds": 255.0
+      },
+      {
+        "title": "정답 포함률과 답변 비율은 다르다",
+        "seconds": 289.8666666666667
+      },
+      {
+        "title": "90% 보장은 무엇에 대한 확률일까?",
+        "seconds": 327.03333333333336
+      },
+      {
+        "title": "교환 가능성을 카드 섞기로 생각한다",
+        "seconds": 362.53333333333336
+      },
+      {
+        "title": "실제 네 split에서 정답 포함률을 읽는다",
+        "seconds": 398.76666666666665
+      },
+      {
+        "title": "random의 집합 크기를 함께 본다",
+        "seconds": 439.26666666666665
+      },
+      {
+        "title": "전체 평균 뒤에 숨은 라벨별 차이",
+        "seconds": 477.43333333333334
+      },
+      {
+        "title": "작은 보정셋에서는 경계도 거칠어진다",
+        "seconds": 515.6666666666666
+      },
+      {
+        "title": "기권한 후보는 어디로 보내야 할까?",
+        "seconds": 551.7333333333333
+      },
+      {
+        "title": "작은 실습: 한 행의 집합을 직접 계산한다",
+        "seconds": 588.1666666666666
+      },
+      {
+        "title": "핵심 요약: 집합, 분모, 전제",
+        "seconds": 624.4333333333333
+      },
+      {
+        "title": "원전과 계산 파일을 함께 남긴다",
+        "seconds": 662.8666666666667
+      }
+    ]
+  },
+  {
+    "number": "RC01",
+    "order": 15,
+    "title": "모르는 문제를 넘기면, 정말 더 믿을 만할까?",
+    "group": "불확실성과 기권",
+    "topic": "기권 · risk–coverage와 AURC",
+    "seconds": 698.3,
+    "poster": "assets/thumbnails/RC01.jpg",
+    "guide": "guides/RC01/index.html",
+    "subtitle": "assets/subtitles/RC01.srt",
+    "source": {
+      "title": "Geifman & El-Yaniv · Selective Classification for Deep Neural Networks",
+      "url": "https://arxiv.org/abs/1705.08500"
+    },
+    "chapters": [
+      {
+        "title": "모르는 문제를 넘기면 더 믿을 만할까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "기권과 오류를 구분한다",
+        "seconds": 35.833333333333336
+      },
+      {
+        "title": "coverage는 전체 문제 중 답한 비율",
+        "seconds": 72.26666666666667
+      },
+      {
+        "title": "risk는 답한 문제 안의 오답률",
+        "seconds": 107.03333333333333
+      },
+      {
+        "title": "양성 확률을 신뢰도로 바꾸려면",
+        "seconds": 143.66666666666666
+      },
+      {
+        "title": "신뢰 점수로 문제를 정렬한다",
+        "seconds": 181.63333333333333
+      },
+      {
+        "title": "문턱을 움직이면 답변 집합이 바뀐다",
+        "seconds": 219.73333333333332
+      },
+      {
+        "title": "risk–coverage 곡선을 직접 만든다",
+        "seconds": 254.2
+      },
+      {
+        "title": "같은 점수의 후보를 임의로 나누지 않는다",
+        "seconds": 288.7
+      },
+      {
+        "title": "AURC는 곡선 아래 면적이다",
+        "seconds": 323.43333333333334
+      },
+      {
+        "title": "문턱 선택과 최종 평가를 분리한다",
+        "seconds": 360.3
+      },
+      {
+        "title": "random에서 답변과 오류를 함께 읽는다",
+        "seconds": 397.7
+      },
+      {
+        "title": "cold-drug에서는 고른 기준이 흔들렸다",
+        "seconds": 434.8333333333333
+      },
+      {
+        "title": "네 분할의 곡선을 같은 정의로 비교한다",
+        "seconds": 472.8333333333333
+      },
+      {
+        "title": "컨포멀 집합과 confidence 문턱을 구분한다",
+        "seconds": 509.26666666666665
+      },
+      {
+        "title": "실험 비용과 놓친 후보도 생각한다",
+        "seconds": 547.9333333333333
+      },
+      {
+        "title": "작은 실습: 다섯 후보의 곡선을 그린다",
+        "seconds": 583.5
+      },
+      {
+        "title": "핵심 요약: 기권은 행동으로 평가한다",
+        "seconds": 620.2666666666667
+      },
+      {
+        "title": "원전과 개인 실행 결과를 연결한다",
+        "seconds": 658.1333333333333
+      }
+    ]
+  },
+  {
+    "number": "AG01",
+    "order": 16,
+    "title": "도구를 쓰는 AI, 무엇을 기록해야 할까?",
+    "group": "Agent와 Curation",
+    "topic": "Agent · MCP와 실행 로그",
+    "seconds": 728.3666666666667,
+    "poster": "assets/thumbnails/AG01.jpg",
+    "guide": "guides/AG01/index.html",
+    "subtitle": "assets/subtitles/AG01.srt",
+    "source": {
+      "title": "ToolUniverse · MCP support",
+      "url": "https://zitniklab.hms.harvard.edu/ToolUniverse/guide/building_ai_scientists/mcp_support.html"
+    },
+    "chapters": [
+      {
+        "title": "도구를 쓰는 AI, 무엇을 기록해야 할까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "모델의 도구 선택과 도구 실행은 다르다",
+        "seconds": 41.4
+      },
+      {
+        "title": "입력 스키마가 도구의 계약이다",
+        "seconds": 80.56666666666666
+      },
+      {
+        "title": "MCP는 연결 규약이다",
+        "seconds": 118.2
+      },
+      {
+        "title": "ToolUniverse를 도구 실행 엔진으로 연결한다",
+        "seconds": 155.03333333333333
+      },
+      {
+        "title": "작은 과학 도구 세 개의 역할",
+        "seconds": 194.13333333333333
+      },
+      {
+        "title": "표준 입출력의 두 통로를 구분한다",
+        "seconds": 231.63333333333333
+      },
+      {
+        "title": "호출 로그에는 연결할 식별자가 필요하다",
+        "seconds": 268.6333333333333
+      },
+      {
+        "title": "실제 호출: 9개 성공과 입력 오류 1개",
+        "seconds": 303.6
+      },
+      {
+        "title": "반환 플래그가 전부를 말하지 않았다",
+        "seconds": 342.6
+      },
+      {
+        "title": "도구 오류는 음성 정답이 아니다",
+        "seconds": 382.8666666666667
+      },
+      {
+        "title": "최종 출력 스키마를 먼저 고정한다",
+        "seconds": 419.56666666666666
+      },
+      {
+        "title": "실패 재시도에는 경계가 필요하다",
+        "seconds": 456.73333333333335
+      },
+      {
+        "title": "외부 DB를 붙이면 출처도 늘어난다",
+        "seconds": 495.6333333333333
+      },
+      {
+        "title": "지연·토큰·비용은 분리해서 기록한다",
+        "seconds": 535.6333333333333
+      },
+      {
+        "title": "작은 실습: 숫자 하나를 호출까지 추적한다",
+        "seconds": 576.3666666666667
+      },
+      {
+        "title": "로그를 읽으면 실패 가설이 생긴다",
+        "seconds": 613.3666666666667
+      },
+      {
+        "title": "핵심 요약: 연결과 판단을 따로 검증한다",
+        "seconds": 649.9
+      },
+      {
+        "title": "문서와 실행 버전을 함께 남긴다",
+        "seconds": 688.1333333333333
+      }
+    ]
+  },
+  {
+    "number": "CU01",
+    "order": 17,
+    "title": "쉬운 문제와 낯선 문제를 어떻게 나눌까?",
+    "group": "Agent와 Curation",
+    "topic": "Curation · 쿼리와 난이도 좌표",
+    "seconds": 741.3,
+    "poster": "assets/thumbnails/CU01.jpg",
+    "guide": "guides/CU01/index.html",
+    "subtitle": "assets/subtitles/CU01.srt",
+    "source": {
+      "title": "Abstain-DTI · project and onboarding",
+      "url": "https://github.com/Pseudo-Lab/abstain-dti"
+    },
+    "chapters": [
+      {
+        "title": "쉬운 문제와 낯선 문제를 어떻게 나눌까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "좋은 질문에는 대상과 정답의 정의가 있다",
+        "seconds": 37.93333333333333
+      },
+      {
+        "title": "질문 표와 좌표 표를 같은 키로 연결한다",
+        "seconds": 75.16666666666667
+      },
+      {
+        "title": "좌표의 기준은 평가 조건의 train이다",
+        "seconds": 113.86666666666666
+      },
+      {
+        "title": "Morgan fingerprint로 화학적 거리를 만든다",
+        "seconds": 151.23333333333332
+      },
+      {
+        "title": "가장 가까운 분자를 원본까지 확인한다",
+        "seconds": 189.8
+      },
+      {
+        "title": "새로운 골격도 별도 좌표가 된다",
+        "seconds": 227.23333333333332
+      },
+      {
+        "title": "서열 좌표는 무엇과 비교했는가?",
+        "seconds": 267.06666666666666
+      },
+      {
+        "title": "pocket pLDDT는 구조 근거의 좌표다",
+        "seconds": 307.9
+      },
+      {
+        "title": "실험 구조를 안 찾았다는 말은 없다와 다르다",
+        "seconds": 347.5
+      },
+      {
+        "title": "학습 지원량은 독립 실험 개수가 아니다",
+        "seconds": 384.8
+      },
+      {
+        "title": "여섯 좌표를 한 숫자로 합치지 않는다",
+        "seconds": 423.03333333333336
+      },
+      {
+        "title": "12개 질문을 어떻게 골랐는가?",
+        "seconds": 463.26666666666665
+      },
+      {
+        "title": "작성자와 검증자는 다른 일을 한다",
+        "seconds": 502.53333333333336
+      },
+      {
+        "title": "정답은 Agent가 쓰는 근거와 분리한다",
+        "seconds": 542.2
+      },
+      {
+        "title": "작은 실습: 좌표 하나를 직접 대조한다",
+        "seconds": 581.3666666666667
+      },
+      {
+        "title": "결과를 난이도로 나누려면 분모도 남긴다",
+        "seconds": 621.3333333333334
+      },
+      {
+        "title": "핵심 요약: 낯섦과 근거를 정의한다",
+        "seconds": 658.3
+      },
+      {
+        "title": "공식 자료와 개인 정의를 함께 표시한다",
+        "seconds": 697.4333333333333
+      }
+    ]
+  },
+  {
+    "number": "AG02",
+    "order": 18,
+    "title": "도구가 틀린 답을 주면, AI는 알아챌까?",
+    "group": "Agent와 Curation",
+    "topic": "교란 하네스 · 단위와 동일성",
+    "seconds": 737.5,
+    "poster": "assets/thumbnails/AG02.jpg",
+    "guide": "guides/AG02/index.html",
+    "subtitle": "assets/subtitles/AG02.srt",
+    "source": {
+      "title": "MCP · tools specification",
+      "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/tools"
+    },
+    "chapters": [
+      {
+        "title": "도구가 틀린 답을 주면, AI는 알아챌까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "정확도만 보면 놓치는 세 단계",
+        "seconds": 40.833333333333336
+      },
+      {
+        "title": "원본과 교란본을 한 쌍으로 보관한다",
+        "seconds": 77.53333333333333
+      },
+      {
+        "title": "네 종류의 오류를 작게 나눈다",
+        "seconds": 115.8
+      },
+      {
+        "title": "숫자는 같고 단위만 바뀌면",
+        "seconds": 152.13333333333333
+      },
+      {
+        "title": "다른 엔트리를 가져오면",
+        "seconds": 190.06666666666666
+      },
+      {
+        "title": "식별자는 그대로, 분자만 바꾸면",
+        "seconds": 228.1
+      },
+      {
+        "title": "타겟 식별자도 독립적으로 확인한다",
+        "seconds": 268.96666666666664
+      },
+      {
+        "title": "검사기를 답변 앞에 둔다",
+        "seconds": 309.0
+      },
+      {
+        "title": "오류 탐지와 경계값 기권을 구분한다",
+        "seconds": 348.8
+      },
+      {
+        "title": "네 조건으로 검사의 효과를 비교한다",
+        "seconds": 386.93333333333334
+      },
+      {
+        "title": "검사가 없는 교란 조건의 실제 결과",
+        "seconds": 423.9
+      },
+      {
+        "title": "검사 있는 조건에서는 무엇을 잡았나?",
+        "seconds": 464.8
+      },
+      {
+        "title": "서로 맞는 거짓 숫자는 통과할 수 있다",
+        "seconds": 504.2
+      },
+      {
+        "title": "검사 이유를 최종 판단에 연결한다",
+        "seconds": 546.4666666666667
+      },
+      {
+        "title": "실제 에이전트로 확장할 때",
+        "seconds": 585.1
+      },
+      {
+        "title": "작은 실습: 한 교란을 끝까지 추적한다",
+        "seconds": 623.2666666666667
+      },
+      {
+        "title": "핵심 요약: 반환도 검증 대상이다",
+        "seconds": 660.4666666666667
+      },
+      {
+        "title": "출처와 개인 감사 프로토콜",
+        "seconds": 695.8666666666667
+      }
+    ]
+  },
+  {
+    "number": "EV01",
+    "order": 19,
+    "title": "같은 질문을 세 번, 판단은 얼마나 바뀔까?",
+    "group": "반복 평가와 해석",
+    "topic": "반복 평가 · flip과 실패 분석",
+    "seconds": 765.8,
+    "poster": "assets/thumbnails/EV01.jpg",
+    "guide": "guides/EV01/index.html",
+    "subtitle": "assets/subtitles/EV01.srt",
+    "source": {
+      "title": "Abstain-DTI · project overview",
+      "url": "https://github.com/Pseudo-Lab/abstain-dti"
+    },
+    "chapters": [
+      {
+        "title": "같은 질문을 세 번, 판단은 얼마나 바뀔까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "같은 질문을 만들려면 조건도 고정한다",
+        "seconds": 41.53333333333333
+      },
+      {
+        "title": "자유로운 문장을 비교 가능한 상태로 바꾼다",
+        "seconds": 81.63333333333334
+      },
+      {
+        "title": "첫 질문은 답변과 기권 사이를 오간다",
+        "seconds": 120.56666666666666
+      },
+      {
+        "title": "한 번이라도 바뀐 질문의 비율",
+        "seconds": 157.53333333333333
+      },
+      {
+        "title": "반복 쌍 사이의 불일치를 세는 정의",
+        "seconds": 194.5
+      },
+      {
+        "title": "라벨 비교는 두 실행 모두 답했을 때",
+        "seconds": 233.2
+      },
+      {
+        "title": "안정적인 오답도 가능하다",
+        "seconds": 270.8333333333333
+      },
+      {
+        "title": "실제 하네스의 기록을 묶는다",
+        "seconds": 309.6666666666667
+      },
+      {
+        "title": "실제 규칙 러너의 변동은 없었다",
+        "seconds": 349.06666666666666
+      },
+      {
+        "title": "144기록은 144개의 새 질문이 아니다",
+        "seconds": 389.76666666666665
+      },
+      {
+        "title": "만들 수 없는 지표는 비워 둔다",
+        "seconds": 431.26666666666665
+      },
+      {
+        "title": "난이도로 나눌 때 표본 수도 읽는다",
+        "seconds": 473.8333333333333
+      },
+      {
+        "title": "실패 모드를 원시 로그로 분류한다",
+        "seconds": 517.7333333333333
+      },
+      {
+        "title": "불확실성 범위도 평가 단위에 맞춘다",
+        "seconds": 557.9666666666667
+      },
+      {
+        "title": "수치 동결 전에 확인할 목록",
+        "seconds": 601.6333333333333
+      },
+      {
+        "title": "작은 실습: 반복표를 손으로 계산한다",
+        "seconds": 644.0
+      },
+      {
+        "title": "핵심 요약: 같은 답도 따로 검증한다",
+        "seconds": 683.2
+      },
+      {
+        "title": "출처와 다음 실제 벤치마크 단계",
+        "seconds": 722.0
+      }
+    ]
+  },
+  {
+    "number": "R01",
+    "order": 20,
+    "title": "도구를 잘 쓰는 AI는 왜 후보를 충분히 검토하지 않을까?",
+    "group": "심화 논문 리뷰",
+    "topic": "단백질 설계 Agent · BioDesignBench",
+    "seconds": 636.9666666666667,
+    "poster": "assets/thumbnails/R01.jpg",
+    "guide": "guides/R01/index.html",
+    "subtitle": "assets/subtitles/R01.srt",
+    "source": {
+      "title": "대상 논문 · Kim & Romero (2026)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13174699/"
+    },
+    "chapters": [
+      {
+        "title": "후보를 만들었다. 이제 끝일까?",
+        "seconds": 0.0
+      },
+      {
+        "title": "결과 점수와 행동을 함께 읽기",
+        "seconds": 26.833333333333332
+      },
+      {
+        "title": "단백질 설계는 무엇을 만드는가?",
+        "seconds": 54.03333333333333
+      },
+      {
+        "title": "생성에서 평가까지의 도구 역할",
+        "seconds": 85.8
+      },
+      {
+        "title": "에이전트는 언제 멈출지 결정한다",
+        "seconds": 117.83333333333333
+      },
+      {
+        "title": "76과제는 어떻게 구성됐을까?",
+        "seconds": 146.96666666666667
+      },
+      {
+        "title": "누구와 무엇을 비교했을까?",
+        "seconds": 178.13333333333333
+      },
+      {
+        "title": "100점은 무엇을 뜻하는가?",
+        "seconds": 210.8
+      },
+      {
+        "title": "고정 코드보다 높아도 남는 차이",
+        "seconds": 243.7
+      },
+      {
+        "title": "호출 범위와 평가 깊이는 다르다",
+        "seconds": 280.6333333333333
+      },
+      {
+        "title": "가상 후보 3개의 평가 표 읽기",
+        "seconds": 314.46666666666664
+      },
+      {
+        "title": "생성 이후의 검토가 얕았다",
+        "seconds": 347.5
+      },
+      {
+        "title": "상관관계에서 다음 실험으로",
+        "seconds": 380.8666666666667
+      },
+      {
+        "title": "평가 행동을 바꾸는 18과제 실험",
+        "seconds": 416.03333333333336
+      },
+      {
+        "title": "깊은 평가를 요구하자 점수가 올랐다",
+        "seconds": 450.9
+      },
+      {
+        "title": "모델마다 효과의 경로가 달랐다",
+        "seconds": 485.1
+      },
+      {
+        "title": "어디까지 확인된 결과인가?",
+        "seconds": 521.4333333333333
+      },
+      {
+        "title": "DTI에서 어떤 로그를 남길까?",
+        "seconds": 562.0666666666667
+      },
+      {
+        "title": "기억할 다섯 가지",
+        "seconds": 600.9666666666667
+      }
+    ]
+  }
+]

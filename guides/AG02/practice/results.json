@@ -1,0 +1,108 @@
+{
+  "protocol": {
+    "conditions": {
+      "A": "unguarded / clean",
+      "B": "guarded / clean",
+      "C": "unguarded / corrupted",
+      "D": "guarded / corrupted"
+    },
+    "queries": 12,
+    "repeats": 3,
+    "perturbations": [
+      "unit",
+      "entry",
+      "identity",
+      "identifier"
+    ],
+    "assignment": "query index modulo four, same case in each repeat",
+    "policy": "Deterministic unit/identifier/SMILES consistency checker and Kd<=100nM rule; no LLM.",
+    "detectionDefinition": "A corruption-specific reason raised on the returned record; boundary abstention is not corruption detection.",
+    "inputHash": "a5a79da01f55c67770c1481497e4b0524b63492e8decfaf12be6237ffeb5ae49",
+    "source": "Local supplied DAVIS cache through actual ToolUniverse custom tool, not a live ChEMBL/UniProt endpoint"
+  },
+  "actualTrials": 144,
+  "summaries": [
+    {
+      "condition": "A",
+      "trials": 36,
+      "answered": 27,
+      "coverage": 0.75,
+      "scoredAnswers": 27,
+      "wrong": 0,
+      "risk": 0.0,
+      "detections": 0,
+      "detectionRate": null,
+      "falseAlarms": 0
+    },
+    {
+      "condition": "B",
+      "trials": 36,
+      "answered": 27,
+      "coverage": 0.75,
+      "scoredAnswers": 27,
+      "wrong": 0,
+      "risk": 0.0,
+      "detections": 0,
+      "detectionRate": null,
+      "falseAlarms": 0
+    },
+    {
+      "condition": "C",
+      "trials": 36,
+      "answered": 27,
+      "coverage": 0.75,
+      "scoredAnswers": 27,
+      "wrong": 9,
+      "risk": 0.3333333333333333,
+      "detections": 0,
+      "detectionRate": 0.0,
+      "falseAlarms": null
+    },
+    {
+      "condition": "D",
+      "trials": 36,
+      "answered": 0,
+      "coverage": 0.0,
+      "scoredAnswers": 0,
+      "wrong": 0,
+      "risk": null,
+      "detections": 36,
+      "detectionRate": 1.0,
+      "falseAlarms": null
+    }
+  ],
+  "residualFailure": {
+    "query_id": "Q01",
+    "expectedLabel": 1,
+    "corrupted": {
+      "row_id": 19754,
+      "drug_id": "3025986",
+      "target_id": "CDC2L1",
+      "canonical_smiles": "CC(C)(C)c1cnc(CSc2cnc(NC(=O)C3CCNCC3)s2)o1",
+      "target_sequence_sha256": "e392ad4c72506004ce1c9d4433465fcaffcc39233ab62e68a86787d0aecef195",
+      "kd": {
+        "value": 1000.0,
+        "unit": "nM"
+      },
+      "reported_pKd": 6.0,
+      "source": {
+        "dataset": "TDC processed DAVIS",
+        "fileSha256": "ea081146d3f7493e7cdc9925ce91ab36fabf795f96cae4b9ad938c0834b2fb83"
+      },
+      "censor_boundary": false
+    },
+    "outcome": {
+      "decision": "answer",
+      "label": 0,
+      "confidence": null,
+      "detected": false,
+      "reasons": [],
+      "status": "completed"
+    },
+    "explanation": "Self-consistent false numerical evidence passes local consistency checks; requires independent provenance validation."
+  },
+  "llmInvoked": false,
+  "sourceCallCount": 12,
+  "confidenceMetrics": "Unavailable; runner emits no calibrated confidence",
+  "limitation": "Small designed perturbations test checker plumbing only; no claim that an LLM detects these errors."
+}
