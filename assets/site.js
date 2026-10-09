@@ -109,7 +109,7 @@ async function choose(index, play = false, at = 0) {
 async function init() {
   try {
     [episodes, videos] = await Promise.all(['data/episodes.json', 'data/youtube-videos.json'].map(async url => {
-      const response = await fetch(url); if (!response.ok) throw new Error(`${url}: ${response.status}`); return response.json();
+      const response = await fetch(url, { cache: 'no-cache' }); if (!response.ok) throw new Error(`${url}: ${response.status}`); return response.json();
     }));
     episodes.forEach((e, i) => {
       if (i === 0 || e.group !== episodes[i - 1].group) {
