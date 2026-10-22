@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="AI Agents That Matter 논문을 장표와 한국어 설명으로 읽는 웹 발표. 비용, 실제 사용, 일반화와 재현성을 살펴봅니다.">
+  <title>AI Agents That Matter · 웹 발표</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="player.css">
+  <script src="player.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#playback">발표 재생으로 이동</a>
+  <header class="page-header"><a class="back" href="../../">← Abstain-DTI 학습 자료</a><span>논문 웹 발표</span></header>
+  <main>
+    <div class="intro"><p class="eyebrow">논문으로 보는 AI 에이전트 평가</p><h1>AI Agents That Matter</h1><p class="intro-copy">높은 점수만으로, 실제로 쓸 만한 에이전트를 가릴 수 있을까?</p><p class="meta" id="meta">TMLR 2025 · 본문 11장 · Dustin 음성 1.2배속</p></div>
+    <div class="learning-layout">
+      <section class="playback" id="playback" aria-label="음성에 맞춘 장표 재생">
+        <div class="player-shell" id="player-shell">
+          <div class="slide-stage" id="slide-stage"><img id="slide-image" alt="발표 장표를 불러오는 중입니다" width="1920" height="1080"><canvas id="motion" width="1920" height="1080" aria-hidden="true"></canvas></div>
+          <div class="player-controls">
+            <div class="transport"><button id="play" class="primary" disabled>재생</button><button id="previous" aria-label="이전 장표" disabled>← 이전 장</button><button id="next" aria-label="다음 장표" disabled>다음 장 →</button><span id="counter">1 / 11</span><button id="fullscreen">전체화면</button></div>
+            <div class="timeline"><output id="elapsed">0:00</output><input id="seek" type="range" min="0" max="468" step="0.01" value="0" aria-label="발표 재생 위치" disabled><span id="duration">7:48</span></div>
+            <div class="playback-options"><label>음량 <input id="volume" type="range" min="0" max="1" step="0.05" value="1" aria-label="음량"></label><button id="share" class="text-button">현재 구간 링크 복사</button><span class="keyboard-help">Space 재생·정지 · ← → 5초 이동 · F 전체화면</span></div>
+          </div>
+        </div>
+        <p id="status" role="status">장표와 음성을 준비하고 있습니다.</p>
+        <section class="current-notes" aria-labelledby="current-title"><p class="current-number" id="current-number">01 · 현재 장표</p><h2 id="current-title">AI Agents That Matter</h2><p class="key-message" id="key-message"></p><details id="transcript-details"><summary>이 장의 발표 대본</summary><p id="transcript"></p></details></section>
+        <div class="downloads"><a href="downloads/presentation.pptx" download>발표자료 PPTX</a><a href="downloads/slides-and-script.pdf" download>장표 + 대본 PDF</a><a href="https://openreview.net/forum?id=Zy4uFzMviZ" target="_blank" rel="noopener">논문 원문 ↗</a></div>
+      </section>
+      <aside class="chapters"><div class="chapters-heading"><h2>발표 순서</h2><span>11장</span></div><nav id="chapter-list" aria-label="장표별 이동"></nav><p class="chapter-note">장표를 누르면 해당 설명으로 이동합니다.<br>음성이 시작되면 장표와 강조가 함께 움직입니다.</p></aside>
+    </div>
+    <footer>AI Agents That Matter · TMLR 2025 게재본을 바탕으로 만든 개인 학습용 논문 리뷰입니다.<br>음성은 Dustin 1.2배속으로 미리 제작했습니다. 재생 버튼을 누르면 설명을 들을 수 있습니다.</footer>
+  </main>
+  <audio id="narration" preload="metadata"></audio>
+  <noscript><p class="noscript">웹 발표를 재생하려면 JavaScript를 켜 주세요. <a href="downloads/slides-and-script.pdf">장표와 대본 PDF</a>로도 볼 수 있습니다.</p></noscript>
+</body>
+</html>

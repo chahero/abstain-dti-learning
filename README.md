@@ -69,3 +69,9 @@
 MP4, 원음, 모델 가중치, 제작·음성 검수 로그와 로컬 환경은 이 저장소에 포함하지 않습니다. 영상은 YouTube에서 제공하며, 이 저장소에는 학습 사이트와 관련 자료를 보관합니다.
 
 폰트는 Pretendard를 사용하며 라이선스는 [assets/Pretendard-LICENSE.txt](assets/Pretendard-LICENSE.txt)에 보존했습니다. 인용 논문·데이터·외부 도구의 권리는 각 원전에 따릅니다.
+
+## AI Agents That Matter · 웹 발표
+
+[음성과 함께 웹 발표 보기](https://chahero.github.io/abstain-dti-learning/papers/ai-agents-that-matter/)
+
+장표 11장과 미리 제작한 Dustin 1.2배속 음성을 동기화한 7분 48초 발표입니다. 장표 이동, 구간 탐색, 전체화면, 발화에 맞춘 강조 모션을 지원합니다. 재생에 별도 서버나 유튜브 연결이 필요하지 않습니다. MP4는 포함하지 않습니다. 발표 PPTX와 장표·대본 PDF는 웹 발표 화면에서 내려받을 수 있습니다.

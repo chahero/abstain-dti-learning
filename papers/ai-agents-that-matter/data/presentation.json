@@ -1,0 +1,1308 @@
+{
+  "title": "AI Agents That Matter",
+  "duration": 467.6666666666667,
+  "width": 1920,
+  "height": 1080,
+  "voice": "Dustin",
+  "recordedVoiceSpeed": 1.2,
+  "audio": "audio/narration.mp3?v=f54309efbb4a",
+  "source": "https://openreview.net/forum?id=Zy4uFzMviZ",
+  "slides": [
+    {
+      "number": 1,
+      "title": "AI Agents That Matter",
+      "message": "높은 점수만으로는 실제로 쓸 만한 에이전트를 가릴 수 없다.",
+      "script": "안녕하세요. 오늘 소개할 논문은 AI Agents That Matter입니다. AI 에이전트는 모델의 답변을 도구 실행과 다음 행동으로 연결하는 시스템입니다. 코딩이나 웹 업무를 잘하는 에이전트가 늘고 있지만, 높은 점수만으로 실제로 쓸 만한지 판단할 수 있을까요? 이 논문은 에이전트의 능력뿐 아니라, 그 능력을 평가하는 방식에도 문제가 있을 수 있다고 지적합니다.",
+      "start": 0.0,
+      "duration": 24.766666666666666,
+      "image": "assets/slides/slide-01.png?v=147bd8aa8545",
+      "focus": [],
+      "flows": []
+    },
+    {
+      "number": 2,
+      "title": "좋은 에이전트를 가리는 네 가지 질문",
+      "message": "비용·사용 조건·일반화·재현성을 함께 물어야 한다.",
+      "script": "저자들이 제기하는 문제를 네 가지 질문으로 정리했습니다. 첫째, 높은 점수를 얻는 데 비용은 얼마나 들었을까요? 둘째, 그 평가가 실제 사용 상황을 반영할까요? 셋째, 처음 보는 문제에서도 잘할까요? 넷째, 같은 조건에서 다시 실행해 결과를 확인할 수 있을까요? 점수가 높다는 사실에 이 네 가지 정보가 더해져야 어떤 에이전트를 선택할지 판단할 수 있습니다.",
+      "start": 24.766666666666666,
+      "duration": 25.333333333333332,
+      "image": "assets/slides/slide-02.png?v=7820574c7a5f",
+      "focus": [],
+      "flows": []
+    },
+    {
+      "number": 3,
+      "title": "발표 목차",
+      "message": "구체적인 실험과 사례를 통해 네 가지 평가 문제를 살펴본다.",
+      "script": "먼저 코딩 문제인 HumanEval에서 정답률과 비용을 비교합니다. 이어 HotPotQA와 NovelQA를 통해 비용 최적화와 실제 이용 조건을 살펴보겠습니다. 그다음 일반화와 재현성 문제를 정리하고, 마지막에는 논문을 읽고 배운 점을 말씀드리겠습니다.",
+      "start": 50.1,
+      "duration": 17.133333333333333,
+      "image": "assets/slides/slide-03.png?v=45031bf082ac",
+      "focus": [],
+      "flows": []
+    },
+    {
+      "number": 4,
+      "title": "코드가 정답인지 어떻게 확인할까?",
+      "message": "HumanEval에서는 공개 예시와 최종 평가 테스트를 구분해야 한다.",
+      "script": "HumanEval은 사람이 작성한 파이썬 함수 구현 문제 백육십네 개로 구성됩니다. 모델이 함수를 완성하면 테스트를 실행해 정답인지 확인합니다. 화면의 예시는 두 숫자의 차이가 경계값보다 작은지 묻는 문제입니다. 첫 목록에서는 모든 숫자가 멀리 떨어져 있어 False이고, 두 번째 목록에서는 이 점 팔과 삼 점 영이 가까워 True입니다. 여기서 공개 예시와 최종 평가 테스트를 구분해야 합니다. 에이전트는 공개 예시를 실행하고 실패하면 코드를 다시 만들 수 있습니다. 반면 최종 점수는 모델에게 보내지 않은 평가 테스트로 계산합니다. 공개된 몇 가지 예시만 맞추는 코드와 일반적인 규칙을 구현한 코드는 다를 수 있습니다. 다음 표는 이런 방식으로 여러 에이전트와 기준선을 비교한 결과입니다.",
+      "start": 67.23333333333333,
+      "duration": 46.6,
+      "image": "assets/slides/slide-04.png?v=e476f55e3905",
+      "focus": [
+        {
+          "name": "Model completes the function",
+          "start": 5.3,
+          "end": 8.95,
+          "rects": [
+            [
+              108,
+              353,
+              405,
+              154
+            ]
+          ],
+          "dim": [
+            [
+              735,
+              353,
+              405,
+              154
+            ],
+            [
+              1410,
+              353,
+              402,
+              154
+            ]
+          ],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "What the example asks",
+          "start": 9.45,
+          "end": 13.6,
+          "rects": [
+            [
+              104,
+              730,
+              1680,
+              60
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "False: no pair is sufficiently close",
+          "start": 14.05,
+          "end": 17.45,
+          "rects": [
+            [
+              105,
+              812,
+              810,
+              137
+            ]
+          ],
+          "dim": [
+            [
+              1030,
+              812,
+              782,
+              137
+            ]
+          ],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "True: 2.8 and 3.0 are close",
+          "start": 17.65,
+          "end": 22.2,
+          "rects": [
+            [
+              1030,
+              812,
+              782,
+              137
+            ]
+          ],
+          "dim": [
+            [
+              105,
+              812,
+              810,
+              137
+            ]
+          ],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Public examples versus final tests",
+          "start": 22.8,
+          "end": 25.6,
+          "rects": [
+            [
+              735,
+              353,
+              405,
+              154
+            ],
+            [
+              1410,
+              353,
+              402,
+              154
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Execute public examples",
+          "start": 25.65,
+          "end": 28.3,
+          "rects": [
+            [
+              735,
+              353,
+              405,
+              154
+            ]
+          ],
+          "dim": [
+            [
+              1410,
+              353,
+              402,
+              154
+            ]
+          ],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Retry after a public example fails",
+          "start": 28.25,
+          "end": 30.6,
+          "rects": [
+            [
+              108,
+              353,
+              405,
+              154
+            ],
+            [
+              443,
+              628,
+              395,
+              59
+            ]
+          ],
+          "dim": [
+            [
+              1410,
+              353,
+              402,
+              154
+            ]
+          ],
+          "color": "0xCC603D"
+        },
+        {
+          "name": "Final tests are hidden from the model",
+          "start": 30.75,
+          "end": 34.9,
+          "rects": [
+            [
+              1410,
+              353,
+              402,
+              154
+            ]
+          ],
+          "dim": [
+            [
+              108,
+              353,
+              405,
+              154
+            ],
+            [
+              735,
+              353,
+              405,
+              154
+            ]
+          ],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Learn the rule, not just the examples",
+          "start": 35.5,
+          "end": 40.7,
+          "rects": [
+            [
+              1410,
+              353,
+              402,
+              154
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        }
+      ],
+      "flows": [
+        {
+          "name": "Generated function enters public example tests",
+          "start": 25.7,
+          "end": 27.75,
+          "points": [
+            [
+              540,
+              427
+            ],
+            [
+              696,
+              427
+            ]
+          ],
+          "color": "0x3158F5",
+          "meaning": "Illustrative information flow; not measured runtime"
+        },
+        {
+          "name": "Failure returns to code generation",
+          "start": 28.25,
+          "end": 30.55,
+          "points": [
+            [
+              937,
+              516
+            ],
+            [
+              937,
+              604
+            ],
+            [
+              311,
+              604
+            ],
+            [
+              311,
+              519
+            ]
+          ],
+          "color": "0xCC603D",
+          "meaning": "Illustrative information flow; not measured runtime"
+        },
+        {
+          "name": "A selected answer reaches the separate final tests",
+          "start": 30.8,
+          "end": 32.5,
+          "points": [
+            [
+              1188,
+              427
+            ],
+            [
+              1364,
+              427
+            ]
+          ],
+          "color": "0x3158F5",
+          "meaning": "Illustrative information flow; not measured runtime"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "복잡한 에이전트는 비용만큼 더 잘할까?",
+      "message": "추가 시도의 효과와 설계의 효과를 구분하려면 단순 기준선과 비용을 함께 비교해야 한다.",
+      "script": "표에는 원논문의 전체 열세 가지 설정을 넣었습니다. 정답률과 비용은 백육십네 문제를 설정별로 다섯 번 실행한 평균입니다. 비용은 모델 한 번 호출의 가격이 아니라 전체 문제를 수행한 비용이며, 당시 API 단가를 사용했습니다. 우선 파란색 Warming을 보겠습니다. 공개 예시에 실패하면 온도를 점차 높이며 다시 코드를 생성하는 단순한 방법입니다. 평균 정답률은 구십삼 점 이 퍼센트, 비용은 약 이 점 사오 달러입니다. 다른 파란색 LDB 설정은 구십삼 점 삼 퍼센트에 약 육 점 삼육 달러입니다. 이 표에서 평균 정답률은 가장 높지만, Warming과의 작은 차이만으로 더 우수하다고 단정할 수는 없습니다. 주황색 LATS의 GPT-4 설정은 팔십팔 퍼센트에 약 백삼십사 점 오 달러입니다. 회색 단일 호출 GPT-4는 팔십구 점 육 퍼센트에 약 일 점 구삼 달러입니다. 즉 복잡한 방법과 한 번 호출한 모델만 비교하면, 설계가 좋아서 오른 점수인지 여러 번 시도해서 오른 점수인지 구분하기 어렵습니다. 방법의 역할도 짚겠습니다. Reflexion은 실패 이유를 글로 남기고 다음 시도에 반영합니다. LDB는 실행 상태를 보며 코드를 디버깅하고, LATS는 여러 후보 경로를 트리로 탐색합니다. 이들은 서로 다른 방법이며 일부 설정에서는 조합됩니다. 결론은 복잡한 방법이 언제나 나쁘다는 것이 아닙니다. 같은 비용에서 얼마나 잘하는지, 단순 재시도와 비교해 어떤 이점이 있는지를 함께 보여줘야 한다는 것입니다.",
+      "start": 113.83333333333333,
+      "duration": 87.43333333333334,
+      "image": "assets/slides/slide-05.png?v=6cdbc802a936",
+      "focus": [],
+      "flows": [],
+      "tableHighlights": {
+        "bodyTop": 304,
+        "bodyBottom": 831,
+        "phases": [
+          {
+            "name": "Warming",
+            "row": 11,
+            "color": "0x3158F5",
+            "start": 15.200000000000001,
+            "end": 28.919999999999998,
+            "sourceStart": 14.200000000000001,
+            "sourceEnd": 26.439999999999998,
+            "x": 108,
+            "y": 710,
+            "width": 1704,
+            "height": 40
+          },
+          {
+            "name": "LDB",
+            "row": 6,
+            "color": "0x3158F5",
+            "start": 28.919999999999998,
+            "end": 40.93,
+            "sourceStart": 26.439999999999998,
+            "sourceEnd": 37.75,
+            "x": 108,
+            "y": 507,
+            "width": 1704,
+            "height": 40
+          },
+          {
+            "name": "LATS",
+            "row": 1,
+            "color": "0xCC603D",
+            "start": 40.93,
+            "end": 46.739999999999995,
+            "sourceStart": 37.75,
+            "sourceEnd": 43.21,
+            "x": 108,
+            "y": 304,
+            "width": 1704,
+            "height": 40
+          },
+          {
+            "name": "단일 호출",
+            "row": 8,
+            "color": "0x63707E",
+            "start": 46.739999999999995,
+            "end": 51.98,
+            "sourceStart": 43.21,
+            "sourceEnd": 47.96,
+            "x": 108,
+            "y": 588,
+            "width": 1704,
+            "height": 40
+          }
+        ]
+      }
+    },
+    {
+      "number": 6,
+      "title": "성능을 유지하면서 비용을 줄일 수 있을까?",
+      "message": "기존 DSPy와 비슷한 검색 성능을 더 낮은 실행 비용으로 얻었다",
+      "script": "두 번째 실험은 HotPotQA입니다. 여러 위키 문서를 연결해 답하는 과제이며, 여기서는 필요한 근거 문서를 모두 찾은 비율을 성능으로 봅니다. 비용은 질문 백 개를 처리하는 API 비용입니다. 저자들은 DSPy를 실제로 사용하고 수정해, 같은 모델에서 다섯 설정을 비교했습니다. 회색은 예시 없는 기본 실행과 출력 형식 지시만 넣은 설정입니다. 주황색 Few-shot은 성공 예시를 고르고, Random Search는 예시 조합을 탐색합니다. 이 둘은 기본 실행보다 검색 성능을 높였지만 비용도 늘었습니다. 파란색 공동 최적화는 예시의 개수와 내용, 출력 형식, 온도를 탐색하며 성능과 토큰 비용을 함께 고려했습니다. GPT-3.5의 Random Search는 백 질문당 영 점 삼칠육 달러, 공동 최적화는 영 점 일칠사 달러입니다. 검색 성공률은 사십구 점 오에서 오십 점 구 퍼센트입니다. Llama-3-70B도 비용이 영 점 육사삼에서 영 점 삼칠사 달러로 줄었고, 검색 성공률은 육십일 점 칠에서 육십 점 일 퍼센트로 비슷한 수준입니다. Few-shot과 비교해도 같은 경향을 확인할 수 있습니다. 모든 설정 중 가장 싸다는 뜻이 아니라, 기존 DSPy와 비슷한 검색 성능을 더 낮은 실행 비용으로 얻었다는 결과입니다. 설정을 찾는 준비 비용은 별도로 듭니다. 다음은 실제 이용 방식에 따라 비용 비교가 달라지는 사례입니다.",
+      "start": 201.26666666666668,
+      "duration": 81.0,
+      "image": "assets/slides/slide-06.png?v=617c6a5e8616",
+      "focus": [
+        {
+          "name": "Metric: retrieve all required evidence documents",
+          "start": 2.9399999999999995,
+          "end": 8.73,
+          "rects": [
+            [
+              108,
+              270,
+              1704,
+              52
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Unit: API cost for 100 questions",
+          "start": 9.49,
+          "end": 12.200000000000001,
+          "rects": [
+            [
+              108,
+              270,
+              1704,
+              52
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Same models, five DSPy configurations",
+          "start": 13.22,
+          "end": 18.05,
+          "rects": [
+            [
+              696,
+              345,
+              1116,
+              71
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Uncompiled and formatting-only baselines",
+          "start": 18.95,
+          "end": 22.499999999999996,
+          "rects": [
+            [
+              108,
+              486,
+              1704,
+              71
+            ],
+            [
+              108,
+              557,
+              1704,
+              71
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Few-shot selects successful examples",
+          "start": 23.37,
+          "end": 25.34,
+          "rects": [
+            [
+              108,
+              628,
+              1704,
+              71
+            ]
+          ],
+          "dim": [],
+          "color": "0xCC603D"
+        },
+        {
+          "name": "Random Search searches example combinations",
+          "start": 25.38,
+          "end": 27.759999999999998,
+          "rects": [
+            [
+              108,
+              699,
+              1704,
+              71
+            ]
+          ],
+          "dim": [],
+          "color": "0xCC603D"
+        },
+        {
+          "name": "Default DSPy raises performance and running cost",
+          "start": 27.73,
+          "end": 31.88,
+          "rects": [
+            [
+              108,
+              628,
+              1704,
+              71
+            ],
+            [
+              108,
+              699,
+              1704,
+              71
+            ]
+          ],
+          "dim": [],
+          "color": "0xCC603D"
+        },
+        {
+          "name": "Joint optimization considers performance and token cost",
+          "start": 32.86,
+          "end": 39.29,
+          "rects": [
+            [
+              108,
+              769,
+              1704,
+              71
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "GPT-3.5: Random Search 0.376 vs joint 0.174 dollars",
+          "start": 40.47,
+          "end": 46.62,
+          "rects": [
+            [
+              960,
+              699,
+              294,
+              71
+            ],
+            [
+              960,
+              769,
+              294,
+              71
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "GPT-3.5: similar retrieval performance",
+          "start": 47.58,
+          "end": 50.63,
+          "rects": [
+            [
+              696,
+              699,
+              264,
+              71
+            ],
+            [
+              696,
+              769,
+              264,
+              71
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Llama-3-70B: Random Search 0.643 vs joint 0.374 dollars",
+          "start": 51.379999999999995,
+          "end": 56.33,
+          "rects": [
+            [
+              1518,
+              699,
+              294,
+              71
+            ],
+            [
+              1518,
+              769,
+              294,
+              71
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Llama-3-70B: similar retrieval performance",
+          "start": 56.37,
+          "end": 60.97,
+          "rects": [
+            [
+              1254,
+              699,
+              264,
+              71
+            ],
+            [
+              1254,
+              769,
+              264,
+              71
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Few-shot comparison gives the same overall pattern",
+          "start": 61.79,
+          "end": 64.32,
+          "rects": [
+            [
+              108,
+              628,
+              1704,
+              71
+            ],
+            [
+              108,
+              769,
+              1704,
+              71
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Similar DSPy retrieval performance, lower running cost",
+          "start": 65.5,
+          "end": 72.47,
+          "rects": [
+            [
+              108,
+              922,
+              1704,
+              76
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Optimization preparation cost remains separate",
+          "start": 73.31,
+          "end": 75.42,
+          "rects": [
+            [
+              108,
+              999,
+              1704,
+              38
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        }
+      ],
+      "flows": []
+    },
+    {
+      "number": 7,
+      "title": "실제 사용 방식이 달라도 비교가 유효할까?",
+      "message": "평가 비용은 질문을 보내는 조건과 함께 읽어야 한다.",
+      "script": "NovelQA는 긴 소설을 읽고 객관식 질문에 답하는 평가입니다. 소설은 여든여덟 권이고, 각 책에 딸린 질문을 합치면 약 이천삼백 개입니다. 각 책마다 그 책의 내용에 관한 질문들이 따로 있는 것입니다. 두 방식 모두 같은 GPT-4를 사용했습니다. 긴 문맥 방식은 소설 한 권과 그 책의 질문들을 묶어서 입력합니다. RAG는 책마다 색인을 한 번 만들고, 질문마다 관련 부분을 검색해 답합니다. 전체 평가에서 정확도는 둘 다 약 육십팔 퍼센트였습니다. 총비용은 RAG가 오십이 점 팔 달러, 긴 문맥이 구십구 점 팔 달러로, RAG가 약 절반이었습니다. 여기서 주의할 점은 이 비용이 질문을 묶어 보낸 평가에서 나왔다는 것입니다. 사용자가 질문을 하나씩 보내면 긴 문맥의 입력 비용이 반복될 수 있습니다. 그래서 평가 비용을 실제 서비스에 적용할 때는 질문을 보내는 방식과 캐싱 조건을 확인해야 합니다.",
+      "start": 282.26666666666665,
+      "duration": 53.96666666666667,
+      "image": "assets/slides/slide-07.png?v=7c18c015b44f",
+      "focus": [
+        {
+          "name": "88 books in the corpus",
+          "start": 3.9,
+          "end": 6.15,
+          "rects": [
+            [
+              108,
+              285,
+              255,
+              74
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Approximately 2300 book-specific questions in total",
+          "start": 6.2,
+          "end": 9.35,
+          "rects": [
+            [
+              1258,
+              285,
+              548,
+              150
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Each book has its own questions",
+          "start": 9.65,
+          "end": 13.1,
+          "rects": [
+            [
+              423,
+              285,
+              625,
+              145
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Both approaches use GPT-4",
+          "start": 13.65,
+          "end": 16.45,
+          "rects": [
+            [
+              108,
+              750,
+              795,
+              132
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Long context batches the questions for one book",
+          "start": 16.9,
+          "end": 21.1,
+          "rects": [
+            [
+              107,
+              511,
+              1705,
+              65
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "RAG indexes each book once and retrieves per question",
+          "start": 21.55,
+          "end": 26.1,
+          "rects": [
+            [
+              107,
+              582,
+              1705,
+              65
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Measured accuracies are similar",
+          "start": 26.4,
+          "end": 30.05,
+          "rects": [
+            [
+              904,
+              750,
+              405,
+              132
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Measured RAG total cost is 52.80 dollars",
+          "start": 30.45,
+          "end": 32.35,
+          "rects": [
+            [
+              1308,
+              750,
+              504,
+              67
+            ]
+          ],
+          "dim": [
+            [
+              1308,
+              817,
+              504,
+              67
+            ]
+          ],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Measured long-context total cost is 99.80 dollars",
+          "start": 32.4,
+          "end": 34.1,
+          "rects": [
+            [
+              1308,
+              817,
+              504,
+              67
+            ]
+          ],
+          "dim": [
+            [
+              1308,
+              750,
+              504,
+              67
+            ]
+          ],
+          "color": "0xCC603D"
+        },
+        {
+          "name": "RAG costs approximately half in this evaluation",
+          "start": 34.15,
+          "end": 36.5,
+          "rects": [
+            [
+              107,
+              897,
+              1705,
+              60
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "The measured cost depends on batched input",
+          "start": 36.9,
+          "end": 41.5,
+          "rects": [
+            [
+              107,
+              511,
+              1705,
+              65
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Match the actual question workflow and caching conditions",
+          "start": 41.7,
+          "end": 52.8,
+          "rects": [
+            [
+              107,
+              966,
+              1705,
+              61
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        }
+      ],
+      "flows": [
+        {
+          "name": "Aggregate questions from the books",
+          "start": 7.15,
+          "end": 8.9,
+          "points": [
+            [
+              1100,
+              349
+            ],
+            [
+              1190,
+              349
+            ]
+          ],
+          "color": "0x3158F5",
+          "meaning": "Illustrative information flow; not measured runtime"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "처음 보는 문제에서도 잘할까?",
+      "message": "주장하는 일반화 범위에 맞는 새 문제로 평가해야 한다.",
+      "script": "WebArena는 웹사이트에서 지시된 업무를 수행하는 평가입니다. 사용자 프로필을 여는 사례를 보겠습니다. 논문이 분석한 STeP 에이전트는 기본 주소 뒤에 사용자 경로를 붙이는 고정 규칙을 사용합니다. 그런데 사이트의 주소 구조가 바뀌면 같은 규칙이 실패할 수 있습니다. 이 그림은 논문이 설명한 취약성을 보여주며, 변경한 사이트에서 성공률을 다시 측정한 결과는 아닙니다. 미리 정해진 업무에 규칙을 쓰는 것 자체가 문제는 아닙니다. 그 성공을 새로운 환경에서도 잘한다는 근거로 확대하는 것이 문제입니다. 아래 표처럼 같은 분포의 새 사례, 변화한 환경, 처음 보는 과제나 도메인 중에서 주장하는 범위에 맞는 평가를 따로 남겨야 합니다.",
+      "start": 336.23333333333335,
+      "duration": 41.833333333333336,
+      "image": "assets/slides/slide-08.png?v=70313d9a217f",
+      "focus": [
+        {
+          "name": "A request to open a user profile",
+          "start": 4.05,
+          "end": 6.55,
+          "rects": [
+            [
+              108,
+              381,
+              458,
+              162
+            ]
+          ],
+          "dim": [
+            [
+              670,
+              381,
+              540,
+              162
+            ],
+            [
+              1315,
+              381,
+              497,
+              162
+            ]
+          ],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "STeP uses a fixed address rule",
+          "start": 7.0,
+          "end": 12.75,
+          "rects": [
+            [
+              670,
+              381,
+              540,
+              162
+            ]
+          ],
+          "dim": [
+            [
+              1315,
+              381,
+              497,
+              162
+            ]
+          ],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Address structure changes could break the rule",
+          "start": 13.15,
+          "end": 17.65,
+          "rects": [
+            [
+              1315,
+              381,
+              497,
+              162
+            ]
+          ],
+          "dim": [],
+          "color": "0xCC603D"
+        },
+        {
+          "name": "Hypothesized vulnerability, not measured changed-site success",
+          "start": 17.8,
+          "end": 23.95,
+          "rects": [
+            [
+              107,
+              1032,
+              1558,
+              34
+            ]
+          ],
+          "dim": [],
+          "color": "0xCC603D"
+        },
+        {
+          "name": "Choose evaluation data for the claimed scope",
+          "start": 32.75,
+          "end": 40.7,
+          "rects": [
+            [
+              108,
+              714,
+              1704,
+              199
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        }
+      ],
+      "flows": [
+        {
+          "name": "Request to the fixed profile rule",
+          "start": 6.15,
+          "end": 7.4,
+          "points": [
+            [
+              599,
+              462
+            ],
+            [
+              635,
+              462
+            ]
+          ],
+          "color": "0x3158F5",
+          "meaning": "Illustrative information flow; not measured runtime"
+        },
+        {
+          "name": "The fixed rule meets a hypothetical changed environment",
+          "start": 12.45,
+          "end": 13.7,
+          "points": [
+            [
+              1243,
+              462
+            ],
+            [
+              1279,
+              462
+            ]
+          ],
+          "color": "0xCC603D",
+          "meaning": "Illustrative information flow; not measured runtime"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "같은 조건에서 결과를 재현할 수 있을까?",
+      "message": "같은 시험지·채점 규칙·환경과 원시 로그가 있어야 성능을 비교하고 재현할 수 있다.",
+      "script": "마지막은 평가의 표준화와 재현성입니다. 표의 첫 사례는 코딩 평가인 HumanEval입니다. 일부 문제에 공개 예시가 없어서, 어떤 구현은 문제를 제외하고 다른 구현은 예시를 추가했습니다. 같은 이름으로 서로 다른 시험지를 비교한 셈입니다. 둘째는 WebArena의 실행 환경입니다. 사이트의 요청 속도 제한 때문에 실행 순서가 업무 성공률에 영향을 주었습니다. 셋째도 WebArena이며, 이번에는 성공 판정 문제입니다. 논문은 원시 로그에서 실패한 작업을 성공으로 기록한 사례를 확인했습니다. 이런 차이를 모두 에이전트의 능력 차이라고 해석하기는 어렵습니다. 따라서 같은 문제와 채점 규칙, 환경에서 반복 실행하고, 원시 로그로 점수와 실패 원인을 다시 확인할 수 있어야 합니다.",
+      "start": 378.06666666666666,
+      "duration": 46.53333333333333,
+      "image": "assets/slides/slide-09.png?v=7de76294f6d6",
+      "focus": [
+        {
+          "name": "HumanEval: a different set of evaluation problems",
+          "start": 3.05,
+          "end": 15.75,
+          "rects": [
+            [
+              108,
+              447,
+              1704,
+              112
+            ]
+          ],
+          "dim": [
+            [
+              108,
+              560,
+              1704,
+              112
+            ],
+            [
+              108,
+              673,
+              1704,
+              112
+            ]
+          ],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "WebArena: execution environment and rate limits",
+          "start": 16.3,
+          "end": 24.4,
+          "rects": [
+            [
+              108,
+              560,
+              1704,
+              112
+            ]
+          ],
+          "dim": [
+            [
+              108,
+              447,
+              1704,
+              112
+            ],
+            [
+              108,
+              673,
+              1704,
+              112
+            ]
+          ],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "WebArena: an incorrect success judgment",
+          "start": 24.85,
+          "end": 33.1,
+          "rects": [
+            [
+              108,
+              673,
+              1704,
+              112
+            ]
+          ],
+          "dim": [
+            [
+              108,
+              447,
+              1704,
+              112
+            ],
+            [
+              108,
+              560,
+              1704,
+              112
+            ]
+          ],
+          "color": "0xCC603D"
+        },
+        {
+          "name": "Repeat under the same problems, rules and environment",
+          "start": 38.0,
+          "end": 45.45,
+          "rects": [
+            [
+              106,
+              851,
+              1470,
+              61
+            ],
+            [
+              106,
+              938,
+              1500,
+              45
+            ]
+          ],
+          "dim": [],
+          "color": "0x3158F5"
+        }
+      ],
+      "flows": []
+    },
+    {
+      "number": 10,
+      "title": "실제로 쓸 만한 에이전트를 어떻게 평가할까?",
+      "message": "실제 유용성을 보여주는 평가는 비용·목적·일반화·재현성을 함께 검증한다.",
+      "script": "논문의 결론을 정리하겠습니다. 첫째, 정확도와 비용을 함께 비교합니다. 둘째, 모델 연구와 실제 응용의 평가 목적을 구분합니다. 셋째, 주장하는 범위에 맞는 새로운 문제에서 일반화를 확인합니다. 넷째, 평가 절차를 표준화하고 로그로 결과를 검증합니다. 높은 점수를 더하는 것에 그치지 않고, 어떤 조건에서 어떤 비용으로 사용할 수 있는지 설명하는 평가가 필요합니다.",
+      "start": 424.6,
+      "duration": 26.166666666666668,
+      "image": "assets/slides/slide-10.png?v=8e809ede0aec",
+      "focus": [
+        {
+          "name": "Compare accuracy and cost",
+          "start": 2.7,
+          "end": 5.35,
+          "rects": [
+            [
+              107,
+              273,
+              1697,
+              132
+            ]
+          ],
+          "dim": [
+            [
+              107,
+              437,
+              1697,
+              132
+            ],
+            [
+              107,
+              601,
+              1697,
+              132
+            ],
+            [
+              107,
+              765,
+              1697,
+              132
+            ]
+          ],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Match the evaluation purpose",
+          "start": 5.75,
+          "end": 9.15,
+          "rects": [
+            [
+              107,
+              437,
+              1697,
+              132
+            ]
+          ],
+          "dim": [
+            [
+              107,
+              273,
+              1697,
+              132
+            ],
+            [
+              107,
+              601,
+              1697,
+              132
+            ],
+            [
+              107,
+              765,
+              1697,
+              132
+            ]
+          ],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Check generalization",
+          "start": 9.6,
+          "end": 13.95,
+          "rects": [
+            [
+              107,
+              601,
+              1697,
+              132
+            ]
+          ],
+          "dim": [
+            [
+              107,
+              273,
+              1697,
+              132
+            ],
+            [
+              107,
+              437,
+              1697,
+              132
+            ],
+            [
+              107,
+              765,
+              1697,
+              132
+            ]
+          ],
+          "color": "0x3158F5"
+        },
+        {
+          "name": "Standardize and retain logs",
+          "start": 14.7,
+          "end": 18.2,
+          "rects": [
+            [
+              107,
+              765,
+              1697,
+              132
+            ]
+          ],
+          "dim": [
+            [
+              107,
+              273,
+              1697,
+              132
+            ],
+            [
+              107,
+              437,
+              1697,
+              132
+            ],
+            [
+              107,
+              601,
+              1697,
+              132
+            ]
+          ],
+          "color": "0x3158F5"
+        }
+      ],
+      "flows": []
+    },
+    {
+      "number": 11,
+      "title": "논문에서 배운 점",
+      "message": "높은 점수의 의미를 이해하려면 비용과 평가 조건을 함께 봐야 한다.",
+      "script": "이 논문에서 배운 점은 높은 점수의 의미를 이해하려면 비용과 평가 조건을 함께 봐야 한다는 것입니다. 어떤 문제와 환경에서 얻은 점수인지, 새로운 문제에서도 잘하는지, 결과를 다시 확인할 수 있는지를 함께 살펴봐야 합니다. 감사합니다.",
+      "start": 450.76666666666665,
+      "duration": 16.9,
+      "image": "assets/slides/slide-11.png?v=1d78a6d6b405",
+      "focus": [],
+      "flows": []
+    }
+  ]
+}
