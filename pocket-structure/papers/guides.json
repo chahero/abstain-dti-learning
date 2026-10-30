@@ -1,0 +1,657 @@
+{
+  "verifiedOn": "2026-10-30",
+  "scope": "개인 학습용 핵심 해설; 원문 전체 번역이나 새 실행 결과가 아님",
+  "papers": [
+    {
+      "id": "fpocket",
+      "name": "fpocket",
+      "kind": "technology",
+      "year": "2009",
+      "dateNote": "BMC Bioinformatics 논문, 2009-06-02",
+      "input": "단백질 3D 구조",
+      "output": "포켓 후보·중심·점수",
+      "chapter": "02-pocket-detection/",
+      "status": "저널 게재",
+      "peerReviewed": true,
+      "title": "Fpocket: An open source platform for ligand pocket detection",
+      "venue": "BMC Bioinformatics",
+      "authors": "Le Guilloux, Schmidtke & Tuffery",
+      "url": "https://link.springer.com/article/10.1186/1471-2105-10-168",
+      "code": "https://github.com/Discngine/fpocket",
+      "headline": "원자 사이의 빈 공간을 구로 표현하고, 모아서 포켓 후보를 찾습니다.",
+      "question": "단백질 구조는 있는데, 작은 분자가 들어갈 자리를 어떻게 빠르게 찾을까?",
+      "idea": "원자들이 둘러싼 공간에 알파 구를 구성하고 적절한 구들을 골라 묶습니다. 빈 공간의 형상과 물성을 이용해 후보를 평가하는 기하학 기반 방법입니다.",
+      "pipeline": [
+        [
+          "원자 좌표",
+          "단백질의 원자 위치를 읽습니다."
+        ],
+        [
+          "알파 구",
+          "주변 원자에 접하면서 내부가 빈 구를 구성·선별합니다."
+        ],
+        [
+          "포켓 후보",
+          "가까운 구를 모아 영역·특징·점수를 계산합니다."
+        ]
+      ],
+      "example": "바위가 빽빽한 지형의 틈에 작은 공을 넣어 본다고 생각하세요. 서로 가까운 공들이 모인 영역이 하나의 빈 공간 후보입니다. 공은 실제 분자가 아니라 공간을 표현하는 계산 도구입니다.",
+      "findings": [
+        "논문은 포켓 탐지와 특징 추출을 빠르게 수행하는 공개 소프트웨어 기반을 제시했습니다.",
+        "2009년 평가에서는 상위 3개 후보 안의 회수율을 holo 94%, apo 92%로 보고했습니다. 당시 데이터와 판정 기준에서의 결과이며 현재 모든 단백질의 성공률은 아닙니다."
+      ],
+      "caveats": [
+        "한 구조에서 보이는 공간을 찾습니다. 닫힌 숨은 포켓을 열어 주지는 않습니다.",
+        "포켓 점수는 특정 리간드의 친화도나 실제 약효가 아닙니다."
+      ],
+      "glossary": [
+        [
+          "알파 구",
+          "주변 원자에 접하고 내부에 원자가 없는, 공간 표현용 구."
+        ],
+        [
+          "군집화",
+          "가까운 구나 점을 묶어 하나의 후보로 만드는 과정."
+        ],
+        [
+          "apo / holo",
+          "각각 리간드가 없는 상태와 결합한 상태."
+        ]
+      ],
+      "figureGuide": "알파 구가 어떻게 만들어지고 하나의 포켓으로 묶이는지 보세요. 최종 그림의 구를 리간드 원자로 읽지 않는 것이 핵심입니다.",
+      "takeaway": "공간을 찾는 단계와, 그 공간에 어떤 화합물이 붙는지는 다른 질문입니다.",
+      "related": [
+        "p2rank",
+        "deeppocket",
+        "ligysis"
+      ]
+    },
+    {
+      "id": "p2rank",
+      "name": "P2Rank",
+      "kind": "technology",
+      "year": "2018",
+      "dateNote": "Journal of Cheminformatics 논문, 2018-08-14",
+      "input": "단백질 3D 구조",
+      "output": "포켓 후보·관련 잔기·순위",
+      "chapter": "02-pocket-detection/",
+      "status": "저널 게재",
+      "peerReviewed": true,
+      "title": "P2Rank: machine learning based tool for rapid and accurate prediction of ligand binding sites from protein structure",
+      "venue": "Journal of Cheminformatics",
+      "authors": "Krivák & Hoksza",
+      "url": "https://link.springer.com/article/10.1186/s13321-018-0285-8",
+      "code": "https://github.com/rdk/p2rank",
+      "headline": "단백질 표면의 각 점 주변을 살펴, 결합 부위다운 환경을 학습으로 판단합니다.",
+      "question": "단순히 움푹한 모양만 보지 않고, 결합 부위의 주변 환경까지 반영할 수 있을까?",
+      "idea": "용매가 닿는 표면에 점을 놓고 주변의 기하·물리화학 특징을 계산합니다. 랜덤 포레스트로 점의 ligandability를 평가한 뒤 유망한 점들을 포켓으로 묶습니다.",
+      "pipeline": [
+        [
+          "표면점",
+          "입력 구조의 용매 접근 가능 표면을 샘플링합니다."
+        ],
+        [
+          "주변 특징 → 학습 점수",
+          "점 주변의 화학·기하 환경을 학습 모델로 평가합니다."
+        ],
+        [
+          "포켓·순위",
+          "높은 점수의 점들을 묶고 후보를 정렬합니다."
+        ]
+      ],
+      "example": "두 홈의 깊이가 비슷해도 안쪽 환경은 다를 수 있습니다. P2Rank는 홈의 생김새만 보지 않고 주변 원자 환경을 함께 살펴 후보를 고르는 방식입니다.",
+      "findings": [
+        "원 논문은 여러 기존 도구와의 비교에서 좋은 탐지 성능과 빠른 처리 속도를 보고했습니다.",
+        "템플릿 검색 없이 구조에서 직접 예측하는 독립 도구로, 다수 구조를 처리하는 파이프라인 활용을 강조했습니다."
+      ],
+      "caveats": [
+        "ligandability는 그 주변이 결합 부위처럼 보이는지에 대한 판단입니다. 지정한 약물이 붙을 확률과 같지 않습니다.",
+        "학습 기반이어도 입력 구조에 없는 움직임이나 새 복합체 좌표를 생성하지는 않습니다."
+      ],
+      "glossary": [
+        [
+          "표면점",
+          "단백질 외부에서 접근 가능한 표면을 대표하는 점."
+        ],
+        [
+          "랜덤 포레스트",
+          "여러 의사결정나무의 판단을 모으는 학습 모델."
+        ],
+        [
+          "ligandability",
+          "해당 환경이 리간드 결합 부위일 법한 정도."
+        ]
+      ],
+      "figureGuide": "표면점 하나의 점수와, 여러 점을 묶은 포켓 후보를 나눠 보세요. 원자는 입력이고 표면점은 평가를 위한 표현입니다.",
+      "takeaway": "기하학과 화학 환경을 점수화하지만, 특정 약물의 결합 자세를 내는 도구는 아닙니다.",
+      "related": [
+        "fpocket",
+        "hotpocket",
+        "ranking"
+      ]
+    },
+    {
+      "id": "deeppocket",
+      "name": "DeepPocket",
+      "kind": "technology",
+      "year": "2022",
+      "dateNote": "JCIM 권호 게재 2022; 온라인 공개 2021-08-10",
+      "input": "단백질 구조 + fpocket 후보",
+      "output": "후보 순위 + 포켓 마스크",
+      "chapter": "03-learning-pockets/",
+      "status": "저널 게재",
+      "peerReviewed": true,
+      "title": "DeepPocket: Ligand Binding Site Detection and Segmentation using 3D Convolutional Neural Networks",
+      "venue": "Journal of Chemical Information and Modeling",
+      "authors": "Aggarwal et al.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34374539/",
+      "code": "https://github.com/devalab/DeepPocket",
+      "additionalSources": [
+        {
+          "title": "저널 원문 DOI",
+          "url": "https://doi.org/10.1021/acs.jcim.1c00799"
+        }
+      ],
+      "headline": "fpocket이 찾은 후보를 CNN으로 다시 평가하고, 포켓의 범위까지 분할합니다.",
+      "question": "후보는 이미 찾았는데, 순위가 아쉽거나 정확한 공간 범위가 필요하다면?",
+      "idea": "후보 주변의 원자 환경을 3D 격자로 바꿉니다. 한 CNN은 후보를 재점수화하고, 별도 분할 모델은 공간의 어느 부분이 포켓인지 예측합니다.",
+      "pipeline": [
+        [
+          "fpocket 후보",
+          "기하학적으로 후보 중심을 먼저 얻습니다."
+        ],
+        [
+          "3D 복셀 + CNN",
+          "후보 주변을 격자로 표현해 다시 평가합니다."
+        ],
+        [
+          "순위 + 영역 마스크",
+          "유망한 후보를 정하고 공간 범위를 분할합니다."
+        ]
+      ],
+      "example": "지도의 후보 지점을 먼저 찍은 뒤, 각 지점의 3D 사진을 자세히 검사한다고 생각하세요. 좋은 지점을 고르는 일과 영역의 테두리를 그리는 일은 별도 출력입니다.",
+      "findings": [
+        "저자들은 여러 결합 부위 데이터셋과 새 구조를 모은 SC6K에서 탐지·영역 분할을 평가하고 개선을 보고했습니다.",
+        "공개 구현은 fpocket 실행, 후보 중심 추출, CNN 재평가, 영역 분할이라는 실제 처리 연결을 제공합니다."
+      ],
+      "caveats": [
+        "처음 후보를 만드는 fpocket에 의존합니다. 좋은 후보가 없으면 재순위화만으로 모든 누락을 해결할 수 없습니다.",
+        "3D 마스크는 포켓 영역이지 리간드의 결합 자세가 아닙니다. 온라인 공개 2021년과 권호 게재 2022년을 구분합니다."
+      ],
+      "glossary": [
+        [
+          "복셀",
+          "3D 공간을 작은 상자들로 나눈 단위."
+        ],
+        [
+          "CNN",
+          "이웃 격자에 반복되는 공간 패턴을 학습하는 신경망."
+        ],
+        [
+          "분할 마스크",
+          "어느 격자 영역이 포켓인지 표시하는 결과."
+        ]
+      ],
+      "figureGuide": "분류·재평가 경로와 분할 경로를 따로 보세요. fpocket → DeepPocket 화살표는 실제 후보 데이터가 전달되는 관계입니다.",
+      "takeaway": "후보 생성, 후보 순위, 포켓 영역 분할은 구분해서 평가해야 합니다.",
+      "related": [
+        "fpocket",
+        "grasp",
+        "seq2pocket"
+      ]
+    },
+    {
+      "id": "grasp",
+      "name": "GrASP",
+      "kind": "technology",
+      "year": "2024",
+      "dateNote": "JCIM 온라인 공개 2024-03-07; 권호 게재 2024-04-08",
+      "input": "단백질 표면·이웃 원자의 3D 정보",
+      "output": "원자 점수 + 포켓 후보",
+      "chapter": "03-learning-pockets/",
+      "status": "저널 게재",
+      "peerReviewed": true,
+      "title": "Graph Attention Site Prediction (GrASP): Identifying Druggable Binding Sites Using Graph Neural Networks with Attention",
+      "venue": "Journal of Chemical Information and Modeling",
+      "authors": "Smith et al.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11182664/",
+      "code": "https://github.com/tiwarylab/GrASP",
+      "additionalSources": [
+        {
+          "title": "저자 원고 전문",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11182664/"
+        }
+      ],
+      "headline": "3D 격자 대신 원자와 이웃 관계의 그래프를 읽어 결합 부위를 예측합니다.",
+      "question": "단백질의 원자 환경을 그래프로 표현하면 포켓을 어떻게 찾을 수 있을까?",
+      "idea": "표면 원자와 주변 원자를 연결해 그래프를 만듭니다. 어텐션을 이용한 정보 전달로 원자별 부위 점수를 얻고, 이를 공간적으로 묶어 후보를 만듭니다.",
+      "pipeline": [
+        [
+          "원자 그래프",
+          "원자 특징과 공간상 이웃 관계를 표현합니다."
+        ],
+        [
+          "어텐션·정보 전달",
+          "주변 원자의 정보를 합쳐 부위 관련성을 학습합니다."
+        ],
+        [
+          "원자 점수 → 후보",
+          "유망한 원자들을 군집화해 포켓을 정합니다."
+        ]
+      ],
+      "example": "한 원자만 보는 대신 주변 원자들과 정보를 주고받는다고 생각하세요. 멀리 떨어진 점수 높은 원자들을 무조건 하나의 포켓으로 합치지는 않습니다.",
+      "findings": [
+        "논문은 그래프 어텐션을 이용한 부위 예측과 함께 데이터 준비부터 평가까지의 관행을 재검토했습니다.",
+        "원자 수준 예측을 포켓으로 연결하는 과정을 보여 주므로, 격자 기반 DeepPocket과 표현 방식의 차이를 비교하기 좋습니다."
+      ],
+      "caveats": [
+        "어텐션 가중치를 실제 결합 에너지나 인과관계로 해석하지 않습니다.",
+        "원자 점수와 최종 포켓의 위치·범위는 다른 평가 단위입니다. 단백질의 시간 궤적을 생성하는 모델도 아닙니다."
+      ],
+      "glossary": [
+        [
+          "그래프",
+          "대상인 노드와 그 사이 관계인 엣지를 묶은 표현."
+        ],
+        [
+          "어텐션",
+          "주변 정보의 기여를 학습으로 조절하는 방식."
+        ],
+        [
+          "원자별 점수",
+          "각 원자가 결합 부위와 관련될 법한 정도."
+        ]
+      ],
+      "figureGuide": "노드가 원자이고 엣지가 이웃 관계라는 점부터 확인하세요. 원자 점수를 최종 포켓으로 묶는 단계도 함께 봅니다.",
+      "takeaway": "표현을 그래프로 바꿔도, 점수를 공간적 포켓으로 만드는 후속 과정이 중요합니다.",
+      "related": [
+        "deeppocket",
+        "seq2pocket",
+        "ligysis"
+      ]
+    },
+    {
+      "id": "hotpocket",
+      "name": "HOTPocket / hotpocketNN",
+      "kind": "technology",
+      "year": "2025",
+      "dateNote": "정식 저널 공개 2025-12-24",
+      "input": "단백질 3D 구조 + 여러 탐지기의 후보",
+      "output": "후보별 점수·선별 포켓·통합 지도",
+      "chapter": "07-technology-summary/?view=frontiers&topic=ranking#step-1",
+      "status": "저널 게재",
+      "peerReviewed": true,
+      "title": "The Human Omnibus of Targetable Pockets",
+      "venue": "Journal of Cheminformatics",
+      "url": "https://link.springer.com/article/10.1186/s13321-025-01125-x",
+      "headline": "여러 탐지기의 후보를 모으고, 공통 학습 점수로 선별해 인간 단백질의 포켓 지도를 만듭니다.",
+      "question": "서로 다른 도구가 제안한 후보를 어떻게 함께 활용할까?",
+      "idea": "여러 탐지기의 후보 잔기에 대한 ESM-2 특징을 hotpocketNN이 읽어 점수를 매깁니다. 후보를 선별·군집화한 예측 지도와 이를 만드는 모델을 함께 제공합니다.",
+      "pipeline": [
+        [
+          "7개 탐지기의 후보",
+          "실험·AlphaFold2 구조에 여러 검출기를 적용합니다."
+        ],
+        [
+          "hotpocketNN",
+          "후보 잔기 특징으로 공통 점수를 계산합니다."
+        ],
+        [
+          "HOTPocket 지도",
+          "후보를 선별·묶어 인간 proteome의 예측 지도를 만듭니다."
+        ]
+      ],
+      "example": "여러 사람이 찾아온 장소를 한 기준으로 심사하는 상황입니다. 추천 목록을 단순히 합치는 것과, 공통 기준으로 선별하는 것은 다릅니다.",
+      "findings": [
+        "인간 단백질 전반의 대규모 예측 포켓 자료와 후보 선별 모델을 공개했습니다.",
+        "Astex·PoseBusters에서는 좋은 결과를 보고했지만, Human BioLiP의 일부 포켓 평가에서는 P2Rank가 더 좋았습니다. 통합이 항상 최선이라는 결론은 아닙니다."
+      ],
+      "caveats": [
+        "HOTPocket은 예측 지도·파이프라인이고 hotpocketNN은 선별 모델입니다.",
+        "예측 포켓 수를 실험 검증된 약물 표적 수로 읽지 않습니다. 입력 구조와 후보의 품질에도 의존합니다."
+      ],
+      "glossary": [
+        [
+          "앙상블",
+          "여러 방법의 결과를 활용하는 접근."
+        ],
+        [
+          "proteome",
+          "한 생물의 단백질 전체 집합."
+        ],
+        [
+          "재점수화",
+          "기존 후보를 다른 기준으로 다시 평가하는 일."
+        ]
+      ],
+      "figureGuide": "후보를 만든 원래 도구와, 그 후보를 평가하는 hotpocketNN을 분리해서 보세요. 최종 지도는 선별·군집화까지 거친 결과입니다.",
+      "takeaway": "후보 통합은 가능성을 넓히지만, 순위·중복·평가 조건까지 함께 봐야 합니다.",
+      "related": [
+        "p2rank",
+        "ligysis",
+        "ranking"
+      ]
+    },
+    {
+      "id": "seq2pocket",
+      "name": "Seq2Pocket",
+      "kind": "technology",
+      "year": "2026",
+      "dateNote": "Bioinformatics 온라인 공개 2026-10-16",
+      "input": "단백질 서열·잔기 점수 + 후처리용 3D 구조",
+      "output": "보정한 잔기 점수 + 3D 포켓 영역",
+      "chapter": "07-technology-summary/?view=frontiers&topic=geometry#step-1",
+      "status": "저널 게재",
+      "peerReviewed": true,
+      "title": "Seq2Pocket: augmenting protein language models for spatially consistent binding site prediction",
+      "venue": "Bioinformatics",
+      "url": "https://doi.org/10.1093/bioinformatics/btag778",
+      "headline": "잔기별 예측의 빈틈을 보완하고, 3D 표면 위에서 이어진 포켓 영역으로 묶습니다.",
+      "question": "부위 점수가 높은 잔기들이 흩어져 있다면 실제 포켓의 범위는 어떻게 정할까?",
+      "idea": "단백질 언어모델의 잔기 예측에 이웃 임베딩을 이용한 보정을 더합니다. 이어 구조에서 계산한 용매 접근 가능 표면점들을 군집화합니다.",
+      "pipeline": [
+        [
+          "pLM 잔기 예측",
+          "서열을 읽은 모델이 잔기 점수·특징을 냅니다."
+        ],
+        [
+          "이웃 기반 보정",
+          "주변 잔기의 특징으로 공간적 빈틈을 보완합니다."
+        ],
+        [
+          "SAS 군집화",
+          "기존 3D 구조의 표면에서 포켓 영역을 정합니다."
+        ]
+      ],
+      "example": "지도에 유망한 점만 띄엄띄엄 찍혀 있으면 경계가 불분명합니다. 주변 정보로 빈틈을 메우고 같은 공간의 점들을 묶어 하나의 영역으로 만드는 방식입니다.",
+      "findings": [
+        "저자들은 잔기별 분류를 사용 가능한 3D 포켓으로 연결하는 프레임워크와 공개 구현을 제시했습니다.",
+        "학습 데이터의 빠진 작은 분자·이온 부위를 보강하는 작업과 공간적 후처리를 함께 다룹니다. 개선을 언어모델 하나의 효과로만 보지 않습니다."
+      ],
+      "caveats": [
+        "서열만으로 새 원자 좌표를 생성하는 모델이 아닙니다. 공간 후처리에 구조가 필요합니다.",
+        "언어모델의 잔기 점수 성능과 최종 포켓 영역 성능을 구분해 확인해야 합니다."
+      ],
+      "glossary": [
+        [
+          "pLM",
+          "단백질 서열의 패턴을 학습한 단백질 언어모델."
+        ],
+        [
+          "임베딩",
+          "서열이나 잔기를 표현하는 학습된 숫자 벡터."
+        ],
+        [
+          "SAS",
+          "용매가 접근할 수 있는 단백질 표면."
+        ]
+      ],
+      "figureGuide": "서열에서 점수를 내는 앞부분과 구조 위에서 보정·군집화하는 뒷부분을 나눠 보세요. 새 좌표 생성으로 읽으면 안 됩니다.",
+      "takeaway": "좋은 잔기 점수와 좋은 3D 포켓은 같지 않으므로 둘을 연결하는 설계가 필요합니다.",
+      "related": [
+        "grasp",
+        "promonet",
+        "cryptobench"
+      ]
+    },
+    {
+      "id": "promonet",
+      "name": "ProMoNet / ProMoSite",
+      "kind": "technology",
+      "year": "2026",
+      "dateNote": "정식 저널 공개 2026-05-20",
+      "input": "단백질 서열 + 리간드 SMILES",
+      "output": "해당 리간드에 대한 잔기별 부위 점수",
+      "chapter": "07-technology-summary/?view=frontiers&topic=ligand#step-1",
+      "status": "저널 게재",
+      "peerReviewed": true,
+      "title": "Sequence-based drug-target binding site pre-training enables cryptic pocket detection and improves binding affinity and kinetics prediction",
+      "venue": "Journal of Cheminformatics",
+      "url": "https://link.springer.com/article/10.1186/s13321-026-01227-0",
+      "headline": "단백질 서열과 화합물 정보를 함께 읽어, 그 화합물의 결합 부위 잔기를 예측합니다.",
+      "question": "특정 리간드가 정해졌을 때 어느 잔기가 결합에 관여할까?",
+      "idea": "ProMoSite가 단백질 잔기와 분자 원자의 상호작용 표현을 학습합니다. 단백질에는 ESM-2 서열·접촉 특징을, 분자에는 Uni-Mol과 RDKit conformer 정보를 활용합니다.",
+      "pipeline": [
+        [
+          "서열 + SMILES",
+          "단백질과 특정 분자의 특징을 준비합니다."
+        ],
+        [
+          "ProMoSite",
+          "잔기–원자 상호작용을 학습해 부위 점수를 냅니다."
+        ],
+        [
+          "잔기별 부위 점수",
+          "해당 리간드의 부위 예측을 읽습니다."
+        ]
+      ],
+      "example": "단백질에 분자 X와 Y를 각각 질문하면 관심 부위도 달라질 수 있습니다. 다만 분자만 바꿨다고 실제 결합 차이가 실험으로 증명되는 것은 아닙니다.",
+      "findings": [
+        "논문은 일반·숨은 부위 예측에서의 성능을 평가하고, 부위 지식을 친화도·동역학 예측에 전달하는 ProMoNet 프레임워크를 제시했습니다.",
+        "부위 예측은 ProMoSite, 후속 특성 예측은 ProMoBind의 역할입니다. 잔기 점수와 친화도 출력을 구분해야 합니다."
+      ],
+      "caveats": [
+        "단백질 3D 좌표는 추론 필수 입력이 아니지만 리간드 conformer는 사용합니다. 3D 포켓 평가는 알려진 구조에 매핑합니다.",
+        "일부 평가에는 리간드 없는 분기도 사용됩니다. 입력 조건을 맞춰 비교해야 하며, 시간 궤적이나 복합체 좌표를 생성한 결과는 아닙니다."
+      ],
+      "glossary": [
+        [
+          "조건부 예측",
+          "주어진 특정 정보에 따라 답을 달리하는 예측."
+        ],
+        [
+          "ProMoSite",
+          "ProMoNet의 결합 부위 사전학습 모듈."
+        ],
+        [
+          "ProMoBind",
+          "부위 예측 지식을 활용하는 후속 특성 예측 모듈."
+        ]
+      ],
+      "figureGuide": "ProMoSite의 잔기 점수 경로와 ProMoBind의 후속 특성 예측 경로를 나누세요. 본 페이지 그림은 앞 경로에 집중합니다.",
+      "takeaway": "리간드 조건을 더해 질문을 구체화하지만, 부위 점수가 곧 결합 친화도는 아닙니다.",
+      "related": [
+        "seq2pocket",
+        "hotpocket",
+        "cryptobench"
+      ]
+    },
+    {
+      "id": "ligysis",
+      "name": "LIGYSIS 비교 연구",
+      "kind": "evaluation",
+      "year": "2024",
+      "title": "Comparative evaluation of methods for the prediction of protein–ligand binding sites",
+      "venue": "Journal of Cheminformatics",
+      "url": "https://link.springer.com/article/10.1186/s13321-024-00923-z",
+      "status": "저널 게재",
+      "peerReviewed": true,
+      "input": "여러 탐지기의 예측과 여러 구조의 관찰 부위를 모은 기준 데이터",
+      "output": "잔기·포켓 단위 평가와 순위·중복에 대한 분석",
+      "dateNote": "2024-11-11",
+      "chapter": "07-technology-summary/?view=frontiers&topic=data#step-1",
+      "headline": "새 탐지기를 만드는 대신, 기존 도구를 무엇으로 공정하게 비교할지 묻는 논문입니다.",
+      "question": "논문마다 도구 순위가 다른데, 정답·후보 수·평가 지표는 같았을까?",
+      "idea": "같은 단백질의 여러 구조에서 관찰된 생물학적 결합 부위를 모은 LIGYSIS를 기준으로 여러 검출기와 변형을 비교합니다.",
+      "pipeline": [
+        [
+          "관찰 부위 모으기",
+          "한 단백질의 여러 구조·생물학적 조립체에서 정답을 정리합니다."
+        ],
+        [
+          "공통 기준 평가",
+          "도구와 변형을 같은 데이터·지표로 비교합니다."
+        ],
+        [
+          "중복·순위 진단",
+          "후보 중복과 점수화가 회수에 미치는 영향을 분석합니다."
+        ]
+      ],
+      "example": "한 시험은 정답 한 곳만 인정하고 다른 시험은 여러 관찰 부위를 인정하면 점수가 달라집니다. 같은 정답과 같은 검토 예산에서 비교해야 방법의 차이를 읽을 수 있습니다.",
+      "findings": [
+        "13개 원래 방법과 여러 변형을 비교하고, 중복 후보의 불리함과 재점수화의 이점을 분석했습니다.",
+        "저자들은 top-N+2 recall 등 평가 방식을 제안했습니다. 이는 저자들의 제안이며 모든 연구의 의무 규정은 아닙니다."
+      ],
+      "caveats": [
+        "새 포켓을 예측하는 하나의 도구가 아니라 비교·평가 연구입니다.",
+        "한 데이터셋과 지표의 순위를 모든 구조·리간드·평가 설정에 일반화하지 않습니다."
+      ],
+      "glossary": [
+        [
+          "recall",
+          "관찰된 정답 부위 중 예측으로 회수한 비율."
+        ],
+        [
+          "top-N+2",
+          "정답 부위 수 N에 두 개를 더한 수만큼 상위 후보를 평가하는 설정."
+        ],
+        [
+          "중복 후보",
+          "사실상 같은 자리를 여러 후보가 반복하는 경우."
+        ]
+      ],
+      "figureGuide": "표의 방법 이름보다 정답 정의·평가 지표·상위 후보 수를 먼저 보세요. 순위 변화를 해석하는 조건입니다.",
+      "takeaway": "새 모델 이름보다 먼저, 무엇을 정답으로 어떻게 채점했는지 확인합니다.",
+      "related": [
+        "fpocket",
+        "hotpocket",
+        "ranking"
+      ]
+    },
+    {
+      "id": "cryptobench",
+      "name": "CryptoBench",
+      "kind": "evaluation",
+      "year": "2025",
+      "title": "CryptoBench: cryptic protein–ligand binding sites dataset and benchmark",
+      "venue": "Bioinformatics 41(1)",
+      "url": "https://doi.org/10.1093/bioinformatics/btae745",
+      "status": "저널 게재",
+      "peerReviewed": true,
+      "input": "같은 단백질의 비결합·결합 상태 구조와 관찰된 결합 부위",
+      "output": "숨은 부위 라벨과 미리 정의한 평가 분할",
+      "dateNote": "2025-01",
+      "chapter": "07-technology-summary/?view=frontiers&topic=data#step-1",
+      "code": "https://github.com/skrhakv/CryptoBench",
+      "additionalSources": [
+        {
+          "title": "저자 공개 자료",
+          "url": "https://github.com/skrhakv/CryptoBench"
+        },
+        {
+          "title": "논문 초록·서지",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39693053/"
+        }
+      ],
+      "headline": "실제 비결합 구조를 입력했을 때 숨은 부위를 찾는지 검증할 데이터셋입니다.",
+      "question": "리간드가 빠진 결합 상태 구조가 아니라, 실제 apo 구조에서도 숨은 부위를 찾을까?",
+      "idea": "같은 단백질의 apo–holo 구조를 대응시키고 숨은 결합 부위를 정리합니다. 학습·평가 분할과 기준 방법을 함께 제공합니다.",
+      "pipeline": [
+        [
+          "apo–holo 구조 쌍",
+          "같은 단백질의 비결합·결합 구조를 대응시킵니다."
+        ],
+        [
+          "숨은 부위·분할",
+          "구조 변화와 단백질 유사도를 고려해 평가 자료를 준비합니다."
+        ],
+        [
+          "예측 평가",
+          "apo 입력에서 부위를 찾는 성능을 비교합니다."
+        ]
+      ],
+      "example": "닫힌 방을 찍은 사진에서 나중에 문이 열릴 자리를 맞히는 문제입니다. 열린 방 사진에서 사람만 지운 뒤 평가하는 문제와는 입력 조건이 다릅니다.",
+      "findings": [
+        "저자들은 대규모 숨은 결합 부위 자료와 학습·평가 분할을 공개하고 pLM-NN·PocketMiner·P2Rank 같은 방법을 평가했습니다.",
+        "핵심 기여는 실제 apo 조건과 일관된 기준으로 새 방법을 시험할 토대입니다."
+      ],
+      "caveats": [
+        "2025년 저널 권·호 기준으로 표시합니다. 논문 온라인 공개 시점과는 구분합니다.",
+        "라벨은 관찰·선별된 부위입니다. 목록에 없다는 이유만으로 그 단백질에 다른 포켓이 없다고 결론 내리지 않습니다."
+      ],
+      "glossary": [
+        [
+          "숨은 포켓",
+          "한 상태에서는 접근이 어렵지만 구조 변화로 드러나는 결합 부위."
+        ],
+        [
+          "apo–holo 쌍",
+          "리간드 없는 상태와 결합 상태를 대응시킨 구조 쌍."
+        ],
+        [
+          "유사도 분할",
+          "비슷한 단백질이 학습과 시험에 섞이는 영향을 줄이는 분할."
+        ]
+      ],
+      "figureGuide": "입력으로 어느 상태의 구조를 썼는지 먼저 보세요. 예측 결과 그림과 holo의 관찰 부위를 겹친 그림도 구분합니다.",
+      "takeaway": "숨은 포켓 성능을 말하려면 실제 apo 입력과 평가 분할부터 확인해야 합니다.",
+      "related": [
+        "ligysis",
+        "seq2pocket",
+        "ranking"
+      ]
+    },
+    {
+      "id": "ranking",
+      "name": "검출과 순위 분리 분석",
+      "kind": "evaluation",
+      "year": "2026",
+      "title": "Cryptic binding sites are detected but not ranked: coverage, conversion, and detector consensus",
+      "venue": "bioRxiv v1",
+      "url": "https://www.biorxiv.org/content/10.64898/2026.08.11.743381v1",
+      "status": "프리프린트 · 동료심사 전",
+      "peerReviewed": false,
+      "input": "여러 탐지기의 후보별 겹침·순위와 선택한 평가 분할",
+      "output": "후보 포함 여부, 상위 k개 회수, 결합 방식·후보 예산의 분석",
+      "dateNote": "2026-08-17",
+      "chapter": "07-technology-summary/?view=frontiers&topic=ranking#step-1",
+      "headline": "정답 후보를 만들었는지와, 그 후보를 상위 목록에 올렸는지를 분리해서 봅니다.",
+      "question": "탐지 실패처럼 보이는 결과가 사실은 순위 문제일 수 있을까?",
+      "idea": "CryptoBench의 정해진 시험 분할에서 상위 후보만이 아니라 전체 후보의 정답 겹침을 남깁니다. 후보 포함 여부와 상위 k개 회수를 따로 분석합니다.",
+      "pipeline": [
+        [
+          "전체 후보",
+          "정답 부위와 겹치는 후보가 있는지 확인합니다."
+        ],
+        [
+          "후보 순위",
+          "그 후보가 몇 위에 놓였는지 확인합니다."
+        ],
+        [
+          "상위 k개 회수",
+          "검토 예산 안에 정답이 들어왔는지 평가합니다."
+        ]
+      ],
+      "example": "가상 예시로 정답 후보가 15위이고 다섯 개만 검토하면 놓칩니다. 같은 후보를 2위로 올리면 생성 능력은 그대로여도 회수 결과가 바뀝니다. 실제 논문 수치가 아닌 설명용 예시입니다.",
+      "findings": [
+        "2026-08-17 v1은 지정 시험 분할에서 후보 생성과 상위 목록 회수 사이의 차이를 보고했습니다.",
+        "검출기들을 합쳐 후보 포함 범위를 넓혀도, 제한된 후보 예산에서 회수가 자동으로 좋아지는 것은 아니라고 분석합니다."
+      ],
+      "caveats": [
+        "bioRxiv 프리프린트 v1이며 동료심사 전입니다. 이후 버전과 수치를 섞지 않습니다.",
+        "특정 시험 분할·정답 겹침 정의에 따른 결과입니다. 분야 전체의 한계가 모두 순위 문제라고 일반화하지 않습니다."
+      ],
+      "glossary": [
+        [
+          "coverage",
+          "전체 후보 중에 정답 부위에 해당하는 것이 존재하는지 보는 기준."
+        ],
+        [
+          "top-k recovery",
+          "상위 k개 후보 안에서 정답을 회수하는지 보는 기준."
+        ],
+        [
+          "후보 예산",
+          "사람이나 후속 계산이 실제 검토할 수 있는 후보 개수."
+        ]
+      ],
+      "figureGuide": "전체 후보 기준 결과와 top-5 같은 제한 목록의 결과를 따로 보세요. 후보를 합칠 때 검토 개수도 바뀌었는지 확인합니다.",
+      "takeaway": "못 찾은 것인지, 찾았지만 보여 주지 못한 것인지 구분합니다.",
+      "related": [
+        "p2rank",
+        "hotpocket",
+        "cryptobench"
+      ]
+    }
+  ]
+}

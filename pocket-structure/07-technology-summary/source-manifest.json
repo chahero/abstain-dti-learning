@@ -31,20 +31,32 @@
   },
   {
     "kind": "summary-data",
-    "title": "13개 기술 비교 데이터",
+    "title": "16개 기술 비교 데이터",
     "sourcePath": "methods.json",
-    "sha256": "8ab725d30977aceddc9f992e13f08af62b2cc06f0ed50b8941b59cfff9a2cea9"
+    "sha256": "a811dcb8cd7da86d7e594ea2a6aef485966fc1adcb9f17c8b7844393f3ca53b9"
   },
   {
     "kind": "evolution-data",
     "title": "기술 발전·연결의 5개 관점과 출처",
     "sourcePath": "evolution.json",
-    "sha256": "41cfb5d3a8762b5858e49a4ad306cf92843264a0f375692626db7a92e3b0f9ff"
+    "sha256": "d28c1f0cdecffa6f92ebd7294a268681430d7fd38c4fb9b354335b977b239051"
   },
   {
     "kind": "input-output-examples",
-    "title": "실제 출력과 미실행 형식을 구분한 13개 예시",
+    "title": "실제 출력과 미실행 형식을 구분한 16개 예시",
     "sourcePath": "io-examples.json",
-    "sha256": "fbd0d27850bf46b93f08e4428b64e24874a031d3e80ea7fcd82a5f80cbe0d5fb"
+    "sha256": "6da71336b467311b16de13409ea5544cd117c6b5055b36401ae79d9331acb6b5"
+  },
+  {
+    "kind": "pocket-frontiers-literature",
+    "title": "포켓 탐지의 5개 한계와 연구 방향, 논문 6편; 확인일 2026-10-30",
+    "sourcePath": "frontiers.json",
+    "sha256": "88a373ca4682e4c5de2fc5c0aeee8b0372a036ec9fd95b5866c728e72a95436e"
+  },
+  {
+    "kind": "paper-learning-guides",
+    "title": "포켓 탐지 7편과 평가·분석 3편의 핵심 해설",
+    "sourcePath": "../papers/guides.json",
+    "sha256": "de2d6b84a869d89d5470e420b643fb7af3db10cb998e219905ea48a1a3bf1336"
   }
 ]

@@ -27,7 +27,7 @@
     $('io-input').textContent = JSON.stringify(e.input, null, 2);
     $('io-output').textContent = JSON.stringify(e.output, null, 2);
     $('io-note').textContent = e.note;
-    $('io-guide').textContent = guides[id];
+    $('io-guide').textContent = e.guide || guides[id];
     $('io-shape-note').textContent = examples.explanation + ' ' + (e.scene ? '' : examples.nullMeaning);
     $('io-scene').hidden = !e.scene;
     if (e.scene) $('io-scene').href = '../08-3d-lab/?scene=' + e.scene;

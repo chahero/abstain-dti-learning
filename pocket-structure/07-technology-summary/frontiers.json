@@ -1,0 +1,248 @@
+{
+  "verifiedOn": "2026-10-30",
+  "scope": "포켓 탐지의 한계와 연구 방향을 연결한 개인 학습용 문헌 정리입니다. 모든 최신 방법을 망라한 목록이나 성능 순위표가 아닙니다.",
+  "takeaway": "현재 구조에서 후보를 만들기, 후보의 순위를 매기기, 특정 화합물에 맞는 자리를 판단하기를 나눠 봅니다.",
+  "topics": [
+    {
+      "id": "motion",
+      "label": "1 숨은 포켓",
+      "title": "입력 구조에서 안 보이는 자리도 있을까?",
+      "question": "단백질은 한 장의 고정된 모양이 아닙니다.",
+      "limit": "곁사슬·루프·도메인의 배치에 따라 공간이 가려지거나 열립니다. 현재 구조의 오목한 공간만 읽으면 아직 드러나지 않은 자리를 놓칠 수 있습니다.",
+      "example": "우리 MBP 포켓 탐지 예제는 맥아당이 결합한 1ANF에서 리간드를 가린 입력입니다. 단백질의 holo 유래 모양은 남아 있습니다. 실제 apo 구조의 숨은 자리를 찾는 성능까지 확인한 예제는 아닙니다.",
+      "direction": "실제 apo–holo 구조 쌍을 이용한 평가, 한 구조에서의 숨은 자리 추정, 여러 구조 상태에서의 탐지를 함께 살펴봅니다.",
+      "boundary": "숨은 부위의 잔기 점수, 열린 구조 좌표, 시간 순서의 MD 궤적은 서로 다른 출력입니다.",
+      "sources": [
+        "cryptobench",
+        "ranking"
+      ],
+      "links": [
+        {
+          "title": "4장 · 숨은 포켓과 MD",
+          "url": "../04-cryptic-pockets/"
+        },
+        {
+          "title": "MBP 실제 입력을 3D로 확인",
+          "url": "../08-3d-lab/?scene=structure"
+        }
+      ]
+    },
+    {
+      "id": "ranking",
+      "label": "2 후보와 순위",
+      "title": "찾았는데 상위 목록에 못 올렸다면?",
+      "question": "좋은 후보를 만드는 능력과 좋은 순서를 매기는 능력을 구분합니다.",
+      "limit": "실제 결합 자리에 해당하는 후보가 있어도 순위가 낮으면 검토 목록에서 빠집니다. 같은 자리를 중복해서 많이 제안하면 한정된 상위 목록을 채워 다른 자리가 밀릴 수도 있습니다.",
+      "example": "아래 예시는 후보 20개 중 정답 후보가 15위에 있는 가상의 상황입니다. 순위만 2위로 개선하거나 검토 개수를 늘렸을 때 무엇이 바뀌는지 비교하세요.",
+      "direction": "후보 생성, 중복 제거, 재점수화, 여러 검출기의 결합을 나눠 평가합니다. 전체 후보 중 정답이 있는 비율과 상위 k개 안에서 회수한 비율도 구분합니다.",
+      "boundary": "정답 후보가 애초에 없으면 순위만 바꿔도 회수할 수 없습니다. 도구들을 합칠 때도 상위 후보를 얼마나 검토할지 함께 정해야 합니다.",
+      "sources": [
+        "ligysis",
+        "ranking",
+        "hotpocket"
+      ],
+      "links": [
+        {
+          "title": "fpocket·P2Rank 실제 후보 비교",
+          "url": "../08-3d-lab/?scene=compare"
+        }
+      ]
+    },
+    {
+      "id": "geometry",
+      "label": "3 포켓의 범위",
+      "title": "잔기 점수에서 하나의 3D 포켓으로",
+      "question": "잔기별 예측을 공간에서 사용할 수 있는 영역으로 묶어야 합니다.",
+      "limit": "결합 가능성이 높은 잔기들을 골라도 공간상 여기저기 흩어져 있을 수 있습니다. 포켓 몇 개인지, 어느 잔기들을 한 포켓으로 묶을지, 경계를 어디까지 잡을지는 추가 문제입니다.",
+      "example": "서열에서 멀리 떨어진 잔기들도 접힌 구조에서는 이웃일 수 있습니다. 반대로 서열상 가깝다고 같은 포켓의 벽이라는 뜻은 아닙니다.",
+      "direction": "단백질 언어모델의 잔기별 지식에 3D 이웃 관계와 표면점 군집화를 결합합니다. Seq2Pocket은 예측의 빈 부분을 보정하고 구조 기반 후처리로 포켓을 묶습니다.",
+      "boundary": "Seq2Pocket의 최종 3D 포켓 구성에는 구조 정보가 쓰입니다. 서열 점수만으로 공간 좌표가 새로 생성됐다고 해석하지 않습니다.",
+      "sources": [
+        "seq2pocket"
+      ],
+      "links": [
+        {
+          "title": "3장 · 원자 그래프와 공간 표현",
+          "url": "../03-learning-pockets/"
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "label": "4 데이터와 평가",
+      "title": "정답 목록에 없는 자리는 모두 오답일까?",
+      "question": "관찰된 결합 부위의 목록과 가능한 모든 결합 부위는 같지 않습니다.",
+      "limit": "크고 잘 알려진 주 결합 부위에 데이터가 치우치면 작거나 덜 알려진 자리를 놓치기 쉽습니다. 한 구조에서 관찰된 리간드만 정답으로 삼으면 다른 상태나 다른 실험에서 관찰된 자리도 평가에서 빠질 수 있습니다.",
+      "example": "큰 주 결합 자리 A만 라벨에 있고 작은 자리 B가 빠진 학습 자료를 생각해 보세요. B에 대한 예측을 판단하려면 추가 구조·실험 근거를 확인해야 하며, 그 자리의 결합 가능성을 단정할 수 없습니다.",
+      "direction": "동일 단백질의 여러 구조에서 관찰된 부위를 모으고, 빠진 작은 분자·이온 결합 부위를 보강합니다. 실제 apo 입력과 단백질 유사도를 고려한 분할 조건도 함께 확인합니다.",
+      "boundary": "작은 분자나 이온이 관찰된 결합 자리와 약물로 공략하기 좋은 포켓은 같은 판정이 아닙니다. 중심 거리, 잔기 겹침, 부피 등 평가 단위도 맞춰 비교해야 합니다.",
+      "sources": [
+        "ligysis",
+        "cryptobench",
+        "seq2pocket"
+      ],
+      "links": [
+        {
+          "title": "2장 · 입력 구조와 해석",
+          "url": "../02-pocket-detection/#step-8"
+        }
+      ]
+    },
+    {
+      "id": "ligand",
+      "label": "5 리간드 조건",
+      "title": "특정 화합물이 정해지면 질문도 구체화됩니다",
+      "question": "자리 후보를 넓게 찾는 일과 이 화합물의 자리를 찾는 일을 나눕니다.",
+      "limit": "리간드 정보를 받지 않는 탐지는 어디를 먼저 살펴볼지 알려줍니다. 특정 분자와 맞는 모양·전하·상호작용을 갖는지는 추가 판단이 필요하며 포켓 점수만으로 친화도가 확정되지는 않습니다.",
+      "example": "같은 단백질의 자리 A에는 분자 X가, 다른 자리 B에는 분자 Y가 대응할 수 있습니다. 분자를 입력하는 방법은 어떤 분자가 주어졌는지에 따라 결합 부위 예측을 달리할 수 있습니다.",
+      "direction": "ProMoNet의 ProMoSite는 단백질 서열과 리간드 SMILES를 함께 읽어 그 리간드에 대응하는 잔기별 결합 부위 점수를 예측합니다. 리간드 없이 넓게 탐색하는 방법도 후보 발굴에 계속 쓰입니다.",
+      "boundary": "ProMoSite는 단백질 3D 좌표 없이 추론할 수 있지만 리간드 특징 계산에는 RDKit으로 만든 conformer가 사용됩니다. 잔기 점수, 복합체 좌표 생성, 친화도 예측을 구분하며 입력 정보가 다른 방법의 점수를 그대로 우열 비교하지 않습니다.",
+      "sources": [
+        "promonet",
+        "hotpocket"
+      ],
+      "links": [
+        {
+          "title": "탐지·도킹·co-folding 입력 비교",
+          "url": "#step-3"
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "id": "ligysis",
+      "name": "LIGYSIS 비교 연구",
+      "year": "2024",
+      "date": "2024-11-11",
+      "venue": "Journal of Cheminformatics",
+      "status": "저널 게재",
+      "peerReviewed": true,
+      "title": "Comparative evaluation of methods for the prediction of protein–ligand binding sites",
+      "url": "https://link.springer.com/article/10.1186/s13321-024-00923-z",
+      "summary": "여러 포켓 탐지기와 변형을 공통 평가 틀에서 비교하고, 후보 중복과 재점수화가 평가 결과에 미치는 영향을 분석합니다.",
+      "input": "여러 탐지기의 예측과 여러 구조의 관찰 부위를 모은 기준 데이터",
+      "output": "잔기·포켓 단위 평가와 순위·중복에 대한 분석",
+      "readFor": "새 모델 이름보다 평가와 후보 순위의 중요성부터 이해하기",
+      "caution": "정해진 데이터와 지표에서의 비교입니다. 모든 단백질·평가 조건에 공통인 우열 순위로 일반화하지 않습니다.",
+      "kind": "evaluation",
+      "category": "비교·평가 연구",
+      "evaluationQuestion": "탐지기·점수·후보 순위에 따라 평가가 어떻게 달라질까?",
+      "useWhen": "여러 도구를 같은 평가 단위와 후보 예산으로 비교할 때"
+    },
+    {
+      "id": "cryptobench",
+      "name": "CryptoBench",
+      "year": "2025",
+      "date": "2025-01",
+      "venue": "Bioinformatics 41(1)",
+      "status": "저널 게재",
+      "peerReviewed": true,
+      "title": "CryptoBench: cryptic protein–ligand binding sites dataset and benchmark",
+      "url": "https://doi.org/10.1093/bioinformatics/btae745",
+      "code": "https://github.com/skrhakv/CryptoBench",
+      "summary": "실제 apo–holo 구조 쌍과 단백질 유사도를 고려한 분할로 숨은 결합 부위를 평가하는 데이터셋입니다.",
+      "input": "같은 단백질의 비결합·결합 상태 구조와 관찰된 결합 부위",
+      "output": "숨은 부위 라벨과 미리 정의한 평가 분할",
+      "readFor": "holo에서 리간드를 가리는 평가와 실제 apo 입력의 차이",
+      "caution": "2025년 저널 권·호 기준으로 표시합니다. 벤치마크의 정답은 데이터 수집·선별 기준에 따른 관찰 부위입니다.",
+      "kind": "evaluation",
+      "category": "데이터셋·벤치마크",
+      "evaluationQuestion": "실제 apo 구조에서 숨은 결합 부위를 찾는가?",
+      "useWhen": "apo–holo 쌍과 단백질 유사도 분할로 숨은 부위를 평가할 때"
+    },
+    {
+      "id": "hotpocket",
+      "name": "HOTPocket / hotpocketNN",
+      "year": "2025",
+      "date": "2025-12-24",
+      "venue": "Journal of Cheminformatics",
+      "status": "저널 게재",
+      "peerReviewed": true,
+      "title": "The Human Omnibus of Targetable Pockets",
+      "url": "https://link.springer.com/article/10.1186/s13321-025-01125-x",
+      "summary": "여러 기하학·학습 기반 탐지기의 후보를 모으고 hotpocketNN으로 선별하여 인간 단백질 전반의 예측 포켓 지도를 구성합니다.",
+      "input": "실험·AlphaFold2 구조에서 얻은 7개 탐지 방법의 후보",
+      "output": "재평가한 후보와 인간 proteome의 예측 포켓 데이터셋",
+      "readFor": "기존 검출기를 활용하는 후보 통합과 학습 기반 선별",
+      "caution": "예측 지도는 모든 포켓을 실험으로 검증한 목록이 아닙니다. 여러 도구의 단순 합집합·교집합이 항상 성능을 높이는 것도 아닙니다.",
+      "kind": "technology"
+    },
+    {
+      "id": "promonet",
+      "name": "ProMoNet / ProMoSite",
+      "year": "2026",
+      "date": "2026-05-20",
+      "venue": "Journal of Cheminformatics",
+      "status": "저널 게재",
+      "peerReviewed": true,
+      "title": "Sequence-based drug-target binding site pre-training enables cryptic pocket detection and improves binding affinity and kinetics prediction",
+      "url": "https://link.springer.com/article/10.1186/s13321-026-01227-0",
+      "summary": "단백질·분자 사전학습 표현을 상호작용 수준에서 연결합니다. ProMoSite의 결합 부위 지식을 별도 모듈 ProMoBind의 친화도·동역학 예측에 전달합니다.",
+      "input": "단백질 서열과 리간드 SMILES; 단백질의 실측 3D 좌표는 추론 필수 입력이 아님",
+      "output": "ProMoSite의 리간드별 잔기 점수; 후속 ProMoBind의 별도 특성 예측",
+      "readFor": "특정 화합물을 조건으로 부위를 예측하는 방향",
+      "caution": "3D 포켓 평가는 잔기 예측을 별도 구조에 매핑해 수행합니다. 시간 궤적이나 복합체 좌표를 생성하는 모델로 해석하지 않습니다.",
+      "kind": "technology"
+    },
+    {
+      "id": "seq2pocket",
+      "name": "Seq2Pocket",
+      "year": "2026",
+      "date": "2026-10-16",
+      "venue": "Bioinformatics",
+      "status": "저널 게재",
+      "peerReviewed": true,
+      "title": "Seq2Pocket: augmenting protein language models for spatially consistent binding site prediction",
+      "url": "https://doi.org/10.1093/bioinformatics/btag778",
+      "code": "https://github.com/skrhakv/seq2pocket",
+      "summary": "학습 데이터 보강, 단백질 언어모델의 잔기별 예측, 공간적 보정과 표면점 군집화를 결합합니다.",
+      "input": "단백질 언어모델의 잔기별 표현·점수와 후처리에 사용할 3D 구조",
+      "output": "공간적으로 연결된 3D 포켓 영역",
+      "readFor": "잔기 분류에서 사용 가능한 포켓으로 연결하는 방법",
+      "caution": "단백질 언어모델만으로 새 3D 좌표를 생성하는 방식이 아닙니다. 작은 분자·이온 부위 보강과 후처리도 결과에 기여합니다.",
+      "kind": "technology"
+    },
+    {
+      "id": "ranking",
+      "name": "검출과 순위 분리 분석",
+      "year": "2026",
+      "date": "2026-08-17",
+      "venue": "bioRxiv v1",
+      "status": "프리프린트 · 동료심사 전",
+      "peerReviewed": false,
+      "title": "Cryptic binding sites are detected but not ranked: coverage, conversion, and detector consensus",
+      "url": "https://www.biorxiv.org/content/10.64898/2026.08.11.743381v1",
+      "summary": "CryptoBench의 특정 시험 분할에서 전체 후보의 회수와 상위 후보의 회수를 분리하여, 순위와 검토 예산의 영향을 분석합니다.",
+      "input": "여러 탐지기의 후보별 겹침·순위와 선택한 평가 분할",
+      "output": "후보 포함 여부, 상위 k개 회수, 결합 방식·후보 예산의 분석",
+      "readFor": "후보를 찾는 일과 그 후보를 보여 주는 일을 구분하기",
+      "caution": "2026-08-17 공개 v1을 근거로 한 연구 방향 소개입니다. 확정된 분야 전체의 결론으로 취급하지 않으며, 이 자료에는 타 논문과 혼합한 성능 순위표를 싣지 않습니다.",
+      "kind": "evaluation",
+      "category": "검출·순위 분석 · 프리프린트",
+      "evaluationQuestion": "정답 후보가 없는가, 있어도 상위 목록에 못 드는가?",
+      "useWhen": "후보 생성·중복·순위·검토 개수의 실패 원인을 나눌 때"
+    }
+  ],
+  "readingOrder": [
+    {
+      "paper": "ligysis",
+      "why": "방법들의 비교에서 무엇을 평가해야 하는지 먼저 봅니다."
+    },
+    {
+      "paper": "cryptobench",
+      "why": "실제 apo 입력과 숨은 부위에서 왜 평가가 어려워지는지 봅니다."
+    },
+    {
+      "paper": "seq2pocket",
+      "why": "최근 방법이 데이터와 공간적 후처리로 어떻게 보완하는지 봅니다."
+    }
+  ],
+  "toy": {
+    "candidates": 20,
+    "initialRank": 15,
+    "improvedRank": 2,
+    "defaultBudget": 5,
+    "note": "설명용 가상 예시입니다. 실제 모델을 실행한 결과나 논문의 성능 수치가 아닙니다. 처음 두 설정은 같은 후보 20개에서 순위만 바꾸며, 마지막 설정은 정답 후보 자체가 없는 경우입니다."
+  }
+}

@@ -84,6 +84,119 @@
     "source": "https://github.com/tiwarylab/GrASP"
   },
   {
+    "id": "hotpocket",
+    "name": "HOTPocket / hotpocketNN",
+    "family": "pocket",
+    "role": "후보 통합·학습 기반 선별",
+    "input": "단백질 3D 구조 + 여러 탐지기의 후보",
+    "output": "후보별 점수·선별 포켓·통합 지도",
+    "use": "여러 탐지기의 후보를 공통 기준으로 선별할 때",
+    "principle": "여러 탐지기에서 후보를 모은 뒤, 후보 잔기의 ESM-2 특징을 읽는 hotpocketNN으로 점수를 매깁니다. 선별한 후보를 묶어 HOTPocket 예측 지도를 구성합니다.",
+    "inputLines": [
+      "단백질 3D + 후보들",
+      "여러 탐지기 · 잔기 특징"
+    ],
+    "outputLines": [
+      "후보 점수·선별 포켓",
+      "통합 예측 지도"
+    ],
+    "limit": "HOTPocket은 데이터셋·파이프라인이고 hotpocketNN은 후보를 평가하는 모델입니다. 후보 결합이 항상 더 좋지는 않으며, 예측 지도는 실험 검증된 약물 표적 목록이 아닙니다.",
+    "chapter": "07-technology-summary/?view=frontiers&topic=ranking#step-1",
+    "chapterLabel": "최근 연구 설명 →",
+    "source": "https://link.springer.com/article/10.1186/s13321-025-01125-x",
+    "guide": "기존 탐지기의 후보 목록과 잔기 특징이 출발점입니다. 원 논문은 7개 탐지기의 후보를 사용합니다. 새 실험을 실행하지 않았으므로 아래 출력 점수와 선별 목록은 null로 둡니다.",
+    "example": {
+      "status": "미실행 · 입력과 출력 형식",
+      "case": "복수 탐지기 후보를 선별하는 개념 예시",
+      "input": {
+        "protein_structure": "준비한 단백질 PDB",
+        "candidate_pockets": "원 논문의 7개 탐지기 등에서 얻은 후보 목록",
+        "residue_features": "후보 잔기의 ESM-2 임베딩"
+      },
+      "output": {
+        "candidate_scores": null,
+        "accepted_pockets": null,
+        "clustered_pockets": null
+      },
+      "note": "HOTPocket 지도와 hotpocketNN 후보 선별 모델을 구분합니다. 값이 없는 것은 미실행을 뜻하며, 원 논문의 성능을 재현했다는 의미가 아닙니다."
+    }
+  },
+  {
+    "id": "seq2pocket",
+    "name": "Seq2Pocket",
+    "family": "pocket",
+    "role": "잔기 예측의 공간적 보정·포켓화",
+    "input": "단백질 서열·잔기 점수 + 후처리용 3D 구조",
+    "output": "보정한 잔기 점수 + 3D 포켓 영역",
+    "use": "흩어진 잔기 예측을 공간적으로 이어진 포켓으로 묶을 때",
+    "principle": "미세조정한 단백질 언어모델의 잔기별 예측에 이웃 잔기 임베딩을 활용한 보정을 적용합니다. 구조의 용매 접근 가능 표면(SAS) 점들을 군집화해 최종 3D 포켓을 만듭니다.",
+    "inputLines": [
+      "서열·잔기 점수 + 구조",
+      "언어모델 특징 · SAS 표면"
+    ],
+    "outputLines": [
+      "연결된 3D 포켓 영역",
+      "잔기 보정 → 표면 군집화"
+    ],
+    "limit": "서열만으로 새로운 원자 좌표를 만드는 모델이 아닙니다. 공간적 보정·군집화에는 3D 구조가 필요하며, 최종 포켓 품질은 입력 구조와 학습·평가 조건의 영향을 받습니다.",
+    "chapter": "07-technology-summary/?view=frontiers&topic=geometry#step-1",
+    "chapterLabel": "최근 연구 설명 →",
+    "source": "https://github.com/skrhakv/seq2pocket",
+    "guide": "잔기마다 부위 점수를 얻은 뒤, 구조상의 이웃과 표면점으로 이를 연결합니다. 원자 좌표 생성과 구분하세요. 아래는 미실행 형식 예시이며 보정 점수와 포켓 영역의 실제 값은 없습니다.",
+    "example": {
+      "status": "미실행 · 입력과 출력 형식",
+      "case": "잔기별 예측에서 공간적 포켓으로 이어지는 예시",
+      "input": {
+        "protein_sequence": "대상 단백질의 아미노산 서열",
+        "protein_structure": "동일 단백질의 준비한 3D 구조",
+        "residue_predictions": "미세조정 pLM의 잔기 점수·임베딩",
+        "surface_points": "구조에서 계산한 SAS 점"
+      },
+      "output": {
+        "smoothed_residue_scores": null,
+        "pocket_regions_3d": null
+      },
+      "note": "점수·구조·표면점은 파이프라인의 서로 다른 단계에서 쓰입니다. 후처리에 구조가 필요하며 새 단백질 좌표를 생성하는 출력이 아닙니다."
+    }
+  },
+  {
+    "id": "promonet",
+    "name": "ProMoNet / ProMoSite",
+    "family": "pocket",
+    "role": "리간드 조건부 결합 부위 예측",
+    "input": "단백질 서열 + 리간드 SMILES",
+    "output": "해당 리간드에 대한 잔기별 부위 점수",
+    "use": "특정 화합물이 어느 잔기들과 결합할지 예측할 때",
+    "principle": "ProMoNet의 부위 예측 모듈 ProMoSite는 단백질 잔기와 리간드 원자의 상호작용 표현을 학습합니다. ESM-2의 서열·접촉 특징과 RDKit conformer를 이용한 분자 특징을 결합해 잔기별 점수를 냅니다.",
+    "inputLines": [
+      "아미노산 서열 + SMILES",
+      "단백질 3D는 추론 필수 아님"
+    ],
+    "outputLines": [
+      "리간드별 잔기 점수",
+      "3D 평가는 별도 구조 매핑"
+    ],
+    "limit": "리간드 없이 포켓을 넓게 찾는 방법과 입력 조건이 다릅니다. RDKit 리간드 conformer를 사용하며, 3D 포켓 평가는 별도 구조 매핑을 거칩니다. ProMoBind의 친화도·동역학 예측은 별도 모듈입니다.",
+    "chapter": "07-technology-summary/?view=frontiers&topic=ligand#step-1",
+    "chapterLabel": "최근 연구 설명 →",
+    "source": "https://link.springer.com/article/10.1186/s13321-026-01227-0",
+    "guide": "단백질 서열과 특정 리간드 SMILES를 한 쌍으로 넣습니다. 단백질 3D를 필수로 받지는 않지만 분자 쪽에는 RDKit conformer를 활용합니다. 나오는 것은 잔기 점수이며 복합체 좌표나 시간 궤적이 아닙니다.",
+    "example": {
+      "status": "미실행 · 입력과 출력 형식",
+      "case": "단백질·화합물 쌍에 조건을 건 부위 예측",
+      "input": {
+        "protein_sequence": "대상 단백질의 아미노산 서열",
+        "ligand_smiles": "CC(=O)Oc1ccccc1C(=O)O",
+        "ligand_feature_preparation": "RDKit conformer → 거리·원자 특징",
+        "protein_feature_preparation": "ESM-2 → 잔기·접촉 특징"
+      },
+      "output": {
+        "ligand_conditioned_residue_scores": null
+      },
+      "note": "SMILES는 아스피린의 입력 형식 예시일 뿐, 특정 단백질과의 결합을 확인한 결과가 아닙니다. ProMoSite를 실행하지 않았고 실제 예측 점수는 없습니다."
+    }
+  },
+  {
     "id": "pocketminer",
     "name": "PocketMiner",
     "family": "cryptic",

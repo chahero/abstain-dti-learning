@@ -8,7 +8,7 @@
 
 [교재 전체 목차](https://chahero.github.io/abstain-dti-learning/pocket-structure/) · [전체 기술 지도](https://chahero.github.io/abstain-dti-learning/pocket-structure/07-technology-summary/) · [기술 발전 흐름도](https://chahero.github.io/abstain-dti-learning/pocket-structure/07-technology-summary/?view=evolution#step-1)
 
-개요에서 13개 기술의 입력·출력·역할·사용 상황과 발전 흐름을 먼저 보고, 다음 6장으로 이어 읽습니다.
+개요에서 16개 기술의 입력·출력·역할·사용 상황과 발전 흐름을 먼저 보고, 다음 6장으로 이어 읽습니다.
 
 1. 포켓의 기초와 움직임 — 잔기·곁사슬, apo/holo와 MBP 실제 구조
 2. fpocket·P2Rank — 후보 탐지 원리와 같은 단백질의 실제 결과
@@ -18,6 +18,8 @@
 6. AlphaFold 3·Boltz-2·Chai-1·OpenFold3-preview2 — 공동 구조 예측
 
 조작 가능한 그림과 실제 구조·입력 예제, 장별 원고 다운로드와 인쇄를 제공합니다. 기술별 연도와 표시 기준·원 출처는 개요에서 확인할 수 있습니다. 관찰 메모는 사용자의 브라우저에만 저장됩니다.
+
+[포켓 논문 핵심 해설 10편](https://chahero.github.io/abstain-dti-learning/pocket-structure/papers/)에서 포켓 탐지 기술 7편과 별도 평가·분석 3편의 문제의식·원리·결과·한계·용어를 읽을 수 있습니다. 발전 흐름도의 기술 상자에서도 연결됩니다.
 
 ## AI Agents That Matter · 웹 발표
 

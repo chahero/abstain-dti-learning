@@ -22,7 +22,7 @@
     const caption=create('p','figure-dialog-caption');dialog.append(head,tools,stage,caption);document.body.append(dialog);
     stage.addEventListener('wheel',e=>{if(e.ctrlKey||e.metaKey||e.shiftKey||Math.abs(e.deltaX)>Math.abs(e.deltaY)||e.deltaY===0)return;e.preventDefault();const pixels=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?stage.clientHeight:1);zoom(ratio*Math.exp(-Math.max(-120,Math.min(120,pixels))*.002));},{passive:false});
     let pan;
-    stage.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'||e.button!==0)return;e.preventDefault();pan={id:e.pointerId,x:e.clientX,y:e.clientY,left:stage.scrollLeft,top:stage.scrollTop};stage.setPointerCapture(e.pointerId);stage.classList.add('is-panning');});
+    stage.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'||e.button!==0||e.target.closest('a,button'))return;e.preventDefault();pan={id:e.pointerId,x:e.clientX,y:e.clientY,left:stage.scrollLeft,top:stage.scrollTop};stage.setPointerCapture(e.pointerId);stage.classList.add('is-panning');});
     stage.addEventListener('pointermove',e=>{if(pan&&pan.id===e.pointerId){stage.scrollLeft=pan.left+pan.x-e.clientX;stage.scrollTop=pan.top+pan.y-e.clientY;}});
     const endPan=e=>{if(pan?.id===e.pointerId){pan=null;stage.classList.remove('is-panning');}};
     stage.addEventListener('pointerup',endPan);stage.addEventListener('pointercancel',endPan);

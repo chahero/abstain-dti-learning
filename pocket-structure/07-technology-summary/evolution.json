@@ -24,7 +24,7 @@
       "change": "공간을 읽는 표현, 자세를 생성하는 방식, 함께 예측하는 대상과 출력이 확장됐습니다.",
       "body": "그림의 가로 방향은 발전의 관점을 요약한 것입니다. 모든 화살표가 직접적인 후속 모델이나 반드시 거쳐야 하는 실행 순서를 뜻하지는 않습니다.",
       "gains": [
-        "포켓 탐지: 기하학적 공간 탐지에 학습한 화학 환경과 신경망 표현을 활용합니다.",
+        "포켓 탐지: 구조 표현뿐 아니라 후보 통합·공간적 보정·리간드 조건으로 질문과 처리 범위를 넓힙니다.",
         "도킹: 점수 기반 탐색과 학습 기반 생성, 수용체 유연성이라는 축을 나눠 봅니다.",
         "co-folding: 구성 요소의 공동 좌표 생성에 입력 힌트·결합 특성·재현 기반을 더합니다."
       ],
@@ -45,20 +45,32 @@
         {
           "title": "AlphaFold 3 공식 구현",
           "url": "https://github.com/google-deepmind/alphafold3"
+        },
+        {
+          "title": "HOTPocket / hotpocketNN",
+          "url": "https://link.springer.com/article/10.1186/s13321-025-01125-x"
+        },
+        {
+          "title": "Seq2Pocket 공식 구현",
+          "url": "https://github.com/skrhakv/seq2pocket"
+        },
+        {
+          "title": "ProMoNet 원 논문",
+          "url": "https://link.springer.com/article/10.1186/s13321-026-01227-0"
         }
       ]
     },
     {
       "id": "pocket",
-      "title": "포켓 탐지: 모양에서 학습된 주변 환경까지",
-      "change": "같은 자리 찾기 문제를 기하학, 표면점 특징, 복셀 CNN, 원자 그래프로 다르게 읽습니다.",
-      "body": "fpocket은 기하학적으로 후보를 만듭니다. DeepPocket은 그 후보를 실제 입력으로 재사용해 순위를 매기고 영역을 분할합니다. P2Rank와 GrASP는 각각 표면점의 학습된 특징, 원자 그래프의 정보 전달로 포켓을 평가하는 별도의 접근입니다.",
+      "title": "포켓 탐지: 구조 표현에서 통합·공간·리간드 조건으로",
+      "change": "기하학과 학습 표현에 더해, 후보의 통합 선별·잔기 예측의 공간적 연결·특정 리간드 조건을 다룹니다.",
+      "body": "fpocket의 후보를 DeepPocket이 재사용하는 관계는 실제 처리 연결입니다. P2Rank·GrASP는 다른 구조 기반 접근입니다. HOTPocket/hotpocketNN은 여러 도구의 후보를 선별하고, Seq2Pocket은 잔기별 예측을 구조 위의 포켓으로 묶습니다. ProMoNet의 ProMoSite는 단백질 서열과 특정 리간드로 잔기 점수를 예측합니다.",
       "gains": [
-        "fpocket → DeepPocket은 실제 후보 데이터의 연결입니다.",
-        "P2Rank는 표면점의 물리화학·기하 특징을 학습 모델로 평가합니다.",
-        "DeepPocket은 3D 복셀, GrASP는 원자와 이웃 관계를 신경망으로 읽습니다."
+        "HOTPocket/hotpocketNN (2025): 여러 탐지기의 후보를 공통 점수로 선별합니다.",
+        "Seq2Pocket (2026): 잔기 예측에 이웃 정보와 SAS 군집화를 더해 공간적 범위를 정합니다.",
+        "ProMoNet/ProMoSite (2026): 단백질 서열과 리간드 정보로 특정 화합물의 부위 점수를 예측합니다."
       ],
-      "limit": "P2Rank → DeepPocket → GrASP가 한 모델의 후속 계보인 것은 아닙니다. 모두 입력 구조에서 포켓을 읽으며, 특정 리간드 자세나 친화도는 별도 질문입니다.",
+      "limit": "세 확장은 서로 다른 보완 방향이며 모든 도구의 필수 후속 단계가 아닙니다. ProMoSite는 단백질 3D 없이 추론할 수 있지만, Seq2Pocket의 공간 후처리와 3D 포켓 평가는 구조 정보가 필요합니다.",
       "sources": [
         {
           "title": "fpocket 공식 구현",
@@ -75,6 +87,18 @@
         {
           "title": "GrASP 공식 구현",
           "url": "https://github.com/tiwarylab/GrASP"
+        },
+        {
+          "title": "HOTPocket 원 논문",
+          "url": "https://link.springer.com/article/10.1186/s13321-025-01125-x"
+        },
+        {
+          "title": "Seq2Pocket 공식 구현",
+          "url": "https://github.com/skrhakv/seq2pocket"
+        },
+        {
+          "title": "ProMoNet 원 논문",
+          "url": "https://link.springer.com/article/10.1186/s13321-026-01227-0"
         }
       ]
     },
@@ -142,11 +166,12 @@
       "id": "connections",
       "title": "실제 분석에서는 필요한 부분을 연결합니다",
       "change": "기술 계보와 분석 흐름은 다릅니다. 연결하려면 출력이 다음 입력에 맞는지 확인합니다.",
-      "body": "MD에서 얻은 프레임을 포켓 검출기로 분석하거나, 포켓 후보 위치를 정해 도킹 범위를 잡을 수 있습니다. 공동 예측으로 만든 구조를 다시 분석하는 것도 선택지입니다. 반대로 blind docking이나 공동 예측에서 포켓 탐지기를 항상 먼저 실행해야 하는 것은 아닙니다.",
+      "body": "MD에서 얻은 프레임을 포켓 검출기로 분석하거나, 포켓 후보 위치를 정해 도킹 범위를 잡을 수 있습니다. 공동 예측으로 만든 구조를 다시 분석하는 것도 선택지입니다. 반대로 blind docking이나 공동 예측에서 포켓 탐지기를 항상 먼저 실행해야 하는 것은 아닙니다. 여러 검출기의 후보를 hotpocketNN으로 선별하거나, 서열 예측을 Seq2Pocket으로 공간화하는 연결도 가능합니다. ProMoSite의 리간드별 잔기 점수는 별도 구조에 매핑해 3D로 평가할 수 있습니다.",
       "gains": [
         "열릴 법한 영역의 예측 → 필요에 따라 MD 탐색 → 프레임별 포켓 분석이라는 조합을 생각할 수 있습니다.",
         "포켓 후보 → 탐색 범위 설정 → 도킹은 가능한 활용 예입니다. 도구 간 좌표와 번호 체계를 확인해야 합니다.",
-        "co-folding 결과 → 구조·인터페이스 검증이 기본이며, 추가 포켓 분석이나 도킹은 새 질문이 있을 때 선택합니다."
+        "co-folding 결과 → 구조·인터페이스 검증이 기본이며, 추가 포켓 분석이나 도킹은 새 질문이 있을 때 선택합니다.",
+        "후보 선별(HOTPocket), 공간적 포켓화(Seq2Pocket), 리간드 조건부 잔기 점수(ProMoSite)는 필요한 입력과 출력이 다릅니다."
       ],
       "limit": "PocketMiner 점수가 열린 좌표를 생성하지는 않습니다. co-folding으로 얻은 복합체를 반드시 다시 도킹할 필요도 없습니다. 어떤 경로도 실험 검증을 자동으로 대체하지 않습니다.",
       "sources": [
@@ -161,6 +186,18 @@
         {
           "title": "공동 예측과 검증 조건",
           "url": "../06-cofolding/"
+        },
+        {
+          "title": "HOTPocket 원 논문",
+          "url": "https://link.springer.com/article/10.1186/s13321-025-01125-x"
+        },
+        {
+          "title": "Seq2Pocket 공식 처리",
+          "url": "https://github.com/skrhakv/seq2pocket"
+        },
+        {
+          "title": "ProMoNet 원 논문",
+          "url": "https://link.springer.com/article/10.1186/s13321-026-01227-0"
         }
       ]
     }
@@ -370,6 +407,51 @@
           {
             "title": "공식 릴리스 실행 날짜",
             "url": "https://github.com/aqlaboratory/openfold-3/actions/runs/23049391144"
+          }
+        ]
+      },
+      {
+        "id": "hotpocket",
+        "name": "HOTPocket / hotpocketNN",
+        "family": "포켓 탐지",
+        "year": 2025,
+        "badge": "2025",
+        "basis": "정식 저널 공개 2025-12-24",
+        "note": "HOTPocket은 지도·파이프라인, hotpocketNN은 후보 선별 모델입니다.",
+        "sources": [
+          {
+            "title": "원 논문·저자 공개 자료",
+            "url": "https://link.springer.com/article/10.1186/s13321-025-01125-x"
+          }
+        ]
+      },
+      {
+        "id": "seq2pocket",
+        "name": "Seq2Pocket",
+        "family": "포켓 탐지",
+        "year": 2026,
+        "badge": "2026",
+        "basis": "Bioinformatics 온라인 공개 2026-10-16",
+        "note": "언어모델 점수를 공간적 포켓으로 연결하며 후처리에 구조가 필요합니다.",
+        "sources": [
+          {
+            "title": "원 논문·저자 공개 자료",
+            "url": "https://github.com/skrhakv/seq2pocket"
+          }
+        ]
+      },
+      {
+        "id": "promonet",
+        "name": "ProMoNet / ProMoSite",
+        "family": "포켓 탐지",
+        "year": 2026,
+        "badge": "2026",
+        "basis": "정식 저널 공개 2026-05-20",
+        "note": "ProMoNet 프레임워크의 ProMoSite 부위 예측 모듈을 표시합니다.",
+        "sources": [
+          {
+            "title": "원 논문·저자 공개 자료",
+            "url": "https://link.springer.com/article/10.1186/s13321-026-01227-0"
           }
         ]
       }

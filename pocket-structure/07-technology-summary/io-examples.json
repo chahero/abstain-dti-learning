@@ -385,6 +385,56 @@
         "structure_confidence": null
       },
       "note": "현재 값은 입력 예시이며 공동 예측을 실행하지 않았습니다. 실제 출력 좌표·신뢰도 수치는 없습니다. 이 자료는 OpenFold3-preview2 범위입니다."
+    },
+    {
+      "id": "hotpocket",
+      "guide": "기존 탐지기의 후보 목록과 잔기 특징이 출발점입니다. 원 논문은 7개 탐지기의 후보를 사용합니다. 새 실험을 실행하지 않았으므로 아래 출력 점수와 선별 목록은 null로 둡니다.",
+      "status": "미실행 · 입력과 출력 형식",
+      "case": "복수 탐지기 후보를 선별하는 개념 예시",
+      "input": {
+        "protein_structure": "준비한 단백질 PDB",
+        "candidate_pockets": "원 논문의 7개 탐지기 등에서 얻은 후보 목록",
+        "residue_features": "후보 잔기의 ESM-2 임베딩"
+      },
+      "output": {
+        "candidate_scores": null,
+        "accepted_pockets": null,
+        "clustered_pockets": null
+      },
+      "note": "HOTPocket 지도와 hotpocketNN 후보 선별 모델을 구분합니다. 값이 없는 것은 미실행을 뜻하며, 원 논문의 성능을 재현했다는 의미가 아닙니다."
+    },
+    {
+      "id": "seq2pocket",
+      "guide": "잔기마다 부위 점수를 얻은 뒤, 구조상의 이웃과 표면점으로 이를 연결합니다. 원자 좌표 생성과 구분하세요. 아래는 미실행 형식 예시이며 보정 점수와 포켓 영역의 실제 값은 없습니다.",
+      "status": "미실행 · 입력과 출력 형식",
+      "case": "잔기별 예측에서 공간적 포켓으로 이어지는 예시",
+      "input": {
+        "protein_sequence": "대상 단백질의 아미노산 서열",
+        "protein_structure": "동일 단백질의 준비한 3D 구조",
+        "residue_predictions": "미세조정 pLM의 잔기 점수·임베딩",
+        "surface_points": "구조에서 계산한 SAS 점"
+      },
+      "output": {
+        "smoothed_residue_scores": null,
+        "pocket_regions_3d": null
+      },
+      "note": "점수·구조·표면점은 파이프라인의 서로 다른 단계에서 쓰입니다. 후처리에 구조가 필요하며 새 단백질 좌표를 생성하는 출력이 아닙니다."
+    },
+    {
+      "id": "promonet",
+      "guide": "단백질 서열과 특정 리간드 SMILES를 한 쌍으로 넣습니다. 단백질 3D를 필수로 받지는 않지만 분자 쪽에는 RDKit conformer를 활용합니다. 나오는 것은 잔기 점수이며 복합체 좌표나 시간 궤적이 아닙니다.",
+      "status": "미실행 · 입력과 출력 형식",
+      "case": "단백질·화합물 쌍에 조건을 건 부위 예측",
+      "input": {
+        "protein_sequence": "대상 단백질의 아미노산 서열",
+        "ligand_smiles": "CC(=O)Oc1ccccc1C(=O)O",
+        "ligand_feature_preparation": "RDKit conformer → 거리·원자 특징",
+        "protein_feature_preparation": "ESM-2 → 잔기·접촉 특징"
+      },
+      "output": {
+        "ligand_conditioned_residue_scores": null
+      },
+      "note": "SMILES는 아스피린의 입력 형식 예시일 뿐, 특정 단백질과의 결합을 확인한 결과가 아닙니다. ProMoSite를 실행하지 않았고 실제 예측 점수는 없습니다."
     }
   ]
 }
