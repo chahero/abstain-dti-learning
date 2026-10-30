@@ -75,3 +75,18 @@ MP4, 원음, 모델 가중치, 제작·음성 검수 로그와 로컬 환경은 
 [음성과 함께 웹 발표 보기](https://chahero.github.io/abstain-dti-learning/papers/ai-agents-that-matter/)
 
 장표 11장과 미리 제작한 Dustin 1.2배속 음성을 동기화한 7분 48초 발표입니다. 장표 이동, 구간 탐색, 전체화면, 발화에 맞춘 강조 모션을 지원합니다. 재생에 별도 서버나 유튜브 연결이 필요하지 않습니다. MP4는 포함하지 않습니다. 발표 PPTX와 장표·대본 PDF는 웹 발표 화면에서 내려받을 수 있습니다.
+
+## 단백질 포켓과 결합 구조 예측 · 그림 교재
+
+[전체 목차](https://chahero.github.io/abstain-dti-learning/pocket-structure/) · [기술 발전 흐름도](https://chahero.github.io/abstain-dti-learning/pocket-structure/07-technology-summary/?view=evolution#step-1)
+
+영상 없이 웹에서 읽고 그림을 조작할 수 있는 개인 학습 자료입니다. 전체 기술 지도를 먼저 보고 다음 6장으로 이어 읽습니다.
+
+1. 포켓은 무엇이고 왜 움직일까? — 잔기·곁사슬, apo/holo와 MBP 실제 구조
+2. fpocket·P2Rank — 후보 탐지 원리와 같은 단백질의 실제 결과
+3. DeepPocket·GrASP — 복셀 CNN과 원자 그래프
+4. PocketMiner·분자동역학 — 숨은 포켓과 움직임
+5. Vina·DiffDock·DynamicBind — 도킹과 수용체 유연성
+6. AlphaFold 3·Boltz-2·Chai-1·OpenFold3-preview2 — 공동 구조 예측
+
+개요에는 13개 기술의 입력·출력·역할·사용 상황, 기술 발전·연결 그림과 연도별 원 출처를 정리했습니다. 장별 원고 다운로드와 인쇄가 가능하며 관찰 메모는 사용자의 브라우저에만 저장됩니다. 별도 TTS·모델 API나 동영상 파일 없이 동작합니다.

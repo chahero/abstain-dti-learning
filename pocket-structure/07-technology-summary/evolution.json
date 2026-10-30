@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 1,
+  "legend": [
+    {
+      "type": "data",
+      "name": "실선 · 데이터·처리 연결",
+      "meaning": "한 단계의 출력을 다음 단계가 사용합니다. 예: fpocket 후보를 DeepPocket이 재평가."
+    },
+    {
+      "type": "scope",
+      "name": "점선 · 접근 확장·선택 연결",
+      "meaning": "세 발전 그림에서는 접근·기능의 변화를, 기술 연결 그림에서는 선택적인 활용을 표시합니다. 직접 계승·성능 우열·필수 실행 순서를 뜻하지 않습니다."
+    },
+    {
+      "type": "implementation",
+      "name": "보라 실선 · 명시적 재구현",
+      "meaning": "OpenFold3의 AF3 계열 재구현을 표시합니다. 같은 학습 가중치라는 뜻은 아닙니다."
+    }
+  ],
+  "scenes": [
+    {
+      "id": "overview",
+      "title": "기술은 세 방향으로 넓어졌습니다",
+      "change": "공간을 읽는 표현, 자세를 생성하는 방식, 함께 예측하는 대상과 출력이 확장됐습니다.",
+      "body": "그림의 가로 방향은 발전의 관점을 요약한 것입니다. 모든 화살표가 직접적인 후속 모델이나 반드시 거쳐야 하는 실행 순서를 뜻하지는 않습니다.",
+      "gains": [
+        "포켓 탐지: 기하학적 공간 탐지에 학습한 화학 환경과 신경망 표현을 활용합니다.",
+        "도킹: 점수 기반 탐색과 학습 기반 생성, 수용체 유연성이라는 축을 나눠 봅니다.",
+        "co-folding: 구성 요소의 공동 좌표 생성에 입력 힌트·결합 특성·재현 기반을 더합니다."
+      ],
+      "limit": "최신 모델이 모든 기존 기술을 대체한 것은 아닙니다. MD의 시간 궤적, 포켓 후보, 자세, 복합체 좌표는 서로 다른 출력입니다.",
+      "sources": [
+        {
+          "title": "P2Rank 공식 원리",
+          "url": "https://github.com/rdk/p2rank"
+        },
+        {
+          "title": "DeepPocket 공식 처리 흐름",
+          "url": "https://github.com/devalab/DeepPocket"
+        },
+        {
+          "title": "DynamicBind 원 논문",
+          "url": "https://www.nature.com/articles/s41467-024-45461-2"
+        },
+        {
+          "title": "AlphaFold 3 공식 구현",
+          "url": "https://github.com/google-deepmind/alphafold3"
+        }
+      ]
+    },
+    {
+      "id": "pocket",
+      "title": "포켓 탐지: 모양에서 학습된 주변 환경까지",
+      "change": "같은 자리 찾기 문제를 기하학, 표면점 특징, 복셀 CNN, 원자 그래프로 다르게 읽습니다.",
+      "body": "fpocket은 기하학적으로 후보를 만듭니다. DeepPocket은 그 후보를 실제 입력으로 재사용해 순위를 매기고 영역을 분할합니다. P2Rank와 GrASP는 각각 표면점의 학습된 특징, 원자 그래프의 정보 전달로 포켓을 평가하는 별도의 접근입니다.",
+      "gains": [
+        "fpocket → DeepPocket은 실제 후보 데이터의 연결입니다.",
+        "P2Rank는 표면점의 물리화학·기하 특징을 학습 모델로 평가합니다.",
+        "DeepPocket은 3D 복셀, GrASP는 원자와 이웃 관계를 신경망으로 읽습니다."
+      ],
+      "limit": "P2Rank → DeepPocket → GrASP가 한 모델의 후속 계보인 것은 아닙니다. 모두 입력 구조에서 포켓을 읽으며, 특정 리간드 자세나 친화도는 별도 질문입니다.",
+      "sources": [
+        {
+          "title": "fpocket 공식 구현",
+          "url": "https://github.com/Discngine/fpocket"
+        },
+        {
+          "title": "P2Rank 알고리즘",
+          "url": "https://github.com/rdk/p2rank#algorithm"
+        },
+        {
+          "title": "DeepPocket 예측 절차",
+          "url": "https://github.com/devalab/DeepPocket#predicting-binding-site"
+        },
+        {
+          "title": "GrASP 공식 구현",
+          "url": "https://github.com/tiwarylab/GrASP"
+        }
+      ]
+    },
+    {
+      "id": "docking",
+      "title": "도킹: 탐색 방식과 수용체 유연성의 확장",
+      "change": "어떻게 자세를 찾는지와, 단백질의 어느 부분을 바꿀 수 있는지는 서로 다른 축입니다.",
+      "body": "Vina는 근사 점수 기반으로 탐색합니다. 원본 DiffDock은 고정한 단백질을 참고해 리간드 이동·회전·비틀림을 학습된 확산 방식으로 생성합니다. DynamicBind는 시작 단백질 구조를 받아 리간드와 수용체 잔기·곁사슬 배치를 함께 갱신합니다.",
+      "gains": [
+        "Vina와 원본 DiffDock은 자세 탐색·생성 방식이 다릅니다.",
+        "원본 DiffDock은 AI 도킹이어도 수용체를 고정합니다.",
+        "Vina의 선택 곁사슬 유연성과 DynamicBind의 잔기 배치 갱신을 구분합니다."
+      ],
+      "limit": "점선은 비교하는 기능의 확장입니다. 세 방법을 전부 순서대로 실행하라는 뜻이 아니며, 생성 단계는 실제 결합 시간 궤적과 다릅니다.",
+      "sources": [
+        {
+          "title": "Vina 기본 도킹",
+          "url": "https://autodock-vina.readthedocs.io/en/latest/docking_basic.html"
+        },
+        {
+          "title": "Vina 유연한 곁사슬",
+          "url": "https://autodock-vina.readthedocs.io/en/latest/docking_flexible.html"
+        },
+        {
+          "title": "원본 DiffDock",
+          "url": "https://arxiv.org/abs/2210.01776"
+        },
+        {
+          "title": "DynamicBind 공식 구현",
+          "url": "https://github.com/luwei0917/DynamicBind"
+        }
+      ]
+    },
+    {
+      "id": "cofold",
+      "title": "co-folding: 공동 좌표 생성에서 기능·재현 기반 확장",
+      "change": "여러 구성 요소를 함께 예측하고, 추가 입력·결합 특성 출력·공개 재구현을 서로 다른 방향으로 발전시킵니다.",
+      "body": "AlphaFold 3는 단백질·핵산·리간드 등 여러 구성 요소의 좌표를 공동으로 예측합니다. Chai-1의 임베딩과 선택적 제약, Boltz-2의 별도 결합 분류·친화도, OpenFold3-preview2의 공개 재구현과 학습 재현 자료는 각각 강조점이 다릅니다.",
+      "gains": [
+        "Chai-1: 단백질 언어모델 특징과 선택적 MSA·템플릿·접촉 정보를 활용합니다.",
+        "Boltz-2: 구조 confidence와 별도의 결합 분류·친화도 예측을 제공합니다.",
+        "OpenFold3-preview2: AF3 계열의 공개 재구현과 코드·가중치·학습 자료를 연결합니다."
+      ],
+      "limit": "Chai-1과 Boltz-2는 AF3와 같은 가중치를 쓰는 모델이나 서로의 후속 버전이 아닙니다. OF3p2도 Google의 AF3 가중치 자체가 아니며, 이 자료는 OF3p2 범위를 유지합니다.",
+      "sources": [
+        {
+          "title": "AlphaFold 3 공식 구현",
+          "url": "https://github.com/google-deepmind/alphafold3"
+        },
+        {
+          "title": "Chai-1 입력과 추론",
+          "url": "https://github.com/chaidiscovery/chai-lab"
+        },
+        {
+          "title": "Boltz-2 출력 정의",
+          "url": "https://github.com/jwohlwend/boltz/blob/main/docs/prediction.md"
+        },
+        {
+          "title": "OpenFold3-preview2 보고서",
+          "url": "https://portal.openfold.omsf.io/reports/of3p2_technical_report.pdf"
+        }
+      ]
+    },
+    {
+      "id": "connections",
+      "title": "실제 분석에서는 필요한 부분을 연결합니다",
+      "change": "기술 계보와 분석 흐름은 다릅니다. 연결하려면 출력이 다음 입력에 맞는지 확인합니다.",
+      "body": "MD에서 얻은 프레임을 포켓 검출기로 분석하거나, 포켓 후보 위치를 정해 도킹 범위를 잡을 수 있습니다. 공동 예측으로 만든 구조를 다시 분석하는 것도 선택지입니다. 반대로 blind docking이나 공동 예측에서 포켓 탐지기를 항상 먼저 실행해야 하는 것은 아닙니다.",
+      "gains": [
+        "열릴 법한 영역의 예측 → 필요에 따라 MD 탐색 → 프레임별 포켓 분석이라는 조합을 생각할 수 있습니다.",
+        "포켓 후보 → 탐색 범위 설정 → 도킹은 가능한 활용 예입니다. 도구 간 좌표와 번호 체계를 확인해야 합니다.",
+        "co-folding 결과 → 구조·인터페이스 검증이 기본이며, 추가 포켓 분석이나 도킹은 새 질문이 있을 때 선택합니다."
+      ],
+      "limit": "PocketMiner 점수가 열린 좌표를 생성하지는 않습니다. co-folding으로 얻은 복합체를 반드시 다시 도킹할 필요도 없습니다. 어떤 경로도 실험 검증을 자동으로 대체하지 않습니다.",
+      "sources": [
+        {
+          "title": "MD와 PocketMiner 상세 설명",
+          "url": "../04-cryptic-pockets/"
+        },
+        {
+          "title": "Vina 탐색 범위",
+          "url": "https://autodock-vina.readthedocs.io/en/latest/docking_basic.html"
+        },
+        {
+          "title": "공동 예측과 검증 조건",
+          "url": "../06-cofolding/"
+        }
+      ]
+    }
+  ],
+  "history": {
+    "verifiedOn": "2026-10-30",
+    "policy": "연도는 대표 논문의 정식 서지 연도를 기본으로 합니다. 기술 보고서·모델 공개만 있는 경우에는 해당 공개 연도를 씁니다. 먼저 공개된 온라인 논문·프리프린트 연도는 아래에 별도로 표시합니다. 연도 표시는 분야의 탄생이나 필수 실행 순서를 뜻하지 않습니다.",
+    "mdNote": "MD는 단일 모델이 아닙니다. 1977은 접힌 단백질 BPTI를 시뮬레이션한 초기 대표 연구의 연도이며, MD 전체가 시작된 연도는 아닙니다.",
+    "methods": [
+      {
+        "id": "fpocket",
+        "name": "fpocket",
+        "family": "포켓 탐지",
+        "year": 2009,
+        "badge": "2009",
+        "basis": "BMC Bioinformatics 논문, 2009-06-02",
+        "note": "원래 fpocket 방법의 논문 연도입니다. 현재 설치 버전의 배포 연도와 구분합니다.",
+        "sources": [
+          {
+            "title": "fpocket 원 논문",
+            "url": "https://doi.org/10.1186/1471-2105-10-168"
+          }
+        ]
+      },
+      {
+        "id": "p2rank",
+        "name": "P2Rank",
+        "family": "포켓 탐지",
+        "year": 2018,
+        "badge": "2018",
+        "basis": "Journal of Cheminformatics 논문, 2018-08-14",
+        "note": "현재 P2Rank 패키지의 최신 버전 연도와 구분합니다.",
+        "sources": [
+          {
+            "title": "P2Rank 원 논문",
+            "url": "https://link.springer.com/article/10.1186/s13321-018-0285-8"
+          }
+        ]
+      },
+      {
+        "id": "deeppocket",
+        "name": "DeepPocket",
+        "family": "포켓 탐지",
+        "year": 2022,
+        "badge": "2022",
+        "basis": "JCIM 권호 게재 2022; 온라인 공개 2021-08-10",
+        "note": "먼저 온라인으로 나온 때는 2021년이고 정식 서지의 권호 연도는 2022년입니다.",
+        "sources": [
+          {
+            "title": "DeepPocket 논문·게재 이력",
+            "url": "https://pubs.acs.org/doi/10.1021/acs.jcim.1c00799"
+          }
+        ]
+      },
+      {
+        "id": "grasp",
+        "name": "GrASP",
+        "family": "포켓 탐지",
+        "year": 2024,
+        "badge": "2024",
+        "basis": "JCIM 온라인 공개 2024-03-07; 권호 게재 2024-04-08",
+        "note": "여기서는 Smith 등의 Graph Attention Site Prediction을 뜻합니다.",
+        "sources": [
+          {
+            "title": "GrASP 논문·게재 이력",
+            "url": "https://pubs.acs.org/doi/10.1021/acs.jcim.3c01698"
+          }
+        ]
+      },
+      {
+        "id": "md",
+        "name": "분자동역학 (MD)",
+        "family": "움직임·숨은 포켓",
+        "year": 1977,
+        "badge": "1977 사례",
+        "basis": "Dynamics of folded proteins, Nature, 1977-06-16",
+        "note": "BPTI 단백질 MD의 초기 대표 사례입니다. MD 자체의 탄생이나 특정 프로그램의 출시 연도가 아닙니다.",
+        "sources": [
+          {
+            "title": "단백질 MD의 초기 대표 연구",
+            "url": "https://www.nature.com/articles/267585a0"
+          }
+        ]
+      },
+      {
+        "id": "pocketminer",
+        "name": "PocketMiner",
+        "family": "움직임·숨은 포켓",
+        "year": 2023,
+        "badge": "2023",
+        "basis": "Nature Communications 논문, 2023-03-01",
+        "note": "숨은 포켓의 위치를 단일 구조에서 예측하는 논문 기준입니다.",
+        "sources": [
+          {
+            "title": "PocketMiner 원 논문",
+            "url": "https://www.nature.com/articles/s41467-023-36699-3"
+          }
+        ]
+      },
+      {
+        "id": "vina",
+        "name": "AutoDock Vina",
+        "family": "도킹",
+        "year": 2010,
+        "badge": "2010",
+        "basis": "J. Computational Chemistry 권호 2010; 온라인 공개 2009-06-04",
+        "note": "일반적으로 인용하는 원 논문은 2010년입니다. 도킹 분야 전체의 시작 연도가 아닙니다.",
+        "sources": [
+          {
+            "title": "Vina 논문·게재 이력",
+            "url": "https://onlinelibrary.wiley.com/doi/10.1002/jcc.21334"
+          }
+        ]
+      },
+      {
+        "id": "diffdock",
+        "name": "DiffDock · 원본",
+        "family": "도킹",
+        "year": 2023,
+        "badge": "2023",
+        "basis": "ICLR 2023; arXiv 최초 공개 2022-10-04",
+        "note": "이 자료는 원본 DiffDock 기준입니다. 후속 DiffDock-L의 연도와 구분합니다.",
+        "sources": [
+          {
+            "title": "DiffDock 프리프린트·ICLR 서지",
+            "url": "https://arxiv.org/abs/2210.01776"
+          }
+        ]
+      },
+      {
+        "id": "dynamicbind",
+        "name": "DynamicBind",
+        "family": "도킹",
+        "year": 2024,
+        "badge": "2024",
+        "basis": "Nature Communications 논문, 2024-02-05",
+        "note": "이 자료에서는 정식 저널 논문의 연도를 표시합니다.",
+        "sources": [
+          {
+            "title": "DynamicBind 원 논문",
+            "url": "https://www.nature.com/articles/s41467-024-45461-2"
+          }
+        ]
+      },
+      {
+        "id": "af3",
+        "name": "AlphaFold 3",
+        "family": "co-folding",
+        "year": 2024,
+        "badge": "2024",
+        "basis": "Nature 논문 온라인 공개, 2024-05-08",
+        "note": "논문 발표 연도입니다. 추론 코드 공개 시점이나 AlphaFold 2의 연도와 구분합니다.",
+        "sources": [
+          {
+            "title": "AlphaFold 3 원 논문",
+            "url": "https://www.nature.com/articles/s41586-024-07487-w"
+          }
+        ]
+      },
+      {
+        "id": "chai1",
+        "name": "Chai-1",
+        "family": "co-folding",
+        "year": 2024,
+        "badge": "2024",
+        "basis": "공식 모델 발표, 2024-09-09",
+        "note": "회사 공식 공개 발표 기준이며 정식 저널 게재 연도를 뜻하지 않습니다.",
+        "sources": [
+          {
+            "title": "Chai-1 공식 공개 발표",
+            "url": "https://www.chaidiscovery.com/news/introducing-chai-1"
+          }
+        ]
+      },
+      {
+        "id": "boltz2",
+        "name": "Boltz-2",
+        "family": "co-folding",
+        "year": 2025,
+        "badge": "2025",
+        "basis": "2025년 bioRxiv 기술 보고서; 공식 저장소 서지",
+        "note": "Boltz-1의 2024년 논문과 구분합니다.",
+        "sources": [
+          {
+            "title": "Boltz-2 공식 논문 서지",
+            "url": "https://github.com/jwohlwend/boltz#cite"
+          },
+          {
+            "title": "Boltz-2 기술 보고서",
+            "url": "https://doi.org/10.1101/2025.06.14.659707"
+          }
+        ]
+      },
+      {
+        "id": "openfold3",
+        "name": "OpenFold3-preview2",
+        "family": "co-folding",
+        "year": 2026,
+        "badge": "2026",
+        "basis": "preview2 / v0.4.0 공식 공개, 2026-03-13",
+        "note": "현재 자료의 OF3p2 버전 기준입니다. 최초 OpenFold3-preview나 이후 OpenBind-0의 공개 연도가 아닙니다.",
+        "sources": [
+          {
+            "title": "OpenFold3 Preview2 공식 릴리스",
+            "url": "https://github.com/aqlaboratory/openfold-3/releases/tag/0.4.0"
+          },
+          {
+            "title": "공식 릴리스 실행 날짜",
+            "url": "https://github.com/aqlaboratory/openfold-3/actions/runs/23049391144"
+          }
+        ]
+      }
+    ]
+  }
+}

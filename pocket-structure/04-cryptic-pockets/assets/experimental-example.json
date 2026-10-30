@@ -1,0 +1,38 @@
+{
+  "description": "Two experimental structures in original PocketMiner Figure 1A; not a trajectory.",
+  "structures": [
+    {
+      "id": "1JWP",
+      "chain": "A",
+      "cAlphaCount": 263,
+      "mutation": "M182T",
+      "inhibitor": null,
+      "inhibitorResidues": [],
+      "inhibitorHeavyAtomsTotal": 0,
+      "sha256": "2be02eaa2607116d08b23008575e5ac420f8e375a34836321f279eff4b9a1e14",
+      "url": "https://www.rcsb.org/structure/1JWP"
+    },
+    {
+      "id": "1PZO",
+      "chain": "A",
+      "cAlphaCount": 263,
+      "mutation": "M182T",
+      "inhibitor": "CBT",
+      "inhibitorResidues": [
+        "A 300",
+        "A 301"
+      ],
+      "inhibitorHeavyAtomsTotal": 44,
+      "sha256": "6b291ecf9620d974fc82d79cbf03476578a4ab1d91c4803c898a2bb7d5915f5c",
+      "url": "https://www.rcsb.org/structure/1PZO"
+    }
+  ],
+  "figure": {
+    "article": "Meller et al. (2023), Nature Communications 14, 1177",
+    "doi": "10.1038/s41467-023-36699-3",
+    "license": "CC BY 4.0",
+    "modification": "Figure 1 panel A cropped from page 3; no prediction added.",
+    "source": "https://par.nsf.gov/servlets/purl/10420135",
+    "pdfSha256": "6753ea81864fb0e8fef83058a1a50c7d58245bf33ecbfe74328186e081658a16"
+  }
+}

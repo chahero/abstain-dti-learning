@@ -1,0 +1,275 @@
+[
+  {
+    "id": "fpocket",
+    "name": "fpocket",
+    "family": "pocket",
+    "role": "기하학적 포켓 탐지",
+    "input": "단백질 3D 구조",
+    "output": "포켓 후보·중심·점수",
+    "use": "구조에서 결합 공간 후보를 먼저 찾을 때",
+    "principle": "단백질 원자 사이의 알파 구를 선별하고 묶어 포켓 후보를 만듭니다.",
+    "inputLines": [
+      "단백질 3D 좌표",
+      "한 개 구조"
+    ],
+    "outputLines": [
+      "후보 중심·영역",
+      "점수·물성"
+    ],
+    "limit": "현재 입력 구조의 공간을 읽습니다. 단백질을 열거나 특정 리간드의 결합 자세를 생성하지 않습니다.",
+    "chapter": "02-pocket-detection/",
+    "source": "https://github.com/Discngine/fpocket"
+  },
+  {
+    "id": "p2rank",
+    "name": "P2Rank",
+    "family": "pocket",
+    "role": "학습 기반 포켓 탐지",
+    "input": "단백질 3D 구조",
+    "output": "포켓 후보·관련 잔기·순위",
+    "use": "표면의 화학 환경을 반영해 자리를 찾을 때",
+    "principle": "표면점 주변의 기하·물리화학 특징을 학습 모델로 평가한 뒤 유망한 점들을 포켓으로 묶습니다.",
+    "inputLines": [
+      "단백질 3D 좌표",
+      "표면점 주변 환경"
+    ],
+    "outputLines": [
+      "포켓 후보·중심",
+      "점수·관련 잔기"
+    ],
+    "limit": "포켓의 probability는 특정 화합물–단백질 쌍의 결합 확률이나 친화도가 아닙니다.",
+    "chapter": "02-pocket-detection/",
+    "source": "https://github.com/rdk/p2rank"
+  },
+  {
+    "id": "deeppocket",
+    "name": "DeepPocket",
+    "family": "pocket",
+    "role": "후보 재평가·영역 분할",
+    "input": "단백질 구조 + fpocket 후보",
+    "output": "후보 순위 + 포켓 마스크",
+    "use": "후보를 CNN으로 재평가하고 범위를 정할 때",
+    "principle": "fpocket 후보 주변을 3D 복셀로 바꿔 CNN으로 순위를 매기고, 별도 분할 모델로 포켓 영역을 예측합니다.",
+    "inputLines": [
+      "단백질 3D 좌표",
+      "fpocket 후보 중심"
+    ],
+    "outputLines": [
+      "재순위화한 후보",
+      "포켓 영역 마스크"
+    ],
+    "limit": "처음 후보를 만드는 단계에 의존합니다. 포켓 마스크가 특정 리간드의 자세나 친화도를 뜻하지 않습니다.",
+    "chapter": "03-learning-pockets/",
+    "source": "https://github.com/devalab/DeepPocket"
+  },
+  {
+    "id": "grasp",
+    "name": "GrASP",
+    "family": "pocket",
+    "role": "원자 그래프 기반 탐지",
+    "input": "단백질 표면·이웃 원자의 3D 정보",
+    "output": "원자 점수 + 포켓 후보",
+    "use": "원자와 이웃 관계를 신경망으로 읽을 때",
+    "principle": "표면 원자와 주변 내부 원자를 그래프로 표현하고, 어텐션 기반 정보 전달로 표면 원자 점수를 얻어 후보를 군집화합니다.",
+    "inputLines": [
+      "단백질 3D 좌표",
+      "표면과 이웃 원자"
+    ],
+    "outputLines": [
+      "표면 원자 점수",
+      "군집화한 포켓 후보"
+    ],
+    "limit": "이 장의 GrASP는 Graph Attention Site Prediction입니다. 단백질 모양의 시간 변화를 생성하는 모델은 아닙니다.",
+    "chapter": "03-learning-pockets/",
+    "source": "https://github.com/tiwarylab/GrASP"
+  },
+  {
+    "id": "pocketminer",
+    "name": "PocketMiner",
+    "family": "cryptic",
+    "role": "숨은 포켓 가능 영역 예측",
+    "input": "한 개 단백질 3D 구조",
+    "output": "잔기별 숨은 포켓 점수",
+    "use": "어디가 열릴 법한지 후보를 좁힐 때",
+    "principle": "잔기와 공간상 이웃을 그래프로 읽어, 구조 변화로 포켓이 드러날 법한 영역에 점수를 매깁니다.",
+    "inputLines": [
+      "한 개 단백질 구조",
+      "잔기와 공간 이웃"
+    ],
+    "outputLines": [
+      "잔기별 cryptic 점수",
+      "열릴 법한 영역"
+    ],
+    "limit": "잔기별 점수는 열린 구조 좌표나 열리는 시간의 예측과 다릅니다. 실제 움직임 궤적을 출력하지 않습니다.",
+    "chapter": "04-cryptic-pockets/",
+    "source": "https://www.nature.com/articles/s41467-023-36699-3"
+  },
+  {
+    "id": "md",
+    "name": "분자동역학 (MD)",
+    "family": "cryptic",
+    "role": "힘과 운동으로 움직임 계산",
+    "input": "초기 구조·환경·힘장·조건",
+    "output": "시간 순서의 좌표·속도 궤적",
+    "use": "구조 변화와 포켓의 열림을 탐색할 때",
+    "principle": "원자 상호작용에서 힘을 계산하고, 운동 방정식을 짧은 시간 간격으로 수치 적분합니다. 궤적의 각 구조에서 포켓을 따로 분석할 수 있습니다.",
+    "inputLines": [
+      "초기 구조·물·이온",
+      "힘장·속도·조건"
+    ],
+    "outputLines": [
+      "좌표·속도 궤적",
+      "시간 순서 프레임"
+    ],
+    "limit": "샘플링과 힘장·환경 조건의 영향을 받습니다. 제한된 계산에서 안 열렸다고 숨은 포켓이 없다고 단정하지 않습니다.",
+    "chapter": "04-cryptic-pockets/",
+    "source": "https://docs.openmm.org/latest/userguide/theory/04_integrators.html"
+  },
+  {
+    "id": "vina",
+    "name": "Vina",
+    "family": "docking",
+    "role": "근사 점수 기반 자세 탐색",
+    "input": "준비한 단백질·리간드·탐색 범위",
+    "output": "리간드 자세 + 도킹 점수",
+    "use": "정한 범위에서 화합물의 자세를 탐색할 때",
+    "principle": "여러 시작 자세와 국소 개선을 조합해 탐색하고 근사 점수로 후보를 정리합니다. 선택한 곁사슬을 유연하게 설정할 수도 있습니다.",
+    "inputLines": [
+      "단백질·리간드 준비",
+      "탐색 상자·화학 상태"
+    ],
+    "outputLines": [
+      "리간드 자세 후보",
+      "근사 도킹 점수"
+    ],
+    "limit": "더 낮은 도킹 점수가 실측 친화도를 보장하지 않습니다. 선택 곁사슬 유연성과 수용체 백본 전체 갱신은 다릅니다.",
+    "chapter": "05-docking/",
+    "source": "https://autodock-vina.readthedocs.io/en/latest/docking_basic.html"
+  },
+  {
+    "id": "diffdock",
+    "name": "DiffDock (원본)",
+    "family": "docking",
+    "role": "학습 기반 리간드 자세 생성",
+    "input": "고정 단백질 구조 + 리간드 정보",
+    "output": "리간드 자세 + 자세 confidence",
+    "use": "고정 구조에서 학습 기반 자세 후보를 만들 때",
+    "principle": "고정한 단백질을 조건으로 리간드의 이동·회전·비틀림을 확산 방식으로 갱신하고, 별도의 confidence로 후보를 평가합니다.",
+    "inputLines": [
+      "단백질 3D 구조",
+      "리간드 분자 정보"
+    ],
+    "outputLines": [
+      "리간드 자세 후보",
+      "자세 confidence"
+    ],
+    "limit": "원본 ICLR 2023/v1.0 범위입니다. 단백질은 고정이며 confidence는 친화도가 아닙니다. 후속 DiffDock-L과 구분합니다.",
+    "chapter": "05-docking/",
+    "source": "https://arxiv.org/abs/2210.01776"
+  },
+  {
+    "id": "dynamicbind",
+    "name": "DynamicBind",
+    "family": "docking",
+    "role": "리간드·수용체 배치 갱신",
+    "input": "시작 단백질 구조 + 리간드 정보",
+    "output": "갱신 복합체·품질·친화도 예측",
+    "use": "시작 구조를 리간드와 함께 조정할 때",
+    "principle": "리간드와 단백질 잔기의 이동·회전, 곁사슬 각도를 함께 갱신하고 복합체를 생성합니다. 구조 품질과 친화도는 별도로 예측합니다.",
+    "inputLines": [
+      "시작 단백질 구조",
+      "리간드 분자 정보"
+    ],
+    "outputLines": [
+      "갱신된 복합체",
+      "품질·친화도 예측"
+    ],
+    "limit": "단백질이 움직여도 이 생성 단계는 MD 시간 궤적이 아닙니다. 입력 수용체 구조를 받는다는 점을 공동 구조 예측과 비교합니다.",
+    "chapter": "05-docking/",
+    "source": "https://www.nature.com/articles/s41467-024-45461-2"
+  },
+  {
+    "id": "af3",
+    "name": "AlphaFold 3",
+    "family": "cofold",
+    "role": "다양한 생체분자의 공동 구조 예측",
+    "input": "서열·분자 정보, MSA·템플릿 등",
+    "output": "복합체 원자 좌표 + 신뢰도",
+    "use": "서열과 구성 요소에서 복합체를 만들 때",
+    "principle": "입력과 토큰 간 관계를 Pairformer로 처리하고, 확산 모듈로 복합체 원자 좌표를 공동 생성한 뒤 구조 confidence를 평가합니다.",
+    "inputLines": [
+      "단백질 서열·분자",
+      "MSA·템플릿 등"
+    ],
+    "outputLines": [
+      "복합체 원자 좌표",
+      "구조 confidence"
+    ],
+    "limit": "표준 구조 신뢰도는 실험 단위 친화도나 결합 여부의 증명이 아닙니다. 템플릿 등 추가 정보를 썼는지도 기록합니다.",
+    "chapter": "06-cofolding/",
+    "source": "https://www.nature.com/articles/s41586-024-07487-w"
+  },
+  {
+    "id": "boltz2",
+    "name": "Boltz-2",
+    "family": "cofold",
+    "role": "공동 구조 + 별도 결합 특성 예측",
+    "input": "서열·분자·보조 정보·선택 요청",
+    "output": "복합체·신뢰도·결합 분류·친화도",
+    "use": "구조와 작은 분자 결합 특성을 나눠 볼 때",
+    "principle": "토큰·쌍 관계와 확산 생성으로 구조를 예측합니다. 별도의 결합 분류·친화도 모듈을 사용할 수 있으며 서로 다른 출력입니다.",
+    "inputLines": [
+      "서열·분자·MSA 등",
+      "선택적 친화도 요청"
+    ],
+    "outputLines": [
+      "복합체·confidence",
+      "결합 분류·친화도"
+    ],
+    "limit": "affinity_pred_value는 log10(IC50/μM), 낮을수록 강한 방향입니다. 결합 분류·친화도 값·구조 confidence를 혼동하지 않습니다.",
+    "chapter": "06-cofolding/",
+    "source": "https://github.com/jwohlwend/boltz/blob/main/docs/prediction.md"
+  },
+  {
+    "id": "chai1",
+    "name": "Chai-1",
+    "family": "cofold",
+    "role": "보조 정보를 활용한 공동 구조 예측",
+    "input": "서열·분자, 임베딩·선택적 제약",
+    "output": "복합체 원자 좌표 + 신뢰도",
+    "use": "MSA·접촉 등 주어진 힌트를 함께 쓸 때",
+    "principle": "단백질 언어모델 특징과 선택적 MSA·템플릿·접촉 정보를 처리해, trunk와 확산 모듈로 복합체를 생성하고 품질을 평가합니다.",
+    "inputLines": [
+      "서열·분자 정보",
+      "PLM·선택적 MSA·제약"
+    ],
+    "outputLines": [
+      "복합체 원자 좌표",
+      "후보 confidence"
+    ],
+    "limit": "MSA 없이 실행할 수 있다는 것과 같은 정확도라는 것은 다릅니다. 제공한 접촉 정보를 독립적으로 알아낸 사실로 해석하지 않습니다.",
+    "chapter": "06-cofolding/",
+    "source": "https://github.com/chaidiscovery/chai-lab"
+  },
+  {
+    "id": "openfold3",
+    "name": "OpenFold3-preview2",
+    "family": "cofold",
+    "role": "공동 구조 예측·학습 재현 기반",
+    "input": "서열·분자, MSA·템플릿 등",
+    "output": "복합체 원자 좌표 + 신뢰도",
+    "use": "공개 구현·자료로 재현과 개선을 검토할 때",
+    "principle": "AF3 계열의 관계 처리와 원자 확산을 공개 재구현합니다. 코드·가중치·학습 및 평가 자료가 연구 재현의 기반이 됩니다.",
+    "inputLines": [
+      "서열·분자 정보",
+      "MSA·템플릿 등"
+    ],
+    "outputLines": [
+      "복합체 원자 좌표",
+      "구조 confidence"
+    ],
+    "limit": "이 자료는 OF3p2 범위입니다. 6장에서 확인한 현재 기본 OpenBind-0와 구분하고, 패키지·가중치·자료 버전을 함께 고정합니다.",
+    "chapter": "06-cofolding/",
+    "source": "https://portal.openfold.omsf.io/reports/of3p2_technical_report.pdf"
+  }
+]

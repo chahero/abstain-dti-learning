@@ -1,0 +1,59 @@
+[
+  {
+    "file": "1JWP.pdb",
+    "url": "https://files.rcsb.org/download/1JWP.pdb",
+    "sha256": "2be02eaa2607116d08b23008575e5ac420f8e375a34836321f279eff4b9a1e14"
+  },
+  {
+    "file": "1PZO.pdb",
+    "url": "https://files.rcsb.org/download/1PZO.pdb",
+    "sha256": "6b291ecf9620d974fc82d79cbf03476578a4ab1d91c4803c898a2bb7d5915f5c"
+  },
+  {
+    "file": "README.md",
+    "url": "https://raw.githubusercontent.com/Mickdub/gvp/187062df3c94127e991669768009141a08fd5d8b/README.md",
+    "repository": "Mickdub/gvp",
+    "branch": "pocket_pred",
+    "revision": "187062df3c94127e991669768009141a08fd5d8b",
+    "sha256": "6988bad3a4c84a8ea70e38a8a8e0a33be4bbdc688f3a71e6c31264a0169e0f32"
+  },
+  {
+    "file": "src/models.py",
+    "url": "https://raw.githubusercontent.com/Mickdub/gvp/187062df3c94127e991669768009141a08fd5d8b/src/models.py",
+    "repository": "Mickdub/gvp",
+    "branch": "pocket_pred",
+    "revision": "187062df3c94127e991669768009141a08fd5d8b",
+    "sha256": "d028a4de53387efac7862be7dfeed15ac9996872c580c7b8d0b7d607b1f877a6"
+  },
+  {
+    "file": "src/datasets.py",
+    "url": "https://raw.githubusercontent.com/Mickdub/gvp/187062df3c94127e991669768009141a08fd5d8b/src/datasets.py",
+    "repository": "Mickdub/gvp",
+    "branch": "pocket_pred",
+    "revision": "187062df3c94127e991669768009141a08fd5d8b",
+    "sha256": "d402a269572348bc8ce45d394734fc993277aa8ea77b9078441a7e152cdce599"
+  },
+  {
+    "file": "src/gvp.py",
+    "url": "https://raw.githubusercontent.com/Mickdub/gvp/187062df3c94127e991669768009141a08fd5d8b/src/gvp.py",
+    "repository": "Mickdub/gvp",
+    "branch": "pocket_pred",
+    "revision": "187062df3c94127e991669768009141a08fd5d8b",
+    "sha256": "877c1fa2f7fff87da9488577b8923015383ba10135bc4b38d975256072191311"
+  },
+  {
+    "file": "src/xtal_predict.py",
+    "url": "https://raw.githubusercontent.com/Mickdub/gvp/187062df3c94127e991669768009141a08fd5d8b/src/xtal_predict.py",
+    "repository": "Mickdub/gvp",
+    "branch": "pocket_pred",
+    "revision": "187062df3c94127e991669768009141a08fd5d8b",
+    "sha256": "ae22fd047383a1469adb4619e081c364028719b95776f7fb5226c36f72db4a9a"
+  },
+  {
+    "file": "pocketminer-paper.pdf",
+    "url": "https://par.nsf.gov/servlets/purl/10420135",
+    "doi": "10.1038/s41467-023-36699-3",
+    "license": "CC-BY-4.0",
+    "sha256": "6753ea81864fb0e8fef83058a1a50c7d58245bf33ecbfe74328186e081658a16"
+  }
+]

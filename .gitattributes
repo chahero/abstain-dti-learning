@@ -5,3 +5,9 @@
 *.tsv text eol=lf whitespace=-blank-at-eol
 # Keep the official font license text as supplied.
 assets/Pretendard-LICENSE.txt text eol=lf whitespace=-blank-at-eol
+
+# Preserve public source hashes, line endings, and fixed-column structure records.
+pocket-structure/** -text whitespace=cr-at-eol
+pocket-structure/**/*.pdb whitespace=-blank-at-eol
+pocket-structure/**/*.pdbqt whitespace=-blank-at-eol
+pocket-structure/**/*.sdf whitespace=-blank-at-eol

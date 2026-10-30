@@ -1,0 +1,72 @@
+[
+  {
+    "repository": "devalab/DeepPocket",
+    "revision": "04ba9f564a81dbf35c6afbb1db5fb9ca255cedc0",
+    "file": "README.md",
+    "url": "https://raw.githubusercontent.com/devalab/DeepPocket/04ba9f564a81dbf35c6afbb1db5fb9ca255cedc0/README.md",
+    "sha256": "8ff160c548c490c386b008671ed3b4034596f69c44fbf7aaf8aa896c67f6cf52"
+  },
+  {
+    "repository": "devalab/DeepPocket",
+    "revision": "04ba9f564a81dbf35c6afbb1db5fb9ca255cedc0",
+    "file": "predict.py",
+    "url": "https://raw.githubusercontent.com/devalab/DeepPocket/04ba9f564a81dbf35c6afbb1db5fb9ca255cedc0/predict.py",
+    "sha256": "6e2a78582df9e3e1ef6de9b71cd89981f246fb30072e442aa5c5a0db879d3a27"
+  },
+  {
+    "repository": "devalab/DeepPocket",
+    "revision": "04ba9f564a81dbf35c6afbb1db5fb9ca255cedc0",
+    "file": "rank_pockets.py",
+    "url": "https://raw.githubusercontent.com/devalab/DeepPocket/04ba9f564a81dbf35c6afbb1db5fb9ca255cedc0/rank_pockets.py",
+    "sha256": "fba813316b0ad6ff32b50842e39147af55bced6ffe30778345518069674c5f6c"
+  },
+  {
+    "repository": "devalab/DeepPocket",
+    "revision": "04ba9f564a81dbf35c6afbb1db5fb9ca255cedc0",
+    "file": "segment_pockets.py",
+    "url": "https://raw.githubusercontent.com/devalab/DeepPocket/04ba9f564a81dbf35c6afbb1db5fb9ca255cedc0/segment_pockets.py",
+    "sha256": "c7d4c86702bbcc0ed702b1c8ef4b900884447c9ccbfa275a907226a47d2a17a4"
+  },
+  {
+    "repository": "devalab/DeepPocket",
+    "revision": "04ba9f564a81dbf35c6afbb1db5fb9ca255cedc0",
+    "file": "model.py",
+    "url": "https://raw.githubusercontent.com/devalab/DeepPocket/04ba9f564a81dbf35c6afbb1db5fb9ca255cedc0/model.py",
+    "sha256": "f1c757ee3ada33c00990bff48581723ed0d4ed0d9df58ff060d37399b09905b2"
+  },
+  {
+    "repository": "devalab/DeepPocket",
+    "revision": "04ba9f564a81dbf35c6afbb1db5fb9ca255cedc0",
+    "file": "unet.py",
+    "url": "https://raw.githubusercontent.com/devalab/DeepPocket/04ba9f564a81dbf35c6afbb1db5fb9ca255cedc0/unet.py",
+    "sha256": "2732008e7cb67015b57afb1cdcb25cf9d4dfd98c5ecf5e9f3d54ef56035a5efe"
+  },
+  {
+    "repository": "tiwarylab/GrASP",
+    "revision": "0a0125147aa8b5e8501155b7be57dcd2e887ae6e",
+    "file": "README.md",
+    "url": "https://raw.githubusercontent.com/tiwarylab/GrASP/0a0125147aa8b5e8501155b7be57dcd2e887ae6e/README.md",
+    "sha256": "edfa861503844de16ce6220808b901ecea81d294d32c8e96f54bbfbb0eed792a"
+  },
+  {
+    "repository": "tiwarylab/GrASP",
+    "revision": "0a0125147aa8b5e8501155b7be57dcd2e887ae6e",
+    "file": "model.py",
+    "url": "https://raw.githubusercontent.com/tiwarylab/GrASP/0a0125147aa8b5e8501155b7be57dcd2e887ae6e/model.py",
+    "sha256": "e0e53a974311ad6ccf8c33275c43d4c1baa5d06df285a7f51e1fe1e6848d6cbc"
+  },
+  {
+    "repository": "tiwarylab/GrASP",
+    "revision": "0a0125147aa8b5e8501155b7be57dcd2e887ae6e",
+    "file": "parse_files.py",
+    "url": "https://raw.githubusercontent.com/tiwarylab/GrASP/0a0125147aa8b5e8501155b7be57dcd2e887ae6e/parse_files.py",
+    "sha256": "2573c7e28d554d8c35bbc93857683d5d4679901f28983a3aac95005574e19ebe"
+  },
+  {
+    "repository": "tiwarylab/GrASP",
+    "revision": "0a0125147aa8b5e8501155b7be57dcd2e887ae6e",
+    "file": "infer_test_set.py",
+    "url": "https://raw.githubusercontent.com/tiwarylab/GrASP/0a0125147aa8b5e8501155b7be57dcd2e887ae6e/infer_test_set.py",
+    "sha256": "68ff943f681ca7d0e2af8378957f9388f00947312f8401a5b19588729d6cc2d9"
+  }
+]

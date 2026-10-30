@@ -1,0 +1,160 @@
+[
+  {
+    "repository": "google-deepmind/alphafold3",
+    "commit": "4f41476ebdfd590cd20ef1f87992fad359d0eab9",
+    "file": "README.md",
+    "url": "https://raw.githubusercontent.com/google-deepmind/alphafold3/4f41476ebdfd590cd20ef1f87992fad359d0eab9/README.md",
+    "sha256": "0aff5538016f91aae06209319e4514e23a2fc6156854271f75873f8b78e0e44f"
+  },
+  {
+    "repository": "google-deepmind/alphafold3",
+    "commit": "4f41476ebdfd590cd20ef1f87992fad359d0eab9",
+    "file": "docs/input.md",
+    "url": "https://raw.githubusercontent.com/google-deepmind/alphafold3/4f41476ebdfd590cd20ef1f87992fad359d0eab9/docs/input.md",
+    "sha256": "75d1dd7a7e0c1113a9d1c2bd4e997ff3728ced2f4d6fe557dd8121d303e12509"
+  },
+  {
+    "repository": "google-deepmind/alphafold3",
+    "commit": "4f41476ebdfd590cd20ef1f87992fad359d0eab9",
+    "file": "docs/output.md",
+    "url": "https://raw.githubusercontent.com/google-deepmind/alphafold3/4f41476ebdfd590cd20ef1f87992fad359d0eab9/docs/output.md",
+    "sha256": "bb792ca2564e5a1f48512388efc4ffda00535f8847211e095f11ce15111362fe"
+  },
+  {
+    "repository": "google-deepmind/alphafold3",
+    "commit": "4f41476ebdfd590cd20ef1f87992fad359d0eab9",
+    "file": "src/alphafold3/model/network/diffusion_head.py",
+    "url": "https://raw.githubusercontent.com/google-deepmind/alphafold3/4f41476ebdfd590cd20ef1f87992fad359d0eab9/src/alphafold3/model/network/diffusion_head.py",
+    "sha256": "fb12466e4dbbac69f6f55a5aba86e2f770fa9e5c790833ebae532628df3428b1"
+  },
+  {
+    "repository": "jwohlwend/boltz",
+    "commit": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "file": "README.md",
+    "url": "https://raw.githubusercontent.com/jwohlwend/boltz/b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc/README.md",
+    "sha256": "79149435313841e6f9cc0c8b581259f3952a2469cbe6f9a733f7143b557025c2"
+  },
+  {
+    "repository": "jwohlwend/boltz",
+    "commit": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "file": "docs/prediction.md",
+    "url": "https://raw.githubusercontent.com/jwohlwend/boltz/b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc/docs/prediction.md",
+    "sha256": "b9cb2ff437389864bde02e7e9fd9fbcc7de189ca2e240a5f3fb6261ca595a795"
+  },
+  {
+    "repository": "jwohlwend/boltz",
+    "commit": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "file": "src/boltz/model/modules/trunkv2.py",
+    "url": "https://raw.githubusercontent.com/jwohlwend/boltz/b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc/src/boltz/model/modules/trunkv2.py",
+    "sha256": "6efdf74176e06237e7a0e601b534a0eb74addc60f42de56609930a2ec8d5dad9"
+  },
+  {
+    "repository": "jwohlwend/boltz",
+    "commit": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "file": "src/boltz/model/modules/diffusionv2.py",
+    "url": "https://raw.githubusercontent.com/jwohlwend/boltz/b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc/src/boltz/model/modules/diffusionv2.py",
+    "sha256": "e68643da577decddaef25e97313fa0d014d5653752d0a97282ec1a78665d697a"
+  },
+  {
+    "repository": "chaidiscovery/chai-lab",
+    "commit": "c691da74d6f348b19bc9f931abe95d66d0b88e78",
+    "file": "README.md",
+    "url": "https://raw.githubusercontent.com/chaidiscovery/chai-lab/c691da74d6f348b19bc9f931abe95d66d0b88e78/README.md",
+    "sha256": "ea6f6e64f6fc73d0e3dcbe6755c2aab226fa13bad279d1213acc0217f3f5013f"
+  },
+  {
+    "repository": "chaidiscovery/chai-lab",
+    "commit": "c691da74d6f348b19bc9f931abe95d66d0b88e78",
+    "file": "chai_lab/chai1.py",
+    "url": "https://raw.githubusercontent.com/chaidiscovery/chai-lab/c691da74d6f348b19bc9f931abe95d66d0b88e78/chai_lab/chai1.py",
+    "sha256": "348d17dc797bf52a77dc6d58ea8081a1e423df13b8545c11522d4ee559471389"
+  },
+  {
+    "repository": "chaidiscovery/chai-lab",
+    "commit": "c691da74d6f348b19bc9f931abe95d66d0b88e78",
+    "file": "examples/restraints/README.md",
+    "url": "https://raw.githubusercontent.com/chaidiscovery/chai-lab/c691da74d6f348b19bc9f931abe95d66d0b88e78/examples/restraints/README.md",
+    "sha256": "ecfa3dd6f5e97a7108075b182bdc6d90a495c799f29a4c44824bce90cce2863c"
+  },
+  {
+    "repository": "chaidiscovery/chai-lab",
+    "commit": "c691da74d6f348b19bc9f931abe95d66d0b88e78",
+    "file": "examples/msas/README.md",
+    "url": "https://raw.githubusercontent.com/chaidiscovery/chai-lab/c691da74d6f348b19bc9f931abe95d66d0b88e78/examples/msas/README.md",
+    "sha256": "f936e96f51b3b7f253829a5e325dfa301c40b41684b58067d8c48cff464c5b8e"
+  },
+  {
+    "repository": "aqlaboratory/openfold-3",
+    "commit": "fb656973bc96a8de210e49d14000563fc4fc51a9",
+    "file": "README.md",
+    "url": "https://raw.githubusercontent.com/aqlaboratory/openfold-3/fb656973bc96a8de210e49d14000563fc4fc51a9/README.md",
+    "sha256": "236b1e3f3812fc1b1e7b2c684b91a45c70f39700e90f866fc9369c88d27acfd3"
+  },
+  {
+    "repository": "aqlaboratory/openfold-3",
+    "commit": "fb656973bc96a8de210e49d14000563fc4fc51a9",
+    "file": "docs/source/input_format_reference.md",
+    "url": "https://raw.githubusercontent.com/aqlaboratory/openfold-3/fb656973bc96a8de210e49d14000563fc4fc51a9/docs/source/input_format_reference.md",
+    "sha256": "c4529a6e0dbb19ce07e4190592f5c964f0d59bc3a0bb57191d4801204cb23474"
+  },
+  {
+    "repository": "aqlaboratory/openfold-3",
+    "commit": "fb656973bc96a8de210e49d14000563fc4fc51a9",
+    "file": "docs/source/parameters_reference.md",
+    "url": "https://raw.githubusercontent.com/aqlaboratory/openfold-3/fb656973bc96a8de210e49d14000563fc4fc51a9/docs/source/parameters_reference.md",
+    "sha256": "d6bbbc22d89641c6f01b5c89a229c2687ec6661b931e0bbdc1f3a9b8cfe32bff"
+  },
+  {
+    "repository": "aqlaboratory/openfold-3",
+    "commit": "fb656973bc96a8de210e49d14000563fc4fc51a9",
+    "file": "openfold3/core/model/latent/pairformer.py",
+    "url": "https://raw.githubusercontent.com/aqlaboratory/openfold-3/fb656973bc96a8de210e49d14000563fc4fc51a9/openfold3/core/model/latent/pairformer.py",
+    "sha256": "cdb66c9553ef42b93835dec92f3e6dcf711dbf139a5a59aa1f2561216435af9f"
+  },
+  {
+    "repository": "aqlaboratory/openfold-3",
+    "commit": "fb656973bc96a8de210e49d14000563fc4fc51a9",
+    "file": "openfold3/core/model/structure/diffusion_module.py",
+    "url": "https://raw.githubusercontent.com/aqlaboratory/openfold-3/fb656973bc96a8de210e49d14000563fc4fc51a9/openfold3/core/model/structure/diffusion_module.py",
+    "sha256": "3b5ed9fb090d53df2b5ad16be517cfdca7f5290a6bb8274e71408a3ff465155d"
+  },
+  {
+    "title": "OpenFold3-preview2 Technical Report",
+    "url": "https://portal.openfold.omsf.io/reports/of3p2_technical_report.pdf",
+    "cachePath": "openfold3-preview2-report.pdf",
+    "sha256": "24266be0351e8b1fbb877fe99c21253c471fd3b201ce31f789144e38c1953d4f"
+  },
+  {
+    "title": "RCSB 1IEP polymer FASTA",
+    "url": "https://www.rcsb.org/fasta/entry/1IEP/display",
+    "cachePath": "1IEP.fasta",
+    "sha256": "8739da5a0f7419a810ca4bf4ed487decee708f2bca0ef4b89339156c6febeb9b"
+  },
+  {
+    "repository": "aqlaboratory/openfold-3",
+    "version": "0.4.2 compatible with OF3p2",
+    "commit": "4a0eaeaeae8ca1d815d0a97d8eb45d639b91a47e",
+    "file": "README.md",
+    "cachePath": "OpenFold3-preview2/README.md",
+    "url": "https://raw.githubusercontent.com/aqlaboratory/openfold-3/4a0eaeaeae8ca1d815d0a97d8eb45d639b91a47e/README.md",
+    "sha256": "32d54d9897bcadbb3d80386b2fea77e0e927009ee5766f1b273241954d66cca8"
+  },
+  {
+    "repository": "aqlaboratory/openfold-3",
+    "version": "0.4.2 compatible with OF3p2",
+    "commit": "4a0eaeaeae8ca1d815d0a97d8eb45d639b91a47e",
+    "file": "openfold3/core/model/latent/pairformer.py",
+    "cachePath": "OpenFold3-preview2/openfold3/core/model/latent/pairformer.py",
+    "url": "https://raw.githubusercontent.com/aqlaboratory/openfold-3/4a0eaeaeae8ca1d815d0a97d8eb45d639b91a47e/openfold3/core/model/latent/pairformer.py",
+    "sha256": "545d17babd09ff24e3782e321bae2dabde277e0a3b2b4dc6ba0b95274ff89244"
+  },
+  {
+    "repository": "aqlaboratory/openfold-3",
+    "version": "0.4.2 compatible with OF3p2",
+    "commit": "4a0eaeaeae8ca1d815d0a97d8eb45d639b91a47e",
+    "file": "openfold3/core/model/structure/diffusion_module.py",
+    "cachePath": "OpenFold3-preview2/openfold3/core/model/structure/diffusion_module.py",
+    "url": "https://raw.githubusercontent.com/aqlaboratory/openfold-3/4a0eaeaeae8ca1d815d0a97d8eb45d639b91a47e/openfold3/core/model/structure/diffusion_module.py",
+    "sha256": "5944ec7e49c9045488d8678fee2147cb243815f804fe149376113fe8e9885a52"
+  }
+]

@@ -1,0 +1,119 @@
+[
+  {
+    "repository": "ccsb-scripps/AutoDock-Vina",
+    "revision": "bb64e5e26b520569a86360d69248069b5e665b3f",
+    "file": "README.md",
+    "url": "https://raw.githubusercontent.com/ccsb-scripps/AutoDock-Vina/bb64e5e26b520569a86360d69248069b5e665b3f/README.md",
+    "sha256": "4f1728521ab79de1c33e1cf8605b31037effed5de2a2fbbccba58d7b0a005ae7"
+  },
+  {
+    "repository": "gcorso/DiffDock",
+    "revision": "85c49b60d3e0b0182a59ee43a34a6d7036981284",
+    "file": "README.md",
+    "url": "https://raw.githubusercontent.com/gcorso/DiffDock/85c49b60d3e0b0182a59ee43a34a6d7036981284/README.md",
+    "sha256": "6f63088d85b5f05d58416ede319387c1b7f3661b27741a36314ada861f2056de"
+  },
+  {
+    "repository": "gcorso/DiffDock",
+    "revision": "85c49b60d3e0b0182a59ee43a34a6d7036981284",
+    "file": "utils/sampling.py",
+    "url": "https://raw.githubusercontent.com/gcorso/DiffDock/85c49b60d3e0b0182a59ee43a34a6d7036981284/utils/sampling.py",
+    "sha256": "e0272fcd9f8ea3a61996c26ba3b7089d0eda97a42b5221a285ce48a42a86b2e6"
+  },
+  {
+    "repository": "gcorso/DiffDock",
+    "revision": "85c49b60d3e0b0182a59ee43a34a6d7036981284",
+    "file": "utils/diffusion_utils.py",
+    "url": "https://raw.githubusercontent.com/gcorso/DiffDock/85c49b60d3e0b0182a59ee43a34a6d7036981284/utils/diffusion_utils.py",
+    "sha256": "dd900032848bfa5eb82bead886f2dcfbe89912e94be0dc36f6257065ddce1ed6"
+  },
+  {
+    "repository": "luwei0917/DynamicBind",
+    "revision": "817f565c70be95a53bc5ce9ee6125ffc9aeb6555",
+    "file": "README.md",
+    "url": "https://raw.githubusercontent.com/luwei0917/DynamicBind/817f565c70be95a53bc5ce9ee6125ffc9aeb6555/README.md",
+    "sha256": "f45c61609d7bde0e0ea99a054f1b11ea8a025416670d9b7ec2dac460583fe08d"
+  },
+  {
+    "repository": "luwei0917/DynamicBind",
+    "revision": "817f565c70be95a53bc5ce9ee6125ffc9aeb6555",
+    "file": "utils/sampling.py",
+    "url": "https://raw.githubusercontent.com/luwei0917/DynamicBind/817f565c70be95a53bc5ce9ee6125ffc9aeb6555/utils/sampling.py",
+    "sha256": "8a6e0eb7a5006f24b658e681d2273d185d95682584bb8eafd7899a17a215974e"
+  },
+  {
+    "repository": "ccsb-scripps/AutoDock-Vina",
+    "revision": "bb64e5e26b520569a86360d69248069b5e665b3f",
+    "file": "example/basic_docking/solution/1iep_ligand.sdf",
+    "assetPath": "assets/official-vina/1iep_ligand.sdf",
+    "url": "https://raw.githubusercontent.com/ccsb-scripps/AutoDock-Vina/bb64e5e26b520569a86360d69248069b5e665b3f/example/basic_docking/solution/1iep_ligand.sdf",
+    "sha256": "051b8742c32adc05c07fb486a4e7c9327f84e131cee33ac4e6a568d07553eb38"
+  },
+  {
+    "repository": "ccsb-scripps/AutoDock-Vina",
+    "revision": "bb64e5e26b520569a86360d69248069b5e665b3f",
+    "file": "example/basic_docking/solution/1iep_ligand.pdbqt",
+    "assetPath": "assets/official-vina/1iep_ligand.pdbqt",
+    "url": "https://raw.githubusercontent.com/ccsb-scripps/AutoDock-Vina/bb64e5e26b520569a86360d69248069b5e665b3f/example/basic_docking/solution/1iep_ligand.pdbqt",
+    "sha256": "15fb35648d8c18c70317842f3a0631b73a19429c710a037ab07310084d579bb8"
+  },
+  {
+    "repository": "ccsb-scripps/AutoDock-Vina",
+    "revision": "bb64e5e26b520569a86360d69248069b5e665b3f",
+    "file": "example/basic_docking/solution/1iep_ligand_vina_out.pdbqt",
+    "assetPath": "assets/official-vina/1iep_ligand_vina_out.pdbqt",
+    "url": "https://raw.githubusercontent.com/ccsb-scripps/AutoDock-Vina/bb64e5e26b520569a86360d69248069b5e665b3f/example/basic_docking/solution/1iep_ligand_vina_out.pdbqt",
+    "sha256": "4137e1960b3491f17a24579d991f32a2c0cb254af1f58d7278f77579fc27d93f"
+  },
+  {
+    "repository": "ccsb-scripps/AutoDock-Vina",
+    "revision": "bb64e5e26b520569a86360d69248069b5e665b3f",
+    "file": "example/basic_docking/solution/1iep_receptor.pdbqt",
+    "assetPath": "assets/official-vina/1iep_receptor.pdbqt",
+    "url": "https://raw.githubusercontent.com/ccsb-scripps/AutoDock-Vina/bb64e5e26b520569a86360d69248069b5e665b3f/example/basic_docking/solution/1iep_receptor.pdbqt",
+    "sha256": "f13cf3b36f61d87c3b58983e0b8ecf1c3456a685eb86dfe9ccfb139c7bdc2586"
+  },
+  {
+    "repository": "ccsb-scripps/AutoDock-Vina",
+    "revision": "bb64e5e26b520569a86360d69248069b5e665b3f",
+    "file": "example/basic_docking/solution/1iep_receptor.box.txt",
+    "assetPath": "assets/official-vina/1iep_receptor.box.txt",
+    "url": "https://raw.githubusercontent.com/ccsb-scripps/AutoDock-Vina/bb64e5e26b520569a86360d69248069b5e665b3f/example/basic_docking/solution/1iep_receptor.box.txt",
+    "sha256": "3dff08200b5b9c2ca0932c832c9dffc5823b39caec6c92f76be5f7c5ea49d8de"
+  },
+  {
+    "repository": "ccsb-scripps/AutoDock-Vina",
+    "revision": "bb64e5e26b520569a86360d69248069b5e665b3f",
+    "file": "LICENSE",
+    "assetPath": "assets/official-vina/LICENSE",
+    "url": "https://raw.githubusercontent.com/ccsb-scripps/AutoDock-Vina/bb64e5e26b520569a86360d69248069b5e665b3f/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "repository": "gcorso/DiffDock",
+    "version": "v1.0",
+    "revision": "bc6b5151457ea5304ee69779d92de0fded599a2c",
+    "file": "README.md",
+    "cachePath": "DiffDock-original/README.md",
+    "url": "https://raw.githubusercontent.com/gcorso/DiffDock/bc6b5151457ea5304ee69779d92de0fded599a2c/README.md",
+    "sha256": "5f597960dfd5872deb1fb019a45cc7fa2317f6b76a4422a7beedf86bde00fa00"
+  },
+  {
+    "repository": "gcorso/DiffDock",
+    "version": "v1.0",
+    "revision": "bc6b5151457ea5304ee69779d92de0fded599a2c",
+    "file": "utils/sampling.py",
+    "cachePath": "DiffDock-original/utils/sampling.py",
+    "url": "https://raw.githubusercontent.com/gcorso/DiffDock/bc6b5151457ea5304ee69779d92de0fded599a2c/utils/sampling.py",
+    "sha256": "50bab598af9f24ab35ffef63ac507c38ebcd5050f5de79df73628a8832cb3633"
+  },
+  {
+    "repository": "gcorso/DiffDock",
+    "version": "v1.0",
+    "revision": "bc6b5151457ea5304ee69779d92de0fded599a2c",
+    "file": "utils/diffusion_utils.py",
+    "cachePath": "DiffDock-original/utils/diffusion_utils.py",
+    "url": "https://raw.githubusercontent.com/gcorso/DiffDock/bc6b5151457ea5304ee69779d92de0fded599a2c/utils/diffusion_utils.py",
+    "sha256": "809baf1b26c41b78e2d59351781ccac904df27e40661252f16f141ef7176286a"
+  }
+]

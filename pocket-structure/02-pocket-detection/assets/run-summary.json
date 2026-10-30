@@ -1,0 +1,21 @@
+{
+  "inputPdb": "1ANF",
+  "chain": "A",
+  "inputAtomCount": 2860,
+  "residueCount": 370,
+  "inputSha256": "f0b8d11ade29ca76a4fabe17c6f02b6f1c83ff16d0334427aa6f822093ed810c",
+  "ligandUsedForPrediction": false,
+  "waterRemoved": true,
+  "fpocketVersion": "4.0 Windows port (XDrugPy binary linked in upstream issue 106)",
+  "fpocketBinarySha256": "1c1c8790bd0f7c3e1e6570d7c489232a1cbefa73a3d1fd61cb8632f3d483cc69",
+  "p2rankVersion": "2.5.1",
+  "configuration": "default for both methods; experimental X-ray coordinates",
+  "centerDefinition": {
+    "fpocket": "Unweighted centroid of the output alpha-sphere centers",
+    "p2rank": "center_x/y/z reported by P2Rank"
+  },
+  "distanceDefinition": "Minimum distance in angstroms between the candidate center and any of the 23 maltose heavy atoms. Display reference only, no accuracy threshold.",
+  "scope": "Personal teaching case, not an independent benchmark. Input may resemble model training data. One example cannot establish relative method quality.",
+  "distributionSource": "https://github.com/Discngine/fpocket/issues/106",
+  "distributionRevision": "b01ccc0c007d81aa3cc4f1cecded22696dd5bfc8"
+}

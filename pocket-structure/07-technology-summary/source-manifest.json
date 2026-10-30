@@ -1,0 +1,44 @@
+[
+  {
+    "kind": "prior-chapter-reference",
+    "title": "2장 원리·실제 결과·출처",
+    "sourcePath": "../02-pocket-detection/lesson.md",
+    "sha256": "39baa666bcf201d85de20500c86f9f1908e41aee9c693b429b141483dad172b4"
+  },
+  {
+    "kind": "prior-chapter-reference",
+    "title": "3장 확인한 구현",
+    "sourcePath": "../03-learning-pockets/source-manifest.json",
+    "sha256": "0b529f177d0ae674775adfd2bb0c63d3f9d5873fe612ec3edfe6b497298a2536"
+  },
+  {
+    "kind": "prior-chapter-reference",
+    "title": "4장 확인한 자료",
+    "sourcePath": "../04-cryptic-pockets/source-manifest.json",
+    "sha256": "757d9fd24d3e15b83dd71baee51f3883a9d7dd8c9b45ece46a4c1339ad355a55"
+  },
+  {
+    "kind": "prior-chapter-reference",
+    "title": "5장 확인한 자료",
+    "sourcePath": "../05-docking/source-manifest.json",
+    "sha256": "6c4f4ecb02229af49a5346780362fb80b8b37480145bbf519de669ec37283eac"
+  },
+  {
+    "kind": "prior-chapter-reference",
+    "title": "6장 확인한 자료",
+    "sourcePath": "../06-cofolding/source-manifest.json",
+    "sha256": "876e4896ec9dee45f771fe9aa742c62bfb4efc60013f74b1f53d0615376b6919"
+  },
+  {
+    "kind": "summary-data",
+    "title": "13개 기술 비교 데이터",
+    "sourcePath": "methods.json",
+    "sha256": "8ab725d30977aceddc9f992e13f08af62b2cc06f0ed50b8941b59cfff9a2cea9"
+  },
+  {
+    "kind": "evolution-data",
+    "title": "기술 발전·연결의 5개 관점과 출처",
+    "sourcePath": "evolution.json",
+    "sha256": "41cfb5d3a8762b5858e49a4ad306cf92843264a0f375692626db7a92e3b0f9ff"
+  }
+]
