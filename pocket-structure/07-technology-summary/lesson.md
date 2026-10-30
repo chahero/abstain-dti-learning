@@ -199,6 +199,519 @@ PocketMiner 점수가 열린 좌표를 생성하지는 않습니다. co-folding�
 
 [원리 자세히 보기 →](../02-pocket-detection/) · [논문·공식 자료](https://github.com/Discngine/fpocket)
 
+13개 기술의 입력·출력 텍스트 전체
+
+fpocket
+
+실제 개인 실행 출력 · MBP · 리간드를 제거한 1ANF
+
+입력
+
+```json
+{
+  "protein_file": "1ANF_protein.pdb",
+  "chain": "A",
+  "atoms": 2860,
+  "residues": 370,
+  "ligand_in_input": false,
+  "coordinate_unit": "Å",
+  "first_atom": {
+    "serial": 1,
+    "name": "N",
+    "residue": 1,
+    "resname": "LYS",
+    "chain": "A",
+    "element": "N",
+    "xyz": [
+      -12.621,
+      27.691,
+      51.154
+    ]
+  }
+}
+```
+
+출력
+
+```json
+{
+  "pockets": 21,
+  "top_rank": 1,
+  "score": 0.241,
+  "center_A": [
+    9.530865384615387,
+    15.935336538461538,
+    39.67928846153845
+  ],
+  "alpha_spheres": 104,
+  "volume_A3": 661.736,
+  "one_sphere": {
+    "xyz": [
+      10.804,
+      16.206,
+      40.144
+    ],
+    "radius": 4.32
+  }
+}
+```
+
+가상 구의 xyz와 radius는 Å입니다. score와 druggability는 결합 친화도가 아닙니다.
+
+P2Rank
+
+실제 개인 실행 출력 · MBP · fpocket과 동일한 입력
+
+입력
+
+```json
+{
+  "protein_file": "1ANF_protein.pdb",
+  "chain": "A",
+  "atoms": 2860,
+  "residues": 370,
+  "ligand_in_input": false,
+  "coordinate_unit": "Å",
+  "first_atom": {
+    "serial": 1,
+    "name": "N",
+    "residue": 1,
+    "resname": "LYS",
+    "chain": "A",
+    "element": "N",
+    "xyz": [
+      -12.621,
+      27.691,
+      51.154
+    ]
+  }
+}
+```
+
+출력
+
+```json
+{
+  "pockets": 5,
+  "top_rank": 1,
+  "score": 37.43,
+  "probability": 0.958,
+  "center_A": [
+    9.5925,
+    16.4268,
+    39.122
+  ],
+  "surface_points": 135,
+  "one_point": {
+    "xyz": [
+      3.656,
+      13.826,
+      39.731
+    ],
+    "rank": 1,
+    "score": 0.358
+  }
+}
+```
+
+probability=0.958은 포켓 후보에 대한 도구 출력이며 특정 약물과의 결합 확률이 아닙니다. fpocket score와 직접 비교하지 않습니다.
+
+DeepPocket
+
+미실행 · 입력과 출력 형식 · MBP 입력으로 형식 설명
+
+입력
+
+```json
+{
+  "protein_file": "1ANF_protein.pdb",
+  "chain": "A",
+  "atoms": 2860,
+  "residues": 370,
+  "ligand_in_input": false,
+  "coordinate_unit": "Å",
+  "first_atom": {
+    "serial": 1,
+    "name": "N",
+    "residue": 1,
+    "resname": "LYS",
+    "chain": "A",
+    "element": "N",
+    "xyz": [
+      -12.621,
+      27.691,
+      51.154
+    ]
+  },
+  "fpocket_candidate_centers_A": [
+    [
+      9.530865384615387,
+      15.935336538461538,
+      39.67928846153845
+    ],
+    [
+      24.77179166666667,
+      9.652,
+      47.69858333333334
+    ],
+    [
+      10.869800000000003,
+      -0.6442999999999998,
+      46.690380000000005
+    ]
+  ]
+}
+```
+
+출력
+
+```json
+{
+  "cnn_candidate_scores": null,
+  "pocket_segmentation_mask": null
+}
+```
+
+null은 미실행으로 값이 없다는 뜻입니다. 후보 재평가 점수와 3D 격자 영역을 내며, 아래 수치는 DeepPocket의 예측이 아닙니다.
+
+GrASP
+
+미실행 · 입력과 출력 형식 · MBP 원자 좌표 예시
+
+입력
+
+```json
+{
+  "protein_file": "1ANF_protein.pdb",
+  "atom_coordinate_excerpt": [
+    {
+      "atom_id": 471,
+      "element": "C",
+      "xyz_A": [
+        6.79,
+        17.735,
+        40.576
+      ]
+    },
+    {
+      "atom_id": 1213,
+      "element": "C",
+      "xyz_A": [
+        14.044,
+        13.567,
+        39.058
+      ]
+    },
+    {
+      "atom_id": 1212,
+      "element": "C",
+      "xyz_A": [
+        14.683,
+        14.891,
+        38.778
+      ]
+    },
+    {
+      "atom_id": 1214,
+      "element": "C",
+      "xyz_A": [
+        13.805,
+        13.113,
+        40.408
+      ]
+    }
+  ]
+}
+```
+
+출력
+
+```json
+{
+  "surface_atom_scores": null,
+  "pocket_clusters": null
+}
+```
+
+실행 전 단백질을 그래프로 변환합니다. 여기의 네 원자는 좌표를 읽는 발췌 예이며 전체 GrASP 입력 그래프가 아닙니다.
+
+PocketMiner
+
+미실행 · 입력과 출력 형식 · 실험 apo MBP · 1OMP
+
+입력
+
+```json
+{
+  "protein_file": "1OMP.pdb",
+  "chain": "A",
+  "residues": 370
+}
+```
+
+출력
+
+```json
+{
+  "residue_opening_scores": null
+}
+```
+
+잔기별로 숨은 포켓 형성 가능 영역을 점수화합니다. 열린 3D 좌표를 생성하는 출력은 아닙니다.
+
+분자동역학 (MD)
+
+미실행 · 조건과 출력 형식 · 시뮬레이션 조건의 설명용 설정
+
+입력
+
+```json
+{
+  "initial_structure": "1OMP.pdb",
+  "example_temperature_K": 300,
+  "example_timestep_fs": 2,
+  "force_field": "별도 선택 필요",
+  "solvent": "별도 구성 필요"
+}
+```
+
+출력
+
+```json
+{
+  "time_ps": null,
+  "coordinates_A_per_frame": null,
+  "velocities_per_frame": null
+}
+```
+
+300 K와 2 fs는 조건을 이해하기 위한 예시이며 실행된 MD가 아닙니다. 출력은 시간에 따른 좌표·속도 프레임입니다.
+
+Vina
+
+공식 예제의 참고 출력 · ABL · 이마티닙 / 1IEP
+
+입력
+
+```json
+{
+  "receptor": "1iep_receptor.pdbqt",
+  "ligand": "1iep_ligand.pdbqt",
+  "search_box": "center_x = 15.190\ncenter_y = 53.903\ncenter_z = 16.917\nsize_x = 20.000\nsize_y = 20.000\nsize_z = 20.000"
+}
+```
+
+출력
+
+```json
+{
+  "modes": [
+    {
+      "rank": 1,
+      "score_kcal_mol": -13.234,
+      "rmsd_from_best_lower_A": 0.0,
+      "rmsd_from_best_upper_A": 0.0,
+      "first_heavy_atom_xyz_A": [
+        11.825,
+        62.28,
+        12.841
+      ]
+    },
+    {
+      "rank": 2,
+      "score_kcal_mol": -11.293,
+      "rmsd_from_best_lower_A": 0.986,
+      "rmsd_from_best_upper_A": 1.681,
+      "first_heavy_atom_xyz_A": [
+        13.299,
+        62.692,
+        12.742
+      ]
+    },
+    {
+      "rank": 3,
+      "score_kcal_mol": -11.281,
+      "rmsd_from_best_lower_A": 3.044,
+      "rmsd_from_best_upper_A": 12.414,
+      "first_heavy_atom_xyz_A": [
+        24.226,
+        50.745,
+        17.55
+      ]
+    },
+    {
+      "rank": 4,
+      "score_kcal_mol": -11.146,
+      "rmsd_from_best_lower_A": 3.813,
+      "rmsd_from_best_upper_A": 12.238,
+      "first_heavy_atom_xyz_A": [
+        25.038,
+        51.703,
+        16.669
+      ]
+    }
+  ]
+}
+```
+
+공식 배포 예제의 저장된 출력입니다. -13.234 kcal/mol은 Vina 점수이며 실험 Kd가 아닙니다. RMSD 열은 최상위 mode와의 거리 경계이며 실험 구조에 대한 오차가 아닙니다.
+
+DiffDock (원본)
+
+미실행 · 입력과 출력 형식 · ABL · 이마티닙 입력 예시
+
+입력
+
+```json
+{
+  "protein_structure": "1iep_receptor.pdbqt → 도구에 맞는 구조 준비",
+  "ligand_smiles": "Cc1ccc(NC(=O)c2ccc(CN3CC[NH+](C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1"
+}
+```
+
+출력
+
+```json
+{
+  "ligand_pose_xyz_A": null,
+  "pose_confidence": null
+}
+```
+
+원본 DiffDock의 수용체는 고정입니다. 자세 confidence는 친화도와 다릅니다. PDBQT를 변환 없이 그대로 입력하라는 뜻이 아닙니다.
+
+DynamicBind
+
+미실행 · 입력과 출력 형식 · ABL · 이마티닙 입력 예시
+
+입력
+
+```json
+{
+  "starting_protein_structure": "준비한 ABL PDB",
+  "ligand_smiles": "Cc1ccc(NC(=O)c2ccc(CN3CC[NH+](C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1"
+}
+```
+
+출력
+
+```json
+{
+  "updated_protein_xyz_A": null,
+  "ligand_xyz_A": null,
+  "confidence": null,
+  "affinity_prediction": null
+}
+```
+
+시작 구조를 받아 단백질·리간드 배치를 갱신합니다. 이 출력은 시간 순서의 MD 궤적이 아닙니다.
+
+AlphaFold 3
+
+미실행 · 실제 입력과 출력 형식 · ABL 구성체 293잔기 · 이마티닙 중원자 37개
+
+입력
+
+```json
+{
+  "protein": "1IEP ABL construct",
+  "protein_sequence": "GAMDPSSPNYDKWEMERTDITMKHKLGGGQYGEVYEGVWKKYSLTVAVKTLKEDTMEVEEFLKEAAVMKEIKHPNLVQLLGVCTREPPFYIITEFMTYGNLLDYLRECNRQEVSAVVLLYMATQISSAMEYLEKKNFIHRDLAARNCLVGENHLVKVADFGLSRLMTGDTYTAHAGAKFPIKWTAPESLAYNKFSIKSDVWAFGVLLWEIATYGMSPYPGIDLSQVYELLEKDYRMERPEGCPEKVYELMRACWQWNPSDRPSFAEIHQAFETMFQESSISDEVEKELGKRGT",
+  "ligand_smiles": "Cc1ccc(NC(=O)c2ccc(CN3CC[NH+](C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+  "ligand_heavy_atoms": 37
+}
+```
+
+출력
+
+```json
+{
+  "complex_atom_xyz_A": null,
+  "structure_confidence": null
+}
+```
+
+현재 값은 입력 예시이며 공동 예측을 실행하지 않았습니다. 실제 출력 좌표·신뢰도 수치는 없습니다.
+
+Boltz-2
+
+미실행 · 실제 입력과 출력 형식 · ABL 구성체 293잔기 · 이마티닙 중원자 37개
+
+입력
+
+```json
+{
+  "protein": "1IEP ABL construct",
+  "protein_sequence": "GAMDPSSPNYDKWEMERTDITMKHKLGGGQYGEVYEGVWKKYSLTVAVKTLKEDTMEVEEFLKEAAVMKEIKHPNLVQLLGVCTREPPFYIITEFMTYGNLLDYLRECNRQEVSAVVLLYMATQISSAMEYLEKKNFIHRDLAARNCLVGENHLVKVADFGLSRLMTGDTYTAHAGAKFPIKWTAPESLAYNKFSIKSDVWAFGVLLWEIATYGMSPYPGIDLSQVYELLEKDYRMERPEGCPEKVYELMRACWQWNPSDRPSFAEIHQAFETMFQESSISDEVEKELGKRGT",
+  "ligand_smiles": "Cc1ccc(NC(=O)c2ccc(CN3CC[NH+](C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+  "ligand_heavy_atoms": 37
+}
+```
+
+출력
+
+```json
+{
+  "complex_atom_xyz_A": null,
+  "structure_confidence": null,
+  "affinity_probability_binary": null,
+  "affinity_pred_value": null
+}
+```
+
+현재 값은 입력 예시이며 공동 예측을 실행하지 않았습니다. 실제 출력 좌표·신뢰도 수치는 없습니다. affinity_pred_value의 단위는 log10(IC50/μM)이며 낮을수록 강한 방향입니다.
+
+Chai-1
+
+미실행 · 실제 입력과 출력 형식 · ABL 구성체 293잔기 · 이마티닙 중원자 37개
+
+입력
+
+```json
+{
+  "protein": "1IEP ABL construct",
+  "protein_sequence": "GAMDPSSPNYDKWEMERTDITMKHKLGGGQYGEVYEGVWKKYSLTVAVKTLKEDTMEVEEFLKEAAVMKEIKHPNLVQLLGVCTREPPFYIITEFMTYGNLLDYLRECNRQEVSAVVLLYMATQISSAMEYLEKKNFIHRDLAARNCLVGENHLVKVADFGLSRLMTGDTYTAHAGAKFPIKWTAPESLAYNKFSIKSDVWAFGVLLWEIATYGMSPYPGIDLSQVYELLEKDYRMERPEGCPEKVYELMRACWQWNPSDRPSFAEIHQAFETMFQESSISDEVEKELGKRGT",
+  "ligand_smiles": "Cc1ccc(NC(=O)c2ccc(CN3CC[NH+](C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+  "ligand_heavy_atoms": 37
+}
+```
+
+출력
+
+```json
+{
+  "complex_atom_xyz_A": null,
+  "structure_confidence": null
+}
+```
+
+현재 값은 입력 예시이며 공동 예측을 실행하지 않았습니다. 실제 출력 좌표·신뢰도 수치는 없습니다.
+
+OpenFold3-preview2
+
+미실행 · 실제 입력과 출력 형식 · ABL 구성체 293잔기 · 이마티닙 중원자 37개
+
+입력
+
+```json
+{
+  "protein": "1IEP ABL construct",
+  "protein_sequence": "GAMDPSSPNYDKWEMERTDITMKHKLGGGQYGEVYEGVWKKYSLTVAVKTLKEDTMEVEEFLKEAAVMKEIKHPNLVQLLGVCTREPPFYIITEFMTYGNLLDYLRECNRQEVSAVVLLYMATQISSAMEYLEKKNFIHRDLAARNCLVGENHLVKVADFGLSRLMTGDTYTAHAGAKFPIKWTAPESLAYNKFSIKSDVWAFGVLLWEIATYGMSPYPGIDLSQVYELLEKDYRMERPEGCPEKVYELMRACWQWNPSDRPSFAEIHQAFETMFQESSISDEVEKELGKRGT",
+  "ligand_smiles": "Cc1ccc(NC(=O)c2ccc(CN3CC[NH+](C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+  "ligand_heavy_atoms": 37
+}
+```
+
+출력
+
+```json
+{
+  "complex_atom_xyz_A": null,
+  "structure_confidence": null
+}
+```
+
+현재 값은 입력 예시이며 공동 예측을 실행하지 않았습니다. 실제 출력 좌표·신뢰도 수치는 없습니다. 이 자료는 OpenFold3-preview2 범위입니다.
+
 전체 기술 카드의 텍스트 요약
 
 fpocket · 포켓 탐지

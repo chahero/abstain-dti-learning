@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="기본 개념부터 fpocket과 P2Rank의 원리, 동일한 MBP 구조에서 얻은 실제 포켓 결과까지 비교하는 학습 자료"><title>붙을 자리, 컴퓨터는 어떻게 찾을까? · 포켓 구조 학습 2장</title><link rel="icon" href="data:,"><link rel="stylesheet" href="../01-pocket-basics/style.css"><link rel="stylesheet" href="../book.css"><link rel="stylesheet" href="chapter.css"></head>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="기본 개념부터 fpocket과 P2Rank의 원리, 동일한 MBP 구조에서 얻은 실제 포켓 결과까지 비교하는 학습 자료"><title>붙을 자리, 컴퓨터는 어떻게 찾을까? · 포켓 구조 학습 2장</title><link rel="icon" href="data:,"><link rel="stylesheet" href="../01-pocket-basics/style.css"><link rel="stylesheet" href="../book.css"><link rel="stylesheet" href="chapter.css"><link rel="stylesheet" href="../figure-viewer.css?v=20261030-viewer2"><script src="../figure-viewer.js?v=20261030-viewer2" defer></script></head>
 <body data-chapter="2">
 <a class="skip" href="#lesson-title">본문으로 이동</a>
 <header class="site-header"><a href="../">포켓 구조 학습</a><div><a href="lesson.md" download>학습 원고</a><button type="button" id="print">인쇄</button></div></header>
@@ -19,7 +19,7 @@
   <article data-step="2" hidden aria-label="3. fpocket의 원리">
     <h2 class="print-title">3. fpocket은 빈 공간을 어떻게 찾을까?</h2>
     <div class="spread"><figure><div class="choice-row" aria-label="fpocket 원리 단계"><button type="button" data-fp="0" aria-pressed="true">1. 가상 구</button><button type="button" data-fp="1" aria-pressed="false">2. 크기 선별</button><button type="button" data-fp="2" aria-pressed="false">3. 묶기</button><button type="button" data-fp="3" aria-pressed="false">4. 순위</button></div><svg id="fpocket-figure" viewBox="0 0 720 440" role="img" aria-label="원자 사이에 가상 구를 만들고 크기를 선별한 뒤 가까운 구들을 포켓으로 묶는 과정"></svg><div class="state-caption" id="fp-description" aria-live="polite"></div><figcaption>개념도 · 구는 원자나 리간드가 아니라 빈 공간을 나타내는 계산 도구입니다.</figcaption></figure><div class="explanation"><h2>빈 공간에 가상의 공을 놓습니다</h2><p><strong>알파 구(alpha sphere)</strong>는 3차원에서 네 원자에 닿으면서 내부에 다른 원자가 없는 가상의 구입니다. fpocket은 보로노이 분할이라는 기하학적 방법으로 이 구들을 찾습니다.</p><p>너무 작거나 큰 구를 걸러 낸 뒤, <strong>가까이 모인 구들을 하나의 공간 후보</strong>로 묶습니다. 이것이 클러스터링입니다. 구 하나가 곧 포켓 하나인 것은 아닙니다.</p><p>마지막에는 크기와 주변의 물리·화학적 특징 등을 요약한 <strong>특성값(descriptor)</strong>으로 후보의 순위를 매깁니다. 후보를 만드는 중심 원리는 기하학이지만, 점수에 화학적 특징도 반영됩니다.</p><p class="takeaway">fpocket: 빈 공간을 찾고, 모아서, 순위를 매깁니다.</p><p class="source-inline"><a href="https://doi.org/10.1186/1471-2105-10-168" target="_blank" rel="noopener">fpocket 원 논문</a></p></div></div>
-  </article>
+  <p class="source-inline"><a href="../08-3d-lab/?scene=alpha">네 원자와 가상 구 하나를 실제 3D로 보기 →</a></p></article>
 
   <article data-step="3" hidden aria-label="4. P2Rank의 원리">
     <h2 class="print-title">4. P2Rank는 표면에서 무엇을 볼까?</h2>
@@ -47,7 +47,7 @@
     <p class="minor">사슬은 잔기당 기준점(Cα) 하나의 추적도입니다. 두 화면은 동일한 시점과 배율을 사용합니다. 구·점·맥아당의 위치는 실제 좌표이며, 단백질 표면이나 결합 자세를 새로 예측한 그림은 아닙니다.</p>
     <details class="result-data"><summary>후보 점수와 기준 위치까지의 거리 보기</summary><div class="table-scroll"><table id="candidate-table"><caption>거리: 후보 중심에서 가장 가까운 맥아당 원자까지 · Å</caption><thead><tr><th>방법</th><th>순위</th><th>도구 점수</th><th>가상 구 / 표면점 수</th><th>중심→맥아당 거리</th></tr></thead><tbody></tbody></table></div><p class="minor">이 거리는 위치를 읽기 위한 참고값이며 정답 판정 임계값을 적용하지 않았습니다. fpocket 중심은 가상 구 중심들의 단순 평균, P2Rank 중심은 출력 CSV의 center_x/y/z입니다. 중심을 정하는 방식이 달라 작은 거리 차이로 우열을 매기지 않습니다.</p></details>
     <p class="takeaway">이번 예시에서는 두 방법의 1순위 후보가 맥아당 부근에 놓였습니다.</p>
-  </article>
+  <p class="source-inline"><a href="../08-3d-lab/?scene=compare">같은 단백질의 두 실제 출력을 나란히 3D로 보기 →</a></p></article>
 
   <article data-step="7" hidden aria-label="8. 구조와 해석">
     <h2 class="print-title">8. 같은 단백질의 다른 모양을 넣으면?</h2>
@@ -63,5 +63,5 @@
   <div class="paging"><button type="button" id="previous" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m12 4-6 6 6 6"/></svg>이전</button><span id="page-count" aria-live="polite">1 / 9</span><button type="button" id="next">다음<svg viewBox="0 0 20 20" aria-hidden="true"><path d="m8 4 6 6-6 6"/></svg></button></div>
   <details class="sources"><summary>용어·출처·실행 조건</summary><div class="source-content"><p>개념 도식은 직접 작성한 설명용 그림입니다. 실제 결과 화면은 동일한 단백질 입력으로 실행한 도구의 출력 좌표를 표시합니다. 좌표 회전은 보기 방향만 바꾸며 새 예측을 실행하지 않습니다.</p><dl><dt>클러스터링</dt><dd>서로 가까운 점이나 구 등을 한 무리로 묶는 과정</dd><dt>특성값·특징</dt><dd>크기, 주변 원자의 성질 등 모델이 계산하거나 읽을 수 있도록 숫자로 표현한 정보</dd><dt>랜덤 포레스트</dt><dd>여러 결정 나무의 판단을 합치는 머신러닝 모델</dd><dt>알파 구</dt><dd>3차원에서 네 원자에 닿고 내부에는 다른 원자가 없는 가상의 구</dd><dt>표면점</dt><dd>원자 자체가 아니라 단백질 표면에서 환경을 평가하는 위치</dd></dl><p>실행: fpocket 4.0 Windows 이식판, P2Rank 2.5.1, 두 도구 모두 기본 설정. fpocket은 공식 저장소의 <a href="https://github.com/Discngine/fpocket/issues/106" target="_blank" rel="noopener">Windows 지원 논의</a>에 연결된 XDrugPy 빌드를 사용했으며 최신 공식 릴리스의 비교 실험이 아닙니다. 바이너리 고정 커밋과 해시는 실행 조건 파일에 보존했습니다.</p><p>1ANF는 오래된 공개 구조이므로 학습 데이터와의 독립성을 가정하지 않습니다. 이 예시는 사용법과 결과 해석을 배우는 개인 학습 사례입니다. 공식 벤치마크나 두 방법의 우열 검증으로 해석하지 않습니다.</p><ol><li><a href="https://doi.org/10.1186/1471-2105-10-168" target="_blank" rel="noopener">Le Guilloux et al. (2009), Fpocket</a></li><li><a href="https://doi.org/10.1186/s13321-018-0285-8" target="_blank" rel="noopener">Krivák & Hoksza (2018), P2Rank</a></li><li><a href="https://github.com/Discngine/fpocket" target="_blank" rel="noopener">fpocket 공식 구현·문서</a> · <a href="https://github.com/rdk/p2rank" target="_blank" rel="noopener">P2Rank 공식 구현·문서</a></li><li><a href="https://www.rcsb.org/structure/1ANF" target="_blank" rel="noopener">RCSB PDB 1ANF</a> · <a href="https://www.rcsb.org/structure/1OMP" target="_blank" rel="noopener">1OMP</a></li></ol><p><a href="assets/mbp-pocket-results.zip" download>원시 결과 ZIP</a> · <a href="assets/run-summary.json" download>실행 조건 JSON</a> · <a href="lesson.md" download>학습 원고</a></p></div></details>
 </main>
-<script src="lesson.js"></script><script src="../book.js"></script>
+<script src="lesson.js"></script><script src="../book.js?v=20261030-3d"></script>
 </body></html>

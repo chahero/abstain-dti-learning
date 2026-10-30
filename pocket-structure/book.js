@@ -4,6 +4,7 @@
   const nav = document.createElement('nav'); nav.className='book-bar'; nav.setAttribute('aria-label','교재의 장 선택');
   for(const item of [
     {href:'../',name:'전체 목차'},
+    {href:'../08-3d-lab/',name:'3D 실습실 · 실제 좌표와 값',number:'3d'},
     {href:'../07-technology-summary/',name:'개요 · 전체 기술 요약',number:'7'},
     {href:'../01-pocket-basics/',name:'1장 · 포켓과 움직임',number:'1'},
     {href:'../02-pocket-detection/',name:'2장 · 포켓 후보 탐지',number:'2'},

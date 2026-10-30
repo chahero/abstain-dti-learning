@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="포켓 탐지·숨은 포켓·도킹·공동 구조 예측의 13개 기술을 입력, 출력, 역할과 사용 상황으로 비교하는 먼저 읽는 학습 개요."><title>어떤 질문에 어떤 기술을 쓸까? · 포켓 구조 학습 · 개요</title><link rel="icon" href="data:,"><link rel="stylesheet" href="../01-pocket-basics/style.css"><link rel="stylesheet" href="../book.css"><link rel="stylesheet" href="../03-learning-pockets/chapter.css"><link rel="stylesheet" href="chapter.css"><link rel="stylesheet" href="evolution.css?v=20261030-years"></head>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="포켓 탐지·숨은 포켓·도킹·공동 구조 예측의 13개 기술을 입력, 출력, 역할과 사용 상황으로 비교하는 먼저 읽는 학습 개요."><title>어떤 질문에 어떤 기술을 쓸까? · 포켓 구조 학습 · 개요</title><link rel="icon" href="data:,"><link rel="stylesheet" href="../01-pocket-basics/style.css"><link rel="stylesheet" href="../book.css"><link rel="stylesheet" href="../03-learning-pockets/chapter.css"><link rel="stylesheet" href="chapter.css"><link rel="stylesheet" href="evolution.css?v=20261030-years"><link rel="stylesheet" href="io-examples.css?v=20261030-values"><link rel="stylesheet" href="../figure-viewer.css?v=20261030-viewer2"><script src="../figure-viewer.js?v=20261030-viewer2" defer></script></head>
 <body data-chapter="7"><a class="skip" href="#lesson-title">본문으로 이동</a><header class="site-header"><a href="../">포켓 구조 학습</a><div><a href="lesson.md" download>요약 원고</a><button type="button" id="print">인쇄</button></div></header>
 <main class="reader"><div class="heading"><h1 id="lesson-title" tabindex="-1">어떤 질문에 어떤 기술을 쓸까?</h1><p id="lesson-intro">전체 기술 지도를 먼저 보고, 1–6장의 기초 개념과 상세 원리로 이어갑니다.</p></div>
 
@@ -43,7 +43,295 @@
 <option value="boltz2">Boltz-2</option>
 <option value="chai1">Chai-1</option>
 <option value="openfold3">OpenFold3-preview2</option>
-<!-- METHOD_OPTIONS_END --></select></label><span id="method-family"></span></div><div class="spread"><figure><svg id="method-figure" viewBox="0 0 720 520" role="img" aria-label="선택한 기술의 입력, 처리 역할, 출력 종류를 연결하는 그림"></svg><figcaption>각 기술의 대표 기능을 줄여 그린 원리 도식입니다.</figcaption></figure><div class="explanation"><h2 id="method-name">fpocket</h2><p class="method-role" id="method-role"></p><p id="method-principle"></p><h3>이럴 때 사용합니다</h3><p id="method-use"></p><h3>출력을 읽을 때</h3><p id="method-limit"></p><p class="takeaway" id="method-takeaway"></p><p class="source-inline"><a id="method-chapter" href="../02-pocket-detection/">원리 자세히 보기 →</a> · <a id="method-source" href="https://github.com/Discngine/fpocket" target="_blank" rel="noopener">논문·공식 자료</a></p></div></div><details class="technical"><summary>전체 기술 카드의 텍스트 요약</summary><div id="all-methods"><!-- METHOD_CARDS_START -->
+<!-- METHOD_OPTIONS_END --></select></label><span id="method-family"></span></div><div class="spread"><figure><svg id="method-figure" viewBox="0 0 720 520" role="img" aria-label="선택한 기술의 입력, 처리 역할, 출력 종류를 연결하는 그림"></svg><figcaption>각 기술의 대표 기능을 줄여 그린 원리 도식입니다.</figcaption></figure><div class="explanation"><h2 id="method-name">fpocket</h2><p class="method-role" id="method-role"></p><p id="method-principle"></p><h3>이럴 때 사용합니다</h3><p id="method-use"></p><h3>출력을 읽을 때</h3><p id="method-limit"></p><p class="takeaway" id="method-takeaway"></p><p class="source-inline"><a id="method-chapter" href="../02-pocket-detection/">원리 자세히 보기 →</a> · <a id="method-source" href="https://github.com/Discngine/fpocket" target="_blank" rel="noopener">논문·공식 자료</a></p></div></div><section class="value-example" id="value-example" aria-labelledby="value-title">
+<h3 id="value-title">숫자로 보는 입력과 출력</h3>
+<div class="value-header"><span class="value-status" id="io-status">예시 불러오는 중</span><span id="io-case"></span></div>
+<p class="value-guide" id="io-guide"></p>
+<div class="value-columns"><div><h4>입력 · 무엇을 넣나?</h4><pre id="io-input" tabindex="0" aria-label="선택한 기술의 입력값"></pre></div><div><h4>출력 · 어떤 값이 나오나?</h4><pre id="io-output" tabindex="0" aria-label="선택한 기술의 출력값"></pre></div></div>
+<p class="value-note" id="io-note"></p><p class="value-shape-note" id="io-shape-note"></p>
+<p class="value-shape-note">xyz 또는 center는 x·y·z 위치, Å는 길이, Å³는 부피입니다. 좌표의 원점에 따라 음수가 나올 수 있으며, 음수 좌표는 음수 길이가 아닙니다. 숫자의 크기만으로 서로 다른 기술의 score를 비교하지 않습니다.</p>
+<div class="value-links"><a id="io-scene" href="../08-3d-lab/">이 출력의 실제 좌표를 3D로 보기 →</a><a href="../08-3d-lab/?scene=alpha">가상 구 하나부터 3D로 이해하기 →</a><a href="io-examples.json" download>13개 예시 JSON</a></div>
+</section>
+<details class="technical value-all"><summary>13개 기술의 입력·출력 텍스트 전체</summary><!-- IO_READING_START -->
+<section><h4>fpocket</h4><p>실제 개인 실행 출력 · MBP · 리간드를 제거한 1ANF</p><p>입력</p><pre>{
+  &quot;protein_file&quot;: &quot;1ANF_protein.pdb&quot;,
+  &quot;chain&quot;: &quot;A&quot;,
+  &quot;atoms&quot;: 2860,
+  &quot;residues&quot;: 370,
+  &quot;ligand_in_input&quot;: false,
+  &quot;coordinate_unit&quot;: &quot;Å&quot;,
+  &quot;first_atom&quot;: {
+    &quot;serial&quot;: 1,
+    &quot;name&quot;: &quot;N&quot;,
+    &quot;residue&quot;: 1,
+    &quot;resname&quot;: &quot;LYS&quot;,
+    &quot;chain&quot;: &quot;A&quot;,
+    &quot;element&quot;: &quot;N&quot;,
+    &quot;xyz&quot;: [
+      -12.621,
+      27.691,
+      51.154
+    ]
+  }
+}</pre><p>출력</p><pre>{
+  &quot;pockets&quot;: 21,
+  &quot;top_rank&quot;: 1,
+  &quot;score&quot;: 0.241,
+  &quot;center_A&quot;: [
+    9.530865384615387,
+    15.935336538461538,
+    39.67928846153845
+  ],
+  &quot;alpha_spheres&quot;: 104,
+  &quot;volume_A3&quot;: 661.736,
+  &quot;one_sphere&quot;: {
+    &quot;xyz&quot;: [
+      10.804,
+      16.206,
+      40.144
+    ],
+    &quot;radius&quot;: 4.32
+  }
+}</pre><p>가상 구의 xyz와 radius는 Å입니다. score와 druggability는 결합 친화도가 아닙니다.</p></section><section><h4>P2Rank</h4><p>실제 개인 실행 출력 · MBP · fpocket과 동일한 입력</p><p>입력</p><pre>{
+  &quot;protein_file&quot;: &quot;1ANF_protein.pdb&quot;,
+  &quot;chain&quot;: &quot;A&quot;,
+  &quot;atoms&quot;: 2860,
+  &quot;residues&quot;: 370,
+  &quot;ligand_in_input&quot;: false,
+  &quot;coordinate_unit&quot;: &quot;Å&quot;,
+  &quot;first_atom&quot;: {
+    &quot;serial&quot;: 1,
+    &quot;name&quot;: &quot;N&quot;,
+    &quot;residue&quot;: 1,
+    &quot;resname&quot;: &quot;LYS&quot;,
+    &quot;chain&quot;: &quot;A&quot;,
+    &quot;element&quot;: &quot;N&quot;,
+    &quot;xyz&quot;: [
+      -12.621,
+      27.691,
+      51.154
+    ]
+  }
+}</pre><p>출력</p><pre>{
+  &quot;pockets&quot;: 5,
+  &quot;top_rank&quot;: 1,
+  &quot;score&quot;: 37.43,
+  &quot;probability&quot;: 0.958,
+  &quot;center_A&quot;: [
+    9.5925,
+    16.4268,
+    39.122
+  ],
+  &quot;surface_points&quot;: 135,
+  &quot;one_point&quot;: {
+    &quot;xyz&quot;: [
+      3.656,
+      13.826,
+      39.731
+    ],
+    &quot;rank&quot;: 1,
+    &quot;score&quot;: 0.358
+  }
+}</pre><p>probability=0.958은 포켓 후보에 대한 도구 출력이며 특정 약물과의 결합 확률이 아닙니다. fpocket score와 직접 비교하지 않습니다.</p></section><section><h4>DeepPocket</h4><p>미실행 · 입력과 출력 형식 · MBP 입력으로 형식 설명</p><p>입력</p><pre>{
+  &quot;protein_file&quot;: &quot;1ANF_protein.pdb&quot;,
+  &quot;chain&quot;: &quot;A&quot;,
+  &quot;atoms&quot;: 2860,
+  &quot;residues&quot;: 370,
+  &quot;ligand_in_input&quot;: false,
+  &quot;coordinate_unit&quot;: &quot;Å&quot;,
+  &quot;first_atom&quot;: {
+    &quot;serial&quot;: 1,
+    &quot;name&quot;: &quot;N&quot;,
+    &quot;residue&quot;: 1,
+    &quot;resname&quot;: &quot;LYS&quot;,
+    &quot;chain&quot;: &quot;A&quot;,
+    &quot;element&quot;: &quot;N&quot;,
+    &quot;xyz&quot;: [
+      -12.621,
+      27.691,
+      51.154
+    ]
+  },
+  &quot;fpocket_candidate_centers_A&quot;: [
+    [
+      9.530865384615387,
+      15.935336538461538,
+      39.67928846153845
+    ],
+    [
+      24.77179166666667,
+      9.652,
+      47.69858333333334
+    ],
+    [
+      10.869800000000003,
+      -0.6442999999999998,
+      46.690380000000005
+    ]
+  ]
+}</pre><p>출력</p><pre>{
+  &quot;cnn_candidate_scores&quot;: null,
+  &quot;pocket_segmentation_mask&quot;: null
+}</pre><p>null은 미실행으로 값이 없다는 뜻입니다. 후보 재평가 점수와 3D 격자 영역을 내며, 아래 수치는 DeepPocket의 예측이 아닙니다.</p></section><section><h4>GrASP</h4><p>미실행 · 입력과 출력 형식 · MBP 원자 좌표 예시</p><p>입력</p><pre>{
+  &quot;protein_file&quot;: &quot;1ANF_protein.pdb&quot;,
+  &quot;atom_coordinate_excerpt&quot;: [
+    {
+      &quot;atom_id&quot;: 471,
+      &quot;element&quot;: &quot;C&quot;,
+      &quot;xyz_A&quot;: [
+        6.79,
+        17.735,
+        40.576
+      ]
+    },
+    {
+      &quot;atom_id&quot;: 1213,
+      &quot;element&quot;: &quot;C&quot;,
+      &quot;xyz_A&quot;: [
+        14.044,
+        13.567,
+        39.058
+      ]
+    },
+    {
+      &quot;atom_id&quot;: 1212,
+      &quot;element&quot;: &quot;C&quot;,
+      &quot;xyz_A&quot;: [
+        14.683,
+        14.891,
+        38.778
+      ]
+    },
+    {
+      &quot;atom_id&quot;: 1214,
+      &quot;element&quot;: &quot;C&quot;,
+      &quot;xyz_A&quot;: [
+        13.805,
+        13.113,
+        40.408
+      ]
+    }
+  ]
+}</pre><p>출력</p><pre>{
+  &quot;surface_atom_scores&quot;: null,
+  &quot;pocket_clusters&quot;: null
+}</pre><p>실행 전 단백질을 그래프로 변환합니다. 여기의 네 원자는 좌표를 읽는 발췌 예이며 전체 GrASP 입력 그래프가 아닙니다.</p></section><section><h4>PocketMiner</h4><p>미실행 · 입력과 출력 형식 · 실험 apo MBP · 1OMP</p><p>입력</p><pre>{
+  &quot;protein_file&quot;: &quot;1OMP.pdb&quot;,
+  &quot;chain&quot;: &quot;A&quot;,
+  &quot;residues&quot;: 370
+}</pre><p>출력</p><pre>{
+  &quot;residue_opening_scores&quot;: null
+}</pre><p>잔기별로 숨은 포켓 형성 가능 영역을 점수화합니다. 열린 3D 좌표를 생성하는 출력은 아닙니다.</p></section><section><h4>분자동역학 (MD)</h4><p>미실행 · 조건과 출력 형식 · 시뮬레이션 조건의 설명용 설정</p><p>입력</p><pre>{
+  &quot;initial_structure&quot;: &quot;1OMP.pdb&quot;,
+  &quot;example_temperature_K&quot;: 300,
+  &quot;example_timestep_fs&quot;: 2,
+  &quot;force_field&quot;: &quot;별도 선택 필요&quot;,
+  &quot;solvent&quot;: &quot;별도 구성 필요&quot;
+}</pre><p>출력</p><pre>{
+  &quot;time_ps&quot;: null,
+  &quot;coordinates_A_per_frame&quot;: null,
+  &quot;velocities_per_frame&quot;: null
+}</pre><p>300 K와 2 fs는 조건을 이해하기 위한 예시이며 실행된 MD가 아닙니다. 출력은 시간에 따른 좌표·속도 프레임입니다.</p></section><section><h4>Vina</h4><p>공식 예제의 참고 출력 · ABL · 이마티닙 / 1IEP</p><p>입력</p><pre>{
+  &quot;receptor&quot;: &quot;1iep_receptor.pdbqt&quot;,
+  &quot;ligand&quot;: &quot;1iep_ligand.pdbqt&quot;,
+  &quot;search_box&quot;: &quot;center_x = 15.190\ncenter_y = 53.903\ncenter_z = 16.917\nsize_x = 20.000\nsize_y = 20.000\nsize_z = 20.000&quot;
+}</pre><p>출력</p><pre>{
+  &quot;modes&quot;: [
+    {
+      &quot;rank&quot;: 1,
+      &quot;score_kcal_mol&quot;: -13.234,
+      &quot;rmsd_from_best_lower_A&quot;: 0.0,
+      &quot;rmsd_from_best_upper_A&quot;: 0.0,
+      &quot;first_heavy_atom_xyz_A&quot;: [
+        11.825,
+        62.28,
+        12.841
+      ]
+    },
+    {
+      &quot;rank&quot;: 2,
+      &quot;score_kcal_mol&quot;: -11.293,
+      &quot;rmsd_from_best_lower_A&quot;: 0.986,
+      &quot;rmsd_from_best_upper_A&quot;: 1.681,
+      &quot;first_heavy_atom_xyz_A&quot;: [
+        13.299,
+        62.692,
+        12.742
+      ]
+    },
+    {
+      &quot;rank&quot;: 3,
+      &quot;score_kcal_mol&quot;: -11.281,
+      &quot;rmsd_from_best_lower_A&quot;: 3.044,
+      &quot;rmsd_from_best_upper_A&quot;: 12.414,
+      &quot;first_heavy_atom_xyz_A&quot;: [
+        24.226,
+        50.745,
+        17.55
+      ]
+    },
+    {
+      &quot;rank&quot;: 4,
+      &quot;score_kcal_mol&quot;: -11.146,
+      &quot;rmsd_from_best_lower_A&quot;: 3.813,
+      &quot;rmsd_from_best_upper_A&quot;: 12.238,
+      &quot;first_heavy_atom_xyz_A&quot;: [
+        25.038,
+        51.703,
+        16.669
+      ]
+    }
+  ]
+}</pre><p>공식 배포 예제의 저장된 출력입니다. -13.234 kcal/mol은 Vina 점수이며 실험 Kd가 아닙니다. RMSD 열은 최상위 mode와의 거리 경계이며 실험 구조에 대한 오차가 아닙니다.</p></section><section><h4>DiffDock (원본)</h4><p>미실행 · 입력과 출력 형식 · ABL · 이마티닙 입력 예시</p><p>입력</p><pre>{
+  &quot;protein_structure&quot;: &quot;1iep_receptor.pdbqt → 도구에 맞는 구조 준비&quot;,
+  &quot;ligand_smiles&quot;: &quot;Cc1ccc(NC(=O)c2ccc(CN3CC[NH+](C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1&quot;
+}</pre><p>출력</p><pre>{
+  &quot;ligand_pose_xyz_A&quot;: null,
+  &quot;pose_confidence&quot;: null
+}</pre><p>원본 DiffDock의 수용체는 고정입니다. 자세 confidence는 친화도와 다릅니다. PDBQT를 변환 없이 그대로 입력하라는 뜻이 아닙니다.</p></section><section><h4>DynamicBind</h4><p>미실행 · 입력과 출력 형식 · ABL · 이마티닙 입력 예시</p><p>입력</p><pre>{
+  &quot;starting_protein_structure&quot;: &quot;준비한 ABL PDB&quot;,
+  &quot;ligand_smiles&quot;: &quot;Cc1ccc(NC(=O)c2ccc(CN3CC[NH+](C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1&quot;
+}</pre><p>출력</p><pre>{
+  &quot;updated_protein_xyz_A&quot;: null,
+  &quot;ligand_xyz_A&quot;: null,
+  &quot;confidence&quot;: null,
+  &quot;affinity_prediction&quot;: null
+}</pre><p>시작 구조를 받아 단백질·리간드 배치를 갱신합니다. 이 출력은 시간 순서의 MD 궤적이 아닙니다.</p></section><section><h4>AlphaFold 3</h4><p>미실행 · 실제 입력과 출력 형식 · ABL 구성체 293잔기 · 이마티닙 중원자 37개</p><p>입력</p><pre>{
+  &quot;protein&quot;: &quot;1IEP ABL construct&quot;,
+  &quot;protein_sequence&quot;: &quot;GAMDPSSPNYDKWEMERTDITMKHKLGGGQYGEVYEGVWKKYSLTVAVKTLKEDTMEVEEFLKEAAVMKEIKHPNLVQLLGVCTREPPFYIITEFMTYGNLLDYLRECNRQEVSAVVLLYMATQISSAMEYLEKKNFIHRDLAARNCLVGENHLVKVADFGLSRLMTGDTYTAHAGAKFPIKWTAPESLAYNKFSIKSDVWAFGVLLWEIATYGMSPYPGIDLSQVYELLEKDYRMERPEGCPEKVYELMRACWQWNPSDRPSFAEIHQAFETMFQESSISDEVEKELGKRGT&quot;,
+  &quot;ligand_smiles&quot;: &quot;Cc1ccc(NC(=O)c2ccc(CN3CC[NH+](C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1&quot;,
+  &quot;ligand_heavy_atoms&quot;: 37
+}</pre><p>출력</p><pre>{
+  &quot;complex_atom_xyz_A&quot;: null,
+  &quot;structure_confidence&quot;: null
+}</pre><p>현재 값은 입력 예시이며 공동 예측을 실행하지 않았습니다. 실제 출력 좌표·신뢰도 수치는 없습니다.</p></section><section><h4>Boltz-2</h4><p>미실행 · 실제 입력과 출력 형식 · ABL 구성체 293잔기 · 이마티닙 중원자 37개</p><p>입력</p><pre>{
+  &quot;protein&quot;: &quot;1IEP ABL construct&quot;,
+  &quot;protein_sequence&quot;: &quot;GAMDPSSPNYDKWEMERTDITMKHKLGGGQYGEVYEGVWKKYSLTVAVKTLKEDTMEVEEFLKEAAVMKEIKHPNLVQLLGVCTREPPFYIITEFMTYGNLLDYLRECNRQEVSAVVLLYMATQISSAMEYLEKKNFIHRDLAARNCLVGENHLVKVADFGLSRLMTGDTYTAHAGAKFPIKWTAPESLAYNKFSIKSDVWAFGVLLWEIATYGMSPYPGIDLSQVYELLEKDYRMERPEGCPEKVYELMRACWQWNPSDRPSFAEIHQAFETMFQESSISDEVEKELGKRGT&quot;,
+  &quot;ligand_smiles&quot;: &quot;Cc1ccc(NC(=O)c2ccc(CN3CC[NH+](C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1&quot;,
+  &quot;ligand_heavy_atoms&quot;: 37
+}</pre><p>출력</p><pre>{
+  &quot;complex_atom_xyz_A&quot;: null,
+  &quot;structure_confidence&quot;: null,
+  &quot;affinity_probability_binary&quot;: null,
+  &quot;affinity_pred_value&quot;: null
+}</pre><p>현재 값은 입력 예시이며 공동 예측을 실행하지 않았습니다. 실제 출력 좌표·신뢰도 수치는 없습니다. affinity_pred_value의 단위는 log10(IC50/μM)이며 낮을수록 강한 방향입니다.</p></section><section><h4>Chai-1</h4><p>미실행 · 실제 입력과 출력 형식 · ABL 구성체 293잔기 · 이마티닙 중원자 37개</p><p>입력</p><pre>{
+  &quot;protein&quot;: &quot;1IEP ABL construct&quot;,
+  &quot;protein_sequence&quot;: &quot;GAMDPSSPNYDKWEMERTDITMKHKLGGGQYGEVYEGVWKKYSLTVAVKTLKEDTMEVEEFLKEAAVMKEIKHPNLVQLLGVCTREPPFYIITEFMTYGNLLDYLRECNRQEVSAVVLLYMATQISSAMEYLEKKNFIHRDLAARNCLVGENHLVKVADFGLSRLMTGDTYTAHAGAKFPIKWTAPESLAYNKFSIKSDVWAFGVLLWEIATYGMSPYPGIDLSQVYELLEKDYRMERPEGCPEKVYELMRACWQWNPSDRPSFAEIHQAFETMFQESSISDEVEKELGKRGT&quot;,
+  &quot;ligand_smiles&quot;: &quot;Cc1ccc(NC(=O)c2ccc(CN3CC[NH+](C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1&quot;,
+  &quot;ligand_heavy_atoms&quot;: 37
+}</pre><p>출력</p><pre>{
+  &quot;complex_atom_xyz_A&quot;: null,
+  &quot;structure_confidence&quot;: null
+}</pre><p>현재 값은 입력 예시이며 공동 예측을 실행하지 않았습니다. 실제 출력 좌표·신뢰도 수치는 없습니다.</p></section><section><h4>OpenFold3-preview2</h4><p>미실행 · 실제 입력과 출력 형식 · ABL 구성체 293잔기 · 이마티닙 중원자 37개</p><p>입력</p><pre>{
+  &quot;protein&quot;: &quot;1IEP ABL construct&quot;,
+  &quot;protein_sequence&quot;: &quot;GAMDPSSPNYDKWEMERTDITMKHKLGGGQYGEVYEGVWKKYSLTVAVKTLKEDTMEVEEFLKEAAVMKEIKHPNLVQLLGVCTREPPFYIITEFMTYGNLLDYLRECNRQEVSAVVLLYMATQISSAMEYLEKKNFIHRDLAARNCLVGENHLVKVADFGLSRLMTGDTYTAHAGAKFPIKWTAPESLAYNKFSIKSDVWAFGVLLWEIATYGMSPYPGIDLSQVYELLEKDYRMERPEGCPEKVYELMRACWQWNPSDRPSFAEIHQAFETMFQESSISDEVEKELGKRGT&quot;,
+  &quot;ligand_smiles&quot;: &quot;Cc1ccc(NC(=O)c2ccc(CN3CC[NH+](C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1&quot;,
+  &quot;ligand_heavy_atoms&quot;: 37
+}</pre><p>출력</p><pre>{
+  &quot;complex_atom_xyz_A&quot;: null,
+  &quot;structure_confidence&quot;: null
+}</pre><p>현재 값은 입력 예시이며 공동 예측을 실행하지 않았습니다. 실제 출력 좌표·신뢰도 수치는 없습니다. 이 자료는 OpenFold3-preview2 범위입니다.</p></section>
+<!-- IO_READING_END --></details><details class="technical"><summary>전체 기술 카드의 텍스트 요약</summary><div id="all-methods"><!-- METHOD_CARDS_START -->
 <section><h3>fpocket · 포켓 탐지</h3><p><strong>입력:</strong> 단백질 3D 구조<br><strong>출력:</strong> 포켓 후보·중심·점수<br><strong>역할:</strong> 기하학적 포켓 탐지<br><strong>사용 상황:</strong> 구조에서 결합 공간 후보를 먼저 찾을 때</p><p>단백질 원자 사이의 알파 구를 선별하고 묶어 포켓 후보를 만듭니다.</p><p><strong>해석:</strong> 현재 입력 구조의 공간을 읽습니다. 단백질을 열거나 특정 리간드의 결합 자세를 생성하지 않습니다.</p><p><a href="../02-pocket-detection/">원리 장</a> · <a href="https://github.com/Discngine/fpocket" target="_blank" rel="noopener">논문·공식 자료</a></p></section>
 <section><h3>P2Rank · 포켓 탐지</h3><p><strong>입력:</strong> 단백질 3D 구조<br><strong>출력:</strong> 포켓 후보·관련 잔기·순위<br><strong>역할:</strong> 학습 기반 포켓 탐지<br><strong>사용 상황:</strong> 표면의 화학 환경을 반영해 자리를 찾을 때</p><p>표면점 주변의 기하·물리화학 특징을 학습 모델로 평가한 뒤 유망한 점들을 포켓으로 묶습니다.</p><p><strong>해석:</strong> 포켓의 probability는 특정 화합물–단백질 쌍의 결합 확률이나 친화도가 아닙니다.</p><p><a href="../02-pocket-detection/">원리 장</a> · <a href="https://github.com/rdk/p2rank" target="_blank" rel="noopener">논문·공식 자료</a></p></section>
 <section><h3>DeepPocket · 포켓 탐지</h3><p><strong>입력:</strong> 단백질 구조 + fpocket 후보<br><strong>출력:</strong> 후보 순위 + 포켓 마스크<br><strong>역할:</strong> 후보 재평가·영역 분할<br><strong>사용 상황:</strong> 후보를 CNN으로 재평가하고 범위를 정할 때</p><p>fpocket 후보 주변을 3D 복셀로 바꿔 CNN으로 순위를 매기고, 별도 분할 모델로 포켓 영역을 예측합니다.</p><p><strong>해석:</strong> 처음 후보를 만드는 단계에 의존합니다. 포켓 마스크가 특정 리간드의 자세나 친화도를 뜻하지 않습니다.</p><p><a href="../03-learning-pockets/">원리 장</a> · <a href="https://github.com/devalab/DeepPocket" target="_blank" rel="noopener">논문·공식 자료</a></p></section>
@@ -81,4 +369,4 @@
 <li><a href="https://github.com/chaidiscovery/chai-lab" target="_blank" rel="noopener">Chai-1 · 논문·공식 자료</a> · <a href="../06-cofolding/">상세 장의 설명</a></li>
 <li><a href="https://portal.openfold.omsf.io/reports/of3p2_technical_report.pdf" target="_blank" rel="noopener">OpenFold3-preview2 · 논문·공식 자료</a> · <a href="../06-cofolding/">상세 장의 설명</a></li>
 <!-- METHOD_SOURCES_END --></ol><p>자세한 원리는 <a href="../02-pocket-detection/">2장</a> · <a href="../03-learning-pockets/">3장</a> · <a href="../04-cryptic-pockets/">4장</a> · <a href="../05-docking/">5장</a> · <a href="../06-cofolding/">6장</a>에서 이어 볼 수 있습니다. 원래 출처 목록의 해시를 보존해 이 요약이 참조한 버전을 추적할 수 있게 했습니다.</p><p><a href="lesson.md" download>전체 요약 원고</a> · <a href="methods.json" download>13개 기술 비교 데이터</a> · <a href="source-manifest.json" download>참조 자료·해시</a></p></div></details>
-</main><script id="method-data" type="application/json">[{"id":"fpocket","name":"fpocket","family":"pocket","role":"기하학적 포켓 탐지","input":"단백질 3D 구조","output":"포켓 후보·중심·점수","use":"구조에서 결합 공간 후보를 먼저 찾을 때","principle":"단백질 원자 사이의 알파 구를 선별하고 묶어 포켓 후보를 만듭니다.","inputLines":["단백질 3D 좌표","한 개 구조"],"outputLines":["후보 중심·영역","점수·물성"],"limit":"현재 입력 구조의 공간을 읽습니다. 단백질을 열거나 특정 리간드의 결합 자세를 생성하지 않습니다.","chapter":"02-pocket-detection/","source":"https://github.com/Discngine/fpocket"},{"id":"p2rank","name":"P2Rank","family":"pocket","role":"학습 기반 포켓 탐지","input":"단백질 3D 구조","output":"포켓 후보·관련 잔기·순위","use":"표면의 화학 환경을 반영해 자리를 찾을 때","principle":"표면점 주변의 기하·물리화학 특징을 학습 모델로 평가한 뒤 유망한 점들을 포켓으로 묶습니다.","inputLines":["단백질 3D 좌표","표면점 주변 환경"],"outputLines":["포켓 후보·중심","점수·관련 잔기"],"limit":"포켓의 probability는 특정 화합물–단백질 쌍의 결합 확률이나 친화도가 아닙니다.","chapter":"02-pocket-detection/","source":"https://github.com/rdk/p2rank"},{"id":"deeppocket","name":"DeepPocket","family":"pocket","role":"후보 재평가·영역 분할","input":"단백질 구조 + fpocket 후보","output":"후보 순위 + 포켓 마스크","use":"후보를 CNN으로 재평가하고 범위를 정할 때","principle":"fpocket 후보 주변을 3D 복셀로 바꿔 CNN으로 순위를 매기고, 별도 분할 모델로 포켓 영역을 예측합니다.","inputLines":["단백질 3D 좌표","fpocket 후보 중심"],"outputLines":["재순위화한 후보","포켓 영역 마스크"],"limit":"처음 후보를 만드는 단계에 의존합니다. 포켓 마스크가 특정 리간드의 자세나 친화도를 뜻하지 않습니다.","chapter":"03-learning-pockets/","source":"https://github.com/devalab/DeepPocket"},{"id":"grasp","name":"GrASP","family":"pocket","role":"원자 그래프 기반 탐지","input":"단백질 표면·이웃 원자의 3D 정보","output":"원자 점수 + 포켓 후보","use":"원자와 이웃 관계를 신경망으로 읽을 때","principle":"표면 원자와 주변 내부 원자를 그래프로 표현하고, 어텐션 기반 정보 전달로 표면 원자 점수를 얻어 후보를 군집화합니다.","inputLines":["단백질 3D 좌표","표면과 이웃 원자"],"outputLines":["표면 원자 점수","군집화한 포켓 후보"],"limit":"이 장의 GrASP는 Graph Attention Site Prediction입니다. 단백질 모양의 시간 변화를 생성하는 모델은 아닙니다.","chapter":"03-learning-pockets/","source":"https://github.com/tiwarylab/GrASP"},{"id":"pocketminer","name":"PocketMiner","family":"cryptic","role":"숨은 포켓 가능 영역 예측","input":"한 개 단백질 3D 구조","output":"잔기별 숨은 포켓 점수","use":"어디가 열릴 법한지 후보를 좁힐 때","principle":"잔기와 공간상 이웃을 그래프로 읽어, 구조 변화로 포켓이 드러날 법한 영역에 점수를 매깁니다.","inputLines":["한 개 단백질 구조","잔기와 공간 이웃"],"outputLines":["잔기별 cryptic 점수","열릴 법한 영역"],"limit":"잔기별 점수는 열린 구조 좌표나 열리는 시간의 예측과 다릅니다. 실제 움직임 궤적을 출력하지 않습니다.","chapter":"04-cryptic-pockets/","source":"https://www.nature.com/articles/s41467-023-36699-3"},{"id":"md","name":"분자동역학 (MD)","family":"cryptic","role":"힘과 운동으로 움직임 계산","input":"초기 구조·환경·힘장·조건","output":"시간 순서의 좌표·속도 궤적","use":"구조 변화와 포켓의 열림을 탐색할 때","principle":"원자 상호작용에서 힘을 계산하고, 운동 방정식을 짧은 시간 간격으로 수치 적분합니다. 궤적의 각 구조에서 포켓을 따로 분석할 수 있습니다.","inputLines":["초기 구조·물·이온","힘장·속도·조건"],"outputLines":["좌표·속도 궤적","시간 순서 프레임"],"limit":"샘플링과 힘장·환경 조건의 영향을 받습니다. 제한된 계산에서 안 열렸다고 숨은 포켓이 없다고 단정하지 않습니다.","chapter":"04-cryptic-pockets/","source":"https://docs.openmm.org/latest/userguide/theory/04_integrators.html"},{"id":"vina","name":"Vina","family":"docking","role":"근사 점수 기반 자세 탐색","input":"준비한 단백질·리간드·탐색 범위","output":"리간드 자세 + 도킹 점수","use":"정한 범위에서 화합물의 자세를 탐색할 때","principle":"여러 시작 자세와 국소 개선을 조합해 탐색하고 근사 점수로 후보를 정리합니다. 선택한 곁사슬을 유연하게 설정할 수도 있습니다.","inputLines":["단백질·리간드 준비","탐색 상자·화학 상태"],"outputLines":["리간드 자세 후보","근사 도킹 점수"],"limit":"더 낮은 도킹 점수가 실측 친화도를 보장하지 않습니다. 선택 곁사슬 유연성과 수용체 백본 전체 갱신은 다릅니다.","chapter":"05-docking/","source":"https://autodock-vina.readthedocs.io/en/latest/docking_basic.html"},{"id":"diffdock","name":"DiffDock (원본)","family":"docking","role":"학습 기반 리간드 자세 생성","input":"고정 단백질 구조 + 리간드 정보","output":"리간드 자세 + 자세 confidence","use":"고정 구조에서 학습 기반 자세 후보를 만들 때","principle":"고정한 단백질을 조건으로 리간드의 이동·회전·비틀림을 확산 방식으로 갱신하고, 별도의 confidence로 후보를 평가합니다.","inputLines":["단백질 3D 구조","리간드 분자 정보"],"outputLines":["리간드 자세 후보","자세 confidence"],"limit":"원본 ICLR 2023/v1.0 범위입니다. 단백질은 고정이며 confidence는 친화도가 아닙니다. 후속 DiffDock-L과 구분합니다.","chapter":"05-docking/","source":"https://arxiv.org/abs/2210.01776"},{"id":"dynamicbind","name":"DynamicBind","family":"docking","role":"리간드·수용체 배치 갱신","input":"시작 단백질 구조 + 리간드 정보","output":"갱신 복합체·품질·친화도 예측","use":"시작 구조를 리간드와 함께 조정할 때","principle":"리간드와 단백질 잔기의 이동·회전, 곁사슬 각도를 함께 갱신하고 복합체를 생성합니다. 구조 품질과 친화도는 별도로 예측합니다.","inputLines":["시작 단백질 구조","리간드 분자 정보"],"outputLines":["갱신된 복합체","품질·친화도 예측"],"limit":"단백질이 움직여도 이 생성 단계는 MD 시간 궤적이 아닙니다. 입력 수용체 구조를 받는다는 점을 공동 구조 예측과 비교합니다.","chapter":"05-docking/","source":"https://www.nature.com/articles/s41467-024-45461-2"},{"id":"af3","name":"AlphaFold 3","family":"cofold","role":"다양한 생체분자의 공동 구조 예측","input":"서열·분자 정보, MSA·템플릿 등","output":"복합체 원자 좌표 + 신뢰도","use":"서열과 구성 요소에서 복합체를 만들 때","principle":"입력과 토큰 간 관계를 Pairformer로 처리하고, 확산 모듈로 복합체 원자 좌표를 공동 생성한 뒤 구조 confidence를 평가합니다.","inputLines":["단백질 서열·분자","MSA·템플릿 등"],"outputLines":["복합체 원자 좌표","구조 confidence"],"limit":"표준 구조 신뢰도는 실험 단위 친화도나 결합 여부의 증명이 아닙니다. 템플릿 등 추가 정보를 썼는지도 기록합니다.","chapter":"06-cofolding/","source":"https://www.nature.com/articles/s41586-024-07487-w"},{"id":"boltz2","name":"Boltz-2","family":"cofold","role":"공동 구조 + 별도 결합 특성 예측","input":"서열·분자·보조 정보·선택 요청","output":"복합체·신뢰도·결합 분류·친화도","use":"구조와 작은 분자 결합 특성을 나눠 볼 때","principle":"토큰·쌍 관계와 확산 생성으로 구조를 예측합니다. 별도의 결합 분류·친화도 모듈을 사용할 수 있으며 서로 다른 출력입니다.","inputLines":["서열·분자·MSA 등","선택적 친화도 요청"],"outputLines":["복합체·confidence","결합 분류·친화도"],"limit":"affinity_pred_value는 log10(IC50/μM), 낮을수록 강한 방향입니다. 결합 분류·친화도 값·구조 confidence를 혼동하지 않습니다.","chapter":"06-cofolding/","source":"https://github.com/jwohlwend/boltz/blob/main/docs/prediction.md"},{"id":"chai1","name":"Chai-1","family":"cofold","role":"보조 정보를 활용한 공동 구조 예측","input":"서열·분자, 임베딩·선택적 제약","output":"복합체 원자 좌표 + 신뢰도","use":"MSA·접촉 등 주어진 힌트를 함께 쓸 때","principle":"단백질 언어모델 특징과 선택적 MSA·템플릿·접촉 정보를 처리해, trunk와 확산 모듈로 복합체를 생성하고 품질을 평가합니다.","inputLines":["서열·분자 정보","PLM·선택적 MSA·제약"],"outputLines":["복합체 원자 좌표","후보 confidence"],"limit":"MSA 없이 실행할 수 있다는 것과 같은 정확도라는 것은 다릅니다. 제공한 접촉 정보를 독립적으로 알아낸 사실로 해석하지 않습니다.","chapter":"06-cofolding/","source":"https://github.com/chaidiscovery/chai-lab"},{"id":"openfold3","name":"OpenFold3-preview2","family":"cofold","role":"공동 구조 예측·학습 재현 기반","input":"서열·분자, MSA·템플릿 등","output":"복합체 원자 좌표 + 신뢰도","use":"공개 구현·자료로 재현과 개선을 검토할 때","principle":"AF3 계열의 관계 처리와 원자 확산을 공개 재구현합니다. 코드·가중치·학습 및 평가 자료가 연구 재현의 기반이 됩니다.","inputLines":["서열·분자 정보","MSA·템플릿 등"],"outputLines":["복합체 원자 좌표","구조 confidence"],"limit":"이 자료는 OF3p2 범위입니다. 6장에서 확인한 현재 기본 OpenBind-0와 구분하고, 패키지·가중치·자료 버전을 함께 고정합니다.","chapter":"06-cofolding/","source":"https://portal.openfold.omsf.io/reports/of3p2_technical_report.pdf"}]</script><script id="evolution-data" type="application/json">{"schemaVersion":1,"legend":[{"type":"data","name":"실선 · 데이터·처리 연결","meaning":"한 단계의 출력을 다음 단계가 사용합니다. 예: fpocket 후보를 DeepPocket이 재평가."},{"type":"scope","name":"점선 · 접근 확장·선택 연결","meaning":"세 발전 그림에서는 접근·기능의 변화를, 기술 연결 그림에서는 선택적인 활용을 표시합니다. 직접 계승·성능 우열·필수 실행 순서를 뜻하지 않습니다."},{"type":"implementation","name":"보라 실선 · 명시적 재구현","meaning":"OpenFold3의 AF3 계열 재구현을 표시합니다. 같은 학습 가중치라는 뜻은 아닙니다."}],"scenes":[{"id":"overview","title":"기술은 세 방향으로 넓어졌습니다","change":"공간을 읽는 표현, 자세를 생성하는 방식, 함께 예측하는 대상과 출력이 확장됐습니다.","body":"그림의 가로 방향은 발전의 관점을 요약한 것입니다. 모든 화살표가 직접적인 후속 모델이나 반드시 거쳐야 하는 실행 순서를 뜻하지는 않습니다.","gains":["포켓 탐지: 기하학적 공간 탐지에 학습한 화학 환경과 신경망 표현을 활용합니다.","도킹: 점수 기반 탐색과 학습 기반 생성, 수용체 유연성이라는 축을 나눠 봅니다.","co-folding: 구성 요소의 공동 좌표 생성에 입력 힌트·결합 특성·재현 기반을 더합니다."],"limit":"최신 모델이 모든 기존 기술을 대체한 것은 아닙니다. MD의 시간 궤적, 포켓 후보, 자세, 복합체 좌표는 서로 다른 출력입니다.","sources":[{"title":"P2Rank 공식 원리","url":"https://github.com/rdk/p2rank"},{"title":"DeepPocket 공식 처리 흐름","url":"https://github.com/devalab/DeepPocket"},{"title":"DynamicBind 원 논문","url":"https://www.nature.com/articles/s41467-024-45461-2"},{"title":"AlphaFold 3 공식 구현","url":"https://github.com/google-deepmind/alphafold3"}]},{"id":"pocket","title":"포켓 탐지: 모양에서 학습된 주변 환경까지","change":"같은 자리 찾기 문제를 기하학, 표면점 특징, 복셀 CNN, 원자 그래프로 다르게 읽습니다.","body":"fpocket은 기하학적으로 후보를 만듭니다. DeepPocket은 그 후보를 실제 입력으로 재사용해 순위를 매기고 영역을 분할합니다. P2Rank와 GrASP는 각각 표면점의 학습된 특징, 원자 그래프의 정보 전달로 포켓을 평가하는 별도의 접근입니다.","gains":["fpocket → DeepPocket은 실제 후보 데이터의 연결입니다.","P2Rank는 표면점의 물리화학·기하 특징을 학습 모델로 평가합니다.","DeepPocket은 3D 복셀, GrASP는 원자와 이웃 관계를 신경망으로 읽습니다."],"limit":"P2Rank → DeepPocket → GrASP가 한 모델의 후속 계보인 것은 아닙니다. 모두 입력 구조에서 포켓을 읽으며, 특정 리간드 자세나 친화도는 별도 질문입니다.","sources":[{"title":"fpocket 공식 구현","url":"https://github.com/Discngine/fpocket"},{"title":"P2Rank 알고리즘","url":"https://github.com/rdk/p2rank#algorithm"},{"title":"DeepPocket 예측 절차","url":"https://github.com/devalab/DeepPocket#predicting-binding-site"},{"title":"GrASP 공식 구현","url":"https://github.com/tiwarylab/GrASP"}]},{"id":"docking","title":"도킹: 탐색 방식과 수용체 유연성의 확장","change":"어떻게 자세를 찾는지와, 단백질의 어느 부분을 바꿀 수 있는지는 서로 다른 축입니다.","body":"Vina는 근사 점수 기반으로 탐색합니다. 원본 DiffDock은 고정한 단백질을 참고해 리간드 이동·회전·비틀림을 학습된 확산 방식으로 생성합니다. DynamicBind는 시작 단백질 구조를 받아 리간드와 수용체 잔기·곁사슬 배치를 함께 갱신합니다.","gains":["Vina와 원본 DiffDock은 자세 탐색·생성 방식이 다릅니다.","원본 DiffDock은 AI 도킹이어도 수용체를 고정합니다.","Vina의 선택 곁사슬 유연성과 DynamicBind의 잔기 배치 갱신을 구분합니다."],"limit":"점선은 비교하는 기능의 확장입니다. 세 방법을 전부 순서대로 실행하라는 뜻이 아니며, 생성 단계는 실제 결합 시간 궤적과 다릅니다.","sources":[{"title":"Vina 기본 도킹","url":"https://autodock-vina.readthedocs.io/en/latest/docking_basic.html"},{"title":"Vina 유연한 곁사슬","url":"https://autodock-vina.readthedocs.io/en/latest/docking_flexible.html"},{"title":"원본 DiffDock","url":"https://arxiv.org/abs/2210.01776"},{"title":"DynamicBind 공식 구현","url":"https://github.com/luwei0917/DynamicBind"}]},{"id":"cofold","title":"co-folding: 공동 좌표 생성에서 기능·재현 기반 확장","change":"여러 구성 요소를 함께 예측하고, 추가 입력·결합 특성 출력·공개 재구현을 서로 다른 방향으로 발전시킵니다.","body":"AlphaFold 3는 단백질·핵산·리간드 등 여러 구성 요소의 좌표를 공동으로 예측합니다. Chai-1의 임베딩과 선택적 제약, Boltz-2의 별도 결합 분류·친화도, OpenFold3-preview2의 공개 재구현과 학습 재현 자료는 각각 강조점이 다릅니다.","gains":["Chai-1: 단백질 언어모델 특징과 선택적 MSA·템플릿·접촉 정보를 활용합니다.","Boltz-2: 구조 confidence와 별도의 결합 분류·친화도 예측을 제공합니다.","OpenFold3-preview2: AF3 계열의 공개 재구현과 코드·가중치·학습 자료를 연결합니다."],"limit":"Chai-1과 Boltz-2는 AF3와 같은 가중치를 쓰는 모델이나 서로의 후속 버전이 아닙니다. OF3p2도 Google의 AF3 가중치 자체가 아니며, 이 자료는 OF3p2 범위를 유지합니다.","sources":[{"title":"AlphaFold 3 공식 구현","url":"https://github.com/google-deepmind/alphafold3"},{"title":"Chai-1 입력과 추론","url":"https://github.com/chaidiscovery/chai-lab"},{"title":"Boltz-2 출력 정의","url":"https://github.com/jwohlwend/boltz/blob/main/docs/prediction.md"},{"title":"OpenFold3-preview2 보고서","url":"https://portal.openfold.omsf.io/reports/of3p2_technical_report.pdf"}]},{"id":"connections","title":"실제 분석에서는 필요한 부분을 연결합니다","change":"기술 계보와 분석 흐름은 다릅니다. 연결하려면 출력이 다음 입력에 맞는지 확인합니다.","body":"MD에서 얻은 프레임을 포켓 검출기로 분석하거나, 포켓 후보 위치를 정해 도킹 범위를 잡을 수 있습니다. 공동 예측으로 만든 구조를 다시 분석하는 것도 선택지입니다. 반대로 blind docking이나 공동 예측에서 포켓 탐지기를 항상 먼저 실행해야 하는 것은 아닙니다.","gains":["열릴 법한 영역의 예측 → 필요에 따라 MD 탐색 → 프레임별 포켓 분석이라는 조합을 생각할 수 있습니다.","포켓 후보 → 탐색 범위 설정 → 도킹은 가능한 활용 예입니다. 도구 간 좌표와 번호 체계를 확인해야 합니다.","co-folding 결과 → 구조·인터페이스 검증이 기본이며, 추가 포켓 분석이나 도킹은 새 질문이 있을 때 선택합니다."],"limit":"PocketMiner 점수가 열린 좌표를 생성하지는 않습니다. co-folding으로 얻은 복합체를 반드시 다시 도킹할 필요도 없습니다. 어떤 경로도 실험 검증을 자동으로 대체하지 않습니다.","sources":[{"title":"MD와 PocketMiner 상세 설명","url":"../04-cryptic-pockets/"},{"title":"Vina 탐색 범위","url":"https://autodock-vina.readthedocs.io/en/latest/docking_basic.html"},{"title":"공동 예측과 검증 조건","url":"../06-cofolding/"}]}],"history":{"verifiedOn":"2026-10-30","policy":"연도는 대표 논문의 정식 서지 연도를 기본으로 합니다. 기술 보고서·모델 공개만 있는 경우에는 해당 공개 연도를 씁니다. 먼저 공개된 온라인 논문·프리프린트 연도는 아래에 별도로 표시합니다. 연도 표시는 분야의 탄생이나 필수 실행 순서를 뜻하지 않습니다.","mdNote":"MD는 단일 모델이 아닙니다. 1977은 접힌 단백질 BPTI를 시뮬레이션한 초기 대표 연구의 연도이며, MD 전체가 시작된 연도는 아닙니다.","methods":[{"id":"fpocket","name":"fpocket","family":"포켓 탐지","year":2009,"badge":"2009","basis":"BMC Bioinformatics 논문, 2009-06-02","note":"원래 fpocket 방법의 논문 연도입니다. 현재 설치 버전의 배포 연도와 구분합니다.","sources":[{"title":"fpocket 원 논문","url":"https://doi.org/10.1186/1471-2105-10-168"}]},{"id":"p2rank","name":"P2Rank","family":"포켓 탐지","year":2018,"badge":"2018","basis":"Journal of Cheminformatics 논문, 2018-08-14","note":"현재 P2Rank 패키지의 최신 버전 연도와 구분합니다.","sources":[{"title":"P2Rank 원 논문","url":"https://link.springer.com/article/10.1186/s13321-018-0285-8"}]},{"id":"deeppocket","name":"DeepPocket","family":"포켓 탐지","year":2022,"badge":"2022","basis":"JCIM 권호 게재 2022; 온라인 공개 2021-08-10","note":"먼저 온라인으로 나온 때는 2021년이고 정식 서지의 권호 연도는 2022년입니다.","sources":[{"title":"DeepPocket 논문·게재 이력","url":"https://pubs.acs.org/doi/10.1021/acs.jcim.1c00799"}]},{"id":"grasp","name":"GrASP","family":"포켓 탐지","year":2024,"badge":"2024","basis":"JCIM 온라인 공개 2024-03-07; 권호 게재 2024-04-08","note":"여기서는 Smith 등의 Graph Attention Site Prediction을 뜻합니다.","sources":[{"title":"GrASP 논문·게재 이력","url":"https://pubs.acs.org/doi/10.1021/acs.jcim.3c01698"}]},{"id":"md","name":"분자동역학 (MD)","family":"움직임·숨은 포켓","year":1977,"badge":"1977 사례","basis":"Dynamics of folded proteins, Nature, 1977-06-16","note":"BPTI 단백질 MD의 초기 대표 사례입니다. MD 자체의 탄생이나 특정 프로그램의 출시 연도가 아닙니다.","sources":[{"title":"단백질 MD의 초기 대표 연구","url":"https://www.nature.com/articles/267585a0"}]},{"id":"pocketminer","name":"PocketMiner","family":"움직임·숨은 포켓","year":2023,"badge":"2023","basis":"Nature Communications 논문, 2023-03-01","note":"숨은 포켓의 위치를 단일 구조에서 예측하는 논문 기준입니다.","sources":[{"title":"PocketMiner 원 논문","url":"https://www.nature.com/articles/s41467-023-36699-3"}]},{"id":"vina","name":"AutoDock Vina","family":"도킹","year":2010,"badge":"2010","basis":"J. Computational Chemistry 권호 2010; 온라인 공개 2009-06-04","note":"일반적으로 인용하는 원 논문은 2010년입니다. 도킹 분야 전체의 시작 연도가 아닙니다.","sources":[{"title":"Vina 논문·게재 이력","url":"https://onlinelibrary.wiley.com/doi/10.1002/jcc.21334"}]},{"id":"diffdock","name":"DiffDock · 원본","family":"도킹","year":2023,"badge":"2023","basis":"ICLR 2023; arXiv 최초 공개 2022-10-04","note":"이 자료는 원본 DiffDock 기준입니다. 후속 DiffDock-L의 연도와 구분합니다.","sources":[{"title":"DiffDock 프리프린트·ICLR 서지","url":"https://arxiv.org/abs/2210.01776"}]},{"id":"dynamicbind","name":"DynamicBind","family":"도킹","year":2024,"badge":"2024","basis":"Nature Communications 논문, 2024-02-05","note":"이 자료에서는 정식 저널 논문의 연도를 표시합니다.","sources":[{"title":"DynamicBind 원 논문","url":"https://www.nature.com/articles/s41467-024-45461-2"}]},{"id":"af3","name":"AlphaFold 3","family":"co-folding","year":2024,"badge":"2024","basis":"Nature 논문 온라인 공개, 2024-05-08","note":"논문 발표 연도입니다. 추론 코드 공개 시점이나 AlphaFold 2의 연도와 구분합니다.","sources":[{"title":"AlphaFold 3 원 논문","url":"https://www.nature.com/articles/s41586-024-07487-w"}]},{"id":"chai1","name":"Chai-1","family":"co-folding","year":2024,"badge":"2024","basis":"공식 모델 발표, 2024-09-09","note":"회사 공식 공개 발표 기준이며 정식 저널 게재 연도를 뜻하지 않습니다.","sources":[{"title":"Chai-1 공식 공개 발표","url":"https://www.chaidiscovery.com/news/introducing-chai-1"}]},{"id":"boltz2","name":"Boltz-2","family":"co-folding","year":2025,"badge":"2025","basis":"2025년 bioRxiv 기술 보고서; 공식 저장소 서지","note":"Boltz-1의 2024년 논문과 구분합니다.","sources":[{"title":"Boltz-2 공식 논문 서지","url":"https://github.com/jwohlwend/boltz#cite"},{"title":"Boltz-2 기술 보고서","url":"https://doi.org/10.1101/2025.06.14.659707"}]},{"id":"openfold3","name":"OpenFold3-preview2","family":"co-folding","year":2026,"badge":"2026","basis":"preview2 / v0.4.0 공식 공개, 2026-03-13","note":"현재 자료의 OF3p2 버전 기준입니다. 최초 OpenFold3-preview나 이후 OpenBind-0의 공개 연도가 아닙니다.","sources":[{"title":"OpenFold3 Preview2 공식 릴리스","url":"https://github.com/aqlaboratory/openfold-3/releases/tag/0.4.0"},{"title":"공식 릴리스 실행 날짜","url":"https://github.com/aqlaboratory/openfold-3/actions/runs/23049391144"}]}]}}</script><script src="lesson.js"></script><script src="evolution.js?v=20261030-years-2"></script><script src="../book.js"></script></body></html>
+</main><script id="method-data" type="application/json">[{"id":"fpocket","name":"fpocket","family":"pocket","role":"기하학적 포켓 탐지","input":"단백질 3D 구조","output":"포켓 후보·중심·점수","use":"구조에서 결합 공간 후보를 먼저 찾을 때","principle":"단백질 원자 사이의 알파 구를 선별하고 묶어 포켓 후보를 만듭니다.","inputLines":["단백질 3D 좌표","한 개 구조"],"outputLines":["후보 중심·영역","점수·물성"],"limit":"현재 입력 구조의 공간을 읽습니다. 단백질을 열거나 특정 리간드의 결합 자세를 생성하지 않습니다.","chapter":"02-pocket-detection/","source":"https://github.com/Discngine/fpocket"},{"id":"p2rank","name":"P2Rank","family":"pocket","role":"학습 기반 포켓 탐지","input":"단백질 3D 구조","output":"포켓 후보·관련 잔기·순위","use":"표면의 화학 환경을 반영해 자리를 찾을 때","principle":"표면점 주변의 기하·물리화학 특징을 학습 모델로 평가한 뒤 유망한 점들을 포켓으로 묶습니다.","inputLines":["단백질 3D 좌표","표면점 주변 환경"],"outputLines":["포켓 후보·중심","점수·관련 잔기"],"limit":"포켓의 probability는 특정 화합물–단백질 쌍의 결합 확률이나 친화도가 아닙니다.","chapter":"02-pocket-detection/","source":"https://github.com/rdk/p2rank"},{"id":"deeppocket","name":"DeepPocket","family":"pocket","role":"후보 재평가·영역 분할","input":"단백질 구조 + fpocket 후보","output":"후보 순위 + 포켓 마스크","use":"후보를 CNN으로 재평가하고 범위를 정할 때","principle":"fpocket 후보 주변을 3D 복셀로 바꿔 CNN으로 순위를 매기고, 별도 분할 모델로 포켓 영역을 예측합니다.","inputLines":["단백질 3D 좌표","fpocket 후보 중심"],"outputLines":["재순위화한 후보","포켓 영역 마스크"],"limit":"처음 후보를 만드는 단계에 의존합니다. 포켓 마스크가 특정 리간드의 자세나 친화도를 뜻하지 않습니다.","chapter":"03-learning-pockets/","source":"https://github.com/devalab/DeepPocket"},{"id":"grasp","name":"GrASP","family":"pocket","role":"원자 그래프 기반 탐지","input":"단백질 표면·이웃 원자의 3D 정보","output":"원자 점수 + 포켓 후보","use":"원자와 이웃 관계를 신경망으로 읽을 때","principle":"표면 원자와 주변 내부 원자를 그래프로 표현하고, 어텐션 기반 정보 전달로 표면 원자 점수를 얻어 후보를 군집화합니다.","inputLines":["단백질 3D 좌표","표면과 이웃 원자"],"outputLines":["표면 원자 점수","군집화한 포켓 후보"],"limit":"이 장의 GrASP는 Graph Attention Site Prediction입니다. 단백질 모양의 시간 변화를 생성하는 모델은 아닙니다.","chapter":"03-learning-pockets/","source":"https://github.com/tiwarylab/GrASP"},{"id":"pocketminer","name":"PocketMiner","family":"cryptic","role":"숨은 포켓 가능 영역 예측","input":"한 개 단백질 3D 구조","output":"잔기별 숨은 포켓 점수","use":"어디가 열릴 법한지 후보를 좁힐 때","principle":"잔기와 공간상 이웃을 그래프로 읽어, 구조 변화로 포켓이 드러날 법한 영역에 점수를 매깁니다.","inputLines":["한 개 단백질 구조","잔기와 공간 이웃"],"outputLines":["잔기별 cryptic 점수","열릴 법한 영역"],"limit":"잔기별 점수는 열린 구조 좌표나 열리는 시간의 예측과 다릅니다. 실제 움직임 궤적을 출력하지 않습니다.","chapter":"04-cryptic-pockets/","source":"https://www.nature.com/articles/s41467-023-36699-3"},{"id":"md","name":"분자동역학 (MD)","family":"cryptic","role":"힘과 운동으로 움직임 계산","input":"초기 구조·환경·힘장·조건","output":"시간 순서의 좌표·속도 궤적","use":"구조 변화와 포켓의 열림을 탐색할 때","principle":"원자 상호작용에서 힘을 계산하고, 운동 방정식을 짧은 시간 간격으로 수치 적분합니다. 궤적의 각 구조에서 포켓을 따로 분석할 수 있습니다.","inputLines":["초기 구조·물·이온","힘장·속도·조건"],"outputLines":["좌표·속도 궤적","시간 순서 프레임"],"limit":"샘플링과 힘장·환경 조건의 영향을 받습니다. 제한된 계산에서 안 열렸다고 숨은 포켓이 없다고 단정하지 않습니다.","chapter":"04-cryptic-pockets/","source":"https://docs.openmm.org/latest/userguide/theory/04_integrators.html"},{"id":"vina","name":"Vina","family":"docking","role":"근사 점수 기반 자세 탐색","input":"준비한 단백질·리간드·탐색 범위","output":"리간드 자세 + 도킹 점수","use":"정한 범위에서 화합물의 자세를 탐색할 때","principle":"여러 시작 자세와 국소 개선을 조합해 탐색하고 근사 점수로 후보를 정리합니다. 선택한 곁사슬을 유연하게 설정할 수도 있습니다.","inputLines":["단백질·리간드 준비","탐색 상자·화학 상태"],"outputLines":["리간드 자세 후보","근사 도킹 점수"],"limit":"더 낮은 도킹 점수가 실측 친화도를 보장하지 않습니다. 선택 곁사슬 유연성과 수용체 백본 전체 갱신은 다릅니다.","chapter":"05-docking/","source":"https://autodock-vina.readthedocs.io/en/latest/docking_basic.html"},{"id":"diffdock","name":"DiffDock (원본)","family":"docking","role":"학습 기반 리간드 자세 생성","input":"고정 단백질 구조 + 리간드 정보","output":"리간드 자세 + 자세 confidence","use":"고정 구조에서 학습 기반 자세 후보를 만들 때","principle":"고정한 단백질을 조건으로 리간드의 이동·회전·비틀림을 확산 방식으로 갱신하고, 별도의 confidence로 후보를 평가합니다.","inputLines":["단백질 3D 구조","리간드 분자 정보"],"outputLines":["리간드 자세 후보","자세 confidence"],"limit":"원본 ICLR 2023/v1.0 범위입니다. 단백질은 고정이며 confidence는 친화도가 아닙니다. 후속 DiffDock-L과 구분합니다.","chapter":"05-docking/","source":"https://arxiv.org/abs/2210.01776"},{"id":"dynamicbind","name":"DynamicBind","family":"docking","role":"리간드·수용체 배치 갱신","input":"시작 단백질 구조 + 리간드 정보","output":"갱신 복합체·품질·친화도 예측","use":"시작 구조를 리간드와 함께 조정할 때","principle":"리간드와 단백질 잔기의 이동·회전, 곁사슬 각도를 함께 갱신하고 복합체를 생성합니다. 구조 품질과 친화도는 별도로 예측합니다.","inputLines":["시작 단백질 구조","리간드 분자 정보"],"outputLines":["갱신된 복합체","품질·친화도 예측"],"limit":"단백질이 움직여도 이 생성 단계는 MD 시간 궤적이 아닙니다. 입력 수용체 구조를 받는다는 점을 공동 구조 예측과 비교합니다.","chapter":"05-docking/","source":"https://www.nature.com/articles/s41467-024-45461-2"},{"id":"af3","name":"AlphaFold 3","family":"cofold","role":"다양한 생체분자의 공동 구조 예측","input":"서열·분자 정보, MSA·템플릿 등","output":"복합체 원자 좌표 + 신뢰도","use":"서열과 구성 요소에서 복합체를 만들 때","principle":"입력과 토큰 간 관계를 Pairformer로 처리하고, 확산 모듈로 복합체 원자 좌표를 공동 생성한 뒤 구조 confidence를 평가합니다.","inputLines":["단백질 서열·분자","MSA·템플릿 등"],"outputLines":["복합체 원자 좌표","구조 confidence"],"limit":"표준 구조 신뢰도는 실험 단위 친화도나 결합 여부의 증명이 아닙니다. 템플릿 등 추가 정보를 썼는지도 기록합니다.","chapter":"06-cofolding/","source":"https://www.nature.com/articles/s41586-024-07487-w"},{"id":"boltz2","name":"Boltz-2","family":"cofold","role":"공동 구조 + 별도 결합 특성 예측","input":"서열·분자·보조 정보·선택 요청","output":"복합체·신뢰도·결합 분류·친화도","use":"구조와 작은 분자 결합 특성을 나눠 볼 때","principle":"토큰·쌍 관계와 확산 생성으로 구조를 예측합니다. 별도의 결합 분류·친화도 모듈을 사용할 수 있으며 서로 다른 출력입니다.","inputLines":["서열·분자·MSA 등","선택적 친화도 요청"],"outputLines":["복합체·confidence","결합 분류·친화도"],"limit":"affinity_pred_value는 log10(IC50/μM), 낮을수록 강한 방향입니다. 결합 분류·친화도 값·구조 confidence를 혼동하지 않습니다.","chapter":"06-cofolding/","source":"https://github.com/jwohlwend/boltz/blob/main/docs/prediction.md"},{"id":"chai1","name":"Chai-1","family":"cofold","role":"보조 정보를 활용한 공동 구조 예측","input":"서열·분자, 임베딩·선택적 제약","output":"복합체 원자 좌표 + 신뢰도","use":"MSA·접촉 등 주어진 힌트를 함께 쓸 때","principle":"단백질 언어모델 특징과 선택적 MSA·템플릿·접촉 정보를 처리해, trunk와 확산 모듈로 복합체를 생성하고 품질을 평가합니다.","inputLines":["서열·분자 정보","PLM·선택적 MSA·제약"],"outputLines":["복합체 원자 좌표","후보 confidence"],"limit":"MSA 없이 실행할 수 있다는 것과 같은 정확도라는 것은 다릅니다. 제공한 접촉 정보를 독립적으로 알아낸 사실로 해석하지 않습니다.","chapter":"06-cofolding/","source":"https://github.com/chaidiscovery/chai-lab"},{"id":"openfold3","name":"OpenFold3-preview2","family":"cofold","role":"공동 구조 예측·학습 재현 기반","input":"서열·분자, MSA·템플릿 등","output":"복합체 원자 좌표 + 신뢰도","use":"공개 구현·자료로 재현과 개선을 검토할 때","principle":"AF3 계열의 관계 처리와 원자 확산을 공개 재구현합니다. 코드·가중치·학습 및 평가 자료가 연구 재현의 기반이 됩니다.","inputLines":["서열·분자 정보","MSA·템플릿 등"],"outputLines":["복합체 원자 좌표","구조 confidence"],"limit":"이 자료는 OF3p2 범위입니다. 6장에서 확인한 현재 기본 OpenBind-0와 구분하고, 패키지·가중치·자료 버전을 함께 고정합니다.","chapter":"06-cofolding/","source":"https://portal.openfold.omsf.io/reports/of3p2_technical_report.pdf"}]</script><script id="evolution-data" type="application/json">{"schemaVersion":1,"legend":[{"type":"data","name":"실선 · 데이터·처리 연결","meaning":"한 단계의 출력을 다음 단계가 사용합니다. 예: fpocket 후보를 DeepPocket이 재평가."},{"type":"scope","name":"점선 · 접근 확장·선택 연결","meaning":"세 발전 그림에서는 접근·기능의 변화를, 기술 연결 그림에서는 선택적인 활용을 표시합니다. 직접 계승·성능 우열·필수 실행 순서를 뜻하지 않습니다."},{"type":"implementation","name":"보라 실선 · 명시적 재구현","meaning":"OpenFold3의 AF3 계열 재구현을 표시합니다. 같은 학습 가중치라는 뜻은 아닙니다."}],"scenes":[{"id":"overview","title":"기술은 세 방향으로 넓어졌습니다","change":"공간을 읽는 표현, 자세를 생성하는 방식, 함께 예측하는 대상과 출력이 확장됐습니다.","body":"그림의 가로 방향은 발전의 관점을 요약한 것입니다. 모든 화살표가 직접적인 후속 모델이나 반드시 거쳐야 하는 실행 순서를 뜻하지는 않습니다.","gains":["포켓 탐지: 기하학적 공간 탐지에 학습한 화학 환경과 신경망 표현을 활용합니다.","도킹: 점수 기반 탐색과 학습 기반 생성, 수용체 유연성이라는 축을 나눠 봅니다.","co-folding: 구성 요소의 공동 좌표 생성에 입력 힌트·결합 특성·재현 기반을 더합니다."],"limit":"최신 모델이 모든 기존 기술을 대체한 것은 아닙니다. MD의 시간 궤적, 포켓 후보, 자세, 복합체 좌표는 서로 다른 출력입니다.","sources":[{"title":"P2Rank 공식 원리","url":"https://github.com/rdk/p2rank"},{"title":"DeepPocket 공식 처리 흐름","url":"https://github.com/devalab/DeepPocket"},{"title":"DynamicBind 원 논문","url":"https://www.nature.com/articles/s41467-024-45461-2"},{"title":"AlphaFold 3 공식 구현","url":"https://github.com/google-deepmind/alphafold3"}]},{"id":"pocket","title":"포켓 탐지: 모양에서 학습된 주변 환경까지","change":"같은 자리 찾기 문제를 기하학, 표면점 특징, 복셀 CNN, 원자 그래프로 다르게 읽습니다.","body":"fpocket은 기하학적으로 후보를 만듭니다. DeepPocket은 그 후보를 실제 입력으로 재사용해 순위를 매기고 영역을 분할합니다. P2Rank와 GrASP는 각각 표면점의 학습된 특징, 원자 그래프의 정보 전달로 포켓을 평가하는 별도의 접근입니다.","gains":["fpocket → DeepPocket은 실제 후보 데이터의 연결입니다.","P2Rank는 표면점의 물리화학·기하 특징을 학습 모델로 평가합니다.","DeepPocket은 3D 복셀, GrASP는 원자와 이웃 관계를 신경망으로 읽습니다."],"limit":"P2Rank → DeepPocket → GrASP가 한 모델의 후속 계보인 것은 아닙니다. 모두 입력 구조에서 포켓을 읽으며, 특정 리간드 자세나 친화도는 별도 질문입니다.","sources":[{"title":"fpocket 공식 구현","url":"https://github.com/Discngine/fpocket"},{"title":"P2Rank 알고리즘","url":"https://github.com/rdk/p2rank#algorithm"},{"title":"DeepPocket 예측 절차","url":"https://github.com/devalab/DeepPocket#predicting-binding-site"},{"title":"GrASP 공식 구현","url":"https://github.com/tiwarylab/GrASP"}]},{"id":"docking","title":"도킹: 탐색 방식과 수용체 유연성의 확장","change":"어떻게 자세를 찾는지와, 단백질의 어느 부분을 바꿀 수 있는지는 서로 다른 축입니다.","body":"Vina는 근사 점수 기반으로 탐색합니다. 원본 DiffDock은 고정한 단백질을 참고해 리간드 이동·회전·비틀림을 학습된 확산 방식으로 생성합니다. DynamicBind는 시작 단백질 구조를 받아 리간드와 수용체 잔기·곁사슬 배치를 함께 갱신합니다.","gains":["Vina와 원본 DiffDock은 자세 탐색·생성 방식이 다릅니다.","원본 DiffDock은 AI 도킹이어도 수용체를 고정합니다.","Vina의 선택 곁사슬 유연성과 DynamicBind의 잔기 배치 갱신을 구분합니다."],"limit":"점선은 비교하는 기능의 확장입니다. 세 방법을 전부 순서대로 실행하라는 뜻이 아니며, 생성 단계는 실제 결합 시간 궤적과 다릅니다.","sources":[{"title":"Vina 기본 도킹","url":"https://autodock-vina.readthedocs.io/en/latest/docking_basic.html"},{"title":"Vina 유연한 곁사슬","url":"https://autodock-vina.readthedocs.io/en/latest/docking_flexible.html"},{"title":"원본 DiffDock","url":"https://arxiv.org/abs/2210.01776"},{"title":"DynamicBind 공식 구현","url":"https://github.com/luwei0917/DynamicBind"}]},{"id":"cofold","title":"co-folding: 공동 좌표 생성에서 기능·재현 기반 확장","change":"여러 구성 요소를 함께 예측하고, 추가 입력·결합 특성 출력·공개 재구현을 서로 다른 방향으로 발전시킵니다.","body":"AlphaFold 3는 단백질·핵산·리간드 등 여러 구성 요소의 좌표를 공동으로 예측합니다. Chai-1의 임베딩과 선택적 제약, Boltz-2의 별도 결합 분류·친화도, OpenFold3-preview2의 공개 재구현과 학습 재현 자료는 각각 강조점이 다릅니다.","gains":["Chai-1: 단백질 언어모델 특징과 선택적 MSA·템플릿·접촉 정보를 활용합니다.","Boltz-2: 구조 confidence와 별도의 결합 분류·친화도 예측을 제공합니다.","OpenFold3-preview2: AF3 계열의 공개 재구현과 코드·가중치·학습 자료를 연결합니다."],"limit":"Chai-1과 Boltz-2는 AF3와 같은 가중치를 쓰는 모델이나 서로의 후속 버전이 아닙니다. OF3p2도 Google의 AF3 가중치 자체가 아니며, 이 자료는 OF3p2 범위를 유지합니다.","sources":[{"title":"AlphaFold 3 공식 구현","url":"https://github.com/google-deepmind/alphafold3"},{"title":"Chai-1 입력과 추론","url":"https://github.com/chaidiscovery/chai-lab"},{"title":"Boltz-2 출력 정의","url":"https://github.com/jwohlwend/boltz/blob/main/docs/prediction.md"},{"title":"OpenFold3-preview2 보고서","url":"https://portal.openfold.omsf.io/reports/of3p2_technical_report.pdf"}]},{"id":"connections","title":"실제 분석에서는 필요한 부분을 연결합니다","change":"기술 계보와 분석 흐름은 다릅니다. 연결하려면 출력이 다음 입력에 맞는지 확인합니다.","body":"MD에서 얻은 프레임을 포켓 검출기로 분석하거나, 포켓 후보 위치를 정해 도킹 범위를 잡을 수 있습니다. 공동 예측으로 만든 구조를 다시 분석하는 것도 선택지입니다. 반대로 blind docking이나 공동 예측에서 포켓 탐지기를 항상 먼저 실행해야 하는 것은 아닙니다.","gains":["열릴 법한 영역의 예측 → 필요에 따라 MD 탐색 → 프레임별 포켓 분석이라는 조합을 생각할 수 있습니다.","포켓 후보 → 탐색 범위 설정 → 도킹은 가능한 활용 예입니다. 도구 간 좌표와 번호 체계를 확인해야 합니다.","co-folding 결과 → 구조·인터페이스 검증이 기본이며, 추가 포켓 분석이나 도킹은 새 질문이 있을 때 선택합니다."],"limit":"PocketMiner 점수가 열린 좌표를 생성하지는 않습니다. co-folding으로 얻은 복합체를 반드시 다시 도킹할 필요도 없습니다. 어떤 경로도 실험 검증을 자동으로 대체하지 않습니다.","sources":[{"title":"MD와 PocketMiner 상세 설명","url":"../04-cryptic-pockets/"},{"title":"Vina 탐색 범위","url":"https://autodock-vina.readthedocs.io/en/latest/docking_basic.html"},{"title":"공동 예측과 검증 조건","url":"../06-cofolding/"}]}],"history":{"verifiedOn":"2026-10-30","policy":"연도는 대표 논문의 정식 서지 연도를 기본으로 합니다. 기술 보고서·모델 공개만 있는 경우에는 해당 공개 연도를 씁니다. 먼저 공개된 온라인 논문·프리프린트 연도는 아래에 별도로 표시합니다. 연도 표시는 분야의 탄생이나 필수 실행 순서를 뜻하지 않습니다.","mdNote":"MD는 단일 모델이 아닙니다. 1977은 접힌 단백질 BPTI를 시뮬레이션한 초기 대표 연구의 연도이며, MD 전체가 시작된 연도는 아닙니다.","methods":[{"id":"fpocket","name":"fpocket","family":"포켓 탐지","year":2009,"badge":"2009","basis":"BMC Bioinformatics 논문, 2009-06-02","note":"원래 fpocket 방법의 논문 연도입니다. 현재 설치 버전의 배포 연도와 구분합니다.","sources":[{"title":"fpocket 원 논문","url":"https://doi.org/10.1186/1471-2105-10-168"}]},{"id":"p2rank","name":"P2Rank","family":"포켓 탐지","year":2018,"badge":"2018","basis":"Journal of Cheminformatics 논문, 2018-08-14","note":"현재 P2Rank 패키지의 최신 버전 연도와 구분합니다.","sources":[{"title":"P2Rank 원 논문","url":"https://link.springer.com/article/10.1186/s13321-018-0285-8"}]},{"id":"deeppocket","name":"DeepPocket","family":"포켓 탐지","year":2022,"badge":"2022","basis":"JCIM 권호 게재 2022; 온라인 공개 2021-08-10","note":"먼저 온라인으로 나온 때는 2021년이고 정식 서지의 권호 연도는 2022년입니다.","sources":[{"title":"DeepPocket 논문·게재 이력","url":"https://pubs.acs.org/doi/10.1021/acs.jcim.1c00799"}]},{"id":"grasp","name":"GrASP","family":"포켓 탐지","year":2024,"badge":"2024","basis":"JCIM 온라인 공개 2024-03-07; 권호 게재 2024-04-08","note":"여기서는 Smith 등의 Graph Attention Site Prediction을 뜻합니다.","sources":[{"title":"GrASP 논문·게재 이력","url":"https://pubs.acs.org/doi/10.1021/acs.jcim.3c01698"}]},{"id":"md","name":"분자동역학 (MD)","family":"움직임·숨은 포켓","year":1977,"badge":"1977 사례","basis":"Dynamics of folded proteins, Nature, 1977-06-16","note":"BPTI 단백질 MD의 초기 대표 사례입니다. MD 자체의 탄생이나 특정 프로그램의 출시 연도가 아닙니다.","sources":[{"title":"단백질 MD의 초기 대표 연구","url":"https://www.nature.com/articles/267585a0"}]},{"id":"pocketminer","name":"PocketMiner","family":"움직임·숨은 포켓","year":2023,"badge":"2023","basis":"Nature Communications 논문, 2023-03-01","note":"숨은 포켓의 위치를 단일 구조에서 예측하는 논문 기준입니다.","sources":[{"title":"PocketMiner 원 논문","url":"https://www.nature.com/articles/s41467-023-36699-3"}]},{"id":"vina","name":"AutoDock Vina","family":"도킹","year":2010,"badge":"2010","basis":"J. Computational Chemistry 권호 2010; 온라인 공개 2009-06-04","note":"일반적으로 인용하는 원 논문은 2010년입니다. 도킹 분야 전체의 시작 연도가 아닙니다.","sources":[{"title":"Vina 논문·게재 이력","url":"https://onlinelibrary.wiley.com/doi/10.1002/jcc.21334"}]},{"id":"diffdock","name":"DiffDock · 원본","family":"도킹","year":2023,"badge":"2023","basis":"ICLR 2023; arXiv 최초 공개 2022-10-04","note":"이 자료는 원본 DiffDock 기준입니다. 후속 DiffDock-L의 연도와 구분합니다.","sources":[{"title":"DiffDock 프리프린트·ICLR 서지","url":"https://arxiv.org/abs/2210.01776"}]},{"id":"dynamicbind","name":"DynamicBind","family":"도킹","year":2024,"badge":"2024","basis":"Nature Communications 논문, 2024-02-05","note":"이 자료에서는 정식 저널 논문의 연도를 표시합니다.","sources":[{"title":"DynamicBind 원 논문","url":"https://www.nature.com/articles/s41467-024-45461-2"}]},{"id":"af3","name":"AlphaFold 3","family":"co-folding","year":2024,"badge":"2024","basis":"Nature 논문 온라인 공개, 2024-05-08","note":"논문 발표 연도입니다. 추론 코드 공개 시점이나 AlphaFold 2의 연도와 구분합니다.","sources":[{"title":"AlphaFold 3 원 논문","url":"https://www.nature.com/articles/s41586-024-07487-w"}]},{"id":"chai1","name":"Chai-1","family":"co-folding","year":2024,"badge":"2024","basis":"공식 모델 발표, 2024-09-09","note":"회사 공식 공개 발표 기준이며 정식 저널 게재 연도를 뜻하지 않습니다.","sources":[{"title":"Chai-1 공식 공개 발표","url":"https://www.chaidiscovery.com/news/introducing-chai-1"}]},{"id":"boltz2","name":"Boltz-2","family":"co-folding","year":2025,"badge":"2025","basis":"2025년 bioRxiv 기술 보고서; 공식 저장소 서지","note":"Boltz-1의 2024년 논문과 구분합니다.","sources":[{"title":"Boltz-2 공식 논문 서지","url":"https://github.com/jwohlwend/boltz#cite"},{"title":"Boltz-2 기술 보고서","url":"https://doi.org/10.1101/2025.06.14.659707"}]},{"id":"openfold3","name":"OpenFold3-preview2","family":"co-folding","year":2026,"badge":"2026","basis":"preview2 / v0.4.0 공식 공개, 2026-03-13","note":"현재 자료의 OF3p2 버전 기준입니다. 최초 OpenFold3-preview나 이후 OpenBind-0의 공개 연도가 아닙니다.","sources":[{"title":"OpenFold3 Preview2 공식 릴리스","url":"https://github.com/aqlaboratory/openfold-3/releases/tag/0.4.0"},{"title":"공식 릴리스 실행 날짜","url":"https://github.com/aqlaboratory/openfold-3/actions/runs/23049391144"}]}]}}</script><script src="lesson.js?v=20261030-values"></script><script src="evolution.js?v=20261030-years-2"></script><script src="../book.js?v=20261030-3d"></script><script src="io-examples.js?v=20261030-values"></script></body></html>

@@ -40,5 +40,11 @@
     "title": "기술 발전·연결의 5개 관점과 출처",
     "sourcePath": "evolution.json",
     "sha256": "41cfb5d3a8762b5858e49a4ad306cf92843264a0f375692626db7a92e3b0f9ff"
+  },
+  {
+    "kind": "input-output-examples",
+    "title": "실제 출력과 미실행 형식을 구분한 13개 예시",
+    "sourcePath": "io-examples.json",
+    "sha256": "fbd0d27850bf46b93f08e4428b64e24874a031d3e80ea7fcd82a5f80cbe0d5fb"
   }
 ]

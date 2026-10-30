@@ -1,0 +1,27 @@
+/* Common, non-destructive reading treatment for the pocket book's figures. */
+.reader figure.has-figure-viewer{position:relative;border:1px solid #e0e8ef;border-radius:16px;background:linear-gradient(145deg,#fbfdff,#f3f8fa);padding:15px 15px 10px;box-shadow:0 5px 22px #25485c05}
+.reader figure.has-figure-viewer>svg{border-radius:9px}
+.reader figure.has-figure-viewer>img{border-radius:9px}
+.reader figure.has-figure-viewer figcaption{font-size:13px;line-height:1.75;color:#526a7b;padding:0 8px}
+.figure-action-row{display:flex;justify-content:flex-end;margin:0 0 8px;gap:10px}
+.figure-open{font:550 12px/1.5 Pretendard,'Malgun Gothic',sans-serif;letter-spacing:0;color:#276174;border:1px solid #d0e1e9;border-radius:6px;padding:6px 10px;background:#ffffffec;cursor:pointer}
+.figure-open:hover{background:#e8f4f5;border-color:#8bbbc2}
+.figure-dialog{position:fixed;inset:18px;width:calc(100vw - 36px);height:calc(100dvh - 36px);max-width:none;max-height:none;margin:0;border:1px solid #cddde7;border-radius:16px;padding:0;overflow:hidden;background:#fbfdff;color:#142c40;box-shadow:0 25px 100px #10283f38}
+.figure-dialog::backdrop{background:#10273acc;backdrop-filter:blur(5px)}
+.figure-dialog[open]{display:flex;flex-direction:column}
+.figure-dialog-head{display:flex;align-items:center;gap:14px;padding:14px 20px;background:white;border-bottom:1px solid #dce7ed;flex:0 0 auto}
+.figure-dialog-head h2{font-size:16px;line-height:1.5;font-weight:650;margin:0;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.figure-dialog-tools{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:9px 20px;background:#f4f8fb;border-bottom:1px solid #dce7ed;flex:0 0 auto;font-size:12px;line-height:1.6}
+.figure-dialog button{font:inherit;font-size:13px;line-height:1.5;cursor:pointer;border:1px solid #ccdae4;border-radius:6px;padding:6px 11px;background:#fff;color:#183f53}
+.figure-dialog .figure-close{font-size:13px;padding:7px 13px;white-space:nowrap}
+.figure-dialog .figure-percent{font:600 12px/1.6 Pretendard,sans-serif;min-width:45px;text-align:center;font-variant-numeric:tabular-nums}
+.figure-dialog .figure-instruction{margin-left:auto;color:#557183}
+.figure-stage{min-height:0;flex:1;overflow:auto;overscroll-behavior:contain;padding:22px;outline-offset:-4px;cursor:grab;background:radial-gradient(ellipse at 50% 25%,#fff 20%,#eff5f9 100%)}
+.figure-stage.is-panning{cursor:grabbing;user-select:none}
+.figure-art{position:relative;max-width:none;margin:0 auto;flex:none;transform-origin:top left;user-select:none}
+.figure-art>svg,.figure-art>img{display:block;width:100%;height:auto;max-width:none;overflow:visible}
+.figure-art .hero-label{font-size:20px}
+.figure-dialog-caption{margin:0;padding:10px 20px;border-top:1px solid #dce7ed;font-size:12px;line-height:1.6;color:#536f82;background:white;max-height:72px;overflow:auto;flex:0 0 auto}
+@media(max-width:720px){.reader figure.has-figure-viewer{padding:9px 8px 8px;border-radius:12px}.reader figure.has-figure-viewer figcaption{font-size:12px;padding:0 2px}.figure-action-row{margin-bottom:3px}.figure-open{padding:5px 8px;font-size:11px}.figure-dialog{inset:7px;width:calc(100vw - 14px);height:calc(100dvh - 14px);border-radius:11px}.figure-dialog-head{padding:11px 12px;gap:8px}.figure-dialog-head h2{font-size:14px}.figure-dialog-tools{padding:8px 10px;gap:5px}.figure-dialog .figure-instruction{margin-left:0;width:100%;font-size:11px}.figure-stage{padding:12px}.figure-dialog-caption{padding:8px 12px;font-size:11px}}
+@media print{.figure-action-row,.figure-dialog{display:none!important}.reader figure.has-figure-viewer{padding:0;box-shadow:none;background:none;border:0;border-radius:0}}
+@media(max-width:720px){.book-bar{flex-wrap:nowrap;overflow-x:auto;gap:17px;padding-bottom:7px;scrollbar-width:thin}.book-bar a{flex:0 0 auto;white-space:nowrap}.book-bar a:first-child{width:auto;margin:0}}
