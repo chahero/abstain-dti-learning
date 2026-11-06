@@ -71,5 +71,10 @@
     "independent_llm_app": false,
     "automatic_engine_selection_retry_abstention": false
   },
-  "audit_scope": "Post-run comparison; subsequent CLI augmented with NaN warning and geometry records"
+  "audit_scope": "Post-run comparison; subsequent CLI augmented with NaN warning and geometry records",
+  "cpu_gpu_top1_direct_comparison": {
+    "rmsd_angstrom": 0.08838506049621103,
+    "heavy_atoms": 37,
+    "policy": "same atom serials, fixed receptor frame, no alignment or symmetry correction; artifact SHA-256 checked"
+  }
 }

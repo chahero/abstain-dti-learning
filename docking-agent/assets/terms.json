@@ -1,0 +1,1058 @@
+[
+  {
+    "id": "docking",
+    "name": "도킹",
+    "aliases": [
+      "도킹",
+      "docking"
+    ],
+    "reading": "도킹",
+    "meaning": "단백질에 화합물이 붙을 때 가능한 3차원 배치를 계산하는 작업입니다.",
+    "context": "이번에는 c-Abl과 이마티닙의 결합 자세를 생성하고, 준비된 참조 자세와 비교했습니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "protein",
+    "name": "단백질",
+    "aliases": [
+      "단백질",
+      "protein"
+    ],
+    "reading": "단백질",
+    "meaning": "아미노산 사슬이 접혀 만들어진 분자입니다. 접힌 구조의 모양과 화학적 성질이 기능에 관여합니다.",
+    "context": "이번 도킹의 단백질 쪽 입력은 1IEP에서 준비한 c-Abl 키나아제 도메인 구조입니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "receptor",
+    "name": "수용체",
+    "aliases": [
+      "수용체",
+      "receptor"
+    ],
+    "reading": "수용체 / 리셉터",
+    "meaning": "도킹에서 화합물이 결합할 상대 구조를 가리키는 말입니다. 실제 생물학적 수용체 단백질만을 뜻하지는 않습니다.",
+    "context": "receptor.pdbqt는 여기서 c-Abl 쪽 구조를 담은 파일 이름입니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "target",
+    "name": "타겟",
+    "aliases": [
+      "타겟",
+      "target"
+    ],
+    "reading": "타겟",
+    "meaning": "약물이 작용하기를 기대하며 연구하는 대상입니다. 이 문서에서는 단백질을 뜻합니다.",
+    "context": "이번 예제의 타겟은 c-Abl입니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "ligand",
+    "name": "리간드",
+    "aliases": [
+      "리간드",
+      "ligand"
+    ],
+    "reading": "리간드",
+    "meaning": "단백질 등에 결합하는 분자를 부르는 말입니다.",
+    "context": "이번 리간드는 이마티닙입니다. 리간드의 위치·방향·모양을 바꾸며 후보를 만듭니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "compound",
+    "name": "화합물",
+    "aliases": [
+      "화합물",
+      "compound"
+    ],
+    "reading": "화합물",
+    "meaning": "서로 다른 원소의 원자들이 화학적으로 결합한 물질입니다.",
+    "context": "이번에 사용한 화합물 이마티닙은 도킹에서 리간드 역할을 합니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "pocket",
+    "name": "포켓",
+    "aliases": [
+      "포켓",
+      "pocket"
+    ],
+    "reading": "포켓",
+    "meaning": "단백질 표면이나 내부에서 분자가 결합할 수 있는 홈이나 공간입니다. 홈이 있다고 약물이 잘 붙는 것은 아닙니다.",
+    "context": "Vina 계열에는 튜토리얼이 제공한 알려진 포켓 주변의 박스를 지정했습니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "1iep",
+    "name": "1IEP",
+    "aliases": [
+      "1IEP"
+    ],
+    "reading": "원 아이 이 피",
+    "meaning": "PDB에 등록된 구조 기록 번호입니다. 생쥐 유래 c-Abl 키나아제 도메인에 이마티닙(STI-571)이 결합한 X선 결정 구조입니다.",
+    "context": "우리는 이 기록을 바탕으로 준비된 Vina 튜토리얼 파일을 썼습니다. 여러 문제를 모은 데이터셋 이름은 아닙니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "abl",
+    "name": "c-Abl",
+    "aliases": [
+      "c-Abl"
+    ],
+    "reading": "씨 에이블",
+    "meaning": "단백질에 인산기를 붙이는 기능을 가진 키나아제 단백질입니다.",
+    "context": "1IEP에는 이 단백질 전체가 아니라 키나아제 도메인이 들어 있습니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "imatinib",
+    "name": "이마티닙",
+    "aliases": [
+      "이마티닙",
+      "imatinib",
+      "STI-571"
+    ],
+    "reading": "이마티닙",
+    "meaning": "Abl 등의 키나아제를 억제하는 소분자 약물입니다. STI-571이라는 이름으로도 불립니다.",
+    "context": "이번 도킹에서 c-Abl에 배치하는 리간드입니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "domain",
+    "name": "도메인",
+    "aliases": [
+      "도메인",
+      "domain"
+    ],
+    "reading": "도메인",
+    "meaning": "단백질 안에서 하나의 구조·기능 단위를 이루는 부분입니다.",
+    "context": "1IEP의 c-Abl 키나아제 도메인은 효소 기능을 담당하는 부분입니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "kinase",
+    "name": "키나아제",
+    "aliases": [
+      "키나아제",
+      "kinase"
+    ],
+    "reading": "키나아제",
+    "meaning": "다른 분자에 인산기를 붙이는 반응을 촉진하는 효소입니다.",
+    "context": "c-Abl은 단백질 키나아제이며, 이번 예제는 약물이 그 도메인에 결합한 구조를 사용합니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "engine",
+    "name": "도킹 엔진",
+    "aliases": [
+      "도킹 엔진",
+      "엔진"
+    ],
+    "reading": "도킹 엔진",
+    "meaning": "실제로 도킹 계산을 수행해 후보 자세와 점수를 만드는 프로그램입니다.",
+    "context": "Vina·Vina-GPU·DiffDock-L이 계산 엔진이고, 우리가 만든 실행기는 이를 호출하고 결과를 기록합니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "score",
+    "name": "점수",
+    "aliases": [
+      "점수"
+    ],
+    "reading": "점수",
+    "meaning": "도구가 후보를 평가하거나 정렬하기 위해 계산한 숫자입니다.",
+    "context": "Vina의 에너지와 DiffDock-L의 confidence는 정의가 다릅니다. 숫자만 나란히 놓고 같은 척도로 비교하면 안 됩니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "model",
+    "name": "모델",
+    "aliases": [
+      "모델"
+    ],
+    "reading": "모델",
+    "meaning": "입력에서 출력을 계산하는 수학적 규칙이나 학습된 계산 구조입니다.",
+    "context": "DiffDock-L에서는 학습된 신경망 모델을 불러와 자세를 생성·평가합니다. 모델, 실행 프로그램, GPU 장치를 구분합니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "chain",
+    "name": "체인",
+    "aliases": [
+      "체인",
+      "chain"
+    ],
+    "reading": "체인",
+    "meaning": "단백질 구조에서 하나의 아미노산 사슬을 가리키며, A·B 같은 식별자로 구분합니다.",
+    "context": "팀 연결 설계에서 체인 정보는 어떤 사슬의 구조·포켓을 사용할지 지정하는 정보입니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "pose",
+    "name": "결합 자세 · pose",
+    "aliases": [
+      "결합 자세",
+      "자세",
+      "pose"
+    ],
+    "reading": "결합 자세 / 포즈",
+    "meaning": "화합물이 단백질에 대해 놓인 위치·방향과 내부의 비틀림 모양을 합친 배치입니다.",
+    "context": "같은 화합물도 여러 자세 후보로 출력됩니다. 화합물 자체가 서로 다른 물질이 된다는 뜻은 아닙니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "candidate",
+    "name": "후보",
+    "aliases": [
+      "후보"
+    ],
+    "reading": "후보",
+    "meaning": "프로그램이 가능한 답으로 생성한 하나의 결과입니다.",
+    "context": "이번 후보는 하나의 결합 자세 파일입니다. CPU는 3개, GPU는 5개, DiffDock-L은 10개를 출력했습니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "rank",
+    "name": "순위 · rank",
+    "aliases": [
+      "순위",
+      "rank"
+    ],
+    "reading": "순위 / 랭크",
+    "meaning": "도구가 자기 점수로 후보를 정렬한 순서입니다.",
+    "context": "1위는 그 도구가 가장 좋다고 고른 후보입니다. 참조에 가장 가까운 후보와 다를 수 있습니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "rmsd",
+    "name": "RMSD",
+    "aliases": [
+      "RMSD"
+    ],
+    "reading": "알 엠 에스 디",
+    "meaning": "Root Mean Square Deviation. 대응하는 원자들의 위치 차이를 거리 하나로 요약한 값입니다.",
+    "context": "여기서는 준비된 참조와 비교합니다. 작을수록 가깝습니다. 0.889 Å는 친화도나 성공 확률이 아닙니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "angstrom",
+    "name": "Å · 옹스트롬",
+    "aliases": [
+      "Å",
+      "옹스트롬"
+    ],
+    "reading": "옹스트롬",
+    "meaning": "원자·분자의 길이에 쓰는 단위입니다. 1 Å = 0.1 nm, 10 Å = 1 nm입니다.",
+    "context": "20 Å 박스는 한 변이 2 nm입니다. RMSD 0.89 Å는 영점팔구 옹스트롬이라고 읽습니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "heavy",
+    "name": "중원자",
+    "aliases": [
+      "중원자"
+    ],
+    "reading": "중원자",
+    "meaning": "이 문서에서는 수소를 제외한 원자를 뜻합니다.",
+    "context": "리간드의 중원자 37개를 대응시켜 RMSD를 계산했습니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "frame",
+    "name": "좌표계",
+    "aliases": [
+      "좌표계"
+    ],
+    "reading": "좌표계",
+    "meaning": "원자의 위치를 x·y·z 숫자로 나타낼 때 사용하는 공통 기준입니다.",
+    "context": "같은 좌표계에서 비교해야 위치 차이를 올바르게 측정할 수 있습니다. 이번에는 리간드를 따로 정렬하지 않았습니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "box",
+    "name": "포켓 박스",
+    "aliases": [
+      "포켓 박스",
+      "박스"
+    ],
+    "reading": "포켓 박스",
+    "meaning": "도킹 프로그램이 화합물을 탐색할 3차원 범위입니다. 중심과 x·y·z 방향의 길이로 지정합니다.",
+    "context": "이번 Vina 계열에는 변 길이가 각각 20 Å인 같은 박스를 줬습니다.",
+    "group": "실행 설정"
+  },
+  {
+    "id": "reference",
+    "name": "참조 자세",
+    "aliases": [
+      "참조 자세",
+      "참조"
+    ],
+    "reading": "참조 자세",
+    "meaning": "예측 결과와 비교할 기준 배치입니다.",
+    "context": "실험 구조를 바탕으로 준비된 튜토리얼 리간드 좌표를 기준으로 사용했습니다. 점수가 가장 좋은 예측 후보를 뜻하지 않습니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "affinity",
+    "name": "결합 친화도",
+    "aliases": [
+      "결합 친화도",
+      "친화도",
+      "Affinity",
+      "binding affinity"
+    ],
+    "reading": "결합 친화도 / 바인딩 어피니티",
+    "meaning": "화합물과 단백질이 얼마나 강하게 결합하는지에 관한 성질입니다.",
+    "context": "이번 실험은 자세를 비교한 것입니다. 실제 친화도 예측의 정확도는 평가하지 않았습니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "energy",
+    "name": "도킹 에너지",
+    "aliases": [
+      "도킹 에너지",
+      "에너지"
+    ],
+    "reading": "도킹 에너지",
+    "meaning": "프로그램의 점수식으로 계산한 결합의 유리함을 나타내는 수치입니다.",
+    "context": "Vina 1위는 −13.270 kcal/mol입니다. 그 값을 실제 실험 친화도와 동일하게 해석할 수는 없습니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "kcal",
+    "name": "kcal/mol",
+    "aliases": [
+      "kcal/mol"
+    ],
+    "reading": "킬로칼로리 퍼 몰",
+    "meaning": "물질의 양 1몰당 에너지를 나타내는 단위입니다.",
+    "context": "Vina 계열 도킹 에너지의 단위입니다. 이번 정렬에서는 더 낮은 점수가 우선입니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "confidence",
+    "name": "confidence",
+    "aliases": [
+      "confidence"
+    ],
+    "reading": "컨피던스",
+    "meaning": "DiffDock-L에서 생성된 자세를 정렬하는 학습된 평가 모델의 점수입니다.",
+    "context": "이번 1위 점수는 −3.30입니다. 이 숫자 자체는 정답 확률이나 결합 친화도가 아닙니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "vina",
+    "name": "AutoDock Vina",
+    "aliases": [
+      "AutoDock Vina",
+      "Vina"
+    ],
+    "reading": "오토독 비나 / 비나",
+    "meaning": "정해진 점수식을 계산하면서 화합물의 위치·방향·비틀림을 바꿔 좋은 자세를 탐색하는 도킹 프로그램입니다.",
+    "context": "이번에는 CPU용 1.2.7을 사용하고 알려진 포켓 안에서 탐색했습니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "vina-gpu",
+    "name": "Vina-GPU 2.1",
+    "aliases": [
+      "Vina-GPU",
+      "Vina-GPU 2.1",
+      "AutoDock-Vina-GPU"
+    ],
+    "reading": "비나 지피유",
+    "meaning": "Vina 계열 탐색을 GPU 병렬 계산과 별도의 최적화 구현으로 수행하는 프로그램입니다.",
+    "context": "CPU Vina 1.2.7과 프로그램 버전·탐색 구현이 다릅니다. 하드웨어만 바꾼 완전히 같은 계산은 아닙니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "diffdock",
+    "name": "DiffDock-L",
+    "aliases": [
+      "DiffDock-L"
+    ],
+    "reading": "디프독 엘",
+    "meaning": "결합 구조의 패턴을 학습한 확산 생성 모델로 리간드의 위치·방향·비틀림을 조정하고, 별도의 confidence 모델로 후보를 정렬하는 도킹 방법입니다.",
+    "context": "이번에는 포켓 박스 없이 전체 단백질을 탐색했습니다. 이미 준비된 단백질 구조를 사용하며, 단백질을 새로 접는 co-folding과 구분합니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "random",
+    "name": "무작위 탐색",
+    "aliases": [
+      "무작위 탐색",
+      "무작위"
+    ],
+    "reading": "무작위 탐색",
+    "meaning": "모든 자세를 전부 확인하기 어려워 여러 시작 배치와 변화 경로를 난수로 선택하며 탐색하는 방식입니다.",
+    "context": "탐색 경로가 달라지면 최종 후보도 달라질 수 있습니다. 같은 시드도 서로 다른 프로그램의 경로를 같게 만들지는 않습니다.",
+    "group": "실행 설정"
+  },
+  {
+    "id": "seed",
+    "name": "시드 · seed",
+    "aliases": [
+      "시드",
+      "seed"
+    ],
+    "reading": "시드",
+    "meaning": "프로그램이 쓰는 의사난수의 시작 상태를 정하는 숫자입니다.",
+    "context": "이번 시드는 20261009입니다. 동일한 프로그램·입력·설정을 맞춰 재현할 때 쓰며, 서로 다른 엔진의 결과 일치를 보장하지 않습니다.",
+    "group": "실행 설정"
+  },
+  {
+    "id": "exhaustiveness",
+    "name": "exhaustiveness",
+    "aliases": [
+      "exhaustiveness"
+    ],
+    "reading": "이그조스티브니스",
+    "meaning": "CPU Vina가 탐색에 들일 노력을 조절하는 옵션입니다.",
+    "context": "이번에는 8을 사용했습니다. CPU 코어 수나 출력 후보 수와 다르고, GPU thread=8000과 같은 단위가 아닙니다.",
+    "group": "실행 설정"
+  },
+  {
+    "id": "thread",
+    "name": "thread",
+    "aliases": [
+      "thread"
+    ],
+    "reading": "스레드",
+    "meaning": "일반적으로 계산 작업의 실행 흐름을 뜻합니다. Vina-GPU의 이 옵션은 병렬 도킹 탐색 경로의 규모를 정합니다.",
+    "context": "이번 thread=8000은 CPU 코어 8,000개나 후보 8,000개를 출력한다는 뜻이 아닙니다.",
+    "group": "실행 설정"
+  },
+  {
+    "id": "depth",
+    "name": "search_depth",
+    "aliases": [
+      "search_depth"
+    ],
+    "reading": "서치 뎁스",
+    "meaning": "Vina-GPU의 각 탐색 경로에서 수행하는 탐색 반복 수를 조절하는 옵션입니다.",
+    "context": "이번 GPU 요청에서는 명시하지 않고 엔진이 정하는 기본값을 사용했습니다.",
+    "group": "실행 설정"
+  },
+  {
+    "id": "rilc",
+    "name": "RILC-BFGS",
+    "aliases": [
+      "RILC-BFGS",
+      "rilc_bfgs"
+    ],
+    "reading": "알 아이 엘 씨 비 에프 지 에스",
+    "meaning": "Reduced Iteration and Low Complexity BFGS. Vina-GPU 2.1에서 자세의 점수를 개선하는 국소 최적화 계산을 빠르게 수행하도록 바꾼 방법입니다.",
+    "context": "이번 GPU 실행에서는 이 옵션을 켰습니다. CPU와 탐색 구현이 달라지는 요인 중 하나입니다.",
+    "group": "실행 설정"
+  },
+  {
+    "id": "bfgs",
+    "name": "BFGS",
+    "aliases": [
+      "BFGS"
+    ],
+    "reading": "비 에프 지 에스",
+    "meaning": "Broyden–Fletcher–Goldfarb–Shanno. 현재 배치를 조금씩 움직이며 더 좋은 점수 쪽으로 개선하는 수치 최적화 방법입니다.",
+    "context": "Vina 계열의 자세 미세 조정에 쓰입니다. 분자나 AI 모델 이름이 아닙니다.",
+    "group": "실행 설정"
+  },
+  {
+    "id": "optimization",
+    "name": "최적화",
+    "aliases": [
+      "최적화"
+    ],
+    "reading": "최적화",
+    "meaning": "위치나 각도 같은 값을 바꾸며 목적 점수를 더 좋게 만드는 과정입니다.",
+    "context": "도킹에서는 화합물의 배치를 조정합니다. 수학적 점수가 좋아졌다고 실제 결합이 증명되는 것은 아닙니다.",
+    "group": "실행 설정"
+  },
+  {
+    "id": "parallel",
+    "name": "병렬",
+    "aliases": [
+      "병렬"
+    ],
+    "reading": "병렬",
+    "meaning": "여러 계산 작업을 동시에 진행하는 방식입니다.",
+    "context": "Vina-GPU는 많은 탐색 경로를 GPU에서 병렬로 계산합니다. CPU도 여러 코어를 이용할 수 있습니다.",
+    "group": "실행 설정"
+  },
+  {
+    "id": "diffusion",
+    "name": "확산 생성 모델",
+    "aliases": [
+      "확산 생성 모델",
+      "역확산",
+      "확산"
+    ],
+    "reading": "확산 생성 모델",
+    "meaning": "학습 때 배치를 점차 흐트러뜨리는 과정을 이용하고, 생성할 때 학습한 역방향 조정을 반복해 후보를 만드는 모델입니다.",
+    "context": "DiffDock은 리간드의 위치·회전·비틀림 공간에서 이 과정을 사용합니다. 이미지를 생성하는 작업은 아닙니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "translation",
+    "name": "평행이동",
+    "aliases": [
+      "평행이동"
+    ],
+    "reading": "평행이동",
+    "meaning": "화합물 전체를 x·y·z 방향으로 옮기는 변화입니다.",
+    "context": "단백질의 어느 위치에 놓을지를 바꿉니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "rotation",
+    "name": "회전",
+    "aliases": [
+      "회전"
+    ],
+    "reading": "회전",
+    "meaning": "화합물 전체가 향하는 방향을 바꾸는 변화입니다.",
+    "context": "같은 포켓에 들어가도 화합물의 앞뒤와 방향이 다르면 결합 자세가 달라집니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "torsion",
+    "name": "비틀림",
+    "aliases": [
+      "비틀림"
+    ],
+    "reading": "비틀림",
+    "meaning": "회전 가능한 결합을 축으로 분자의 일부를 돌리는 변화입니다.",
+    "context": "화합물 전체의 방향을 돌리는 것과 달리, 분자 내부의 모양이 바뀝니다.",
+    "group": "분자·구조"
+  },
+  {
+    "id": "sampling",
+    "name": "샘플링",
+    "aliases": [
+      "샘플링",
+      "sampling",
+      "samples"
+    ],
+    "reading": "샘플링",
+    "meaning": "가능한 결과 중 여러 후보를 생성하거나 뽑는 과정입니다.",
+    "context": "DiffDock-L의 samples=10은 이번 한 쌍에서 생성할 후보 수입니다. 전체 실행 시간에는 샘플링 외 준비·처리 시간도 들어갑니다.",
+    "group": "실행 설정"
+  },
+  {
+    "id": "schedule",
+    "name": "schedule",
+    "aliases": [
+      "schedule"
+    ],
+    "reading": "스케줄",
+    "meaning": "확산 추론에서 각 단계의 잡음 수준과 진행 간격 등을 정하는 설정입니다.",
+    "context": "이번 DiffDock-L 실행은 공식 기본 추론 일정을 사용했습니다.",
+    "group": "실행 설정"
+  },
+  {
+    "id": "cpu",
+    "name": "CPU",
+    "aliases": [
+      "CPU"
+    ],
+    "reading": "씨피유",
+    "meaning": "Central Processing Unit. 일반적인 프로그램 실행과 계산을 담당하는 중앙처리장치입니다.",
+    "context": "CPU Vina에서는 cpu=4로 CPU 스레드 4개를 사용하도록 설정했습니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "gpu",
+    "name": "GPU",
+    "aliases": [
+      "GPU"
+    ],
+    "reading": "지피유",
+    "meaning": "Graphics Processing Unit. 많은 유사한 계산을 병렬로 처리하는 데 적합한 장치입니다.",
+    "context": "이번 GPU는 TITAN RTX입니다. Vina-GPU와 DiffDock-L 모두 이 장치를 활용했지만 계산 방법은 서로 다릅니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "pdb",
+    "name": "PDB",
+    "aliases": [
+      "PDB"
+    ],
+    "reading": "피디비",
+    "meaning": "Protein Data Bank. 생체분자의 3차원 구조를 보관하는 데이터베이스이며, PDB는 구조 좌표 파일 형식의 이름이기도 합니다.",
+    "context": "1IEP는 데이터베이스 기록 번호이고, 이번 .pdb 파일은 도킹에 쓰도록 준비한 좌표 파일입니다.",
+    "group": "파일·개발"
+  },
+  {
+    "id": "pdbqt",
+    "name": "PDBQT",
+    "aliases": [
+      "PDBQT"
+    ],
+    "reading": "피디비 큐티",
+    "meaning": "좌표 외에 원자의 부분 전하와 도킹용 원자 유형 등을 담는 AutoDock 계열 구조 형식입니다.",
+    "context": "Vina 계열의 준비된 단백질·리간드 입력과 자세 출력에 사용했습니다.",
+    "group": "파일·개발"
+  },
+  {
+    "id": "sdf",
+    "name": "SDF",
+    "aliases": [
+      "SDF"
+    ],
+    "reading": "에스디에프",
+    "meaning": "원자·결합 정보와 분자 좌표 등을 담을 수 있는 분자 파일 형식입니다.",
+    "context": "이번 DiffDock-L의 리간드 입력과 후보 출력에 사용했습니다.",
+    "group": "파일·개발"
+  },
+  {
+    "id": "cli",
+    "name": "CLI",
+    "aliases": [
+      "CLI"
+    ],
+    "reading": "씨엘아이",
+    "meaning": "Command-Line Interface. 터미널에 명령을 입력해 프로그램을 실행하는 방식입니다.",
+    "context": "run.py와 diffdock_windows.py를 명령으로 호출했습니다. 별도 그래픽 앱을 뜻하지 않습니다.",
+    "group": "파일·개발"
+  },
+  {
+    "id": "dock-function",
+    "name": "dock(request)",
+    "aliases": [
+      "dock(request)"
+    ],
+    "reading": "독 리퀘스트",
+    "meaning": "도킹 요청을 담은 데이터를 받아 실행하고 결과를 반환하는 우리가 만든 Python 함수입니다.",
+    "context": "현재 Vina와 Vina-GPU가 이 공통 함수에 연결되어 있습니다. 함수가 자체적으로 도구를 선택하는 LLM은 아닙니다.",
+    "group": "파일·개발"
+  },
+  {
+    "id": "request",
+    "name": "request",
+    "aliases": [
+      "request"
+    ],
+    "reading": "리퀘스트",
+    "meaning": "실행할 작업의 입력과 조건을 담은 요청 데이터입니다.",
+    "context": "단백질·리간드 경로, 포켓 박스, 엔진·시드·제한 시간 등을 전달합니다.",
+    "group": "파일·개발"
+  },
+  {
+    "id": "json",
+    "name": "JSON",
+    "aliases": [
+      "JSON"
+    ],
+    "reading": "제이슨",
+    "meaning": "키와 값으로 데이터를 저장하고 주고받는 텍스트 형식입니다.",
+    "context": "request.json에는 요청을, result.json에는 실행 상태·점수·파일·시간 등을 기록합니다.",
+    "group": "파일·개발"
+  },
+  {
+    "id": "schema",
+    "name": "스키마",
+    "aliases": [
+      "스키마"
+    ],
+    "reading": "스키마",
+    "meaning": "입력 데이터가 어떤 필드와 값의 형태를 가져야 하는지 정한 규칙입니다.",
+    "context": "필수 파일 경로나 박스 정보가 빠지면 실행 전에 확인하도록 만들었습니다.",
+    "group": "파일·개발"
+  },
+  {
+    "id": "harness",
+    "name": "하네스",
+    "aliases": [
+      "하네스"
+    ],
+    "reading": "하네스",
+    "meaning": "도구를 일정한 규칙과 조건 아래 실행하고 결과·실패를 관리하는 주변 코드입니다.",
+    "context": "이번 Python 실행기가 입력 검사·제한 시간·파일·로그 보존을 담당합니다.",
+    "group": "파일·개발"
+  },
+  {
+    "id": "llm",
+    "name": "LLM",
+    "aliases": [
+      "LLM"
+    ],
+    "reading": "엘엘엠",
+    "meaning": "Large Language Model. 언어를 이해하고 생성하도록 학습된 대규모 언어 모델입니다.",
+    "context": "이번 개발 세션에서는 Codex의 모델이 요청 해석과 도구 호출 판단을 맡았습니다. DiffDock-L은 분자 도킹 모델입니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "agent",
+    "name": "에이전트",
+    "aliases": [
+      "에이전트",
+      "Agent"
+    ],
+    "reading": "에이전트",
+    "meaning": "목표를 받아 다음 행동이나 도구 호출을 결정하고 결과를 확인하며 작업하는 시스템입니다.",
+    "context": "현재 Codex가 판단하고 우리가 만든 코드가 도킹 도구 역할을 합니다. 범용 자동 재시도·기권 정책은 아직 없습니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "orchestrator",
+    "name": "Orchestrator",
+    "aliases": [
+      "Orchestrator"
+    ],
+    "reading": "오케스트레이터",
+    "meaning": "여러 작업이나 Agent 사이에서 순서·분배·예산 등을 관리하는 조정 역할입니다.",
+    "context": "팀 Orchestrator와 이번 도킹 실행기의 실제 연결은 예정된 작업입니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "structure-agent",
+    "name": "Structure Agent",
+    "aliases": [
+      "Structure Agent"
+    ],
+    "reading": "스트럭처 에이전트",
+    "meaning": "단백질 구조·체인·포켓·좌표계 등 구조 입력을 준비하는 팀 내 역할 이름입니다.",
+    "context": "페이지 점선 상자는 이 역할에서 도킹 입력을 받으려는 연결 설계이며, 연동 완료를 뜻하지 않습니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "validation-agent",
+    "name": "Validation Agent",
+    "aliases": [
+      "Validation Agent"
+    ],
+    "reading": "밸리데이션 에이전트",
+    "meaning": "생성된 후보의 물리 타당성이나 충돌 등을 검사하는 팀 내 역할 이름입니다.",
+    "context": "이번 도킹 결과를 넘길 예정인 위치입니다. 현재 기본 결합 길이 검사와 정식 검증을 구분해야 합니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "hash",
+    "name": "입력 해시 · SHA-256",
+    "aliases": [
+      "입력 해시",
+      "SHA-256",
+      "해시"
+    ],
+    "reading": "입력 해시 / 에스에이치에이 이오육",
+    "meaning": "파일 내용에서 계산한 지문 같은 값입니다. SHA-256은 그 계산 방식의 하나입니다.",
+    "context": "입력·실행 파일이 바뀌었는지 대조하는 기록입니다. 같은 해시라도 파일 내용의 과학적 정확성을 보장하지는 않습니다.",
+    "group": "파일·개발"
+  },
+  {
+    "id": "timeout",
+    "name": "제한 시간",
+    "aliases": [
+      "제한 시간",
+      "timeout"
+    ],
+    "reading": "제한 시간 / 타임아웃",
+    "meaning": "한 실행을 기다릴 최대 시간입니다.",
+    "context": "계산이 끝없이 이어지지 않게 실행기에 상한을 두었습니다.",
+    "group": "파일·개발"
+  },
+  {
+    "id": "log",
+    "name": "원시 로그",
+    "aliases": [
+      "원시 로그",
+      "로그"
+    ],
+    "reading": "로그",
+    "meaning": "프로그램이 실행하면서 출력한 과정·경고·오류 기록입니다.",
+    "context": "후보 파일뿐 아니라 stdout.log와 stderr.log를 보존해 NaN 복구 경고도 확인했습니다.",
+    "group": "파일·개발"
+  },
+  {
+    "id": "exit-code",
+    "name": "종료 코드",
+    "aliases": [
+      "종료 코드"
+    ],
+    "reading": "종료 코드",
+    "meaning": "프로그램이 끝나며 운영체제에 반환하는 상태 숫자입니다. 보통 0은 정상 종료를 뜻합니다.",
+    "context": "DiffDock-L은 0으로 끝났지만 비정상 후보가 남았습니다. 따라서 후보 내용도 따로 검사했습니다.",
+    "group": "파일·개발"
+  },
+  {
+    "id": "nan",
+    "name": "NaN",
+    "aliases": [
+      "NaN"
+    ],
+    "reading": "낸 / 낫 어 넘버",
+    "meaning": "Not a Number. 계산 결과를 정상적인 수로 표현할 수 없을 때 쓰는 특수 값입니다.",
+    "context": "원본 DiffDock 코드가 일부 NaN 점수를 대체하며 계산을 이어간 경고가 있었습니다. 경고 횟수와 실패 후보 수는 다릅니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "finite",
+    "name": "유한한 값",
+    "aliases": [
+      "유한한"
+    ],
+    "reading": "유한한",
+    "meaning": "무한대나 NaN이 아닌 보통의 수치 범위에 속한다는 뜻입니다.",
+    "context": "매우 큰 비정상 좌표도 유한한 숫자일 수 있습니다. 유한성 검사만으로 좋은 자세를 판단할 수 없습니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "divergence",
+    "name": "좌표 발산",
+    "aliases": [
+      "좌표 발산",
+      "발산"
+    ],
+    "reading": "좌표 발산",
+    "meaning": "계산 중 좌표가 정상적인 분자 배치로 보기 어려운 크기나 상태로 벗어난 현상입니다.",
+    "context": "이번 10위 후보는 참조에서 매우 멀어졌고 결합 길이도 비정상이었습니다. Windows가 원인인지는 확인하지 않았습니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "geometry",
+    "name": "기하 검사",
+    "aliases": [
+      "기하 검사",
+      "기하"
+    ],
+    "reading": "기하 검사",
+    "meaning": "원자 사이 거리나 각도처럼 분자의 공간적 관계가 정상적인지 확인하는 검사입니다.",
+    "context": "이번에는 결합 길이에 느슨한 0.5–3 Å 범위만 적용했습니다. 실제 결합 자세나 전체 물리 타당성 검증은 아닙니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "posebusters",
+    "name": "PoseBusters",
+    "aliases": [
+      "PoseBusters"
+    ],
+    "reading": "포즈버스터즈",
+    "meaning": "예측된 분자 자세의 화학·기하·물리적 타당성 등을 검사하는 도구 모음입니다.",
+    "context": "이번 실행 비교에는 아직 적용하지 않았습니다. 기본 결합 길이 검사와 구분합니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "clash",
+    "name": "충돌",
+    "aliases": [
+      "충돌"
+    ],
+    "reading": "충돌",
+    "meaning": "서로 다른 원자들이 물리적으로 허용하기 어려울 정도로 가까이 겹치는 상황입니다.",
+    "context": "단백질–리간드 충돌은 이번 기본 결합 길이 검사에 포함되지 않았습니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "cache",
+    "name": "캐시",
+    "aliases": [
+      "캐시",
+      "cache"
+    ],
+    "reading": "캐시",
+    "meaning": "한 번 만든 계산 결과를 저장했다가 다음 실행에서 재사용하는 것입니다.",
+    "context": "DiffDock-L의 회전·비틀림 테이블을 재사용한 실행은 97.654초였습니다. 모델 준비 비용이 전부 사라진 것은 아닙니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "inference",
+    "name": "추론",
+    "aliases": [
+      "추론"
+    ],
+    "reading": "추론",
+    "meaning": "이미 학습된 모델에 새 입력을 넣어 결과를 계산하는 단계입니다.",
+    "context": "이번에는 제공된 DiffDock-L 가중치로 추론했습니다. 모델을 새로 학습시키지 않았습니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "weights",
+    "name": "가중치",
+    "aliases": [
+      "가중치"
+    ],
+    "reading": "가중치",
+    "meaning": "모델이 학습을 통해 정한 내부 수치들입니다.",
+    "context": "DiffDock-L v1.1 가중치를 불러와 사용했습니다. 다운로드·모델 로딩·추론은 서로 다른 작업입니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "esm",
+    "name": "ESM-2",
+    "aliases": [
+      "ESM-2"
+    ],
+    "reading": "이 에스 엠 투",
+    "meaning": "아미노산 서열의 패턴을 학습한 단백질 언어 모델 계열입니다.",
+    "context": "이번 DiffDock-L 경로에서는 단백질 특징을 만드는 데 사용했습니다. 사람이 읽는 문장을 생성하는 역할은 아닙니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "embedding",
+    "name": "임베딩",
+    "aliases": [
+      "임베딩"
+    ],
+    "reading": "임베딩",
+    "meaning": "대상의 특징을 모델이 처리할 수 있는 숫자 배열로 표현한 것입니다.",
+    "context": "ESM-2가 만든 단백질 서열 특징도 DiffDock-L 입력 준비의 일부입니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "split",
+    "name": "학습 split",
+    "aliases": [
+      "학습 split",
+      "split"
+    ],
+    "reading": "학습 스플릿",
+    "meaning": "데이터를 학습용·검증용·평가용 등으로 나눈 구분 또는 그 목록입니다.",
+    "context": "1IEP가 공식 DiffDock 학습 목록에 있어 이번 예제를 미학습 성능 평가로 볼 수 없습니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "generalization",
+    "name": "일반화",
+    "aliases": [
+      "일반화"
+    ],
+    "reading": "일반화",
+    "meaning": "학습에서 접하지 못한 새로운 입력에서도 잘 예측하는 능력입니다.",
+    "context": "이번 단일 예제 실행만으로 신규 타겟·화합물에 대한 능력을 판단할 수 없습니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "calibration",
+    "name": "보정",
+    "aliases": [
+      "보정"
+    ],
+    "reading": "보정",
+    "meaning": "모델의 확신 정도와 실제 정답 비율이 잘 맞도록 다루는 과정입니다.",
+    "context": "이번 작업에서는 예측 신뢰도의 보정 성능을 평가하지 않았습니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "abstention",
+    "name": "기권",
+    "aliases": [
+      "기권"
+    ],
+    "reading": "기권",
+    "meaning": "근거가 부족하거나 불확실할 때 답이나 판단을 내리지 않도록 하는 선택입니다.",
+    "context": "이상 후보 기록은 추가했지만, 언제 자동으로 기권할지 정하는 정책은 아직 구현하지 않았습니다.",
+    "group": "도킹·결과"
+  },
+  {
+    "id": "opencl",
+    "name": "OpenCL",
+    "aliases": [
+      "OpenCL"
+    ],
+    "reading": "오픈 씨엘",
+    "meaning": "CPU·GPU 같은 장치에서 병렬 계산 코드를 실행하기 위한 규격과 도구입니다.",
+    "context": "Vina-GPU를 Windows에서 빌드하고 장치용 코드를 실행하는 데 사용했습니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "kernel",
+    "name": "GPU 커널",
+    "aliases": [
+      "GPU 커널",
+      "커널"
+    ],
+    "reading": "지피유 커널",
+    "meaning": "GPU에서 실행되는 계산 코드 단위입니다.",
+    "context": "이 PC의 장치에 맞는 Vina-GPU 커널을 미리 생성했습니다. 운영체제의 커널과는 문맥이 다릅니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "cuda",
+    "name": "CUDA",
+    "aliases": [
+      "CUDA"
+    ],
+    "reading": "쿠다",
+    "meaning": "NVIDIA GPU를 이용한 계산을 지원하는 개발 플랫폼입니다.",
+    "context": "Vina-GPU는 설치된 CUDA의 OpenCL 도구를 활용했고, DiffDock-L은 CUDA를 지원하는 PyTorch로 실행했습니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "boost",
+    "name": "Boost",
+    "aliases": [
+      "Boost"
+    ],
+    "reading": "부스트",
+    "meaning": "C++ 프로그램 개발에 쓰는 라이브러리 모음입니다.",
+    "context": "Vina-GPU 2.1을 Windows에서 빌드할 때 준비한 의존성입니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "pytorch",
+    "name": "PyTorch",
+    "aliases": [
+      "PyTorch"
+    ],
+    "reading": "파이토치",
+    "meaning": "신경망 모델을 학습·실행하는 소프트웨어입니다.",
+    "context": "DiffDock-L의 신경망 계산을 실행합니다. 이번 버전은 2.8.0+cu126입니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "pyg",
+    "name": "PyG",
+    "aliases": [
+      "PyG"
+    ],
+    "reading": "파이지",
+    "meaning": "PyTorch Geometric. 원자와 연결 관계 같은 그래프 형태의 데이터를 다루는 라이브러리입니다.",
+    "context": "DiffDock-L의 그래프 계산 환경에 포함됩니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "e3nn",
+    "name": "e3nn",
+    "aliases": [
+      "e3nn"
+    ],
+    "reading": "이 쓰리 엔 엔",
+    "meaning": "3차원 회전·이동 같은 대칭성을 고려하는 신경망을 만드는 라이브러리입니다.",
+    "context": "DiffDock-L 환경의 구성 요소입니다. 단백질 이름이나 도킹 점수는 아닙니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "prody",
+    "name": "ProDy",
+    "aliases": [
+      "ProDy"
+    ],
+    "reading": "프로다이",
+    "meaning": "단백질 구조와 움직임 등을 분석하는 Python 도구 모음입니다.",
+    "context": "이번 DiffDock-L의 구조 처리 의존성으로 Windows에 준비했습니다.",
+    "group": "개발·환경"
+  },
+  {
+    "id": "ref",
+    "name": "소스 ref",
+    "aliases": [
+      "소스 ref",
+      "ref"
+    ],
+    "reading": "소스 레퍼런스",
+    "meaning": "어느 시점의 소스 코드를 썼는지 지정하는 Git 커밋·태그 같은 참조입니다.",
+    "context": "긴 영문·숫자 해시로 실행에 사용한 코드 버전을 기록했습니다.",
+    "group": "파일·개발"
+  },
+  {
+    "id": "bit",
+    "name": "비트 단위 동일",
+    "aliases": [
+      "비트 단위"
+    ],
+    "reading": "비트 단위",
+    "meaning": "저장된 데이터가 가장 작은 정보 단위까지 완전히 같은 상태를 뜻합니다.",
+    "context": "같은 시드 재실행에서 최고 순위 RMSD가 비슷해도 모든 후보 파일이 완전히 동일하지는 않았습니다.",
+    "group": "파일·개발"
+  }
+]

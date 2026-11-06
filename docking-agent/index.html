@@ -6,10 +6,11 @@
   <title>Docking Agent 구현·실험 기록 · Abstain-DTI</title>
   <link rel="icon" href="data:,"><link rel="stylesheet" href="report.css?v=20261107-report">
   <script src="report.js?v=20261107-report" defer></script>
+<link rel="stylesheet" href="terms.css?v=20261107-help"><script src="terms.js?v=20261107-help" defer></script>
 </head>
 <body>
 <a class="skip" href="#overview">본문으로 이동</a>
-<header class="site-header"><a class="brand" href="../">Abstain-DTI <span>개발·실험 기록</span></a><div class="header-actions"><a href="report.md" download>문서 내려받기</a><button id="print" type="button">인쇄 / PDF</button></div></header>
+<header class="site-header"><a class="brand" href="../">Abstain-DTI <span>개발·실험 기록</span></a><div class="header-actions"><button class="glossary-open header-glossary" type="button">용어 찾기</button><a href="report.md" download>문서 내려받기</a><button id="print" type="button">인쇄 / PDF</button></div></header>
 <main>
   <section class="hero container" id="overview" aria-labelledby="report-title">
     <div class="eyebrow"><span class="status-dot"></span> Docking Agent · 개발 결과 공유 <span class="date">실행 2026.11.06 · 정리 2026.11.07</span></div>
@@ -21,10 +22,10 @@
       <article><span class="label">실행한 것</span><h2>Windows에서 3개 엔진</h2><p>Vina·Vina-GPU를 공통 실행기로, DiffDock-L을 별도 CLI로 실행했습니다.</p></article>
       <article class="finding"><span class="label">발견한 것</span><h2>성공 종료 뒤의 비정상 후보</h2><p>DiffDock-L 출력 10개 중 1개에서 좌표 발산을 확인하고 검사·경고 기록을 보완했습니다.</p></article>
     </div>
-    <p class="scope-line">이번 단계의 대상은 <strong>결합 자세 생성과 실행 관리</strong>입니다. 실험 친화도 예측의 개선 효과를 검증한 결과는 아닙니다.</p>
+    <p class="term-hint">처음 보는 단어는 <span>밑줄 용어</span>를 눌러 읽는 법·쉬운 뜻·이번 실험에서의 의미를 확인하세요.</p><p class="scope-line">이번 단계의 대상은 <strong>결합 자세 생성과 실행 관리</strong>입니다. 실험 친화도 예측의 개선 효과를 검증한 결과는 아닙니다.</p>
   </section>
 
-  <nav class="section-nav" aria-label="문서 목차"><div class="container"><a href="#overview" aria-current="location">구현 요약</a><a href="#implementation">구현 구조</a><a href="#experiment">실험 설계</a><a href="#results">실행 결과</a><a href="#failure">실패 분석</a><a href="#conclusion">결론과 현재 범위</a></div></nav>
+  <nav class="section-nav" aria-label="문서 목차"><div class="container"><button class="glossary-open glossary-nav-button" type="button">용어 찾기</button><a href="#overview" aria-current="location">구현 요약</a><a href="#implementation">구현 구조</a><a href="#experiment">실험 설계</a><a href="#results">실행 결과</a><a href="#failure">실패 분석</a><a href="#conclusion">결론과 현재 범위</a></div></nav>
 
   <section class="report-section container" id="implementation" aria-labelledby="implementation-title">
     <div class="section-heading"><span class="section-number">01 / IMPLEMENTATION</span><h2 id="implementation-title">구현 구조</h2><p>LLM의 도구 호출을 실제 계산·기록으로 연결하는 실행 경로를 만들었습니다.</p></div>
@@ -74,6 +75,18 @@ result = dock(
       <p class="figure-note">위 두 그림은 탐색 조건을 설명하기 위한 도식이며, 실제 1IEP 단백질 표면이 아닙니다.</p>
       <p class="scroll-hint">표는 좌우로 밀어 전체 항목을 볼 수 있습니다.</p><div class="table-wrap"><table><caption>실제 실행 조건</caption><thead><tr><th>항목</th><th>Vina CPU</th><th>Vina-GPU</th><th>DiffDock-L</th></tr></thead><tbody><tr><th>입력 형식</th><td>PDBQT + PDBQT</td><td>PDBQT + PDBQT</td><td>PDB + SDF</td></tr><tr><th>탐색 위치</th><td>알려진 20 Å 박스</td><td>같은 20 Å 박스</td><td>전체 단백질</td></tr><tr><th>탐색 옵션</th><td>CPU 4<br>exhaustiveness 8</td><td>thread 8000<br>RILC-BFGS 사용</td><td>samples 10<br>기본 schedule</td></tr><tr><th>후보 요청</th><td>최대 5개</td><td>최대 5개</td><td>10개</td></tr><tr><th>시드</th><td colspan="3">20261009</td></tr></tbody></table></div>
       <p class="callout">이 비교의 목적은 <strong>도구 연결과 결과 검사를 확인</strong>하는 것입니다. 포켓 정보·탐색량·후보 수가 달라 동일 조건의 성능 경쟁으로 해석할 수 없습니다.</p>
+
+      <div class="method-explainer" id="method-differences">
+        <h3>CPU·GPU 결과가 달라진 이유와 DiffDock-L의 차이</h3>
+        <p>우리가 사용한 CPU Vina 1.2.7과 Vina-GPU 2.1은 <strong>버전·탐색 구현·최적화 옵션이 다른 프로그램</strong>입니다. 여러 시작 배치에서 위치·회전·비틀림을 바꾸며 찾으므로 탐색 경로와 계산량이 달라지면 후보도 달라질 수 있습니다.</p>
+        <p><strong>같은 시드 숫자도 서로 다른 프로그램의 탐색 경로를 같게 만들지는 않습니다.</strong> 이번 CPU의 exhaustiveness=8과 GPU의 thread=8000은 다른 설정이며, GPU에서는 RILC-BFGS도 켰습니다. 이번 차이를 단순히 CPU와 GPU의 계산 정밀도 탓이라고 확정하지 않았습니다.</p>
+        <div class="method-cards">
+          <article><span class="chip">Vina 계열 · 점수식 기반 탐색</span><h4>배치를 바꾸고 점수를 개선</h4><ol><li>여러 시작 배치 선택</li><li>위치·회전·비틀림 변경</li><li>도킹 에너지를 계산하며 최적화</li><li>좋은 점수의 후보를 모아 정렬</li></ol></article>
+          <article class="diffdock-method"><span class="chip">DiffDock-L · 학습된 생성 모델</span><h4>학습한 조정으로 후보 생성</h4><ol><li>흐트러진 초기 배치에서 시작</li><li>학습된 모델로 위치·회전·비틀림 조정</li><li>역확산 단계를 반복해 후보 생성</li><li>별도 confidence 모델로 정렬</li></ol></article>
+        </div>
+        <p>Vina 계열도 무작위 탐색을 하고, DiffDock-L도 여러 후보를 생성합니다. 차이는 <strong>어떤 규칙으로 배치를 개선하고 후보를 정렬하는가</strong>에 있습니다. 이번에는 포켓 위치를 Vina 계열에만 제공했으므로 방법과 입력 조건의 차이를 함께 봐야 합니다.</p>
+        <p class="small">확인 근거: <a href="https://autodock-vina.readthedocs.io/en/latest/faq.html" target="_blank" rel="noopener">Vina 공식 FAQ</a> · <a href="https://github.com/DeltaGroupNJUPT/Vina-GPU-2.1" target="_blank" rel="noopener">Vina-GPU 옵션</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/39320991/" target="_blank" rel="noopener">RILC-BFGS 논문</a> · <a href="https://arxiv.org/abs/2210.01776" target="_blank" rel="noopener">DiffDock 원리 논문</a> · <a href="https://arxiv.org/abs/2402.18396" target="_blank" rel="noopener">DiffDock-L 관련 논문</a></p>
+      </div>
       <details class="technical"><summary>Windows 실행 환경과 최초 준비</summary><div class="technical-content"><ul><li>GPU: NVIDIA TITAN RTX. Vina-GPU는 VS 2019 C++ Build Tools·CUDA 12.1의 OpenCL SDK·Boost 1.77.0으로 고정 소스 빌드 후 장치용 커널을 생성했습니다.</li><li>DiffDock-L: Python 3.12.7 · PyTorch 2.8.0+cu126 · PyG 2.6.1 · e3nn 0.5.1 · ProDy 2.6.1 조합에서 Windows 네이티브 실행을 확인했습니다.</li><li>DiffDock-L 소스 ref는 <code>85c49b60d3e0b0182a59ee43a34a6d7036981284</code>, 가중치는 v1.1입니다.</li><li>원 논문의 고정 환경과 동일한 재현을 뜻하지 않습니다. GNINA 실행 비교는 보류 상태입니다.</li></ul></div></details>
     </div>
   </section>
@@ -82,6 +95,7 @@ result = dock(
     <div class="section-heading"><span class="section-number">03 / RESULTS</span><h2 id="results-title">실행 결과</h2><p>세 엔진 모두 출력을 만들었고, 이번 조건에서 Vina 계열의 최고 순위가 참조에 가까웠습니다.</p></div>
     <div class="section-body">
       <p class="scroll-hint">표는 좌우로 밀어 전체 항목을 볼 수 있습니다.</p><div class="table-wrap result-table"><table><caption>2026-11-06 실측 · 준비된 1IEP 한 쌍</caption><thead><tr><th>엔진</th><th>전체 실행 시간</th><th>출력 후보</th><th>1위 참조 RMSD</th><th>후보 중 최소 RMSD</th></tr></thead><tbody><tr><th>Vina CPU <span>알려진 포켓</span></th><td>61.078초</td><td>3개</td><td class="teal-cell">0.889 Å</td><td>0.889 Å <small>1위</small></td></tr><tr><th>Vina-GPU <span>알려진 포켓</span></th><td class="teal-cell">4.844초</td><td>5개</td><td class="teal-cell">0.892 Å</td><td>0.892 Å <small>1위</small></td></tr><tr><th>DiffDock-L <span>전체 단백질 탐색</span></th><td>97.654초<small>캐시 재사용</small></td><td>10개<small>기본 기하 검사 실패 1개 포함</small></td><td>15.616 Å</td><td>4.198 Å <small>5위 · 사후 비교</small></td></tr></tbody></table></div>
+      <p class="pairwise-note"><strong>CPU·GPU의 1위 후보를 서로 직접 비교하면 RMSD는 0.088 Å입니다.</strong> 중원자 37개를 같은 좌표계에서 대조했으며, 이번 두 최상위 자세가 매우 가깝다는 뜻입니다. 위 표의 참조 대비 RMSD와는 다른 비교입니다.</p>
       <div class="reading-grid"><p><strong>시간</strong>빌드·가중치 다운로드·GPU 커널 생성·DiffDock 최초 테이블 생성은 위 비교에서 제외했습니다. 함수·실행기 전체 경과 시간으로, 순수 계산 시간만의 비교가 아닙니다.</p><p><strong>RMSD</strong>대응하는 리간드 원자들의 좌표 차이를 요약한 값입니다. 작을수록 준비된 참조에 가깝습니다. Vina 출력의 ‘최고 예측 자세 대비 RMSD’와 구분해 별도 계산했습니다.</p><p><strong>점수</strong>Vina 1위 에너지는 −13.270, Vina-GPU는 −13.3 kcal/mol입니다. DiffDock-L 1위 confidence −3.30은 별도의 자세 순위 점수이며 확률·친화도가 아닙니다.</p></div>
       <div class="finding-banner"><span>이번 단건에서 관찰한 결과</span><p>Vina-GPU의 전체 함수 시간은 CPU보다 약 <strong>12.6배 짧았고</strong>,<br class="desktop-break"> 두 엔진의 최고 순위 RMSD는 모두 약 <strong>0.89 Å</strong>였습니다.</p><small>탐색량이 같지 않고 반복 속도 측정도 하지 않았으므로, 일반적인 가속 배율이나 도구 우열을 뜻하지 않습니다.</small></div>
       <figure class="pose-figure"><a href="assets/pose-comparison.png" target="_blank" rel="noopener" aria-label="실제 후보 자세 비교 그림 크게 보기"><img src="assets/pose-comparison.png" alt="저장된 좌표에서 참조와 Vina 1위, DiffDock-L 1위·5위를 겹친 그림 및 후보별 RMSD 그래프. Vina 1위 0.889, DiffDock-L 1위 15.616, 5위 4.198 옹스트롬." loading="lazy"></a><figcaption><strong>실제 저장된 좌표 비교.</strong> 청록색은 준비된 참조, 주황색은 Vina, 보라색은 DiffDock-L입니다. 위쪽은 3D 좌표의 2D 투영, 아래쪽은 각 엔진의 자체 순위별 RMSD입니다. 클릭하면 원본 크기로 볼 수 있습니다.</figcaption></figure>
@@ -109,8 +123,27 @@ result = dock(
     </div>
   </section>
 
-  <section class="sources-section container" aria-labelledby="sources-title"><div class="section-heading"><span class="section-number">RECORDS & SOURCES</span><h2 id="sources-title">상세 기록과 출처</h2></div><div class="section-body"><div class="download-row"><a href="report.md" download>공유용 문서 · Markdown <span aria-hidden="true">↗</span></a><a href="assets/case-summary.json" download>실측 요약 · JSON <span aria-hidden="true">↗</span></a><a href="source-manifest.json" download>출처·파일 해시 <span aria-hidden="true">↗</span></a></div><ul class="source-list"><li><a href="https://github.com/ccsb-scripps/AutoDock-Vina" target="_blank" rel="noopener">AutoDock Vina</a> · 사용 버전 1.2.7 · <a href="https://autodock-vina.readthedocs.io/en/latest/docking_basic.html" target="_blank" rel="noopener">공식 1IEP 튜토리얼</a></li><li><a href="https://github.com/DeltaGroupNJUPT/Vina-GPU-2.1/tree/180272b8a5265d6ed9664178345933cebe2cd349" target="_blank" rel="noopener">AutoDock-Vina-GPU 2.1 고정 소스</a></li><li><a href="https://github.com/gcorso/DiffDock/tree/85c49b60d3e0b0182a59ee43a34a6d7036981284" target="_blank" rel="noopener">DiffDock 고정 소스</a> · v1.1 모델 · <a href="https://github.com/gcorso/DiffDock/blob/85c49b60d3e0b0182a59ee43a34a6d7036981284/data/splits/timesplit_no_lig_overlap_train" target="_blank" rel="noopener">1IEP가 포함된 학습 목록</a></li></ul><p class="small">수치는 2026-11-06 로컬 실행 결과·로그·비교 JSON에서 가져왔습니다. 역할·조건 도식과 실제 좌표 그림을 구분했습니다. 이 정적 페이지에서 도킹 모델이나 API를 호출하지 않습니다.</p></div></section>
+
+  <section class="glossary-section container" id="glossary" aria-labelledby="glossary-title">
+    <details class="technical glossary-details"><summary id="glossary-title">용어 사전 · 읽는 법과 이번 실험에서의 뜻</summary>
+      <div class="technical-content"><p>밑줄 있는 용어는 각 구역의 첫 등장에 표시했습니다. 눌러서 설명을 열거나 아래에서 찾아볼 수 있습니다.</p>
+        <label class="glossary-search-label" for="term-search">용어 찾기</label><input id="term-search" type="search" placeholder="예: RMSD, 시드, Å, confidence" autocomplete="off">
+        <p id="term-count" aria-live="polite"></p><div id="term-list"></div><p class="small"><a href="glossary.md" download>용어 사전 Markdown 내려받기</a></p>
+      </div>
+    </details>
+  </section>
+
+  <section class="sources-section container" aria-labelledby="sources-title"><div class="section-heading"><span class="section-number">RECORDS & SOURCES</span><h2 id="sources-title">상세 기록과 출처</h2></div><div class="section-body"><div class="download-row"><a href="report.md" download>공유용 문서 · Markdown <span aria-hidden="true">↗</span></a><a href="assets/case-summary.json" download>실측 요약 · JSON <span aria-hidden="true">↗</span></a><a href="source-manifest.json" download>출처·파일 해시 <span aria-hidden="true">↗</span></a></div><ul class="source-list"><li><a href="https://www.rcsb.org/structure/1IEP" target="_blank" rel="noopener">1IEP 공식 구조 기록 · c-Abl–이마티닙</a></li><li><a href="https://github.com/ccsb-scripps/AutoDock-Vina" target="_blank" rel="noopener">AutoDock Vina</a> · 사용 버전 1.2.7 · <a href="https://autodock-vina.readthedocs.io/en/latest/docking_basic.html" target="_blank" rel="noopener">공식 1IEP 튜토리얼</a></li><li><a href="https://github.com/DeltaGroupNJUPT/Vina-GPU-2.1/tree/180272b8a5265d6ed9664178345933cebe2cd349" target="_blank" rel="noopener">AutoDock-Vina-GPU 2.1 고정 소스</a></li><li><a href="https://github.com/gcorso/DiffDock/tree/85c49b60d3e0b0182a59ee43a34a6d7036981284" target="_blank" rel="noopener">DiffDock 고정 소스</a> · v1.1 모델 · <a href="https://github.com/gcorso/DiffDock/blob/85c49b60d3e0b0182a59ee43a34a6d7036981284/data/splits/timesplit_no_lig_overlap_train" target="_blank" rel="noopener">1IEP가 포함된 학습 목록</a></li></ul><p class="small">수치는 2026-11-06 로컬 실행 결과·로그·비교 JSON에서 가져왔습니다. 역할·조건 도식과 실제 좌표 그림을 구분했습니다. 이 정적 페이지에서 도킹 모델이나 API를 호출하지 않습니다.</p></div></section>
 </main>
+
+<dialog id="term-dialog" aria-labelledby="term-dialog-title" aria-describedby="term-meaning">
+  <div class="term-dialog-top"><span id="term-group"></span><button type="button" id="term-close" aria-label="용어 설명 닫기">닫기 <span aria-hidden="true">×</span></button></div>
+  <h2 id="term-dialog-title"></h2><p class="term-reading" id="term-reading"></p>
+  <p class="term-label">쉽게 말하면</p><p id="term-meaning"></p>
+  <div class="term-context-box"><p class="term-label">이번 실험에서는</p><p id="term-context"></p></div>
+  <button class="all-terms-button" type="button" id="show-all-terms">전체 용어 찾아보기 →</button>
+</dialog>
+
 <footer class="site-footer container"><p>개인 개발·실험 기록입니다. 공식 프로젝트 결과나 공식 평가 규약을 뜻하지 않습니다.</p><a href="../">학습 자료 홈으로 <span aria-hidden="true">↗</span></a></footer>
 </body>
 </html>

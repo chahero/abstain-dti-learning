@@ -1,5 +1,5 @@
 {
-  "content": "Original development report, implementation diagrams, and saved personal 1IEP execution data",
+  "content": "Original development report, novice term help, method comparison, and saved personal 1IEP execution data",
   "source_date": "2026-11-06",
   "generated_date": "2026-11-07",
   "rmsd_policy": "Prepared tutorial reference, heavy atom correspondence, receptor frame fixed, no ligand alignment or symmetry correction",
@@ -17,13 +17,33 @@
       "name": "DiffDock-L v1.1 model",
       "ref": "85c49b60d3e0b0182a59ee43a34a6d7036981284",
       "url": "https://github.com/gcorso/DiffDock"
+    },
+    {
+      "name": "1IEP official experimental structure",
+      "url": "https://www.rcsb.org/structure/1IEP"
+    },
+    {
+      "name": "Vina official FAQ on random search, reproducibility and options",
+      "url": "https://autodock-vina.readthedocs.io/en/latest/faq.html"
+    },
+    {
+      "name": "Vina-GPU 2.1 and RILC-BFGS paper",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39320991/"
+    },
+    {
+      "name": "DiffDock original method",
+      "url": "https://arxiv.org/abs/2210.01776"
+    },
+    {
+      "name": "DiffDock-L related paper",
+      "url": "https://arxiv.org/abs/2402.18396"
     }
   ],
   "files": [
     {
       "path": "assets/case-summary.json",
-      "bytes": 2369,
-      "sha256": "94a0c0bfc774a6d010bdd6d7742032a291b4c70f1eeace9ea0a7195cc137006c"
+      "bytes": 2596,
+      "sha256": "e3f9a740436312434ed60e69cc9bad3f9a84b2ca1f6ba0abb547b6db85c3afc9"
     },
     {
       "path": "assets/pose-comparison.png",
@@ -31,9 +51,19 @@
       "sha256": "e8e12dc22b5789644c55205d506d7e6c762fb83580b22e366c418227fd5900e4"
     },
     {
+      "path": "assets/terms.json",
+      "bytes": 38645,
+      "sha256": "9ec0beef47f68d0410a297a995204b6c50d5c47ba35a66439aca8bca4d25d8a7"
+    },
+    {
+      "path": "glossary.md",
+      "bytes": 26279,
+      "sha256": "96dd4e63850d0ecfe597dd6d291d060d6057eda892cb5cf7f082a4272544713c"
+    },
+    {
       "path": "index.html",
-      "bytes": 24619,
-      "sha256": "e9038462df0f4a93a6fdc92cc4d107e5402f8fcca6aaefbd9366cb33a346a66d"
+      "bytes": 29521,
+      "sha256": "403d8b6fa8baefeace922febd03db467654a04d5e315909c2ea46094c2335a2c"
     },
     {
       "path": "report.css",
@@ -47,8 +77,18 @@
     },
     {
       "path": "report.md",
-      "bytes": 9436,
-      "sha256": "c12058ed4802e891dd7a506a55237cd0e99d56c0a4b781b5408487b339356959"
+      "bytes": 10806,
+      "sha256": "87c31b4faa89c934f505c111e33d667899bb1e1cf2a93f2fa138473da67ce5ba"
+    },
+    {
+      "path": "terms.css",
+      "bytes": 5390,
+      "sha256": "fd4cb165901a8e74f941fed8e11138be9dc95e639fdd629f18e3925c59de9762"
+    },
+    {
+      "path": "terms.js",
+      "bytes": 5751,
+      "sha256": "f5ccbe9f10be901070324290e00bbf09a0ed314425e481290472d1cefa07375a"
     }
   ]
 }
