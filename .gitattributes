@@ -11,3 +11,6 @@ pocket-structure/** -text whitespace=cr-at-eol
 pocket-structure/**/*.pdb whitespace=-blank-at-eol
 pocket-structure/**/*.pdbqt whitespace=-blank-at-eol
 pocket-structure/**/*.sdf whitespace=-blank-at-eol
+
+# Preserve the lecture source manifest checksums across platforms.
+docking-agent/** -text whitespace=cr-at-eol

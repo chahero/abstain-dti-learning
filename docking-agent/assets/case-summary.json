@@ -1,0 +1,43 @@
+{
+  "case": "Prepared 1IEP tutorial",
+  "scope": "Personal implementation check; not an official benchmark",
+  "source_date": "2026-11-06",
+  "receptor_heavy_atoms": 2229,
+  "ligand_heavy_atoms": 37,
+  "rmsd": "Fixed receptor frame; atom correspondence; no ligand alignment or symmetry correction",
+  "training_overlap": "1iep occurs in DiffDock's timesplit_no_lig_overlap_train list",
+  "timing": "Saved launcher wall times; GPU kernel compilation and DiffDock first table generation excluded",
+  "diffdock_sampling_seconds": 32.585,
+  "nan_recovery_warning_count": 15,
+  "runs": [
+    {
+      "engine": "vina",
+      "label": "Vina CPU",
+      "elapsed_seconds": 61.078,
+      "pose_count": 3,
+      "top1_rmsd_angstrom": 0.8888736875577052,
+      "search": "known pocket box",
+      "requested_top_k": 5
+    },
+    {
+      "engine": "vina_gpu",
+      "label": "Vina-GPU",
+      "elapsed_seconds": 4.844,
+      "pose_count": 5,
+      "top1_rmsd_angstrom": 0.8924698950180411,
+      "search": "known pocket box",
+      "requested_top_k": 5
+    },
+    {
+      "engine": "diffdock_l",
+      "label": "DiffDock-L",
+      "elapsed_seconds": 97.654,
+      "pose_count": 10,
+      "top1_rmsd_angstrom": 15.616125507186993,
+      "best_rmsd_angstrom": 4.19839427983115,
+      "basic_geometry_failures": 1,
+      "search": "blind whole-protein docking",
+      "samples": 10
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 [학습 사이트 열기](https://chahero.github.io/abstain-dti-learning/)
 
-신약 발굴 AI를 공부하기 위한 한국어 개인 학습 자료입니다. 메인 화면에서 **그림으로 읽는 포켓 교재**와 **음성을 들으며 보는 논문 웹 발표**를 선택할 수 있습니다.
+신약 발굴 AI를 공부하기 위한 한국어 개인 학습 자료입니다. 메인 화면에서 **포켓 그림 교재**, **도킹 Agent 실습 해설**, **논문 음성 웹 발표**를 선택할 수 있습니다.
 
 ## 단백질 포켓과 결합 구조 예측
 
@@ -21,6 +21,14 @@
 
 [포켓 논문 핵심 해설 10편](https://chahero.github.io/abstain-dti-learning/pocket-structure/papers/)에서 포켓 탐지 기술 7편과 별도 평가·분석 3편의 문제의식·원리·결과·한계·용어를 읽을 수 있습니다. 발전 흐름도의 기술 상자에서도 연결됩니다.
 
+## Docking Agent · 도식으로 읽는 실제 실습
+
+[9단계 강의 읽기](https://chahero.github.io/abstain-dti-learning/docking-agent/) · [실제 결과 비교](https://chahero.github.io/abstain-dti-learning/docking-agent/#step-5)
+
+Codex·하네스·도킹 엔진의 역할부터 준비된 1IEP 입력, Vina·Vina-GPU·DiffDock-L의 실행, 참조 RMSD와 발산 후보 검사를 단계별 도식으로 설명합니다. 목차·키보드 탐색, 역할·탐색 조건·지표·검사 단계 전환, 원고 다운로드와 인쇄를 지원합니다.
+
+실제 개인 실행 사례이며 도구 간 탐색 조건과 후보 수가 다릅니다. 1IEP의 학습 데이터 겹침과 수치 경고를 함께 표시하며 공식 성능 순위나 친화도 검증으로 해석하지 않습니다. 페이지는 저장된 데이터로 설명하며 브라우저에서 모델 추론이나 유료 API를 호출하지 않습니다.
+
 ## AI Agents That Matter · 웹 발표
 
 [음성과 함께 발표 보기](https://chahero.github.io/abstain-dti-learning/papers/ai-agents-that-matter/) · [장표·대본 PDF](https://chahero.github.io/abstain-dti-learning/papers/ai-agents-that-matter/downloads/slides-and-script.pdf)
@@ -31,7 +39,7 @@
 
 GitHub Pages는 **Settings → Pages → Deploy from a branch → main → /(root)**로 배포합니다. `main`에 푸시하면 Pages가 갱신됩니다. 루트의 `index.html`과 `.nojekyll`을 유지합니다.
 
-메인은 `index.html`과 `assets/home.css`로 구성한 정적 페이지입니다. 교재는 `pocket-structure/`, 웹 발표는 `papers/ai-agents-that-matter/`에 있습니다. 별도 Node/Python 서버, 모델 추론, TTS API나 YouTube 연결 없이 열람할 수 있습니다.
+메인은 `index.html`과 `assets/home.css`로 구성한 정적 페이지입니다. 교재는 `pocket-structure/`, 도킹 실습 강의는 `docking-agent/`, 웹 발표는 `papers/ai-agents-that-matter/`에 있습니다. 별도 Node/Python 서버, 모델 추론, TTS API나 YouTube 연결 없이 열람할 수 있습니다.
 
 기존 읽기 가이드·실습 자료·자막 원본은 `guides/`, `data/`, `assets/subtitles/`에 보존되어 있습니다. 종료한 YouTube 영상의 플레이어와 영상 목록은 메인에서 제공하지 않습니다.
 
