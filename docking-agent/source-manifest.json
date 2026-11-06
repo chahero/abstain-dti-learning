@@ -1,5 +1,5 @@
 {
-  "content": "Original educational diagrams and saved personal 1IEP execution data",
+  "content": "Original development report, implementation diagrams, and saved personal 1IEP execution data",
   "source_date": "2026-11-06",
   "generated_date": "2026-11-07",
   "rmsd_policy": "Prepared tutorial reference, heavy atom correspondence, receptor frame fixed, no ligand alignment or symmetry correction",
@@ -22,8 +22,8 @@
   "files": [
     {
       "path": "assets/case-summary.json",
-      "bytes": 1422,
-      "sha256": "3c8fddf0c23faee52095d8057f79c3605a697108bb6113afa1f8d86252bbc853"
+      "bytes": 2369,
+      "sha256": "94a0c0bfc774a6d010bdd6d7742032a291b4c70f1eeace9ea0a7195cc137006c"
     },
     {
       "path": "assets/pose-comparison.png",
@@ -32,23 +32,23 @@
     },
     {
       "path": "index.html",
-      "bytes": 22352,
-      "sha256": "26b0c72f1a05fde75f9504e4ddf29be5fa3700fd011e347dedc4e07c612a077f"
+      "bytes": 24619,
+      "sha256": "e9038462df0f4a93a6fdc92cc4d107e5402f8fcca6aaefbd9366cb33a346a66d"
     },
     {
-      "path": "lesson.css",
-      "bytes": 7936,
-      "sha256": "276cf348c99f1e80d83e71bd9a477cd9e49429160eb2668743594ab7f3a76e22"
+      "path": "report.css",
+      "bytes": 19068,
+      "sha256": "f1e75c6a90637304dd3c2bf560590db1e2d281a339076bfd955cc7e972f1f28c"
     },
     {
-      "path": "lesson.js",
-      "bytes": 8618,
-      "sha256": "733e734759f65478df031a98e6044671058df9d770ade1b598d916f59db055cf"
+      "path": "report.js",
+      "bytes": 1819,
+      "sha256": "bde0412439ba0d336b3affd33522017c21315acdd12bec22686131f9ae69e7a6"
     },
     {
-      "path": "lesson.md",
-      "bytes": 6233,
-      "sha256": "22e7826b5a37f2105d6c1ab3d46c7b3688f6882948629d17273bade6fde66d39"
+      "path": "report.md",
+      "bytes": 9436,
+      "sha256": "c12058ed4802e891dd7a506a55237cd0e99d56c0a4b781b5408487b339356959"
     }
   ]
 }

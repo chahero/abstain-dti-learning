@@ -2,83 +2,115 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Codex와 도킹 실행기의 역할부터 Vina·Vina-GPU·DiffDock-L의 실제 1IEP 실행과 실패 후보까지, 도식으로 읽는 9단계 실습 해설.">
-  <title>Docking Agent 실습 · Abstain-DTI 학습 자료</title><link rel="icon" href="data:,">
-  <link rel="stylesheet" href="../pocket-structure/01-pocket-basics/style.css">
-  <link rel="stylesheet" href="lesson.css?v=20261107">
-  <script src="lesson.js?v=20261107" defer></script>
+  <meta name="description" content="Docking Agent 개발 및 실험 기록. 공통 실행기 구현, Windows에서 Vina·Vina-GPU·DiffDock-L 실행, 1IEP 결과와 실패 분석을 공유합니다.">
+  <title>Docking Agent 구현·실험 기록 · Abstain-DTI</title>
+  <link rel="icon" href="data:,"><link rel="stylesheet" href="report.css?v=20261107-report">
+  <script src="report.js?v=20261107-report" defer></script>
 </head>
 <body>
-<a class="skip" href="#lesson-title">강의 본문으로 이동</a>
-<header class="site-header"><a href="../">Abstain-DTI 학습 자료</a><div><a href="../pocket-structure/05-docking/">도킹 기초 교재</a><a href="lesson.md" download>학습 원고</a><button type="button" id="print">인쇄</button></div></header>
-<main class="reader">
-  <div class="course-line"><span>Docking Agent · 실제 실행과 결과 읽기</span><label for="step-select">목차 <select id="step-select" aria-label="강의 목차"></select></label></div>
-  <div class="heading"><p class="step-count" id="step-count">1 / 9</p><h1 id="lesson-title" tabindex="-1">도킹 Agent, 무엇을 만들었을까?</h1><p id="lesson-intro">요청을 판단하는 LLM과 분자 좌표를 계산하는 도구를 연결합니다.</p></div>
+<a class="skip" href="#overview">본문으로 이동</a>
+<header class="site-header"><a class="brand" href="../">Abstain-DTI <span>개발·실험 기록</span></a><div class="header-actions"><a href="report.md" download>문서 내려받기</a><button id="print" type="button">인쇄 / PDF</button></div></header>
+<main>
+  <section class="hero container" id="overview" aria-labelledby="report-title">
+    <div class="eyebrow"><span class="status-dot"></span> Docking Agent · 개발 결과 공유 <span class="date">실행 2026.11.06 · 정리 2026.11.07</span></div>
+    <h1 id="report-title">도킹 도구를 연결하고,<br>실제 결과까지 비교했습니다.</h1>
+    <p class="lead">Codex가 호출할 Python 실행기를 만들고, Windows에서<br class="desktop-break"> <strong>Vina · Vina-GPU · DiffDock-L</strong>을 같은 1IEP 준비 구조로 실행한 기록입니다.</p>
+    <div class="hero-bottom"><p>차재민 · Abstain-DTI 러너의 개인 개발 결과</p><a class="text-link" href="#results">실험 결과 바로 보기 <span aria-hidden="true">↓</span></a></div>
+    <div class="summary-grid">
+      <article><span class="label">만든 것</span><h2>호출 가능한 도킹 실행기</h2><p><code>dock(request)</code>와 CLI로 Vina 계열을 연결하고 실행별 기록을 보존했습니다.</p></article>
+      <article><span class="label">실행한 것</span><h2>Windows에서 3개 엔진</h2><p>Vina·Vina-GPU를 공통 실행기로, DiffDock-L을 별도 CLI로 실행했습니다.</p></article>
+      <article class="finding"><span class="label">발견한 것</span><h2>성공 종료 뒤의 비정상 후보</h2><p>DiffDock-L 출력 10개 중 1개에서 좌표 발산을 확인하고 검사·경고 기록을 보완했습니다.</p></article>
+    </div>
+    <p class="scope-line">이번 단계의 대상은 <strong>결합 자세 생성과 실행 관리</strong>입니다. 실험 친화도 예측의 개선 효과를 검증한 결과는 아닙니다.</p>
+  </section>
 
-  <article data-step="1" data-title="도킹 Agent, 무엇을 만들었을까?" data-intro="요청을 판단하는 LLM과 분자 좌표를 계산하는 도구를 연결합니다.">
-    <h2 class="print-title">1. 도킹 Agent, 무엇을 만들었을까?</h2>
-    <div class="spread"><figure class="diagram-panel"><div class="journey">
-      <div class="journey-node"><span class="number">1</span><h3>분석 요청</h3><p>이 단백질에<br>이 화합물을 도킹해줘</p></div><span class="flow-arrow" aria-hidden="true">→</span>
-      <div class="journey-node emphasis"><span class="number">2</span><h3>Codex가 판단</h3><p>어떤 도구를 부르고<br>어떤 조건으로 실행할까?</p></div>
-      <div class="journey-node"><span class="number">3</span><h3>도킹 실행</h3><p>자세 후보와 점수<br>로그를 생성</p></div><span class="flow-arrow" aria-hidden="true">→</span>
-      <div class="journey-node"><span class="number">4</span><h3>결과 확인</h3><p>실행이 끝났나?<br>후보를 믿어도 될까?</p></div>
-    </div><figcaption>직접 만든 역할 도식 · 실제 분자 구조나 모델 예측 그림은 아닙니다.</figcaption></figure>
-    <div class="explanation"><h2>LLM의 판단을 실제 계산과 연결하기</h2><p>도킹은 단백질과 화합물이 결합할 때 가능한 <strong>3차원 자세</strong>를 찾는 일입니다.</p><p>이 실습에서는 <strong>Codex</strong>가 요청을 해석하고 도구 호출을 판단합니다. Python 실행기는 도킹 프로그램을 실행하고 결과와 로그를 돌려줍니다.</p><p>현재 만든 것은 이 연결 경로입니다. 별도 LLM API를 넣은 독립 앱이나 자동 기권 정책까지 구현한 상태는 아닙니다.</p><p class="takeaway">판단하는 부분과 계산하는 부분을 나눠 봅니다.</p></div></div>
-  </article>
+  <nav class="section-nav" aria-label="문서 목차"><div class="container"><a href="#overview" aria-current="location">구현 요약</a><a href="#implementation">구현 구조</a><a href="#experiment">실험 설계</a><a href="#results">실행 결과</a><a href="#failure">실패 분석</a><a href="#conclusion">결론과 현재 범위</a></div></nav>
 
-  <article data-step="2" data-title="LLM·하네스·엔진은 각각 무엇을 할까?" data-intro="이름을 눌러 같은 실행 흐름 안에서 역할이 어떻게 다른지 살펴봅니다." hidden>
-    <h2 class="print-title">2. LLM·하네스·엔진은 각각 무엇을 할까?</h2>
-    <div class="spread"><figure class="diagram-panel"><div class="choice-row" role="group" aria-label="역할 강조"><button data-role="llm" aria-pressed="true">LLM</button><button data-role="harness" aria-pressed="false">하네스</button><button data-role="engine" aria-pressed="false">도킹 엔진</button></div>
-      <div class="architecture" id="architecture"><div class="role-box selected" data-layer="llm"><strong>Codex</strong><span>요청 해석 · 도구 선택 · 결과 설명</span></div><div class="down-arrow" aria-hidden="true">↓</div><div class="branch-grid"><div><div class="role-box" data-layer="harness"><strong>공통 Python 실행기</strong><span>dock(request) · CLI</span></div><div class="down-arrow" aria-hidden="true">↓</div><div class="engine-pair"><div class="role-box" data-layer="engine"><strong>Vina</strong><span>CPU</span></div><div class="role-box" data-layer="engine"><strong>Vina-GPU</strong><span>GPU</span></div></div></div><div><div class="role-box" data-layer="harness"><strong>DiffDock-L 별도 CLI</strong><span>추론 준비 · 실행 · 검사</span></div><div class="down-arrow" aria-hidden="true">↓</div><div class="role-box" data-layer="engine"><strong>DiffDock-L</strong><span>자세 생성 + confidence</span></div></div></div><div class="down-arrow" aria-hidden="true">↓</div><div class="result-box">후보 파일 · 점수 · 시간 · 경고 · 입력 해시</div></div><figcaption>현재 구현 구조 · DiffDock-L은 공통 dock(request)와 구분된 진입점입니다.</figcaption></figure>
-    <div class="explanation"><h2 id="role-title">LLM은 다음 행동을 판단합니다</h2><p id="role-description" aria-live="polite">Codex가 요청을 해석하고 어떤 도구를 실행할지 판단합니다. 분자의 좌표를 직접 계산하는 엔진과 역할이 다릅니다.</p><p>하네스는 <strong>입력 검사, 실행 조건, 제한 시간, 로그와 결과 보존</strong>을 담당합니다. 엔진은 실제 도킹 계산을 수행합니다.</p><p>현재 Vina와 Vina-GPU는 공통 실행기에 연결했고, DiffDock-L은 별도 CLI로 검증했습니다. 이번 경로는 ToolUniverse에 직접 의존하지 않습니다.</p><p class="takeaway">LLM의 판단과 엔진의 성능을 따로 관찰합니다.</p></div></div>
-  </article>
+  <section class="report-section container" id="implementation" aria-labelledby="implementation-title">
+    <div class="section-heading"><span class="section-number">01 / IMPLEMENTATION</span><h2 id="implementation-title">구현 구조</h2><p>LLM의 도구 호출을 실제 계산·기록으로 연결하는 실행 경로를 만들었습니다.</p></div>
+    <div class="section-body">
+      <div class="purpose"><h3>왜 만들었나</h3><p>에이전트가 도킹을 요청했을 때 실행 명령만 보내는 데서 끝나지 않고, 입력과 실행 조건을 확인하고 <strong>후보 자세·점수·로그를 되돌려주는 재사용 가능한 경로</strong>가 필요했습니다.</p></div>
+      <figure class="architecture panel">
+        <div class="arch-top"><span class="chip">판단</span><strong>Codex</strong><p>사용자 요청 해석 → 도구 호출 판단 → 결과 해석</p></div>
+        <div class="flow-down" aria-hidden="true">↓</div>
+        <div class="arch-branches">
+          <div class="arch-branch"><div class="arch-runner"><span class="chip">공통 실행기</span><h3><code>dock(request)</code> / <code>run.py</code></h3><p>준비된 PDBQT · 포켓 박스 · 엔진별 실행 옵션</p></div><div class="flow-down" aria-hidden="true">↓</div><div class="engine-pair"><div class="engine"><strong>Vina 1.2.7</strong><span>CPU 탐색</span></div><div class="engine"><strong>Vina-GPU 2.1</strong><span>GPU 탐색</span></div></div></div>
+          <div class="arch-branch"><div class="arch-runner purple"><span class="chip">별도 실행 경로</span><h3><code>diffdock_windows.py</code></h3><p>1IEP 검증용 CLI · PDB + SDF · 모델 추론</p></div><div class="flow-down" aria-hidden="true">↓</div><div class="engine purple"><strong>DiffDock-L</strong><span>자세 생성 + confidence 순위</span></div></div>
+        </div>
+        <div class="flow-down" aria-hidden="true">↓</div>
+        <div class="arch-result"><strong>실행별 결과 보존</strong><span>후보 파일 · 엔진별 점수 · 입력 해시 · 실행 조건 · 시간 · 원시 로그</span></div>
+        <div class="flow-down" aria-hidden="true">↓</div>
+        <div class="arch-review"><strong>결과 검사·비교</strong><span>파일·원자·좌표 확인 → 기본 기하 검사 → 같은 참조에서 RMSD 계산</span></div>
+        <figcaption>이번에 구현하고 실행한 경로. Codex는 이 개발 세션에서 판단을 맡았고, DiffDock-L은 공통 <code>dock(request)</code>에 아직 통합하지 않았습니다.</figcaption>
+      </figure>
+      <div class="two-columns">
+        <article class="detail-block"><h3>공통 실행기가 담당하는 일</h3><ul><li>요청 스키마, 준비된 구조, 좌표계·박스·옵션 검사</li><li>엔진 실행, 제한 시간, 요청별 새 출력 폴더 관리</li><li>출력 자세·원자 대응·유한한 점수 확인</li><li>입력 사본·해시·버전·설정·원시 로그·결과 JSON 보존</li></ul></article>
+        <article class="detail-block"><h3>현재 자동화 범위</h3><ul><li>Vina·Vina-GPU: 공통 요청으로 실행 가능</li><li>DiffDock-L: Windows에서 1IEP 예제 실행·검사 가능</li><li>ToolUniverse에 직접 의존하지 않는 실행 경로</li><li>독립 LLM 앱, 자동 엔진 선택·재시도·기권 정책은 미구현</li></ul></article>
+      </div>
+      <details class="technical"><summary>코드 구성·호출 형태·저장되는 파일</summary><div class="technical-content"><p>로컬 <code>docking-agent/</code> 안의 주요 구현 파일입니다.</p><p class="scroll-hint">표는 좌우로 밀어 전체 항목을 볼 수 있습니다.</p><div class="table-wrap"><table class="file-table"><thead><tr><th>파일</th><th>담당 기능</th></tr></thead><tbody><tr><td><code>docking_agent/runner.py</code></td><td>Vina 계열 공통 함수 <code>dock(request)</code></td></tr><tr><td><code>run.py</code></td><td>JSON 요청을 받는 CLI</td></tr><tr><td><code>diffdock_windows.py</code></td><td>DiffDock-L 1IEP 전용 검증·실행 CLI</td></tr><tr><td><code>docking_agent/geometry_sanity.py</code></td><td>기본 결합 길이 검사</td></tr><tr><td><code>compare.py</code> · <code>compare_diffdock.py</code></td><td>입력 대조·참조 RMSD·실행 결과 비교</td></tr><tr><td><code>scripts/</code> · <code>tests/</code></td><td>Windows 준비·빌드 및 실행기 오류 처리 검사</td></tr></tbody></table></div><div class="two-columns"><div><h4>Python 호출의 핵심</h4><pre><code>from docking_agent import dock
 
-  <article data-step="3" data-title="서로 다른 파일에 같은 분자가 들어 있을까?" data-intro="파일 이름만 같다고 판단하지 않고, 좌표와 원자 대응을 확인했습니다." hidden>
-    <h2 class="print-title">3. 서로 다른 파일에 같은 분자가 들어 있을까?</h2>
-    <div class="spread"><figure class="diagram-panel"><div class="input-group"><h3>단백질 · 1IEP 준비 구조</h3><div class="format-row"><span>PDBQT</span><b aria-hidden="true">↔</b><span>PDB</span></div><div class="big-fact"><strong>2,229</strong><span>중원자 좌표 모두 일치</span></div></div><div class="input-group ligand-group"><h3>리간드 · 같은 화합물</h3><div class="format-row"><span>PDBQT</span><b aria-hidden="true">↔</b><span>SDF</span></div><div class="big-fact"><strong>37</strong><span>중원자 대응 · 참조 좌표 오차 0 Å</span></div></div><figcaption>실제 입력 파일에서 계산한 확인 결과 · 중원자는 여기서 수소를 제외한 원자를 뜻합니다.</figcaption></figure>
-    <div class="explanation"><h2>형식이 달라도 비교 기준은 같게</h2><p>Vina는 준비된 <strong>PDBQT</strong>, DiffDock-L은 단백질 <strong>PDB</strong>와 리간드 <strong>SDF</strong>를 받습니다.</p><p>이번에는 단백질 중원자 2,229개의 좌표를 대조했고, 리간드 중원자 37개도 같은 원자로 대응시켰습니다.</p><p>이렇게 해야 후보 자세가 달라졌을 때 <strong>입력부터 다른 실험이었는지</strong>와 <strong>예측 결과가 다른 것인지</strong>를 구분할 수 있습니다.</p><p class="takeaway">같은 좌표계와 같은 참조에서 비교합니다.</p></div></div>
-  </article>
+result = dock(
+    request,
+    base_dir=request_path.parent,
+    output_dir="outputs/1iep",
+)</code></pre><p class="small">request에 수용체·리간드 경로, 같은 좌표계의 포켓 박스, 엔진·시드·탐색 옵션을 전달합니다.</p></div><div><h4>Vina 실행 폴더 예</h4><pre><code>run-&lt;timestamp&gt;-&lt;id&gt;/
+  request.json
+  receptor.pdbqt · ligand.pdbqt
+  poses.pdbqt · pose-001.pdbqt …
+  stdout.log · stderr.log
+  result.json</code></pre><p class="small">실행마다 새 폴더를 생성합니다. 결과 파일에 입력 해시와 엔진 버전·옵션·시간을 함께 남깁니다.</p></div></div><p class="small">이 웹페이지에는 구현 설명과 실측 요약을 게시했습니다. 실행 코드와 대용량 환경·가중치는 로컬 개발 폴더에 보존되어 있습니다.</p></div></details>
+    </div>
+  </section>
 
-  <article data-step="4" data-title="같은 입력인데 왜 비교 조건은 다를까?" data-intro="Vina에는 포켓 박스를 주고, DiffDock-L에는 전체 단백질을 주었습니다." hidden>
-    <h2 class="print-title">4. 같은 입력인데 왜 비교 조건은 다를까?</h2>
-    <div class="spread"><figure class="diagram-panel"><div class="choice-row" role="group" aria-label="탐색 조건 선택"><button data-search="pocket" aria-pressed="true">Vina 계열 · 포켓 지정</button><button data-search="blind" aria-pressed="false">DiffDock-L · 전체 탐색</button></div>
-      <svg id="search-figure" viewBox="0 0 640 390" role="img" aria-label="포켓 박스를 지정하는 경우와 전체 단백질에서 위치를 찾는 경우의 원리 도식"><path d="M140 190C85 95 190 36 278 85C347 25 467 65 455 150C551 193 502 315 411 289C352 355 267 317 248 281C149 317 88 262 140 190Z" fill="#edf4f5" stroke="#85b7bd" stroke-width="3"/><path d="M260 146Q318 212 390 156Q359 250 293 225Z" fill="#d1e8e9" stroke="#85b7bd" stroke-width="2"/><g id="known-box"><rect x="250" y="129" width="160" height="130" rx="6" fill="#087f8c12" stroke="#087f8c" stroke-width="3" stroke-dasharray="9 6"/><path d="M330 129V97H468" fill="none" stroke="#087f8c" stroke-width="2"/><text x="468" y="82" text-anchor="end" fill="#087f8c" font-size="23">20 Å 포켓 박스</text></g><g id="whole-search" hidden><ellipse cx="313" cy="195" rx="238" ry="155" fill="#7051bc09" stroke="#7051bc" stroke-width="3" stroke-dasharray="9 6"/><circle cx="177" cy="159" r="12" fill="#7051bc"/><circle cx="348" cy="203" r="12" fill="#7051bc"/><circle cx="415" cy="259" r="12" fill="#7051bc"/><text x="320" y="375" text-anchor="middle" fill="#7051bc" font-size="23">위치도 예측하는 전체 단백질 탐색</text></g></svg><figcaption>직접 그린 원리 도식 · 실제 1IEP의 표면이나 예측 포켓을 표시한 그림은 아닙니다.</figcaption></figure>
-    <div class="explanation"><h2 id="search-title">주어진 포켓 안에서 자세를 찾기</h2><p id="search-description" aria-live="polite">Vina와 Vina-GPU에는 알려진 포켓을 중심으로 한 20 Å 정육면체 박스를 주었습니다. 이 안에서 화합물의 배치를 탐색합니다.</p><p>기본 DiffDock-L에는 그 박스를 주지 않았습니다. <strong>단백질 전체에서 결합 위치와 자세를 예측</strong>하는 조건입니다.</p><p>같은 구조를 써도 주어진 정보와 탐색 문제가 다릅니다. 후보 수도 Vina는 최대 5개 요청, DiffDock-L은 기본 10개 생성으로 달랐습니다.</p><p class="takeaway">이 표로 일반적인 도구 순위를 정하지 않습니다.</p></div></div>
-  </article>
+  <section class="report-section container" id="experiment" aria-labelledby="experiment-title">
+    <div class="section-heading"><span class="section-number">02 / EXPERIMENT</span><h2 id="experiment-title">실험 설계</h2><p>실행 가능성과 결과 검사 경로를 확인하기 위해 준비된 1IEP 한 쌍을 사용했습니다.</p></div>
+    <div class="section-body">
+      <div class="input-strip"><div><span>같은 단백질</span><strong>1IEP</strong><p>수소를 제외한 원자 2,229개<br>PDB ↔ PDBQT 좌표 일치</p></div><b aria-hidden="true">+</b><div><span>같은 화합물</span><strong>37개 중원자</strong><p>SDF ↔ PDBQT 원자 대응 확인<br>참조 좌표 오차 0 Å</p></div><b aria-hidden="true">→</b><div><span>공통 비교 기준</span><strong>준비된 참조 자세</strong><p>단백질 좌표계 고정<br>리간드 재정렬·대칭 보정 없음</p></div></div>
+      <h3 class="block-title">입력은 맞췄지만, 탐색 조건은 다릅니다</h3>
+      <div class="search-comparison">
+        <article class="search-card"><div class="card-top"><span class="chip">Vina · Vina-GPU</span><strong>알려진 포켓 안에서 탐색</strong></div><svg viewBox="0 0 400 190" role="img" aria-label="알려진 포켓 주변에 20 옹스트롬 박스를 지정하는 탐색 조건 도식"><path d="M65 93C29 28 115 9 168 42C225 5 300 33 294 88C356 126 296 177 239 154C173 191 118 160 112 143C53 167 33 123 65 93Z" fill="#e6eff1" stroke="#a4bec6" stroke-width="2"/><path d="M160 79Q199 120 245 87Q219 143 181 127Z" fill="#c1dfe0"/><rect x="151" y="66" width="108" height="87" rx="5" fill="#087f8c10" stroke="#087f8c" stroke-width="2" stroke-dasharray="6 4"/><text x="325" y="80" text-anchor="middle" fill="#087f8c" font-size="17">20 Å</text><path d="M260 83H291" stroke="#087f8c"/></svg><p>중심 <code>[15.19, 53.903, 16.917]</code><br>박스 변 길이 <code>[20, 20, 20] Å</code></p></article>
+        <article class="search-card purple"><div class="card-top"><span class="chip">DiffDock-L</span><strong>전체 단백질에서 위치·자세 예측</strong></div><svg viewBox="0 0 400 190" role="img" aria-label="포켓 위치를 주지 않고 전체 단백질에서 예측하는 탐색 조건 도식"><path d="M65 93C29 28 115 9 168 42C225 5 300 33 294 88C356 126 296 177 239 154C173 191 118 160 112 143C53 167 33 123 65 93Z" fill="#e6eff1" stroke="#a4bec6" stroke-width="2"/><path d="M160 79Q199 120 245 87Q219 143 181 127Z" fill="#c1dfe0"/><ellipse cx="192" cy="96" rx="166" ry="86" fill="none" stroke="#7051bc" stroke-width="2" stroke-dasharray="6 4"/><circle cx="102" cy="64" r="7" fill="#7051bc"/><circle cx="209" cy="114" r="7" fill="#7051bc"/><circle cx="286" cy="137" r="7" fill="#7051bc"/></svg><p>포켓 박스 미제공<br>공식 v1.1 모델·기본 추론 일정 사용</p></article>
+      </div>
+      <p class="figure-note">위 두 그림은 탐색 조건을 설명하기 위한 도식이며, 실제 1IEP 단백질 표면이 아닙니다.</p>
+      <p class="scroll-hint">표는 좌우로 밀어 전체 항목을 볼 수 있습니다.</p><div class="table-wrap"><table><caption>실제 실행 조건</caption><thead><tr><th>항목</th><th>Vina CPU</th><th>Vina-GPU</th><th>DiffDock-L</th></tr></thead><tbody><tr><th>입력 형식</th><td>PDBQT + PDBQT</td><td>PDBQT + PDBQT</td><td>PDB + SDF</td></tr><tr><th>탐색 위치</th><td>알려진 20 Å 박스</td><td>같은 20 Å 박스</td><td>전체 단백질</td></tr><tr><th>탐색 옵션</th><td>CPU 4<br>exhaustiveness 8</td><td>thread 8000<br>RILC-BFGS 사용</td><td>samples 10<br>기본 schedule</td></tr><tr><th>후보 요청</th><td>최대 5개</td><td>최대 5개</td><td>10개</td></tr><tr><th>시드</th><td colspan="3">20261009</td></tr></tbody></table></div>
+      <p class="callout">이 비교의 목적은 <strong>도구 연결과 결과 검사를 확인</strong>하는 것입니다. 포켓 정보·탐색량·후보 수가 달라 동일 조건의 성능 경쟁으로 해석할 수 없습니다.</p>
+      <details class="technical"><summary>Windows 실행 환경과 최초 준비</summary><div class="technical-content"><ul><li>GPU: NVIDIA TITAN RTX. Vina-GPU는 VS 2019 C++ Build Tools·CUDA 12.1의 OpenCL SDK·Boost 1.77.0으로 고정 소스 빌드 후 장치용 커널을 생성했습니다.</li><li>DiffDock-L: Python 3.12.7 · PyTorch 2.8.0+cu126 · PyG 2.6.1 · e3nn 0.5.1 · ProDy 2.6.1 조합에서 Windows 네이티브 실행을 확인했습니다.</li><li>DiffDock-L 소스 ref는 <code>85c49b60d3e0b0182a59ee43a34a6d7036981284</code>, 가중치는 v1.1입니다.</li><li>원 논문의 고정 환경과 동일한 재현을 뜻하지 않습니다. GNINA 실행 비교는 보류 상태입니다.</li></ul></div></details>
+    </div>
+  </section>
 
-  <article data-step="5" data-title="세 도구를 실행하면 어떤 값이 나올까?" data-intro="저장한 실측값을 시간과 자세 오차로 나눠 봅니다. 버튼은 표시 항목만 바꿉니다." hidden>
-    <h2 class="print-title">5. 세 도구를 실행하면 어떤 값이 나올까?</h2>
-    <div class="spread"><figure class="diagram-panel"><div class="choice-row" role="group" aria-label="비교 지표 선택"><button data-metric="time" aria-pressed="true">전체 실행 시간</button><button data-metric="rmsd" aria-pressed="false">최고 순위 참조 RMSD</button></div><h3 id="metric-title">전체 실행 시간 · 초</h3><div id="metric-bars" class="metric-bars" aria-live="polite"><p>실측 데이터를 불러오는 중입니다.</p></div><p class="state-caption" id="metric-caption">가중치 다운로드·C++ 빌드·최초 테이블 생성은 제외한 실행 기록입니다.</p><figcaption>2026-11-06 저장된 실행 결과 · 새로운 도킹을 실행하는 화면은 아닙니다.</figcaption></figure>
-    <div class="explanation"><h2>시간과 참조 자세의 재현 정도</h2><div class="table-scroll"><table><thead><tr><th>도구</th><th>시간</th><th>1위 RMSD</th></tr></thead><tbody><tr><th>Vina CPU</th><td>61.08초</td><td>0.889 Å</td></tr><tr><th>Vina-GPU</th><td>4.84초</td><td>0.892 Å</td></tr><tr><th>DiffDock-L</th><td>97.65초</td><td>15.616 Å</td></tr></tbody></table></div><p>이번 조건에서 Vina의 최고 순위가 준비된 참조와 더 가까웠습니다. <strong>탐색 위치·후보 수·시간에 포함된 작업은 서로 다릅니다.</strong></p><p>Vina의 도킹 에너지와 DiffDock-L의 confidence는 다른 점수입니다. 같은 숫자 척도로 친화도를 비교하지 않습니다.</p><p class="takeaway">수치 옆에 실행 조건을 함께 읽습니다.</p></div></div>
-  </article>
+  <section class="report-section container" id="results" aria-labelledby="results-title">
+    <div class="section-heading"><span class="section-number">03 / RESULTS</span><h2 id="results-title">실행 결과</h2><p>세 엔진 모두 출력을 만들었고, 이번 조건에서 Vina 계열의 최고 순위가 참조에 가까웠습니다.</p></div>
+    <div class="section-body">
+      <p class="scroll-hint">표는 좌우로 밀어 전체 항목을 볼 수 있습니다.</p><div class="table-wrap result-table"><table><caption>2026-11-06 실측 · 준비된 1IEP 한 쌍</caption><thead><tr><th>엔진</th><th>전체 실행 시간</th><th>출력 후보</th><th>1위 참조 RMSD</th><th>후보 중 최소 RMSD</th></tr></thead><tbody><tr><th>Vina CPU <span>알려진 포켓</span></th><td>61.078초</td><td>3개</td><td class="teal-cell">0.889 Å</td><td>0.889 Å <small>1위</small></td></tr><tr><th>Vina-GPU <span>알려진 포켓</span></th><td class="teal-cell">4.844초</td><td>5개</td><td class="teal-cell">0.892 Å</td><td>0.892 Å <small>1위</small></td></tr><tr><th>DiffDock-L <span>전체 단백질 탐색</span></th><td>97.654초<small>캐시 재사용</small></td><td>10개<small>기본 기하 검사 실패 1개 포함</small></td><td>15.616 Å</td><td>4.198 Å <small>5위 · 사후 비교</small></td></tr></tbody></table></div>
+      <div class="reading-grid"><p><strong>시간</strong>빌드·가중치 다운로드·GPU 커널 생성·DiffDock 최초 테이블 생성은 위 비교에서 제외했습니다. 함수·실행기 전체 경과 시간으로, 순수 계산 시간만의 비교가 아닙니다.</p><p><strong>RMSD</strong>대응하는 리간드 원자들의 좌표 차이를 요약한 값입니다. 작을수록 준비된 참조에 가깝습니다. Vina 출력의 ‘최고 예측 자세 대비 RMSD’와 구분해 별도 계산했습니다.</p><p><strong>점수</strong>Vina 1위 에너지는 −13.270, Vina-GPU는 −13.3 kcal/mol입니다. DiffDock-L 1위 confidence −3.30은 별도의 자세 순위 점수이며 확률·친화도가 아닙니다.</p></div>
+      <div class="finding-banner"><span>이번 단건에서 관찰한 결과</span><p>Vina-GPU의 전체 함수 시간은 CPU보다 약 <strong>12.6배 짧았고</strong>,<br class="desktop-break"> 두 엔진의 최고 순위 RMSD는 모두 약 <strong>0.89 Å</strong>였습니다.</p><small>탐색량이 같지 않고 반복 속도 측정도 하지 않았으므로, 일반적인 가속 배율이나 도구 우열을 뜻하지 않습니다.</small></div>
+      <figure class="pose-figure"><a href="assets/pose-comparison.png" target="_blank" rel="noopener" aria-label="실제 후보 자세 비교 그림 크게 보기"><img src="assets/pose-comparison.png" alt="저장된 좌표에서 참조와 Vina 1위, DiffDock-L 1위·5위를 겹친 그림 및 후보별 RMSD 그래프. Vina 1위 0.889, DiffDock-L 1위 15.616, 5위 4.198 옹스트롬." loading="lazy"></a><figcaption><strong>실제 저장된 좌표 비교.</strong> 청록색은 준비된 참조, 주황색은 Vina, 보라색은 DiffDock-L입니다. 위쪽은 3D 좌표의 2D 투영, 아래쪽은 각 엔진의 자체 순위별 RMSD입니다. 클릭하면 원본 크기로 볼 수 있습니다.</figcaption></figure>
+      <p class="callout purple-note"><strong>후보 생성과 후보 선택은 별개였습니다.</strong> DiffDock-L에서 참조와 가장 가까운 것은 1위가 아닌 5위였습니다. 5위를 고른 기준은 정답 참조를 이용한 사후 RMSD이며, 모델이 정답 없이 이 후보를 선택한 결과가 아닙니다.</p>
+      <details class="technical"><summary>DiffDock-L 최초 실행과 캐시 재사용 시간</summary><div class="technical-content"><p class="scroll-hint">표는 좌우로 밀어 전체 항목을 볼 수 있습니다.</p><div class="table-wrap"><table><thead><tr><th>실행</th><th>전체 시간</th><th>모듈·테이블 초기화</th><th>샘플링</th></tr></thead><tbody><tr><th>첫 실행</th><td>1,221.925초</td><td>1,156.210초</td><td>32.108초</td></tr><tr><th>캐시 재사용</th><td>97.654초</td><td>32.048초</td><td>32.585초</td></tr></tbody></table></div><p>첫 실행은 회전·비틀림 분포 테이블 생성 비용이 컸습니다. 캐시 이후에도 모듈 초기화, 모델 로딩, ESM-2 임베딩과 결과 처리 비용은 남습니다. 초기화·샘플링 열은 전체 시간에 포함되는 부분입니다.</p><p>같은 시드로 두 번 실행했을 때 최고 순위 RMSD는 15.6162 Å와 15.6161 Å였습니다. 후보 전체가 비트 단위로 같지는 않았고, 두 실행 모두 발산 후보가 남았습니다.</p></div></details>
+    </div>
+  </section>
 
-  <article data-step="6" data-title="최고 순위와 정답에 가장 가까운 후보는 같을까?" data-intro="엔진이 고른 1위와, 참조를 보고 사후에 고른 후보를 구분합니다." hidden>
-    <h2 class="print-title">6. 최고 순위와 정답에 가장 가까운 후보는 같을까?</h2>
-    <div class="spread wide"><figure><a class="result-image" href="assets/pose-comparison.png" target="_blank" rel="noopener" aria-label="실제 자세 비교 그림 크게 보기"><img src="assets/pose-comparison.png" alt="청록색 참조 리간드에 Vina 1위, DiffDock-L 1위와 5위를 같은 좌표계로 겹친 그림. RMSD는 각각 0.889, 15.616, 4.198 Å입니다." loading="lazy"></a><figcaption>실제 저장 좌표의 3D 투영과 후보별 오차 · 그림을 누르면 크게 볼 수 있습니다.</figcaption></figure><div class="explanation"><h2>가까운 후보를 생성하는 것과 골라내는 것</h2><p><strong>RMSD</strong>는 대응하는 원자들의 좌표 차이를 거리 하나로 요약한 값입니다. 이번에는 리간드를 따로 정렬하지 않았습니다.</p><p>DiffDock-L의 <strong>1위는 15.616 Å</strong>, 10개 중 참조와 가장 가까운 <strong>5위는 4.198 Å</strong>였습니다.</p><p>5위가 가장 가깝다는 것은 <strong>참조를 아는 상태에서 사후 계산</strong>한 결과입니다. 모델이 정답 없이 그 후보를 1위로 선택했다는 뜻은 아닙니다.</p><p class="takeaway">후보 생성과 후보 순위의 품질을 구분합니다.</p></div></div>
-  </article>
+  <section class="report-section container" id="failure" aria-labelledby="failure-title">
+    <div class="section-heading"><span class="section-number">04 / FAILURE ANALYSIS</span><h2 id="failure-title">실패 분석</h2><p>프로세스가 성공 종료해도, 생성된 자세 파일의 품질은 별도로 확인해야 했습니다.</p></div>
+    <div class="section-body">
+      <figure class="audit-figure panel"><div class="audit-flow"><div><span class="chip">실행</span><strong>종료 코드 0</strong><p>SDF 10개 생성<br>유한한 좌표·원자·결합 목록 확인</p></div><b aria-hidden="true">→</b><div><span class="chip">사후 검사</span><strong>기본 결합 길이 확인</strong><p>이 유기 리간드에<br>느슨한 0.5–3 Å 범위 적용</p></div><b aria-hidden="true">→</b><div class="audit-split"><p><strong class="teal">9개</strong> 기본범위 내</p><p><strong class="rust">1개</strong> 좌표 발산</p></div></div><figcaption>10개는 생성된 후보 수, 1개는 기본 기하 검사 실패 수입니다. 검사 통과는 올바른 결합 자세를 보장하지 않습니다.</figcaption></figure>
+      <div class="two-columns"><article class="detail-block"><h3>관찰한 문제</h3><ul><li>재실행 로그에 NaN 복구 관련 경고 15회 기록</li><li>10위 후보의 참조 RMSD 약 29,507,717 Å</li><li>해당 후보의 결합 길이 범위 0–9.90 Å</li><li>숫자가 유한하고 파일을 읽을 수 있어도 정상 자세로 볼 수 없는 결과</li></ul></article><article class="detail-block"><h3>구현에 반영한 대응</h3><ul><li>원시 결과와 로그를 삭제하지 않고 보존</li><li>비교 그림에서 발산 후보를 별도 <code>invalid</code> 표시</li><li>후속 CLI에 NaN 경고·후보별 기하 검사 기록 추가</li><li>실행 상태와 별도로 품질 경고를 남기도록 보완</li></ul></article></div>
+      <p class="small">경고 15회는 서로 다른 후보 15개가 실패했다는 뜻이 아닙니다. 로그는 여러 추론 단계에서 <code>1 / 10 samples failed</code>를 반복 보고했습니다. 이 검사 결과만으로 Windows가 발산의 원인이라고 판단할 수도 없습니다.</p>
+      <p class="callout warning-note"><strong>남은 검증:</strong> PoseBusters, 단백질–리간드 충돌, 정식 물리 타당성, 실험 친화도 검증은 수행하지 않았습니다. 나머지 9개도 이러한 검증을 통과한 후보라는 뜻은 아닙니다.</p>
+    </div>
+  </section>
 
-  <article data-step="7" data-title="실행이 끝났는데도 실패 후보가 남을까?" data-intro="파일이 존재하고 좌표가 유한해도, 분자로서 말이 안 되는 결과가 남을 수 있습니다." hidden>
-    <h2 class="print-title">7. 실행이 끝났는데도 실패 후보가 남을까?</h2>
-    <div class="spread"><figure class="diagram-panel"><div class="choice-row" role="group" aria-label="후보 검사 단계"><button data-audit="files" aria-pressed="true">파일·숫자 확인</button><button data-audit="geometry" aria-pressed="false">기본 기하 검사</button></div><div class="gate"><strong>종료 코드 0</strong><span aria-hidden="true">↓</span><p id="audit-caption" aria-live="polite">SDF 10개 · 유한한 좌표 · 원자·결합 목록 확인</p></div><div class="sample-grid" id="sample-grid" aria-label="DiffDock-L 후보 10개의 검사 상태"></div><div class="audit-result" id="audit-result">이 확인만으로 10개 모두를 믿을 수 있을까요?</div><figcaption>실제 후보를 검사한 사례 · 색은 이 검사 단계의 상태를 뜻하며 결합 확률이 아닙니다.</figcaption></figure>
-    <div class="explanation"><h2>10위 후보에서 좌표가 발산했습니다</h2><p>추론은 끝났지만 NaN 복구 경고가 기록됐습니다. 원본 DiffDock 코드는 비정상 점수를 작은 값으로 바꾸어 계산을 이어갑니다.</p><p>10위 후보는 좌표가 발산해 결합 길이가 <strong>0–9.90 Å</strong>로 나타났습니다. 파일이 읽히고 숫자가 유한해도 이 화합물의 정상 자세로 볼 수 없습니다.</p><p>기본 결합 길이 검사는 <strong>9개 통과·1개 실패</strong>였습니다. 통과한 9개도 정답 자세라는 뜻은 아닙니다. PoseBusters·충돌·친화도 검증은 하지 않았습니다.</p><p class="takeaway">실행 완료와 예측 품질을 분리합니다.</p></div></div>
-  </article>
+  <section class="report-section container" id="conclusion" aria-labelledby="conclusion-title">
+    <div class="section-heading"><span class="section-number">05 / CONCLUSION</span><h2 id="conclusion-title">결론과 현재 범위</h2><p>이번 개발로 확보한 실행 경로와, 아직 검증하지 않은 부분을 정리합니다.</p></div>
+    <div class="section-body">
+      <div class="conclusion-grid"><article><span class="label">확인한 것</span><h3>도구 실행과 결과 기록</h3><ul><li>이 PC의 Windows에서 세 엔진 실행 완료</li><li>Vina 계열 공통 함수·CLI와 DiffDock-L 별도 경로 확보</li><li>입력 좌표·원자 대응을 맞춰 후보 비교</li><li>성공 종료 뒤 남은 수치 실패를 탐지하고 기록 보완</li></ul></article><article><span class="label">현재 한계</span><h3>성능·일반화·친화도 평가 전</h3><ul><li>한 단백질–리간드 쌍의 실행 확인</li><li>엔진마다 다른 탐색 위치·예산·후보 수</li><li>1IEP가 DiffDock의 공식 학습 split 목록에 포함</li><li>친화도 정확도와 자동 재시도·기권 성능 미평가</li></ul></article></div>
+      <div class="handoff"><h3>팀 시스템과의 연결 지점</h3><div class="handoff-flow"><div class="planned"><span>연계 예정</span><strong>Structure Agent</strong><p>준비된 단백질 구조<br>체인·좌표계·포켓 박스</p></div><b aria-hidden="true">→</b><div class="implemented"><span>이번 구현</span><strong>도킹 실행 경로</strong><p>후보 자세·점수<br>설정·시간·품질 경고</p></div><b aria-hidden="true">→</b><div class="planned"><span>연계 예정</span><strong>Validation Agent</strong><p>물리 타당성·충돌 검사<br>채택 여부 판단</p></div></div><p class="small">점선 상자는 연결 위치를 보여주는 설계입니다. 팀 Orchestrator·다른 Agent와의 실제 연동 완료를 뜻하지 않습니다.</p></div>
+      <p class="closing">확보한 것은 <strong>실행 가능한 도킹 도구 연결과 결과를 검사할 기록</strong>입니다.<br>Affinity 예측 향상 여부를 판단하려면 이후 별도의 평가가 필요합니다.</p>
+    </div>
+  </section>
 
-  <article data-step="8" data-title="첫 실행은 왜 오래 걸렸고, 어디까지 재현했을까?" data-intro="최초 준비 비용, 반복 실행 시간, 학습 데이터 겹침을 따로 봅니다." hidden>
-    <h2 class="print-title">8. 첫 실행은 왜 오래 걸렸고, 어디까지 재현했을까?</h2>
-    <div class="spread"><figure class="diagram-panel"><h3>DiffDock-L 한 번의 전체 실행</h3><div class="timing-block"><div><strong>첫 실행</strong><span>1,221.925초</span></div><div class="time-track"><span class="segment init" style="width:94.62%"></span><span class="segment sampling" style="width:2.63%"></span><span class="segment rest" style="width:2.75%"></span></div></div><div class="timing-block"><div><strong>캐시 재사용</strong><span>97.654초</span></div><div class="time-track"><div class="warm-segments"><span class="segment init" style="width:32.82%"></span><span class="segment sampling" style="width:33.37%"></span><span class="segment rest" style="width:33.81%"></span></div></div></div><div class="timing-legend"><span><i class="init"></i>모듈·테이블 초기화</span><span><i class="sampling"></i>샘플링</span><span><i class="rest"></i>그 외 준비·종료 등</span></div><div class="time-detail"><span>최초 초기화 <strong>약 19분 16초</strong></span><span>캐시 후 샘플링 <strong>약 32.6초</strong></span></div><figcaption>두 막대의 전체 길이는 같은 시간 축입니다. 각 단계는 전체 시간에 포함됩니다.</figcaption></figure>
-    <div class="explanation"><h2>실행 가능성과 일반화 성능은 다른 확인입니다</h2><p>첫 실행에는 회전·비틀림 분포 테이블 생성이 필요했습니다. 이후 실행은 그 파일을 재사용했지만 모델 로딩·임베딩·모듈 초기화 비용은 남아 있습니다.</p><p>같은 시드로 두 번 실행했고 최고 순위 RMSD는 비슷했습니다. 후보 전체가 비트 단위로 같지는 않았고, 발산 후보도 두 실행에 남았습니다.</p><p><strong>1IEP는 DiffDock 저장소의 학습 split 목록에 포함됩니다.</strong> 이번은 Windows 실행과 결과 검사 사례이며, 처음 보는 화합물·타겟의 성능 평가가 아닙니다.</p><p class="takeaway">재실행 확인과 미학습 일반화를 구분합니다.</p></div></div>
-  </article>
-
-  <article data-step="9" data-title="이 실습에서 가져갈 핵심은 무엇일까?" data-intro="하나의 성공 여부로 묶지 말고, 세 가지 질문으로 나눠 봅니다." hidden>
-    <h2 class="print-title">9. 이 실습에서 가져갈 핵심은 무엇일까?</h2>
-    <div class="spread"><figure class="diagram-panel"><ol class="summary-steps"><li><span>1</span><div><h3>도구가 실행됐는가?</h3><p>이 PC의 Windows에서 세 도구의 실행 경로를 확인했습니다.</p></div></li><li><span>2</span><div><h3>어떤 후보가 나왔는가?</h3><p>같은 참조로 자세를 비교했고, 수치 실패 후보도 찾았습니다.</p></div></li><li><span>3</span><div><h3>새 문제에서도 믿을 수 있는가?</h3><p>이번 예제로 확정하지 않았습니다. 학습 겹침과 평가 설계가 중요합니다.</p></div></li></ol><figcaption>실제 실행, 결과 품질, 일반화를 분리해서 읽는 정리입니다.</figcaption></figure>
-    <div class="explanation"><h2>도구 호출 뒤에 결과를 읽는 과정까지</h2><p>Codex는 호출을 판단하고, 실행기는 조건과 기록을 관리하며, 엔진은 후보를 계산합니다.</p><p>판단에 필요한 것은 점수 하나가 아니라 <strong>입력·탐색 조건·좌표·시간·경고</strong>입니다.</p><p>이번 구현은 그 기록을 남기고 비교하는 단계입니다. 범용 자동 재시도·기권 정책과 실험 친화도 정확도는 아직 검증하지 않았습니다.</p><p class="takeaway">‘돌아갔다’ 다음에 ‘무엇을 믿을 수 있나’를 묻습니다.</p><p class="minor">개인 개발·학습 사례입니다. 공식 프로젝트의 평가 결과나 평가 규약을 뜻하지 않습니다.</p></div></div>
-  </article>
-
-  <nav class="lesson-nav" id="lesson-nav" aria-label="강의 단계"></nav>
-  <div class="paging"><button type="button" id="prev">← 이전</button><span id="page-counter">1 / 9</span><button type="button" id="next">다음 →</button></div>
-  <p class="key-hint">목차로 이동하거나 ← → 키로 넘길 수 있습니다.</p>
-  <details class="sources"><summary>출처·실행 조건·자료 내려받기</summary><div class="source-content"><p>모든 그림은 직접 만든 역할·원리 도식 또는 저장된 개인 실행 결과입니다. 원리 도식과 실제 좌표 그림을 구분해 표시했습니다.</p><ul><li><a href="https://github.com/ccsb-scripps/AutoDock-Vina" target="_blank" rel="noopener">AutoDock Vina</a> · 사용 버전 1.2.7 · <a href="https://autodock-vina.readthedocs.io/en/latest/docking_basic.html" target="_blank" rel="noopener">공식 1IEP 예제</a></li><li><a href="https://github.com/DeltaGroupNJUPT/Vina-GPU-2.1/tree/180272b8a5265d6ed9664178345933cebe2cd349" target="_blank" rel="noopener">AutoDock-Vina-GPU 2.1 고정 소스</a></li><li><a href="https://github.com/gcorso/DiffDock/tree/85c49b60d3e0b0182a59ee43a34a6d7036981284" target="_blank" rel="noopener">DiffDock-L 고정 소스</a> · v1.1 모델 · <a href="https://github.com/gcorso/DiffDock/blob/85c49b60d3e0b0182a59ee43a34a6d7036981284/data/splits/timesplit_no_lig_overlap_train" target="_blank" rel="noopener">1IEP가 포함된 학습 목록</a></li><li>DiffDock 환경: Python 3.12.7 · PyTorch 2.8.0+cu126 · PyG 2.6.1 · e3nn 0.5.1 · ProDy 2.6.1. GPU는 TITAN RTX. 원 논문의 고정 환경과 동일한 재현을 뜻하지 않습니다.</li><li>RMSD: 준비된 튜토리얼 리간드 중원자 37개 대응, 단백질 좌표계 고정, 리간드 정렬·대칭 보정 없음.</li></ul><p><a href="lesson.md" download>학습 원고</a> · <a href="assets/case-summary.json" download>실측 요약 JSON</a> · <a href="source-manifest.json" download>출처·파일 해시</a> · <a href="../">학습 자료 홈</a></p></div></details>
+  <section class="sources-section container" aria-labelledby="sources-title"><div class="section-heading"><span class="section-number">RECORDS & SOURCES</span><h2 id="sources-title">상세 기록과 출처</h2></div><div class="section-body"><div class="download-row"><a href="report.md" download>공유용 문서 · Markdown <span aria-hidden="true">↗</span></a><a href="assets/case-summary.json" download>실측 요약 · JSON <span aria-hidden="true">↗</span></a><a href="source-manifest.json" download>출처·파일 해시 <span aria-hidden="true">↗</span></a></div><ul class="source-list"><li><a href="https://github.com/ccsb-scripps/AutoDock-Vina" target="_blank" rel="noopener">AutoDock Vina</a> · 사용 버전 1.2.7 · <a href="https://autodock-vina.readthedocs.io/en/latest/docking_basic.html" target="_blank" rel="noopener">공식 1IEP 튜토리얼</a></li><li><a href="https://github.com/DeltaGroupNJUPT/Vina-GPU-2.1/tree/180272b8a5265d6ed9664178345933cebe2cd349" target="_blank" rel="noopener">AutoDock-Vina-GPU 2.1 고정 소스</a></li><li><a href="https://github.com/gcorso/DiffDock/tree/85c49b60d3e0b0182a59ee43a34a6d7036981284" target="_blank" rel="noopener">DiffDock 고정 소스</a> · v1.1 모델 · <a href="https://github.com/gcorso/DiffDock/blob/85c49b60d3e0b0182a59ee43a34a6d7036981284/data/splits/timesplit_no_lig_overlap_train" target="_blank" rel="noopener">1IEP가 포함된 학습 목록</a></li></ul><p class="small">수치는 2026-11-06 로컬 실행 결과·로그·비교 JSON에서 가져왔습니다. 역할·조건 도식과 실제 좌표 그림을 구분했습니다. 이 정적 페이지에서 도킹 모델이나 API를 호출하지 않습니다.</p></div></section>
 </main>
-<noscript><style>article[hidden]{display:block!important}.lesson-nav,.paging,.choice-row,.course-line label,.key-hint{display:none}</style><p>단계별 조작에는 JavaScript가 필요합니다. 아래에서 모든 내용을 읽거나 학습 원고를 내려받을 수 있습니다.</p></noscript>
-</body></html>
+<footer class="site-footer container"><p>개인 개발·실험 기록입니다. 공식 프로젝트 결과나 공식 평가 규약을 뜻하지 않습니다.</p><a href="../">학습 자료 홈으로 <span aria-hidden="true">↗</span></a></footer>
+</body>
+</html>

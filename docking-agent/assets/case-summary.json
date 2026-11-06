@@ -1,6 +1,6 @@
 {
   "case": "Prepared 1IEP tutorial",
-  "scope": "Personal implementation check; not an official benchmark",
+  "scope": "Personal implementation and execution report; not an official benchmark",
   "source_date": "2026-11-06",
   "receptor_heavy_atoms": 2229,
   "ligand_heavy_atoms": 37,
@@ -17,7 +17,12 @@
       "pose_count": 3,
       "top1_rmsd_angstrom": 0.8888736875577052,
       "search": "known pocket box",
-      "requested_top_k": 5
+      "requested_top_k": 5,
+      "top1_engine_score": {
+        "name": "vina_energy",
+        "value": -13.27,
+        "units": "kcal/mol"
+      }
     },
     {
       "engine": "vina_gpu",
@@ -26,7 +31,12 @@
       "pose_count": 5,
       "top1_rmsd_angstrom": 0.8924698950180411,
       "search": "known pocket box",
-      "requested_top_k": 5
+      "requested_top_k": 5,
+      "top1_engine_score": {
+        "name": "vina_gpu_energy",
+        "value": -13.3,
+        "units": "kcal/mol"
+      }
     },
     {
       "engine": "diffdock_l",
@@ -37,7 +47,29 @@
       "best_rmsd_angstrom": 4.19839427983115,
       "basic_geometry_failures": 1,
       "search": "blind whole-protein docking",
-      "samples": 10
+      "samples": 10,
+      "top1_engine_score": {
+        "name": "confidence",
+        "value": -3.3,
+        "units": "unitless pose ranking score"
+      },
+      "best_rmsd_rank": 5,
+      "cold_elapsed_seconds": 1221.925,
+      "cold_import_and_table_seconds": 1156.21,
+      "warm_import_and_table_seconds": 32.048,
+      "invalid_rank": 10,
+      "invalid_min_bond_angstrom": 0.0,
+      "invalid_max_bond_angstrom": 9.9
     }
-  ]
+  ],
+  "implementation": {
+    "common_runner": [
+      "vina",
+      "vina_gpu"
+    ],
+    "separate_1iep_cli": "diffdock_l",
+    "independent_llm_app": false,
+    "automatic_engine_selection_retry_abstention": false
+  },
+  "audit_scope": "Post-run comparison; subsequent CLI augmented with NaN warning and geometry records"
 }
