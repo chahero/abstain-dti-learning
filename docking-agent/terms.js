@@ -59,7 +59,7 @@
     const aliases = new Map();
     terms.forEach(item=>item.aliases.forEach(alias=>aliases.set(alias.toLocaleLowerCase(),item.id)));
     const escape=value=>value.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-    const pattern=new RegExp(`(?<![A-Za-z0-9_])(${[...aliases.keys()].sort((a,b)=>b.length-a.length).map(escape).join('|')})(?![A-Za-z0-9_])`,'giu');
+    const pattern=new RegExp(`(?<![A-Za-z0-9_가-힣])(${[...aliases.keys()].sort((a,b)=>b.length-a.length).map(escape).join('|')})(?![A-Za-z0-9_])`,'giu');
     document.querySelectorAll('main section:not(.glossary-section):not(.sources-section)').forEach(section=>{
       const seen = new Set(), nodes = [];
       const walker=document.createTreeWalker(section,NodeFilter.SHOW_TEXT,{

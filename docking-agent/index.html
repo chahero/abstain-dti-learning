@@ -7,6 +7,7 @@
   <link rel="icon" href="data:,"><link rel="stylesheet" href="report.css?v=20261107-report">
   <script src="report.js?v=20261107-report" defer></script>
 <link rel="stylesheet" href="terms.css?v=20261107-help"><script src="terms.js?v=20261107-help" defer></script>
+  <link rel="stylesheet" href="principles.css?v=20261107-process">
 </head>
 <body>
 <a class="skip" href="#overview">본문으로 이동</a>
@@ -80,12 +81,47 @@ result = dock(
         <h3>CPU·GPU 결과가 달라진 이유와 DiffDock-L의 차이</h3>
         <p>우리가 사용한 CPU Vina 1.2.7과 Vina-GPU 2.1은 <strong>버전·탐색 구현·최적화 옵션이 다른 프로그램</strong>입니다. 여러 시작 배치에서 위치·회전·비틀림을 바꾸며 찾으므로 탐색 경로와 계산량이 달라지면 후보도 달라질 수 있습니다.</p>
         <p><strong>같은 시드 숫자도 서로 다른 프로그램의 탐색 경로를 같게 만들지는 않습니다.</strong> 이번 CPU의 exhaustiveness=8과 GPU의 thread=8000은 다른 설정이며, GPU에서는 RILC-BFGS도 켰습니다. 이번 차이를 단순히 CPU와 GPU의 계산 정밀도 탓이라고 확정하지 않았습니다.</p>
-        <div class="method-cards">
-          <article><span class="chip">Vina 계열 · 점수식 기반 탐색</span><h4>배치를 바꾸고 점수를 개선</h4><ol><li>여러 시작 배치 선택</li><li>위치·회전·비틀림 변경</li><li>도킹 에너지를 계산하며 최적화</li><li>좋은 점수의 후보를 모아 정렬</li></ol></article>
-          <article class="diffdock-method"><span class="chip">DiffDock-L · 학습된 생성 모델</span><h4>학습한 조정으로 후보 생성</h4><ol><li>흐트러진 초기 배치에서 시작</li><li>학습된 모델로 위치·회전·비틀림 조정</li><li>역확산 단계를 반복해 후보 생성</li><li>별도 confidence 모델로 정렬</li></ol></article>
+        <div class="principle-addendum" id="principle-walkthrough">
+          <div class="principle-intro"><span class="chip">같은 c-Abl · 같은 이마티닙으로 생각하기</span><h4>무엇을 움직이고, 무엇을 보고 결정할까요?</h4><p>두 방법 모두 화합물의 위치·방향·내부 모양을 바꾸어 결합 자세를 만듭니다. 아래는 원리를 설명하는 도식입니다.</p></div>
+          <div class="pose-changes" aria-label="두 방법이 조정하는 세 가지 움직임">
+            <article><svg viewBox="0 0 220 110" role="img" aria-label="모양과 방향을 유지한 화합물을 옆으로 이동시키는 원리 그림"><g fill="none" stroke="#b6c6ce" stroke-width="4" stroke-linecap="round"><path d="M25 73V35H57"/></g><path d="M86 53H127m-10-7 10 7-10 7" fill="none" stroke="#6e9ba5" stroke-width="2"/><path d="M159 73V35H191" fill="none" stroke="#087f8c" stroke-width="4" stroke-linecap="round"/></svg><h5>이동</h5><p>화합물 전체를<br>x·y·z 방향으로 옮깁니다.</p></article>
+            <article><svg viewBox="0 0 220 110" role="img" aria-label="화합물 전체를 하나의 덩어리로 회전시키는 원리 그림"><path d="M79 75V39H111" fill="none" stroke="#b6c6ce" stroke-width="4" stroke-dasharray="5 4"/><path d="M79 75V39H111" transform="rotate(55 110 55)" fill="none" stroke="#087f8c" stroke-width="4" stroke-linecap="round"/><path d="M141 25Q179 55 142 87m2-12-2 12 12-3" fill="none" stroke="#6e9ba5" stroke-width="2"/></svg><h5>회전</h5><p>화합물 전체가<br>향하는 방향을 바꿉니다.</p></article>
+            <article><svg viewBox="0 0 220 110" role="img" aria-label="결합축을 정면에서 보았을 때 뒤쪽은 고정하고 앞쪽의 일부를 돌리는 비틀림 원리 그림"><circle cx="100" cy="55" r="24" fill="none" stroke="#a9bbc5" stroke-width="2"/><path d="M100 31V16m-21 51-13 8m55-8 13 8" stroke="#a9bbc5" stroke-width="3"/><g stroke="#c2b5dd" stroke-width="2" stroke-dasharray="4 3"><path d="M100 55V23m0 32-28 16m28-16 28 16"/></g><g transform="rotate(40 100 55)" stroke="#7051bc" stroke-width="3.5"><path d="M100 55V23m0 32-28 16m28-16 28 16"/></g><circle cx="100" cy="55" r="4" fill="#7051bc"/><path d="M139 21Q167 49 144 78m-1-11 1 11 10-5" fill="none" stroke="#7051bc" stroke-width="2"/></svg><h5>비틀림</h5><p>회전 가능한 결합을 축으로<br>분자의 일부를 돌립니다.</p><small>그림은 결합축을 정면에서 본 개념도</small></article>
+          </div>
+          <p class="principle-caption">선과 가지는 분자의 움직임을 나타내는 기호입니다. 실제 이마티닙 구조·원자 좌표·계산 결과를 그린 것은 아닙니다.</p>
+
+          <article class="principle-panel vina-panel" id="vina-principle" aria-labelledby="vina-principle-title">
+            <div class="principle-panel-head"><span>Vina</span><h4 id="vina-principle-title">현재 배치를 점수식으로 평가하고 개선합니다</h4></div>
+            <p>원자들의 종류와 거리 등을 점수식에 넣어 도킹 에너지를 계산합니다. 예를 들어 원자들이 지나치게 겹치면 불리하게, 결합에 유리한 접촉을 이루면 유리하게 반영합니다.</p>
+            <div class="score-rules"><div><b>원자가 지나치게 겹침</b><span>불리한 기여</span></div><div><b>결합에 유리한 접촉</b><span>유리한 기여</span></div><div class="rule-total"><b>여러 항을 합산</b><span>도킹 에너지 점수</span></div></div>
+            <div class="toy-label">한 경로에서 배치를 개선하는 예 · 아래 점수는 설명용 가상 값</div>
+            <div class="pose-score-flow"><div><span>배치 A</span><strong>−4</strong><small>출발 배치</small></div><b aria-hidden="true">→</b><div><span>배치 B</span><strong>−7</strong><small>위치를 조정</small></div><b aria-hidden="true">→</b><div><span>배치 C</span><strong>−9</strong><small>방향·비틀림 조정</small></div></div>
+            <p class="principle-note"><strong>다음 움직임의 기준은 점수식입니다.</strong> 실제로는 점수가 어느 방향으로 좋아지는지도 계산해 미세 조정합니다. 다른 배치도 찾도록 무작위 변화와 여러 출발점을 사용합니다.</p>
+            <div class="loop-line"><span>시작 배치</span><i aria-hidden="true">→</i><span>점수 계산·미세 조정</span><i aria-hidden="true">↻</i><span>다른 배치도 탐색</span><i aria-hidden="true">→</i><span>후보를 모아 에너지로 정렬</span></div>
+          </article>
+
+          <article class="principle-panel diffusion-panel" id="diffdock-learning" aria-labelledby="diffdock-learning-title">
+            <div class="principle-panel-head"><span>DiffDock 계열 · 사전 학습</span><h4 id="diffdock-learning-title">흐트러진 배치를 어떻게 조정할지 배웁니다</h4></div>
+            <p>이미 결합 자세를 아는 많은 사례를 사용합니다. 그 배치의 위치·회전·비틀림을 일부러 흐트러뜨리고, 현재 상태와 진행 단계에서 어떤 조정이 필요한지 신경망을 학습합니다.</p>
+            <div class="learning-flow"><div><span class="mini-label">기존 사례</span><strong>알려진 결합 자세</strong><small>단백질 + 리간드</small></div><b aria-hidden="true">→</b><div><span class="mini-label">일부러 변화</span><strong>위치·방향·비틀림<br>흐트러뜨리기</strong></div><b aria-hidden="true">→</b><div><span class="mini-label">반복 학습</span><strong>조정 방향을<br>예측하도록 학습</strong></div></div>
+            <p class="principle-note">학습 결과는 모델의 가중치에 담깁니다. 아래의 실제 사용 단계에서는 이 학습된 모델을 불러옵니다.</p>
+          </article>
+
+          <article class="principle-panel diffusion-panel" id="diffdock-inference" aria-labelledby="diffdock-inference-title">
+            <div class="principle-panel-head"><span>DiffDock 계열 · 실제 사용</span><h4 id="diffdock-inference-title">학습된 모델로 후보를 만들고, 별도 모델로 고릅니다</h4></div>
+            <p>사용자가 입력한 단백질 구조와 화합물을 받아 초기 배치를 만듭니다. <strong>새 문제의 정답 자세는 주어지지 않습니다.</strong> 신경망이 현재 구조를 보고 이동·회전·비틀림의 조정량을 계산하고, 배치를 바꾼 뒤 이 과정을 여러 단계 반복합니다.</p>
+            <div class="inference-flow"><div><span class="mini-label">입력</span><strong>단백질 구조<br>+ 현재 리간드 배치</strong></div><b aria-hidden="true">→</b><div><span class="mini-label">학습된 생성 모델</span><strong>조정량 계산</strong><small>이동 · 회전 · 비틀림</small></div><b aria-hidden="true">→</b><div><span class="mini-label">업데이트</span><strong>바뀐 배치</strong><small>현재 상태를 다시 보고 반복 ↻</small></div></div>
+            <p class="principle-caption">모델 출력은 말로 된 지시가 아니라 이동 방향·크기와 각도 조정에 쓰는 수치입니다. 이것이 학습된 역확산 과정의 핵심입니다.</p>
+            <div class="candidate-ranking"><div><strong>생성 모델</strong><span>여러 후보 자세 생성</span></div><i aria-hidden="true">→</i><div class="candidate-stack"><span>후보 A</span><span>후보 B</span><span>후보 C …</span></div><i aria-hidden="true">→</i><div><strong>confidence 평가 모델</strong><span>후보를 평가해 순위 결정</span></div></div>
+            <p class="principle-note"><strong>후보 생성과 후보 선택은 별개입니다.</strong> 우리 결과에서도 모델이 고른 1위와, 참조를 보고 사후에 확인한 가장 가까운 5위가 달랐습니다.</p>
+            <p class="small">DiffDock-L은 이 기본 원리를 바탕으로 학습 데이터·모델 규모 등을 확대한 버전입니다. 위 학습 도식은 원리를 설명하며, 이번 작업에서 모델을 새로 학습한 것은 아닙니다.</p>
+          </article>
+
+          <div class="principle-bottom-line"><h4>“다음에 어떻게 움직일까?”를 결정하는 기준</h4><div><p><strong>Vina</strong><span>점수식이 좋아지는 방향을 계산</span></p><p><strong>DiffDock 계열</strong><span>학습된 신경망이 조정량을 계산</span></p></div></div>
         </div>
+
         <p>Vina 계열도 무작위 탐색을 하고, DiffDock-L도 여러 후보를 생성합니다. 차이는 <strong>어떤 규칙으로 배치를 개선하고 후보를 정렬하는가</strong>에 있습니다. 이번에는 포켓 위치를 Vina 계열에만 제공했으므로 방법과 입력 조건의 차이를 함께 봐야 합니다.</p>
-        <p class="small">확인 근거: <a href="https://autodock-vina.readthedocs.io/en/latest/faq.html" target="_blank" rel="noopener">Vina 공식 FAQ</a> · <a href="https://github.com/DeltaGroupNJUPT/Vina-GPU-2.1" target="_blank" rel="noopener">Vina-GPU 옵션</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/39320991/" target="_blank" rel="noopener">RILC-BFGS 논문</a> · <a href="https://arxiv.org/abs/2210.01776" target="_blank" rel="noopener">DiffDock 원리 논문</a> · <a href="https://arxiv.org/abs/2402.18396" target="_blank" rel="noopener">DiffDock-L 관련 논문</a></p>
+        <p class="small">확인 근거: <a href="https://autodock-vina.readthedocs.io/en/latest/faq.html" target="_blank" rel="noopener">Vina 공식 FAQ</a> · <a href="https://github.com/DeltaGroupNJUPT/Vina-GPU-2.1" target="_blank" rel="noopener">Vina-GPU 옵션</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/39320991/" target="_blank" rel="noopener">RILC-BFGS 논문</a> · <a href="https://arxiv.org/html/2210.01776v2#S4" target="_blank" rel="noopener">DiffDock 원리 논문</a> · <a href="https://arxiv.org/abs/2402.18396" target="_blank" rel="noopener">DiffDock-L 관련 논문</a></p>
       </div>
       <details class="technical"><summary>Windows 실행 환경과 최초 준비</summary><div class="technical-content"><ul><li>GPU: NVIDIA TITAN RTX. Vina-GPU는 VS 2019 C++ Build Tools·CUDA 12.1의 OpenCL SDK·Boost 1.77.0으로 고정 소스 빌드 후 장치용 커널을 생성했습니다.</li><li>DiffDock-L: Python 3.12.7 · PyTorch 2.8.0+cu126 · PyG 2.6.1 · e3nn 0.5.1 · ProDy 2.6.1 조합에서 Windows 네이티브 실행을 확인했습니다.</li><li>DiffDock-L 소스 ref는 <code>85c49b60d3e0b0182a59ee43a34a6d7036981284</code>, 가중치는 v1.1입니다.</li><li>원 논문의 고정 환경과 동일한 재현을 뜻하지 않습니다. GNINA 실행 비교는 보류 상태입니다.</li></ul></div></details>
     </div>

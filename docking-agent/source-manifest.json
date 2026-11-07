@@ -37,6 +37,14 @@
     {
       "name": "DiffDock-L related paper",
       "url": "https://arxiv.org/abs/2402.18396"
+    },
+    {
+      "name": "Vina scoring function implementation",
+      "url": "https://github.com/forlilab/AutoDock-Vina/blob/develop/src/lib/scoring_function.h"
+    },
+    {
+      "name": "DiffDock training, inference and separate confidence model",
+      "url": "https://arxiv.org/html/2210.01776v2#S4.SS4"
     }
   ],
   "files": [
@@ -52,18 +60,23 @@
     },
     {
       "path": "assets/terms.json",
-      "bytes": 38645,
-      "sha256": "9ec0beef47f68d0410a297a995204b6c50d5c47ba35a66439aca8bca4d25d8a7"
+      "bytes": 40863,
+      "sha256": "bfb600dfc6413c8679d8f94764a76260bdd2b67fa93c4aa4f9e87d5f6513ce90"
     },
     {
       "path": "glossary.md",
-      "bytes": 26279,
-      "sha256": "96dd4e63850d0ecfe597dd6d291d060d6057eda892cb5cf7f082a4272544713c"
+      "bytes": 27797,
+      "sha256": "f94836cb4373f909bec3cec54d894cadd66ce64c6ae08334fa6189cda6c74b64"
     },
     {
       "path": "index.html",
-      "bytes": 29521,
-      "sha256": "403d8b6fa8baefeace922febd03db467654a04d5e315909c2ea46094c2335a2c"
+      "bytes": 37331,
+      "sha256": "a6e64e5b30d4361cde427a315898370efd13d2a614c4c9a8cc8fcf45c8c4b799"
+    },
+    {
+      "path": "principles.css",
+      "bytes": 7550,
+      "sha256": "84d2c17a48f84235d646490fba1e478cad7f1f5b9c3091c2603fae7fecd7d471"
     },
     {
       "path": "report.css",
@@ -77,8 +90,8 @@
     },
     {
       "path": "report.md",
-      "bytes": 10806,
-      "sha256": "87c31b4faa89c934f505c111e33d667899bb1e1cf2a93f2fa138473da67ce5ba"
+      "bytes": 12079,
+      "sha256": "166f1c981929c9322b33bc3d7453ce2641d001fe50e63e7867a38ec488523d49"
     },
     {
       "path": "terms.css",
@@ -87,8 +100,8 @@
     },
     {
       "path": "terms.js",
-      "bytes": 5751,
-      "sha256": "f5ccbe9f10be901070324290e00bbf09a0ed314425e481290472d1cefa07375a"
+      "bytes": 5758,
+      "sha256": "2ac2631bf45f3d16d153db62482b10eadad63dea6fcd011ac0b5fc5aaa43796b"
     }
   ]
 }
