@@ -1,0 +1,87 @@
+{
+  "paper": "https://arxiv.org/html/2607.17601v1",
+  "paper_license": "https://creativecommons.org/licenses/by/4.0/",
+  "authors": [
+    "Yongchan Hong",
+    "Defu Cao",
+    "Wenjin Liu",
+    "Thomas Ku",
+    "Jordy Homing Lam",
+    "Emily Nguyen",
+    "Willie Neiswanger",
+    "Vsevolod Katritch",
+    "Yan Liu"
+  ],
+  "code_commit": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+  "review_date": "2026-11-11",
+  "status": "paper-and-code-reading; no reproduction run",
+  "original_figures": [
+    {
+      "file": "assets/architecture.png",
+      "source": "https://arxiv.org/html/2607.17601v1/architecture.png",
+      "attribution": "Hong et al., arXiv:2607.17601v1, CC BY 4.0; unmodified"
+    },
+    {
+      "file": "assets/risk_coverage_comparison.png",
+      "source": "https://arxiv.org/html/2607.17601v1/risk_coverage_comparison.png",
+      "attribution": "Hong et al., arXiv:2607.17601v1, CC BY 4.0; unmodified"
+    },
+    {
+      "file": "assets/disagreement_analysis.png",
+      "source": "https://arxiv.org/html/2607.17601v1/disagreement_analysis.png",
+      "attribution": "Hong et al., arXiv:2607.17601v1, CC BY 4.0; unmodified"
+    }
+  ],
+  "files": [
+    {
+      "path": "app.js",
+      "bytes": 11452,
+      "sha256": "31f0ac4f9c09cf7f42a24aeb8a643ef7ca24ce0b33c8ab3dc10732f4370c0734"
+    },
+    {
+      "path": "assets/architecture.png",
+      "bytes": 140087,
+      "sha256": "81c0017845217d27f6808187dce3601e8a8286c4950a00da39c835952bc72337"
+    },
+    {
+      "path": "assets/disagreement_analysis.png",
+      "bytes": 85940,
+      "sha256": "9bc48ce242ff0c1d1b3c258e8901add7525892ab52fabfa509660d260b81c314"
+    },
+    {
+      "path": "assets/results.json",
+      "bytes": 8053,
+      "sha256": "52aec438021f72ccc1b08260529b14b90ee6d0d5a63a09e8224760dd9a06fa49"
+    },
+    {
+      "path": "assets/risk_coverage_comparison.png",
+      "bytes": 84689,
+      "sha256": "7d7f4ba07f20c5fbb82c1b4bc73670397198edbc8f91e805a755b007fd48e334"
+    },
+    {
+      "path": "data.js",
+      "bytes": 20722,
+      "sha256": "1b0174424d4d2faa00f561c0fcd275f3fb5f9a1f5f3422c04cc47925ca0826b7"
+    },
+    {
+      "path": "index.html",
+      "bytes": 31760,
+      "sha256": "aa72b98bd720884df2d4d3e67773df6d65aaa64f9f2638cd3defa0ef0e17eaf1"
+    },
+    {
+      "path": "math.js",
+      "bytes": 1167,
+      "sha256": "72ee74c07426e5679f9230471963fa4a68de0f7b15db3de9d5e42ac31d7635b1"
+    },
+    {
+      "path": "review.md",
+      "bytes": 17363,
+      "sha256": "49c505329897ae3fc5b8f2e9120f8a776551b11df40e238692444726a64cde21"
+    },
+    {
+      "path": "style.css",
+      "bytes": 18307,
+      "sha256": "9b114ec86bc5fa00ddcee08395c06e3f6ca9806a1a51f348750a663bff8f393f"
+    }
+  ]
+}

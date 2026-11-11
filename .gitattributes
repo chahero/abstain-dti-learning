@@ -14,3 +14,6 @@ pocket-structure/**/*.sdf whitespace=-blank-at-eol
 
 # Preserve the lecture source manifest checksums across platforms.
 docking-agent/** -text whitespace=cr-at-eol
+
+# Preserve the paper-review file hashes and original figure bytes.
+papers/reliable-ba/** -text whitespace=cr-at-eol

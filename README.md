@@ -2,7 +2,7 @@
 
 [학습 사이트 열기](https://chahero.github.io/abstain-dti-learning/)
 
-신약 발굴 AI를 공부하기 위한 한국어 개인 학습 자료입니다. 메인 화면에서 **포켓 그림 교재**, **Docking Agent 구현·실험 기록**, **논문 음성 웹 발표**를 선택할 수 있습니다.
+신약 발굴 AI를 공부하기 위한 한국어 개인 학습 자료입니다. 메인 화면에서 **포켓 그림 교재**, **Docking Agent 구현·실험 기록**, **논문 음성 웹 발표**, **RELIABLE-BA 논문 핵심 해설**을 선택할 수 있습니다.
 
 ## 단백질 포켓과 결합 구조 예측
 
@@ -37,11 +37,21 @@ Vina·Vina-GPU의 공통 `dock(request)`·CLI와 DiffDock-L 별도 실행 경로
 
 장표 11장과 미리 제작한 Dustin 1.2배속 한국어 음성을 동기화한 7분 48초 발표입니다. 정확도·비용·실제 사용·일반화·평가 신뢰성을 살펴봅니다. 장표 이동, 구간 탐색, 전체화면, 발화에 맞춘 강조 모션을 지원합니다. 발표 PPTX와 장표·대본 PDF는 발표 페이지에서 내려받을 수 있습니다.
 
+## RELIABLE-BA · 논문 핵심 해설
+
+[논문 해설 읽기](https://chahero.github.io/abstain-dti-learning/papers/reliable-ba/) · [실험 결과 비교](https://chahero.github.io/abstain-dti-learning/papers/reliable-ba/#results) · [해설 원고](https://chahero.github.io/abstain-dti-learning/papers/reliable-ba/review.md)
+
+Hong et al., *Trustworthy Protein–Ligand Binding Affinity Prediction via Reliability-Aware Multi-Engine Fusion* (arXiv:2607.17601v1)를 한국어로 해설합니다. 먼저 이해하기 → 작동 원리 → 실험 결과 → 한계와 검토 → 에이전트와 연결 → 용어·출처의 6개 메뉴로 구성했습니다.
+
+NIG 전문가·신뢰성 조절·MoNIG 결합을 그림과 설명용 가상 값 예제로 살펴보고, PDBbind·BDB2020+의 평가셋과 지표를 바꾸어 원문 수치를 비교합니다. 원문 표 4개, 그림 3개, 용어 29개, 해설 원고·표 데이터 다운로드, 인쇄를 제공합니다. 그림은 원문 CC BY 4.0에 따라 저자와 출처를 표시했습니다.
+
+논문 보고값과 해설자의 적용 아이디어를 구분하며, 재현 실행 결과나 공식 프로젝트 결과를 뜻하지 않습니다. 공개 코드의 검토 버전과 원문·파일 해시는 페이지의 출처와 `source-manifest.json`에서 확인할 수 있습니다.
+
 ## 사이트 운영
 
 GitHub Pages는 **Settings → Pages → Deploy from a branch → main → /(root)**로 배포합니다. `main`에 푸시하면 Pages가 갱신됩니다. 루트의 `index.html`과 `.nojekyll`을 유지합니다.
 
-메인은 `index.html`과 `assets/home.css`로 구성한 정적 페이지입니다. 교재는 `pocket-structure/`, Docking Agent 구현·실험 기록은 `docking-agent/`, 웹 발표는 `papers/ai-agents-that-matter/`에 있습니다. 별도 Node/Python 서버, 모델 추론, TTS API나 YouTube 연결 없이 열람할 수 있습니다.
+메인은 `index.html`과 `assets/home.css`로 구성한 정적 페이지입니다. 교재는 `pocket-structure/`, Docking Agent 구현·실험 기록은 `docking-agent/`, 웹 발표는 `papers/ai-agents-that-matter/`, RELIABLE-BA 해설은 `papers/reliable-ba/`에 있습니다. 별도 Node/Python 서버, 모델 추론, TTS API나 YouTube 연결 없이 열람할 수 있습니다.
 
 기존 읽기 가이드·실습 자료·자막 원본은 `guides/`, `data/`, `assets/subtitles/`에 보존되어 있습니다. 종료한 YouTube 영상의 플레이어와 영상 목록은 메인에서 제공하지 않습니다.
 
