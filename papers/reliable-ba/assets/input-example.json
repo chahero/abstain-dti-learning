@@ -1,0 +1,82 @@
+{
+  "pdb_id": "1IEP",
+  "chain": "A",
+  "declared_residues": 293,
+  "observed_residues": 274,
+  "sequence": "GAMDPSSPNYDKWEMERTDITMKHKLGGGQYGEVYEGVWKKYSLTVAVKTLKEDTMEVEEFLKEAAVMKEIKHPNLVQLLGVCTREPPFYIITEFMTYGNLLDYLRECNRQEVSAVVLLYMATQISSAMEYLEKKNFIHRDLAARNCLVGENHLVKVADFGLSRLMTGDTYTAHAGAKFPIKWTAPESLAYNKFSIKSDVWAFGVLLWEIATYGMSPYPGIDLSQVYELLEKDYRMERPEGCPEKVYELMRACWQWNPSDRPSFAEIHQAFETMFQESSISDEVEKELGKRGT",
+  "smiles": "Cc1ccc(NC(=O)c2ccc(CN3CC[NH+](C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+  "formal_charge": 1,
+  "heavy_atoms": 37,
+  "total_atoms": 69,
+  "formula": "C29H32N7O+",
+  "protein_preview": [
+    "ATOM      1  N   MET A 225      19.353  41.547  -3.887  1.00 72.26           N  ",
+    "ATOM      2  CA  MET A 225      20.513  40.939  -4.592  1.00 70.80           C  ",
+    "ATOM      3  C   MET A 225      20.150  39.658  -5.355  1.00 69.53           C  "
+  ],
+  "ligand_atoms": [
+    {
+      "element": "C",
+      "xyz": [
+        11.879,
+        62.272,
+        12.57
+      ]
+    },
+    {
+      "element": "C",
+      "xyz": [
+        13.002,
+        61.429,
+        12.91
+      ]
+    },
+    {
+      "element": "C",
+      "xyz": [
+        13.097,
+        60.07,
+        12.392
+      ]
+    }
+  ],
+  "fasta_preview": [
+    ">1IEP_chain_A_SEQRES_declared_construct",
+    "GAMDPSSPNYDKWEMERTDITMKHKLGGGQYGEVYEGVWKKYSLTVAVKTLKEDTMEVEE",
+    "FLKEAAVMKEIKHPNLVQLLGVCTREPPFYIITEFMTYGNLLDYLRECNRQEVSAVVLLY"
+  ],
+  "sdf_preview": [
+    "STI",
+    "     RDKit          3D",
+    "",
+    " 69 73  0  0  0  0  0  0  0  0999 V2000",
+    "   11.8790   62.2720   12.5700 C   0  0  0  0  0  0  0  0  0  0  0  0",
+    "   13.0020   61.4290   12.9100 C   0  0  0  0  0  0  0  0  0  0  0  0",
+    "   13.0970   60.0700   12.3920 C   0  0  0  0  0  0  0  0  0  0  0  0"
+  ],
+  "source": "https://www.rcsb.org/structure/1IEP",
+  "coordinate_source": "https://files.rcsb.org/download/1IEP.pdb",
+  "local_ligand_source": "study/07_real_dti/docking-cofolding/inputs/1iep_ligand.sdf",
+  "source_ligand_snapshot": "sources/input--ligand-prepared.sdf",
+  "source_pdb_sha256": "577386b4b8bc58a570facba0c8a843386842caef5ed7b60106c685d0f68d4218",
+  "source_ligand_sha256": "051b8742c32adc05c07fb486a4e7c9327f84e131cee33ac4e6a568d07553eb38",
+  "status": "educational format example; holo coordinates; prepared +1 imatinib; not fresh affinity inference; not apo or a blind docking experiment",
+  "files": [
+    {
+      "name": "protein.fasta",
+      "sha256": "17672ccbaa78b44996c6766b80387715db1a79c0d2cf55a4547fe312faff1390"
+    },
+    {
+      "name": "protein-chain-A.pdb",
+      "sha256": "7cd0b048270161b972e602d66b5698852d2a2abb6f1433ceff9d121146e241c0"
+    },
+    {
+      "name": "ligand.smi",
+      "sha256": "0319e4abd7c7dd12476ececbb33dd177b744e0bb450c74226fd9236069e20641"
+    },
+    {
+      "name": "ligand-prepared.sdf",
+      "sha256": "051b8742c32adc05c07fb486a4e7c9327f84e131cee33ac4e6a568d07553eb38"
+    }
+  ]
+}

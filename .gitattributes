@@ -17,3 +17,8 @@ docking-agent/** -text whitespace=cr-at-eol
 
 # Preserve the paper-review file hashes and original figure bytes.
 papers/reliable-ba/** -text whitespace=cr-at-eol
+
+# Fixed-column coordinate examples keep their intentional padding.
+papers/reliable-ba/assets/input-example/*.pdb whitespace=-blank-at-eol
+papers/reliable-ba/assets/input-example/*.sdf whitespace=-blank-at-eol
+papers/reliable-ba/review.md whitespace=-blank-at-eol

@@ -6,18 +6,64 @@
   const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const labels=['방법','MAE ↓','RMSE ↓','Corr ↑','R² ↑','ECE ↓','CRPS ↓','NLL ↓'];
   const chapters=$$('.chapter');
+  const chapterRoute=chapter=>chapter.dataset.route||chapter.id;
+  const chapterLink=id=>$('.sidebar a[data-view="'+id+'"]');
+  const outline=$('#course-toc'),modelSubnav=$('#model-subnav'),modelToggle=$('#toggle-model-toc');
+  const compactNav=matchMedia('(max-width:760px)');
+  function toggleModelToc(open){
+    modelSubnav.hidden=!open;modelToggle.setAttribute('aria-expanded',String(open));
+    modelToggle.setAttribute('aria-label','2장 세부 목차 '+(open?'접기':'펼치기'));
+  }
+  modelToggle.addEventListener('click',()=>toggleModelToc(modelSubnav.hidden));
+  $('.main-toc').addEventListener('click',e=>{if(compactNav.matches&&e.target.closest('a[data-view]'))outline.open=false;});
+  compactNav.addEventListener('change',()=>{outline.open=!compactNav.matches;});
+  outline.open=!compactNav.matches;
   let current='';
+  let currentHash='';
   function route(){
-    let id=location.hash.slice(1)||'overview';
-    if(!chapters.some(e=>e.id===id)) id='overview';
-    if(current===id)return;
+    const requested=location.hash.slice(1)||'overview';
+    if(requested==='content'&&current){
+      const title=$('#'+(current||'overview')+' h1');
+      title.tabIndex=-1;title.focus();
+      return;
+    }
+    const parts=requested.split('/');
+    let chapter=chapters.find(c=>chapterRoute(c)===requested||c.id===requested),anchor=null;
+    if(!chapter){
+      const base=chapters.find(c=>c.id===parts[0]);
+      const target=document.getElementById(parts[1]||parts[0]);
+      const owner=target?.closest('.chapter');
+      if(parts[0]==='limits'){chapter=$('#results');anchor='limits';}
+      else if(owner&&(owner===base||owner.dataset.parent===parts[0])){chapter=owner;if(target!==owner)anchor=target.id;}
+      else chapter=base||$('#overview');
+    }
+    const id=chapter.id;
+    if(currentHash===requested)return;
+    currentHash=requested;
     current=id;
     chapters.forEach(el=>el.hidden=el.id!==id);
-    $$('.sidebar a').forEach(a=>{if(a.hash==='#'+id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+    $$('.sidebar a[data-view]').forEach(a=>{if(a.dataset.view===id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+    const inModels=id==='models'||chapter.dataset.parent==='models';
+    $('#model-family').classList.toggle('family-active',inModels);
+    if(inModels)toggleModelToc(true);
+    $('#current-outline-label').textContent=chapterLink(id).textContent;
+    if(compactNav.matches)outline.open=false;
     document.title=$('#'+id+' h1').textContent+' · RELIABLE-BA';
+    if(anchor){
+      let parent=document.getElementById(anchor).parentElement;
+      while(parent&&parent!==chapter){if(parent.tagName==='DETAILS')parent.open=true;parent=parent.parentElement;}
+    }
     if(document.readyState!=='loading'){
       const title=$('#'+id+' h1');title.tabIndex=-1;title.focus({preventScroll:true});
-      window.scrollTo({top:0,behavior:'instant'});
+      if(anchor)requestAnimationFrame(()=>document.getElementById(anchor).scrollIntoView({block:'start',behavior:'instant'}));
+      else window.scrollTo({top:0,behavior:'instant'});
+    }
+    const index=chapters.findIndex(c=>c.id===id);
+    const previous=$('#previous-chapter'),next=$('#next-chapter');
+    if(previous&&next){
+      previous.hidden=index===0;next.hidden=index===chapters.length-1;
+      if(index>0){previous.href='#'+chapterRoute(chapters[index-1]);previous.textContent='← '+chapterLink(chapters[index-1].id).textContent;}
+      if(index<chapters.length-1){next.href='#'+chapterRoute(chapters[index+1]);next.textContent=chapterLink(chapters[index+1].id).textContent+' →';}
     }
     $('#copy-status').textContent='';
   }
@@ -92,7 +138,7 @@
     });
   });
   $('#copy-link').addEventListener('click',async()=>{
-    const url=new URL(location.href);url.hash=current;
+    const url=new URL(location.href);url.hash=location.hash||current;
     try{await navigator.clipboard.writeText(url.href);$('#copy-status').textContent='현재 장의 주소를 복사했습니다.';}catch{$('#copy-status').textContent='주소창의 링크를 복사해 주세요.';}
   });
   $('#print-page').addEventListener('click',()=>window.print());

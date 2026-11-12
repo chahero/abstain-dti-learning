@@ -1,0 +1,132 @@
+{
+  "source": "https://github.com/yongchand/RELIABLE-BA/blob/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/examples/sample_data.csv",
+  "source_sha256": "80d7e7f9b2d011d003f680ef356b9b65325a5752e7af6305c8695e2d79e2c2a2",
+  "description": "Four deliberately selected rows from the official example, described by authors as a real PDBbind subset; scores not rerun; numerical distance to experimental pK is not endpoint conversion; not final RELIABLE-BA predictions",
+  "total_public_example_rows": 150,
+  "cases": [
+    {
+      "id": "6o9c",
+      "experimental": "Kd=28.5nM",
+      "endpoint": "pKd",
+      "target": 7.54515513999149,
+      "columns": [
+        "GNINA_Affinity",
+        "BIND_pIC50",
+        "flowdock_score",
+        "DynamicBind_score"
+      ],
+      "scores": [
+        7.5509209633,
+        4.76707,
+        6.599208450317383,
+        5.335165098451346
+      ],
+      "absolute_differences": [
+        0.005765823308510498,
+        2.7780851399914894,
+        0.9459466896741064,
+        2.209990041540144
+      ],
+      "embedding_dimension": 704,
+      "embedding_preview": {
+        "Emb_0": -0.12662,
+        "Emb_1": -0.10933,
+        "Emb_2": -0.21482
+      },
+      "csv_line": 146
+    },
+    {
+      "id": "6n97",
+      "experimental": "Ki=7.1uM",
+      "endpoint": "pKi",
+      "target": 5.1487416512809245,
+      "columns": [
+        "GNINA_Affinity",
+        "BIND_pIC50",
+        "flowdock_score",
+        "DynamicBind_score"
+      ],
+      "scores": [
+        7.1902270317,
+        3.42157,
+        6.985597896575928,
+        4.859611862054603
+      ],
+      "absolute_differences": [
+        2.0414853804190756,
+        1.7271716512809245,
+        1.836856245295003,
+        0.2891297892263216
+      ],
+      "embedding_dimension": 704,
+      "embedding_preview": {
+        "Emb_0": -0.74088,
+        "Emb_1": -0.34611,
+        "Emb_2": -0.02108
+      },
+      "csv_line": 136
+    },
+    {
+      "id": "1qin",
+      "experimental": "Ki=10nM",
+      "endpoint": "pKi",
+      "target": 8.0,
+      "columns": [
+        "GNINA_Affinity",
+        "BIND_pIC50",
+        "flowdock_score",
+        "DynamicBind_score"
+      ],
+      "scores": [
+        6.0959029198,
+        5.81284,
+        7.687883377075195,
+        4.96509479732626
+      ],
+      "absolute_differences": [
+        1.9040970801999997,
+        2.1871600000000004,
+        0.3121166229248047,
+        3.03490520267374
+      ],
+      "embedding_dimension": 704,
+      "embedding_preview": {
+        "Emb_0": -0.48292,
+        "Emb_1": -0.23972,
+        "Emb_2": -0.14895
+      },
+      "csv_line": 22
+    },
+    {
+      "id": "1bhf",
+      "experimental": "Kd=42uM",
+      "endpoint": "pKd",
+      "target": 4.376750709602099,
+      "columns": [
+        "GNINA_Affinity",
+        "BIND_pIC50",
+        "flowdock_score",
+        "DynamicBind_score"
+      ],
+      "scores": [
+        6.565141201,
+        4.82095,
+        7.321505546569824,
+        6.184497447742977
+      ],
+      "absolute_differences": [
+        2.188390491397901,
+        0.4441992903979006,
+        2.944754836967725,
+        1.807746738140878
+      ],
+      "embedding_dimension": 704,
+      "embedding_preview": {
+        "Emb_0": -0.57228,
+        "Emb_1": -0.26816,
+        "Emb_2": -0.11848
+      },
+      "csv_line": 69
+    }
+  ]
+}

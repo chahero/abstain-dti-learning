@@ -13,9 +13,24 @@
     "Yan Liu"
   ],
   "code_commit": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
-  "review_date": "2026-11-11",
-  "status": "paper-and-code-reading; no reproduction run",
+  "review_date": "2026-11-12",
+  "status": "paper-and-code-reading; public-example numerical inspection; no reproduction run",
+  "public_example": {
+    "source": "https://github.com/yongchand/RELIABLE-BA/blob/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/examples/sample_data.csv",
+    "sha256": "80d7e7f9b2d011d003f680ef356b9b65325a5752e7af6305c8695e2d79e2c2a2",
+    "selected_ids": [
+      "6o9c",
+      "6n97",
+      "1qin",
+      "1bhf"
+    ]
+  },
   "original_figures": [
+    {
+      "file": "assets/error_correlation_matrix.png",
+      "source": "https://arxiv.org/html/2607.17601v1/error_correlation_matrix.png",
+      "attribution": "Hong et al., arXiv:2607.17601v1, CC BY 4.0; unmodified"
+    },
     {
       "file": "assets/architecture.png",
       "source": "https://arxiv.org/html/2607.17601v1/architecture.png",
@@ -35,8 +50,8 @@
   "files": [
     {
       "path": "app.js",
-      "bytes": 11452,
-      "sha256": "31f0ac4f9c09cf7f42a24aeb8a643ef7ca24ce0b33c8ab3dc10732f4370c0734"
+      "bytes": 14229,
+      "sha256": "fd9912afc4dc0f56cbd5d9ff33a9e06e2c49c7b795692c32586746bb17541742"
     },
     {
       "path": "assets/architecture.png",
@@ -47,6 +62,51 @@
       "path": "assets/disagreement_analysis.png",
       "bytes": 85940,
       "sha256": "9bc48ce242ff0c1d1b3c258e8901add7525892ab52fabfa509660d260b81c314"
+    },
+    {
+      "path": "assets/error_correlation_matrix.png",
+      "bytes": 24361,
+      "sha256": "14c1dcd7c58fbb94cc60e03fccd6922ceac3d0c05f9c1f990da26bfbd43f5437"
+    },
+    {
+      "path": "assets/esm-example.json",
+      "bytes": 2809,
+      "sha256": "17c73bbd686165165d833cd8ee5f32a814615c92804831002d98e8839ab601a6"
+    },
+    {
+      "path": "assets/input-example/esm2-8m-representations.npz",
+      "bytes": 350387,
+      "sha256": "f48fbb5c9d1932e0f9f8508eddfd671c2d078418ef8df8243a95cdb20a175433"
+    },
+    {
+      "path": "assets/input-example/ligand-prepared.sdf",
+      "bytes": 6621,
+      "sha256": "051b8742c32adc05c07fb486a4e7c9327f84e131cee33ac4e6a568d07553eb38"
+    },
+    {
+      "path": "assets/input-example/ligand.smi",
+      "bytes": 79,
+      "sha256": "0319e4abd7c7dd12476ececbb33dd177b744e0bb450c74226fd9236069e20641"
+    },
+    {
+      "path": "assets/input-example/protein-chain-A.pdb",
+      "bytes": 180619,
+      "sha256": "7cd0b048270161b972e602d66b5698852d2a2abb6f1433ceff9d121146e241c0"
+    },
+    {
+      "path": "assets/input-example/protein.fasta",
+      "bytes": 338,
+      "sha256": "17672ccbaa78b44996c6766b80387715db1a79c0d2cf55a4547fe312faff1390"
+    },
+    {
+      "path": "assets/input-example.json",
+      "bytes": 2984,
+      "sha256": "29cd8d0f4857c0a5081435d0b0d2e91a51aae513f962fb0b1c87014efd939d3f"
+    },
+    {
+      "path": "assets/public-cases.json",
+      "bytes": 3430,
+      "sha256": "320f8a2235c4b050af531d6fca2eb264a56fd93d8e1093faa6e700e75a99abcd"
     },
     {
       "path": "assets/results.json",
@@ -60,13 +120,28 @@
     },
     {
       "path": "data.js",
-      "bytes": 20722,
-      "sha256": "1b0174424d4d2faa00f561c0fcd275f3fb5f9a1f5f3422c04cc47925ca0826b7"
+      "bytes": 38174,
+      "sha256": "eea6fd4ea7e76c849929100ba67a988c117bf657bf18ac5b4c87381cd6ddb7f0"
+    },
+    {
+      "path": "details.js",
+      "bytes": 6659,
+      "sha256": "0ffda25e25601aca4378d42d86b4323d15cfb1bde53ae227ce670b56623031fa"
+    },
+    {
+      "path": "expansion.css",
+      "bytes": 10853,
+      "sha256": "327434bab7e3d0c494362a4e210ea7229000927fc699a3614b041adb9d630930"
     },
     {
       "path": "index.html",
-      "bytes": 31760,
-      "sha256": "aa72b98bd720884df2d4d3e67773df6d65aaa64f9f2638cd3defa0ef0e17eaf1"
+      "bytes": 103131,
+      "sha256": "03af942fc916f527df00768a30fbf72e3cea47701fec417d87c5793f902cf7ea"
+    },
+    {
+      "path": "lessons.css",
+      "bytes": 5767,
+      "sha256": "d40105c3185898149f339ef1fd92ecc760b50f797193e94fa6d36325512d7695"
     },
     {
       "path": "math.js",
@@ -74,14 +149,60 @@
       "sha256": "72ee74c07426e5679f9230471963fa4a68de0f7b15db3de9d5e42ac31d7635b1"
     },
     {
+      "path": "representations.css",
+      "bytes": 9513,
+      "sha256": "e1a825cb5fa8c59ba10810c2cb3df9d64a8e37da7661eac44573ddb3fbd385d4"
+    },
+    {
+      "path": "representations.js",
+      "bytes": 16903,
+      "sha256": "65cddbd217452f452997621cb3bcd7d1bd45918636d14e7ba61d0e0600d87dd5"
+    },
+    {
       "path": "review.md",
-      "bytes": 17363,
-      "sha256": "49c505329897ae3fc5b8f2e9120f8a776551b11df40e238692444726a64cde21"
+      "bytes": 53185,
+      "sha256": "92b43ec02c4156d0bbefb5d822732b88a67e3a213a36bfa3b72fd790783dc63b"
     },
     {
       "path": "style.css",
       "bytes": 18307,
       "sha256": "9b114ec86bc5fa00ddcee08395c06e3f6ca9806a1a51f348750a663bff8f393f"
+    }
+  ],
+  "input_example": {
+    "source": "https://www.rcsb.org/structure/1IEP",
+    "record": "1IEP chain A / prepared imatinib +1",
+    "coordinate_sha256": "577386b4b8bc58a570facba0c8a843386842caef5ed7b60106c685d0f68d4218",
+    "status": "educational format example; holo coordinates; prepared +1 imatinib; not fresh affinity inference; not apo or a blind docking experiment"
+  },
+  "esm_representation_example": {
+    "model_id": "facebook/esm2_t6_8M_UR50D",
+    "revision": "c731040fcd8d73dceaa04b0a8e6329b345b0f5df",
+    "sequence_sha256": "895a00a3e4945618ac5a12783f4a82f9c0c1063aae237a2ebf0eec8c570d8992",
+    "residue_shape": [
+      293,
+      320
+    ],
+    "artifact": "assets/input-example/esm2-8m-representations.npz",
+    "artifact_sha256": "f48fbb5c9d1932e0f9f8508eddfd671c2d078418ef8df8243a95cdb20a175433",
+    "status": "actual last-layer ESM-2 8M representation, no BIND/RELIABLE-BA training or affinity prediction; distinct from BIND ESM-2 650M 1280-wide features"
+  },
+  "representation_sources": [
+    {
+      "url": "https://raw.githubusercontent.com/Chokyotager/BIND/main/model_graph.py",
+      "snapshot_sha256": "afdd97beb94a656b5c6c851f0855163d42a40978e8a2c12cd656fd5678e95afa"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Chokyotager/BIND/main/loading.py",
+      "snapshot_sha256": "c9e47d3a6fa9091dd919a4f29ae1ab59c8b3ef1d2776339c6918441543e9f0c1"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/facebookresearch/esm/main/README.md",
+      "snapshot_sha256": "8b273c21a322fc9473d1b68d0dd40c8166ab2f89e4a190aa26ca87251b97cba9"
+    },
+    {
+      "url": "https://gnina.github.io/gnina/rsc_workshop2021/",
+      "snapshot_sha256": "859026add2ff0e2d7ee9567ff1ec4e62a831366c9065ac171599b9abb993adca"
     }
   ]
 }

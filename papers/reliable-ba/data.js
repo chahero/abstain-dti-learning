@@ -771,6 +771,517 @@ window.REVIEW_DATA = {
       ],
       "meaning": "구성요소를 제거하거나 바꾸어 어느 부분이 결과에 기여했는지 비교합니다.",
       "context": "이 논문의 Table 3은 신뢰성 조절과 입력 특징을 바꾼 비교입니다."
+    },
+    {
+      "id": "voxel",
+      "name": "복셀·원자 격자",
+      "en": "Voxel",
+      "aliases": [
+        "복셀",
+        "원자 격자"
+      ],
+      "meaning": "3D 공간을 작은 칸으로 나눠 각 위치의 특징을 담는 표현입니다.",
+      "context": "GNINA는 원자 종류와 공간 배치를 CNN이 처리할 격자 표현으로 다룹니다."
+    },
+    {
+      "id": "cnn",
+      "name": "CNN",
+      "en": "Convolutional Neural Network",
+      "aliases": [
+        "CNN"
+      ],
+      "meaning": "공간적으로 가까운 특징을 묶어 읽는 합성곱 신경망입니다.",
+      "context": "여기서는 사진 대신 단백질·리간드 원자 배치의 격자 표현을 평가하는 데 사용합니다."
+    },
+    {
+      "id": "graph",
+      "name": "분자 그래프",
+      "en": "Molecular graph",
+      "aliases": [
+        "분자 그래프"
+      ],
+      "meaning": "원자를 점, 결합을 선으로 나타내는 분자의 연결 표현입니다.",
+      "context": "연결 구조와 명시적인 3D 원자 좌표는 다른 정보입니다. BIND는 이 그래프와 서열 표현을 연결합니다."
+    },
+    {
+      "id": "loss",
+      "name": "손실 함수",
+      "en": "Loss function",
+      "aliases": [
+        "손실 함수",
+        "학습 손실"
+      ],
+      "meaning": "모델의 출력이 학습 목표에 얼마나 맞는지 수치로 평가하는 규칙입니다.",
+      "context": "이 논문은 예측분포의 손실과 과도한 증거에 대한 벌점을 사용합니다. 화면의 절대 차이 표가 손실 함수 전체는 아닙니다."
+    },
+    {
+      "id": "backprop",
+      "name": "역전파",
+      "en": "Backpropagation",
+      "aliases": [
+        "역전파"
+      ],
+      "meaning": "출력의 학습 손실이 각 가중치에 얼마나 영향을 받는지 계산하는 과정입니다.",
+      "context": "그 결과를 이용해 전문가 변환망과 신뢰성 망의 가중치를 함께 조정합니다."
+    },
+    {
+      "id": "training",
+      "name": "학습",
+      "en": "Training",
+      "aliases": [
+        "학습"
+      ],
+      "meaning": "정답이 있는 사례로 모델의 가중치를 조정하는 과정입니다.",
+      "context": "정답은 실험 친화도이며, 엔진 이름이나 원하는 신뢰성 수치가 아닙니다."
+    },
+    {
+      "id": "inference",
+      "name": "추론",
+      "en": "Inference",
+      "aliases": [
+        "추론"
+      ],
+      "meaning": "학습된 가중치로 새 입력의 출력을 계산하는 과정입니다.",
+      "context": "새 문제의 실험 정답 없이 입력 특징과 엔진 점수로 예측합니다."
+    },
+    {
+      "id": "affinity-log",
+      "name": "pKd·pKi",
+      "en": "Negative log molar concentration",
+      "aliases": [
+        "pKd",
+        "pKi"
+      ],
+      "meaning": "Kd 또는 Ki를 몰 농도 M으로 나타낸 값에 음의 상용로그를 취한 척도입니다.",
+      "context": "100 nM은 10의 −7승 M이므로 pKd는 7입니다. pIC50와 pKd가 같은 측정 물리량이 된다는 뜻은 아닙니다."
+    },
+    {
+      "id": "smiles",
+      "name": "SMILES",
+      "en": "Simplified Molecular Input Line Entry System",
+      "aliases": [
+        "SMILES"
+      ],
+      "meaning": "원자와 결합의 연결 등을 문자열로 적는 화합물 표현입니다.",
+      "context": "이 교재의 이마티닙 문자열에는 양성자화된 질소의 [NH+]도 표시됩니다. 원자별 3D 좌표 파일은 아닙니다."
+    },
+    {
+      "id": "fasta",
+      "name": "FASTA",
+      "en": "Sequence file format",
+      "aliases": [
+        "FASTA"
+      ],
+      "meaning": "이름 줄과 생물학적 서열을 적는 텍스트 형식입니다.",
+      "context": "단백질에서는 아미노산의 한 글자 기호가 이어집니다. 원자의 3D 좌표는 없습니다."
+    },
+    {
+      "id": "pdb",
+      "name": "PDB 좌표 파일",
+      "en": "Protein Data Bank coordinate format",
+      "aliases": [
+        "PDB 파일"
+      ],
+      "meaning": "원자 이름·잔기·사슬·좌표 등을 기록하는 구조 파일 형식입니다.",
+      "context": "PDB 식별자 1IEP는 구조 기록의 이름이고, .pdb는 그 기록을 내려받는 파일 형식 중 하나입니다."
+    },
+    {
+      "id": "sdf",
+      "name": "SDF",
+      "en": "Structure Data File",
+      "aliases": [
+        "SDF"
+      ],
+      "meaning": "분자의 원자, 결합, 좌표와 부가 정보를 담는 파일 형식입니다.",
+      "context": "이 예제는 3D 좌표가 있는 SDF입니다. SDF라는 확장자만으로 항상 3D라고 가정할 수는 없습니다."
+    },
+    {
+      "id": "token",
+      "name": "토큰",
+      "en": "Token",
+      "aliases": [
+        "토큰"
+      ],
+      "meaning": "모델이 입력을 읽도록 나눈 단위입니다.",
+      "context": "여기서는 아미노산 한 글자와 시작·끝 특수 기호를 구분해 읽습니다. 토큰 번호와 학습된 임베딩 벡터도 다릅니다."
+    },
+    {
+      "id": "crossattention",
+      "name": "Cross-attention",
+      "en": "Cross-attention",
+      "aliases": [
+        "cross-attention",
+        "Cross-attention"
+      ],
+      "meaning": "한쪽 표현이 다른 쪽 정보 중 무엇을 얼마나 읽을지 계산하는 방식입니다.",
+      "context": "BIND에서는 분자 노드 표현의 query와 단백질 표현의 key/value를 연결합니다. 가중치가 곧 물리적 접촉의 증거는 아닙니다."
+    },
+    {
+      "id": "flowmatching",
+      "name": "Flow matching",
+      "en": "Flow matching",
+      "aliases": [
+        "flow matching",
+        "Flow matching"
+      ],
+      "meaning": "초기 상태에서 목표 상태로 가는 경로의 이동 방향을 학습하는 생성 모델 접근입니다.",
+      "context": "FlowDock의 학습된 이동장을 실제 물리적 힘이나 분자동역학 궤적으로 읽으면 안 됩니다."
+    },
+    {
+      "id": "diffusion",
+      "name": "확산 모델",
+      "en": "Diffusion model",
+      "aliases": [
+        "확산 모델"
+      ],
+      "meaning": "학습에서 상태를 흐트러뜨리고 복원하는 과정을 이용하는 생성 모델입니다.",
+      "context": "DynamicBind는 단백질·리간드 구조를 생성합니다. 생성 단계의 시계가 실제 분자의 물리적 시간을 뜻하지 않습니다."
+    },
+    {
+      "id": "equivariance",
+      "name": "등변성",
+      "en": "Equivariance",
+      "aliases": [
+        "등변성"
+      ],
+      "meaning": "입력을 변환하면 출력도 정해진 방식으로 함께 변환되는 성질입니다.",
+      "context": "입력 구조 전체를 돌렸을 때 예측 좌표도 함께 도는 회전 등변성이 예입니다. 출력이 전혀 바뀌지 않는 불변성과 구분합니다."
+    },
+    {
+      "id": "head",
+      "name": "출력층·헤드",
+      "en": "Prediction head",
+      "aliases": [
+        "출력층"
+      ],
+      "meaning": "공유한 특징에서 특정 예측값을 계산하는 마지막 부분입니다.",
+      "context": "자세 점수용 출력층과 친화도용 출력층은 다른 질문에 답합니다. 사람이 여럿 있거나 LLM 에이전트가 여럿이라는 뜻이 아닙니다."
     }
-  ]
+  ],
+  "publicCases": {
+    "source": "https://github.com/yongchand/RELIABLE-BA/blob/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/examples/sample_data.csv",
+    "source_sha256": "80d7e7f9b2d011d003f680ef356b9b65325a5752e7af6305c8695e2d79e2c2a2",
+    "description": "Four deliberately selected rows from the official example, described by authors as a real PDBbind subset; scores not rerun; numerical distance to experimental pK is not endpoint conversion; not final RELIABLE-BA predictions",
+    "total_public_example_rows": 150,
+    "cases": [
+      {
+        "id": "6o9c",
+        "experimental": "Kd=28.5nM",
+        "endpoint": "pKd",
+        "target": 7.54515513999149,
+        "columns": [
+          "GNINA_Affinity",
+          "BIND_pIC50",
+          "flowdock_score",
+          "DynamicBind_score"
+        ],
+        "scores": [
+          7.5509209633,
+          4.76707,
+          6.599208450317383,
+          5.335165098451346
+        ],
+        "absolute_differences": [
+          0.005765823308510498,
+          2.7780851399914894,
+          0.9459466896741064,
+          2.209990041540144
+        ],
+        "embedding_dimension": 704,
+        "embedding_preview": {
+          "Emb_0": -0.12662,
+          "Emb_1": -0.10933,
+          "Emb_2": -0.21482
+        },
+        "csv_line": 146
+      },
+      {
+        "id": "6n97",
+        "experimental": "Ki=7.1uM",
+        "endpoint": "pKi",
+        "target": 5.1487416512809245,
+        "columns": [
+          "GNINA_Affinity",
+          "BIND_pIC50",
+          "flowdock_score",
+          "DynamicBind_score"
+        ],
+        "scores": [
+          7.1902270317,
+          3.42157,
+          6.985597896575928,
+          4.859611862054603
+        ],
+        "absolute_differences": [
+          2.0414853804190756,
+          1.7271716512809245,
+          1.836856245295003,
+          0.2891297892263216
+        ],
+        "embedding_dimension": 704,
+        "embedding_preview": {
+          "Emb_0": -0.74088,
+          "Emb_1": -0.34611,
+          "Emb_2": -0.02108
+        },
+        "csv_line": 136
+      },
+      {
+        "id": "1qin",
+        "experimental": "Ki=10nM",
+        "endpoint": "pKi",
+        "target": 8.0,
+        "columns": [
+          "GNINA_Affinity",
+          "BIND_pIC50",
+          "flowdock_score",
+          "DynamicBind_score"
+        ],
+        "scores": [
+          6.0959029198,
+          5.81284,
+          7.687883377075195,
+          4.96509479732626
+        ],
+        "absolute_differences": [
+          1.9040970801999997,
+          2.1871600000000004,
+          0.3121166229248047,
+          3.03490520267374
+        ],
+        "embedding_dimension": 704,
+        "embedding_preview": {
+          "Emb_0": -0.48292,
+          "Emb_1": -0.23972,
+          "Emb_2": -0.14895
+        },
+        "csv_line": 22
+      },
+      {
+        "id": "1bhf",
+        "experimental": "Kd=42uM",
+        "endpoint": "pKd",
+        "target": 4.376750709602099,
+        "columns": [
+          "GNINA_Affinity",
+          "BIND_pIC50",
+          "flowdock_score",
+          "DynamicBind_score"
+        ],
+        "scores": [
+          6.565141201,
+          4.82095,
+          7.321505546569824,
+          6.184497447742977
+        ],
+        "absolute_differences": [
+          2.188390491397901,
+          0.4441992903979006,
+          2.944754836967725,
+          1.807746738140878
+        ],
+        "embedding_dimension": 704,
+        "embedding_preview": {
+          "Emb_0": -0.57228,
+          "Emb_1": -0.26816,
+          "Emb_2": -0.11848
+        },
+        "csv_line": 69
+      }
+    ]
+  },
+  "inputExample": {
+    "pdb_id": "1IEP",
+    "chain": "A",
+    "declared_residues": 293,
+    "observed_residues": 274,
+    "sequence": "GAMDPSSPNYDKWEMERTDITMKHKLGGGQYGEVYEGVWKKYSLTVAVKTLKEDTMEVEEFLKEAAVMKEIKHPNLVQLLGVCTREPPFYIITEFMTYGNLLDYLRECNRQEVSAVVLLYMATQISSAMEYLEKKNFIHRDLAARNCLVGENHLVKVADFGLSRLMTGDTYTAHAGAKFPIKWTAPESLAYNKFSIKSDVWAFGVLLWEIATYGMSPYPGIDLSQVYELLEKDYRMERPEGCPEKVYELMRACWQWNPSDRPSFAEIHQAFETMFQESSISDEVEKELGKRGT",
+    "smiles": "Cc1ccc(NC(=O)c2ccc(CN3CC[NH+](C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+    "formal_charge": 1,
+    "heavy_atoms": 37,
+    "total_atoms": 69,
+    "formula": "C29H32N7O+",
+    "protein_preview": [
+      "ATOM      1  N   MET A 225      19.353  41.547  -3.887  1.00 72.26           N  ",
+      "ATOM      2  CA  MET A 225      20.513  40.939  -4.592  1.00 70.80           C  ",
+      "ATOM      3  C   MET A 225      20.150  39.658  -5.355  1.00 69.53           C  "
+    ],
+    "ligand_atoms": [
+      {
+        "element": "C",
+        "xyz": [
+          11.879,
+          62.272,
+          12.57
+        ]
+      },
+      {
+        "element": "C",
+        "xyz": [
+          13.002,
+          61.429,
+          12.91
+        ]
+      },
+      {
+        "element": "C",
+        "xyz": [
+          13.097,
+          60.07,
+          12.392
+        ]
+      }
+    ],
+    "fasta_preview": [
+      ">1IEP_chain_A_SEQRES_declared_construct",
+      "GAMDPSSPNYDKWEMERTDITMKHKLGGGQYGEVYEGVWKKYSLTVAVKTLKEDTMEVEE",
+      "FLKEAAVMKEIKHPNLVQLLGVCTREPPFYIITEFMTYGNLLDYLRECNRQEVSAVVLLY"
+    ],
+    "sdf_preview": [
+      "STI",
+      "     RDKit          3D",
+      "",
+      " 69 73  0  0  0  0  0  0  0  0999 V2000",
+      "   11.8790   62.2720   12.5700 C   0  0  0  0  0  0  0  0  0  0  0  0",
+      "   13.0020   61.4290   12.9100 C   0  0  0  0  0  0  0  0  0  0  0  0",
+      "   13.0970   60.0700   12.3920 C   0  0  0  0  0  0  0  0  0  0  0  0"
+    ],
+    "source": "https://www.rcsb.org/structure/1IEP",
+    "coordinate_source": "https://files.rcsb.org/download/1IEP.pdb",
+    "local_ligand_source": "study/07_real_dti/docking-cofolding/inputs/1iep_ligand.sdf",
+    "source_ligand_snapshot": "sources/input--ligand-prepared.sdf",
+    "source_pdb_sha256": "577386b4b8bc58a570facba0c8a843386842caef5ed7b60106c685d0f68d4218",
+    "source_ligand_sha256": "051b8742c32adc05c07fb486a4e7c9327f84e131cee33ac4e6a568d07553eb38",
+    "status": "educational format example; holo coordinates; prepared +1 imatinib; not fresh affinity inference; not apo or a blind docking experiment",
+    "files": [
+      {
+        "name": "protein.fasta",
+        "sha256": "17672ccbaa78b44996c6766b80387715db1a79c0d2cf55a4547fe312faff1390"
+      },
+      {
+        "name": "protein-chain-A.pdb",
+        "sha256": "7cd0b048270161b972e602d66b5698852d2a2abb6f1433ceff9d121146e241c0"
+      },
+      {
+        "name": "ligand.smi",
+        "sha256": "0319e4abd7c7dd12476ececbb33dd177b744e0bb450c74226fd9236069e20641"
+      },
+      {
+        "name": "ligand-prepared.sdf",
+        "sha256": "051b8742c32adc05c07fb486a4e7c9327f84e131cee33ac4e6a568d07553eb38"
+      }
+    ]
+  },
+  "esmExample": {
+    "model_id": "facebook/esm2_t6_8M_UR50D",
+    "revision": "c731040fcd8d73dceaa04b0a8e6329b345b0f5df",
+    "input_record": "1IEP chain A SEQRES",
+    "sequence_sha256": "895a00a3e4945618ac5a12783f4a82f9c0c1063aae237a2ebf0eec8c570d8992",
+    "token_shape": [
+      1,
+      295
+    ],
+    "hidden_state_shape": [
+      1,
+      295,
+      320
+    ],
+    "residue_shape": [
+      293,
+      320
+    ],
+    "mean_shape": [
+      320
+    ],
+    "preview": [
+      {
+        "position": 1,
+        "residue": "G",
+        "first_eight": [
+          0.16379006206989288,
+          -0.003833003342151642,
+          0.2203540802001953,
+          0.4348255395889282,
+          -0.053659237921237946,
+          0.13102483749389648,
+          -0.0645756945014,
+          -0.37534046173095703
+        ]
+      },
+      {
+        "position": 2,
+        "residue": "A",
+        "first_eight": [
+          0.3299660086631775,
+          -0.07233918458223343,
+          -0.11774805188179016,
+          0.0687442421913147,
+          0.3177124857902527,
+          -0.09544602781534195,
+          -0.15628257393836975,
+          -0.011404665187001228
+        ]
+      },
+      {
+        "position": 3,
+        "residue": "M",
+        "first_eight": [
+          0.10982684791088104,
+          0.12016668915748596,
+          -0.12917621433734894,
+          0.582194447517395,
+          0.44705748558044434,
+          -0.3465692698955536,
+          -0.12705810368061066,
+          -0.4749680161476135
+        ]
+      },
+      {
+        "position": 4,
+        "residue": "D",
+        "first_eight": [
+          0.10100981593132019,
+          -0.1584135890007019,
+          0.3398106098175049,
+          0.08498452603816986,
+          0.27341488003730774,
+          0.11307761073112488,
+          0.12746402621269226,
+          -0.23682953417301178
+        ]
+      },
+      {
+        "position": 5,
+        "residue": "P",
+        "first_eight": [
+          -0.01972111314535141,
+          -0.2521478533744812,
+          -0.024741001427173615,
+          0.26999732851982117,
+          0.23467540740966797,
+          -0.11040282249450684,
+          -0.09888865053653717,
+          -0.049162838608026505
+        ]
+      }
+    ],
+    "mean_first_eight": [
+      0.10183212906122208,
+      -0.27119848132133484,
+      0.20709189772605896,
+      0.1855487823486328,
+      0.15756922960281372,
+      -0.36789143085479736,
+      0.1126239076256752,
+      -0.15728919208049774
+    ],
+    "torch_version": "2.8.0+cu126",
+    "transformers_version": "4.57.1",
+    "device": "cpu",
+    "dtype": "float32",
+    "eval_mode": true,
+    "artifact": "assets/input-example/esm2-8m-representations.npz",
+    "artifact_sha256": "f48fbb5c9d1932e0f9f8508eddfd671c2d078418ef8df8243a95cdb20a175433",
+    "status": "actual last-layer ESM-2 8M representation, no BIND/RELIABLE-BA training or affinity prediction; distinct from BIND ESM-2 650M 1280-wide features"
+  }
 };
