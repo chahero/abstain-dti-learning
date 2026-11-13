@@ -50,8 +50,8 @@
   "files": [
     {
       "path": "app.js",
-      "bytes": 14229,
-      "sha256": "fd9912afc4dc0f56cbd5d9ff33a9e06e2c49c7b795692c32586746bb17541742"
+      "bytes": 14367,
+      "sha256": "3e6909734305f258d6f923a5d9975a1432379c4ccb2465fc6ce1693811852388"
     },
     {
       "path": "assets/architecture.png",
@@ -160,8 +160,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 201250,
-      "sha256": "ab178e29dbbe60f03874e5ee4af02167ab175ff76f5ce2eac7a3fbe8136d22de"
+      "bytes": 197095,
+      "sha256": "87ba51d48467fff3c53baa1e87cccd11c982f608ec1cec16dea5b849721c688d"
     },
     {
       "path": "lessons.css",
@@ -195,8 +195,8 @@
     },
     {
       "path": "review.md",
-      "bytes": 93938,
-      "sha256": "25a17d5bf005a2e7416a733be75f68a9755f2b5f029121c7e3a2011cb7463382"
+      "bytes": 91433,
+      "sha256": "af31e4cc79f9249015925dd66ecf750c729fbcdc584eba9b52e7ba65ebb4427b"
     },
     {
       "path": "style.css",
@@ -430,5 +430,26 @@
       "Deep Ensemble",
       "RELIABLE-BA"
     ]
+  },
+  "content_scope": {
+    "main_chapters": 7,
+    "ordered_views": 14,
+    "chapter_ids": [
+      "overview",
+      "models",
+      "input-examples",
+      "voxel-example",
+      "esm-example",
+      "graph-example",
+      "generation-example",
+      "output-examples",
+      "errors",
+      "method",
+      "training-data",
+      "learning",
+      "results",
+      "sources"
+    ],
+    "application_ideas_chapter": false
   }
 }

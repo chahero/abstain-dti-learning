@@ -21,7 +21,10 @@
   let current='';
   let currentHash='';
   function route(){
-    const requested=location.hash.slice(1)||'overview';
+    let requested=location.hash.slice(1)||'overview';
+    if(requested==='agents'||requested.startsWith('agents/')){
+      requested='results';history.replaceState(null,'','#results');
+    }
     if(requested==='content'&&current){
       const title=$('#'+(current||'overview')+' h1');
       title.tabIndex=-1;title.focus();
