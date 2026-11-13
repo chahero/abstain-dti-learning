@@ -12,7 +12,7 @@
   const compactNav=matchMedia('(max-width:760px)');
   function toggleModelToc(open){
     modelSubnav.hidden=!open;modelToggle.setAttribute('aria-expanded',String(open));
-    modelToggle.setAttribute('aria-label','2장 세부 목차 '+(open?'접기':'펼치기'));
+    modelToggle.setAttribute('aria-label','모델 첨부 자료 세부 목차 '+(open?'접기':'펼치기'));
   }
   modelToggle.addEventListener('click',()=>toggleModelToc(modelSubnav.hidden));
   $('.main-toc').addEventListener('click',e=>{if(compactNav.matches&&e.target.closest('a[data-view]'))outline.open=false;});
@@ -21,12 +21,12 @@
   let current='';
   let currentHash='';
   function route(){
-    let requested=location.hash.slice(1)||'overview';
+    let requested=location.hash.slice(1)||'motivation';
     if(requested==='agents'||requested.startsWith('agents/')){
       requested='results';history.replaceState(null,'','#results');
     }
     if(requested==='content'&&current){
-      const title=$('#'+(current||'overview')+' h1');
+      const title=$('#'+(current||'motivation')+' h1');
       title.tabIndex=-1;title.focus();
       return;
     }
@@ -38,7 +38,7 @@
       const owner=target?.closest('.chapter');
       if(parts[0]==='limits'){chapter=$('#results');anchor='limits';}
       else if(owner){chapter=owner;if(target!==owner)anchor=target.id;}
-      else chapter=base||$('#overview');
+      else chapter=base||$('#motivation');
     }
     if(anchor&&parts[0]!==chapter.id&&chapter.dataset.parent!==parts[0]){
       requested=chapterRoute(chapter)+'/'+anchor;history.replaceState(null,'','#'+requested);
@@ -50,6 +50,8 @@
     chapters.forEach(el=>el.hidden=el.id!==id);
     $$('.sidebar a[data-view]').forEach(a=>{if(a.dataset.view===id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
     const inModels=id==='models'||chapter.dataset.parent==='models';
+    const background=$('#background-toc');
+    if(background)background.open=background.contains(chapterLink(id));
     $('#model-family').classList.toggle('family-active',inModels);
     if(inModels)toggleModelToc(true);
     $('#current-outline-label').textContent=chapterLink(id).textContent;
@@ -61,15 +63,16 @@
     }
     if(document.readyState!=='loading'){
       const title=$('#'+id+' h1');title.tabIndex=-1;title.focus({preventScroll:true});
-      if(anchor)requestAnimationFrame(()=>document.getElementById(anchor).scrollIntoView({block:'start',behavior:'instant'}));
+      if(anchor)requestAnimationFrame(()=>(anchor.startsWith('figure-step-')?$('#figure-reader'):document.getElementById(anchor)).scrollIntoView({block:'start',behavior:'instant'}));
       else window.scrollTo({top:0,behavior:'instant'});
     }
-    const index=chapters.findIndex(c=>c.id===id);
+    const reading=chapters.filter(c=>chapter.dataset.reading==='appendix'?c.dataset.reading==='appendix':c.dataset.reading!=='appendix');
+    const index=reading.findIndex(c=>c.id===id);
     const previous=$('#previous-chapter'),next=$('#next-chapter');
     if(previous&&next){
-      previous.hidden=index===0;next.hidden=index===chapters.length-1;
-      if(index>0){previous.href='#'+chapterRoute(chapters[index-1]);previous.textContent='← '+chapterLink(chapters[index-1].id).textContent;}
-      if(index<chapters.length-1){next.href='#'+chapterRoute(chapters[index+1]);next.textContent=chapterLink(chapters[index+1].id).textContent+' →';}
+      previous.hidden=index===0;next.hidden=index===reading.length-1;
+      if(index>0){previous.href='#'+chapterRoute(reading[index-1]);previous.textContent='← '+chapterLink(reading[index-1].id).textContent;}
+      if(index<reading.length-1){next.href='#'+chapterRoute(reading[index+1]);next.textContent=chapterLink(reading[index+1].id).textContent+' →';}
     }
     $('#copy-status').textContent='';
   }

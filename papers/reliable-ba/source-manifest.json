@@ -50,8 +50,8 @@
   "files": [
     {
       "path": "app.js",
-      "bytes": 14495,
-      "sha256": "53376e6450a140ebd835d49ed16cf665835b4f06f44b9ea8e5cf6df3e9f48c21"
+      "bytes": 14822,
+      "sha256": "df1db806319a0e89b55420f59d01b806eab3939662664d8ac8fe803b0dda59dc"
     },
     {
       "path": "assets/architecture.png",
@@ -134,6 +134,16 @@
       "sha256": "7f07771bbac0536a039607f1cc69bb6ab2adf825b72544ace016ab9b238fa4b4"
     },
     {
+      "path": "diagram.css",
+      "bytes": 9832,
+      "sha256": "b17c7515203c40536d1b0f642ef6a562173627e29a564c57e87f13b62a4be3d4"
+    },
+    {
+      "path": "diagram.js",
+      "bytes": 4584,
+      "sha256": "e2d47bd5367edc2cc7f1953bb5a9c6a36085b8541c1529691c4f1b5b5e546d32"
+    },
+    {
       "path": "errors.css",
       "bytes": 8348,
       "sha256": "37a4477ff3211a450c5b481839697b35a15c41029df5f321d759837a2d9a707c"
@@ -160,8 +170,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 200441,
-      "sha256": "ac545c155d01f79351f9a573915476fee34ccec30b941999868e36a338ca91b3"
+      "bytes": 243748,
+      "sha256": "b7f1ed6257da58243d5d610e6a8429bd54fe4823227a6e713aadd01ecb0bc3b1"
     },
     {
       "path": "lessons.css",
@@ -189,6 +199,16 @@
       "sha256": "867fdc109e95d985c10c7cd163f7d75f8b5387b7f95360fbfb4b6b8fcac41ae7"
     },
     {
+      "path": "reading.css",
+      "bytes": 3383,
+      "sha256": "ea8c3a65ffe6e2d42d316575177507f67c212f9129e5a987fa6b862738d39e55"
+    },
+    {
+      "path": "related.css",
+      "bytes": 5699,
+      "sha256": "43f89405def56452a91b0db516929b3ceca7fd297107ca898266f001986337e6"
+    },
+    {
       "path": "representations.css",
       "bytes": 9513,
       "sha256": "e1a825cb5fa8c59ba10810c2cb3df9d64a8e37da7661eac44573ddb3fbd385d4"
@@ -200,8 +220,8 @@
     },
     {
       "path": "review.md",
-      "bytes": 95124,
-      "sha256": "71baebfcd046b683d9ddd8a9addaf83abf7ae572ae342838242f5a70c2875443"
+      "bytes": 116659,
+      "sha256": "45b9eb1b5b07f95e7ddbcdd48fc1f142add424ee4b684c37930509089c2af0ef"
     },
     {
       "path": "style.css",
@@ -436,11 +456,118 @@
       "RELIABLE-BA"
     ]
   },
-  "content_scope": {
-    "main_chapters": 7,
-    "ordered_views": 14,
-    "chapter_ids": [
+  "related_work_and_score_trace": {
+    "pair": "c-Abl / imatinib",
+    "status": "authored raw scores, mapped means and NIG/reliability parameters; no trained mapping or engine execution",
+    "prior_work_boundary": "learned fixed weights, input-dependent gates and uncertainty estimation predate this paper; comparisons describe Appendix C implementations",
+    "trace": [
+      {
+        "engine": "GNINA",
+        "field": "GNINA_Affinity",
+        "raw_score": 6.5,
+        "mean": 7.0,
+        "r": 0.2,
+        "nu": 5.0,
+        "alpha": 3.0,
+        "beta": 2.0,
+        "effective": 1.0,
+        "weight": 0.13333333333333333,
+        "contribution": 0.9333333333333333
+      },
+      {
+        "engine": "BIND",
+        "field": "BIND_pIC50",
+        "raw_score": 8.1,
+        "mean": 7.5,
+        "r": 0.3,
+        "nu": 5.0,
+        "alpha": 3.0,
+        "beta": 2.0,
+        "effective": 1.5,
+        "weight": 0.2,
+        "contribution": 1.5
+      },
+      {
+        "engine": "FlowDock",
+        "field": "flowdock_score",
+        "raw_score": 7.6,
+        "mean": 8.2,
+        "r": 0.9,
+        "nu": 5.0,
+        "alpha": 3.0,
+        "beta": 2.0,
+        "effective": 4.5,
+        "weight": 0.6,
+        "contribution": 4.919999999999999
+      },
+      {
+        "engine": "DynamicBind",
+        "field": "DynamicBind_score",
+        "raw_score": 6.9,
+        "mean": 8.8,
+        "r": 0.1,
+        "nu": 5.0,
+        "alpha": 3.0,
+        "beta": 2.0,
+        "effective": 0.5,
+        "weight": 0.06666666666666667,
+        "contribution": 0.5866666666666667
+      }
+    ],
+    "fused_mean": 7.9399999999999995,
+    "mapping_is_unit_conversion": false,
+    "sources": [
+      "https://arxiv.org/html/2607.17601v1#S2.SS2",
+      "https://arxiv.org/html/2607.17601v1#S2.SS3",
+      "https://arxiv.org/html/2607.17601v1#A3",
+      "https://arxiv.org/html/2607.17601v1#S3.SS2",
+      "https://arxiv.org/html/2607.17601v1#S3.SS3",
+      "https://arxiv.org/html/2607.17601v1#S3.SS4",
+      "https://arxiv.org/html/2607.17601v1#S3.SS5",
+      "https://github.com/yongchand/RELIABLE-BA/blob/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/src/drug_models_emb.py"
+    ],
+    "reviewed_date": "2026-11-13"
+  },
+  "figure_reading": {
+    "status": "five-stage teaching reader; original bitmap unchanged; highlight overlays and top-pipeline framing added",
+    "source_figure": "assets/architecture.png",
+    "displayed_region": "Figure 2 upper pipeline, viewBox 0 0 1439 525; full unmodified bitmap in disclosure",
+    "stages": [
+      "네 모델의 점수",
+      "평균·불확실성",
+      "이번 조합의 신뢰성",
+      "증거 조절",
+      "최종 예측"
+    ],
+    "io_contract": [
+      "input",
+      "process",
+      "output"
+    ],
+    "fixture": "shared related_work.trace_records; all c-Abl/imatinib numerical predictions and parameters are fictional",
+    "parallel_paths": "score heads and feature-based reliability are distinct paths joining at scaling; stage numbers are an explanation order",
+    "primary_reading_path": [
+      "motivation",
       "overview",
+      "walkthrough",
+      "learning",
+      "comparison",
+      "results",
+      "sources"
+    ],
+    "retained_reference_views": 10,
+    "reviewed_date": "2026-11-13"
+  },
+  "study_outline": {
+    "main_order": [
+      "motivation",
+      "overview",
+      "walkthrough",
+      "learning",
+      "comparison",
+      "results"
+    ],
+    "appendix_order": [
       "models",
       "input-examples",
       "voxel-example",
@@ -450,13 +577,37 @@
       "output-examples",
       "errors",
       "method",
+      "training-data"
+    ],
+    "status": "approved six-part main outline; former model/representation lessons retained as optional appendices",
+    "old_links": "anchors follow their actual DOM owners; old incoming chapter/anchor URLs are canonicalized",
+    "deletions": "no original source assets or reference data removed",
+    "reviewed_date": "2026-11-13"
+  },
+  "content_scope": {
+    "main_chapters": 6,
+    "ordered_views": 17,
+    "chapter_ids": [
+      "motivation",
+      "overview",
+      "walkthrough",
       "learning",
-      "training-data",
+      "comparison",
       "results",
+      "models",
+      "input-examples",
+      "voxel-example",
+      "esm-example",
+      "graph-example",
+      "generation-example",
+      "output-examples",
+      "errors",
+      "method",
+      "training-data",
       "sources"
     ],
     "application_ideas_chapter": false,
-    "reading_flow": "Introduction/related work -> method and joint training -> experimental setup -> results, conclusion, limitations",
+    "reading_flow": "Problem -> whole figure -> five stages -> training -> prior methods -> results; former detailed lessons are appendices",
     "paper_sections": [
       "1-2",
       "3.1-3.5",
