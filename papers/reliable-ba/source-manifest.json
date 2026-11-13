@@ -149,9 +149,19 @@
       "sha256": "327434bab7e3d0c494362a4e210ea7229000927fc699a3614b041adb9d630930"
     },
     {
+      "path": "fusion.css",
+      "bytes": 13447,
+      "sha256": "b9af474425e1f152648e5ae7cf15d8d65b1a5bd5b2b604b473ab8c0591061749"
+    },
+    {
+      "path": "fusion.js",
+      "bytes": 8024,
+      "sha256": "3e4c58efc54a9b66b5a33738d6c5b784a9332c62849e9991f5cecc33c4f8189c"
+    },
+    {
       "path": "index.html",
-      "bytes": 166543,
-      "sha256": "f4b72326c6db0f0e7f05b4bf59fbc174e489f0b9555d81133bfacb297dce9a05"
+      "bytes": 186899,
+      "sha256": "d4e47039e879f94bd197eb44ff6eefa1671934534a4d663c1340ec2876b88904"
     },
     {
       "path": "lessons.css",
@@ -185,8 +195,8 @@
     },
     {
       "path": "review.md",
-      "bytes": 79673,
-      "sha256": "2d5f0e6e53f2f2e8f0533754d81469717d13f48c943f0d82427cbdeb21bc161f"
+      "bytes": 87100,
+      "sha256": "d16bdc380c2c75834a31f6a395bb153db2afd8fa4e26c0c7b43553952fa05e38"
     },
     {
       "path": "style.css",
@@ -286,5 +296,95 @@
     ],
     "coordinate_states": "illustrative favorable/unfavorable input states; not actual 1IEP conformers, apo/holo states or equilibrium simulation",
     "separation": "paper tables, original Fig. 1 and public CSV rows retained separately after teaching examples"
+  },
+  "fusion_walkthrough": {
+    "reviewed_date": "2026-11-13",
+    "pair": "c-Abl / imatinib",
+    "status": "authored common-pKd means and NIG/reliability parameters; formula calculation only; no model inference or training",
+    "sources": [
+      "https://arxiv.org/html/2607.17601v1#S3.SS2",
+      "https://arxiv.org/html/2607.17601v1#S3.SS3",
+      "https://arxiv.org/html/2607.17601v1#S3.SS4",
+      "https://arxiv.org/html/2607.17601v1#S3.SS5",
+      "https://github.com/yongchand/RELIABLE-BA/blob/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/src/drug_models_emb.py",
+      "https://github.com/yongchand/RELIABLE-BA/blob/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/src/utils.py"
+    ],
+    "default_experts": [
+      {
+        "engine": "GNINA",
+        "mean": 7.0,
+        "nu": 5.0,
+        "alpha": 3.0,
+        "beta": 2.0,
+        "r": 0.2
+      },
+      {
+        "engine": "BIND",
+        "mean": 7.5,
+        "nu": 5.0,
+        "alpha": 3.0,
+        "beta": 2.0,
+        "r": 0.3
+      },
+      {
+        "engine": "FlowDock",
+        "mean": 8.2,
+        "nu": 5.0,
+        "alpha": 3.0,
+        "beta": 2.0,
+        "r": 0.9
+      },
+      {
+        "engine": "DynamicBind",
+        "mean": 8.8,
+        "nu": 5.0,
+        "alpha": 3.0,
+        "beta": 2.0,
+        "r": 0.1
+      }
+    ],
+    "default_fused_mean": 7.94,
+    "evidence_preset": [
+      {
+        "r": 0.9,
+        "nu": 1
+      },
+      {
+        "r": 0.3,
+        "nu": 5
+      },
+      {
+        "r": 0.4,
+        "nu": 10
+      },
+      {
+        "r": 0.1,
+        "nu": 5
+      }
+    ],
+    "two_expert_disagreement": {
+      "close": [
+        7.9,
+        8.1
+      ],
+      "apart": [
+        6,
+        10
+      ],
+      "shared": {
+        "nu": 5,
+        "alpha": 3,
+        "beta": 2,
+        "r": 1
+      },
+      "same_fused_mean": 8,
+      "total_variances": [
+        0.81,
+        4.8
+      ]
+    },
+    "uncertainty_units": "variance on the squared pKd teaching scale; not a confidence interval or correctness probability",
+    "implementation": "site/math.js equations (8)-(17); same helper as retained two-expert calculation",
+    "evidence_separation": "fictional calculator and retained optional examples precede unchanged original Fig. 2; actual benchmark results remain in chapter 7"
   }
 }
