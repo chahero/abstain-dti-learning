@@ -50,8 +50,8 @@
   "files": [
     {
       "path": "app.js",
-      "bytes": 14367,
-      "sha256": "3e6909734305f258d6f923a5d9975a1432379c4ccb2465fc6ce1693811852388"
+      "bytes": 14495,
+      "sha256": "53376e6450a140ebd835d49ed16cf665835b4f06f44b9ea8e5cf6df3e9f48c21"
     },
     {
       "path": "assets/architecture.png",
@@ -160,8 +160,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 197095,
-      "sha256": "87ba51d48467fff3c53baa1e87cccd11c982f608ec1cec16dea5b849721c688d"
+      "bytes": 200441,
+      "sha256": "ac545c155d01f79351f9a573915476fee34ccec30b941999868e36a338ca91b3"
     },
     {
       "path": "lessons.css",
@@ -184,6 +184,11 @@
       "sha256": "d103cff1c9d738842d683ae843cfeec6036860536faa5d8ae4e80c68f8316042"
     },
     {
+      "path": "overview.css",
+      "bytes": 3940,
+      "sha256": "867fdc109e95d985c10c7cd163f7d75f8b5387b7f95360fbfb4b6b8fcac41ae7"
+    },
+    {
       "path": "representations.css",
       "bytes": 9513,
       "sha256": "e1a825cb5fa8c59ba10810c2cb3df9d64a8e37da7661eac44573ddb3fbd385d4"
@@ -195,8 +200,8 @@
     },
     {
       "path": "review.md",
-      "bytes": 91433,
-      "sha256": "af31e4cc79f9249015925dd66ecf750c729fbcdc584eba9b52e7ba65ebb4427b"
+      "bytes": 95124,
+      "sha256": "71baebfcd046b683d9ddd8a9addaf83abf7ae572ae342838242f5a70c2875443"
     },
     {
       "path": "style.css",
@@ -445,11 +450,18 @@
       "output-examples",
       "errors",
       "method",
-      "training-data",
       "learning",
+      "training-data",
       "results",
       "sources"
     ],
-    "application_ideas_chapter": false
+    "application_ideas_chapter": false,
+    "reading_flow": "Introduction/related work -> method and joint training -> experimental setup -> results, conclusion, limitations",
+    "paper_sections": [
+      "1-2",
+      "3.1-3.5",
+      "4.1",
+      "4.2-6"
+    ]
   }
 }

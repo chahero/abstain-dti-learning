@@ -37,8 +37,11 @@
       const target=document.getElementById(parts[1]||parts[0]);
       const owner=target?.closest('.chapter');
       if(parts[0]==='limits'){chapter=$('#results');anchor='limits';}
-      else if(owner&&(owner===base||owner.dataset.parent===parts[0])){chapter=owner;if(target!==owner)anchor=target.id;}
+      else if(owner){chapter=owner;if(target!==owner)anchor=target.id;}
       else chapter=base||$('#overview');
+    }
+    if(anchor&&parts[0]!==chapter.id&&chapter.dataset.parent!==parts[0]){
+      requested=chapterRoute(chapter)+'/'+anchor;history.replaceState(null,'','#'+requested);
     }
     const id=chapter.id;
     if(currentHash===requested)return;
