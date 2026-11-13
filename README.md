@@ -54,6 +54,8 @@ Hong et al., *Trustworthy Protein–Ligand Binding Affinity Prediction via Relia
 
 [3장 1단계의 점수 출처 비교](https://chahero.github.io/abstain-dti-learning/papers/reliable-ba/#walkthrough/figure-step-1)에서는 실제 입력 열과 원도구의 점수 정의·단위, 확인되지 않은 원출력 대응을 구분합니다. BIND_pIC50의 지표 의미는 확인되지만, GNINA·FlowDock·DynamicBind의 CSV 열에서 정확한 원출력 필드·후보 집계로 이어지는 생산 코드는 검토한 공개 버전에서 찾지 못했습니다. GNINA의 Affinity(kcal/mol)와 CNNaffinity(pK)를 구별하고, 원도구별 고정 코드·검토 범위·파일 해시를 내려받을 수 있습니다.
 
+[3장 2–5단계의 연결 도식](https://chahero.github.io/abstain-dti-learning/papers/reliable-ba/#walkthrough/figure-step-2)은 같은 c-Abl·이마티닙 가상 예시로 원점수 → 전용 NIG Head → 평균·불확실성, 특징 → 신뢰성 r, 증거 조절, 최종 비중과 예측을 이어 보여줍니다. 단위 환산과 실험 정답에 의한 학습을 구분하고, 평균을 유지한 채 불확실성이 바뀌는 전후 비교와 전문가 의견 차이 예시를 제공합니다. 수치 가정과 논문·고정 코드의 확인 내용을 나눠 표시하며, 상세 계산·근거는 접어서 볼 수 있습니다.
+
 구조도의 단계 선택·강조·확대, 이전·다음과 키보드 이동, 단계 주소 공유를 지원합니다. 기본 읽기는 본문 1–6장으로 이어집니다. 가중치 학습·입력별 게이트·불확실성 추정은 기존에도 있었음을 명시하고, 신뢰성으로 증거를 조절하는 분포 결합 설계를 설명합니다.
 
 긴 모델별 내부 원리와 수식은 본문에서 분리해 **첨부 자료**로 옮겼습니다. 첨부 A는 입력·출력과 원자 격자·ESM-2·그래프·구조 생성의 여섯 세부 화면, B는 모델별 오차 예시, C는 상세 분포·수식·계산기, D는 실제 데이터 준비·분할·공개 CSV입니다. 본문 6개·첨부 10개·용어와 출처를 합친 17개 화면이며, 첨부는 필요할 때 펼칩니다. 기존 링크는 옮겨진 실제 위치로 연결합니다.

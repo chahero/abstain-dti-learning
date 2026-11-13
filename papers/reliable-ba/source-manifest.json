@@ -140,8 +140,8 @@
     },
     {
       "path": "diagram.css",
-      "bytes": 11626,
-      "sha256": "ff4489f2c5589090d69cf6f82a440b8906c8796d9c96d7ed62913f3eb8a64db3"
+      "bytes": 19573,
+      "sha256": "b8cccd63afa3c83e27d97f1ea2a38dd551b27cee0dc804ca9fec58e80302ffad"
     },
     {
       "path": "diagram.js",
@@ -175,8 +175,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 252829,
-      "sha256": "e7ea2ffe4bd7961b657cb345d27af210aa3ccddc1096ddfa63c4b6d960678572"
+      "bytes": 274767,
+      "sha256": "5a3545b6e90bc486a212a147112875cbc9549f735b42ef5c056f787d918c93d0"
     },
     {
       "path": "lessons.css",
@@ -225,8 +225,8 @@
     },
     {
       "path": "review.md",
-      "bytes": 122320,
-      "sha256": "62a9ddb943dfbd2aee41ae5c50eb03c18a2921f7b889dcdf1c5495797f5ffa2c"
+      "bytes": 132908,
+      "sha256": "c28bceaeb148230f7e285f9c2106a63f80a5628d67b7aa59e568ba33a79f3320"
     },
     {
       "path": "style.css",
@@ -562,6 +562,245 @@
     ],
     "retained_reference_views": 10,
     "reviewed_date": "2026-11-13"
+  },
+  "nig_head_reading": {
+    "reviewed_date": "2026-11-14",
+    "status": "authored responsive teaching diagrams; no head training, model inference or engine execution",
+    "sources": [
+      "https://arxiv.org/html/2607.17601v1#S3.SS2",
+      "https://github.com/yongchand/RELIABLE-BA/blob/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/src/drug_models_emb.py#L42-L104",
+      "https://github.com/yongchand/RELIABLE-BA/blob/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/src/train_drug_discovery_emb.py#L195-L212",
+      "https://github.com/yongchand/RELIABLE-BA/blob/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/src/utils.py#L37-L45"
+    ],
+    "code_commit": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+    "fixture": [
+      {
+        "engine": "GNINA",
+        "field": "GNINA_Affinity",
+        "raw_score": 6.5,
+        "mean": 7.0,
+        "r": 0.2,
+        "nu": 5.0,
+        "alpha": 3.0,
+        "beta": 2.0,
+        "effective": 1.0,
+        "weight": 0.13333333333333333,
+        "contribution": 0.9333333333333333
+      },
+      {
+        "engine": "BIND",
+        "field": "BIND_pIC50",
+        "raw_score": 8.1,
+        "mean": 7.5,
+        "r": 0.3,
+        "nu": 5.0,
+        "alpha": 3.0,
+        "beta": 2.0,
+        "effective": 1.5,
+        "weight": 0.2,
+        "contribution": 1.5
+      },
+      {
+        "engine": "FlowDock",
+        "field": "flowdock_score",
+        "raw_score": 7.6,
+        "mean": 8.2,
+        "r": 0.9,
+        "nu": 5.0,
+        "alpha": 3.0,
+        "beta": 2.0,
+        "effective": 4.5,
+        "weight": 0.6,
+        "contribution": 4.919999999999999
+      },
+      {
+        "engine": "DynamicBind",
+        "field": "DynamicBind_score",
+        "raw_score": 6.9,
+        "mean": 8.8,
+        "r": 0.1,
+        "nu": 5.0,
+        "alpha": 3.0,
+        "beta": 2.0,
+        "effective": 0.5,
+        "weight": 0.06666666666666667,
+        "contribution": 0.5866666666666667
+      }
+    ],
+    "fictional_target": "pKd for this teaching example; paper experimental targets include pKd and pKi",
+    "input_scope": "one own-engine scalar per head; context embeddings enter the separate reliability network",
+    "mapping": "learned supervised score-to-NIG relation, not physical unit or endpoint conversion",
+    "uncertainty_supervision": "experimental target y through distribution loss and evidence regularization; no provided uncertainty labels",
+    "variance_example": {
+      "aleatoric": 1.0,
+      "epistemic": 0.2,
+      "units": "squared fictional pKd scale, not probability or interval"
+    },
+    "source_mapping_gaps": "native-score audit unresolved mappings retained; teaching diagram establishes no engine output-to-CSV provenance"
+  },
+  "later_stage_reading": {
+    "reviewed_date": "2026-11-14",
+    "status": "authored stages 3-5 diagrams; shared fictional c-Abl/imatinib fixture; no engine/network run",
+    "sources": [
+      "https://arxiv.org/html/2607.17601v1#S3.SS3",
+      "https://arxiv.org/html/2607.17601v1#S3.SS4",
+      "https://github.com/yongchand/RELIABLE-BA/blob/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/src/drug_models_emb.py#L27-L40",
+      "https://github.com/yongchand/RELIABLE-BA/blob/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/src/drug_models_emb.py#L80-L120"
+    ],
+    "math_implementation": "site/math.js fuse() reused at build time and by retained browser calculator",
+    "examples": {
+      "fixture": [
+        {
+          "engine": "GNINA",
+          "field": "GNINA_Affinity",
+          "raw_score": 6.5,
+          "mean": 7.0,
+          "r": 0.2,
+          "nu": 5.0,
+          "alpha": 3.0,
+          "beta": 2.0,
+          "effective": 1.0,
+          "weight": 0.13333333333333333,
+          "contribution": 0.9333333333333333
+        },
+        {
+          "engine": "BIND",
+          "field": "BIND_pIC50",
+          "raw_score": 8.1,
+          "mean": 7.5,
+          "r": 0.3,
+          "nu": 5.0,
+          "alpha": 3.0,
+          "beta": 2.0,
+          "effective": 1.5,
+          "weight": 0.2,
+          "contribution": 1.5
+        },
+        {
+          "engine": "FlowDock",
+          "field": "flowdock_score",
+          "raw_score": 7.6,
+          "mean": 8.2,
+          "r": 0.9,
+          "nu": 5.0,
+          "alpha": 3.0,
+          "beta": 2.0,
+          "effective": 4.5,
+          "weight": 0.6,
+          "contribution": 4.919999999999999
+        },
+        {
+          "engine": "DynamicBind",
+          "field": "DynamicBind_score",
+          "raw_score": 6.9,
+          "mean": 8.8,
+          "r": 0.1,
+          "nu": 5.0,
+          "alpha": 3.0,
+          "beta": 2.0,
+          "effective": 0.5,
+          "weight": 0.06666666666666667,
+          "contribution": 0.5866666666666667
+        }
+      ],
+      "four": {
+        "mean": 7.9399999999999995,
+        "nu": 7.5,
+        "alpha": 8.5,
+        "beta": 3.9239999999999995,
+        "disagreement": 0.9239999999999995,
+        "aleatoric": 0.5231999999999999,
+        "epistemic": 0.06975999999999999,
+        "weights": [
+          0.13333333333333333,
+          0.2,
+          0.6,
+          0.06666666666666667
+        ],
+        "scaled": [
+          {
+            "mean": 7,
+            "nu": 1,
+            "alpha": 1.4,
+            "beta": 0.4
+          },
+          {
+            "mean": 7.5,
+            "nu": 1.5,
+            "alpha": 1.6,
+            "beta": 0.6
+          },
+          {
+            "mean": 8.2,
+            "nu": 4.5,
+            "alpha": 2.8,
+            "beta": 1.8
+          },
+          {
+            "mean": 8.8,
+            "nu": 0.5,
+            "alpha": 1.2,
+            "beta": 0.2
+          }
+        ]
+      },
+      "close": {
+        "mean": 8,
+        "nu": 10,
+        "alpha": 6.5,
+        "beta": 4.05,
+        "disagreement": 0.04999999999999964,
+        "aleatoric": 0.7363636363636363,
+        "epistemic": 0.07363636363636364,
+        "weights": [
+          0.5,
+          0.5
+        ],
+        "scaled": [
+          {
+            "mean": 7.9,
+            "nu": 5,
+            "alpha": 3,
+            "beta": 2
+          },
+          {
+            "mean": 8.1,
+            "nu": 5,
+            "alpha": 3,
+            "beta": 2
+          }
+        ]
+      },
+      "apart": {
+        "mean": 8,
+        "nu": 10,
+        "alpha": 6.5,
+        "beta": 24,
+        "disagreement": 20,
+        "aleatoric": 4.363636363636363,
+        "epistemic": 0.43636363636363634,
+        "weights": [
+          0.5,
+          0.5
+        ],
+        "scaled": [
+          {
+            "mean": 6,
+            "nu": 5,
+            "alpha": 3,
+            "beta": 2
+          },
+          {
+            "mean": 10,
+            "nu": 5,
+            "alpha": 3,
+            "beta": 2
+          }
+        ]
+      }
+    },
+    "evidence_boundary": "architecture, dimensionality and equations verified; r, raw scores, NIG parameters and pair predictions fictional; native field provenance unresolved as in step 1",
+    "semantics": "r is not correctness probability or final mixture weight; scaling preserves mean and aleatoric variance; displayed weights apply to fused mean; expert disagreements affect fusion uncertainty"
   },
   "study_outline": {
     "main_order": [
