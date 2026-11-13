@@ -84,6 +84,11 @@
       "sha256": "051b8742c32adc05c07fb486a4e7c9327f84e131cee33ac4e6a568d07553eb38"
     },
     {
+      "path": "assets/input-example/ligand.csv",
+      "bytes": 71,
+      "sha256": "addca522a9d84e5be05ba61e848b496aef41d08bb03dedb2962a260957304c1c"
+    },
+    {
       "path": "assets/input-example/ligand.smi",
       "bytes": 79,
       "sha256": "0319e4abd7c7dd12476ececbb33dd177b744e0bb450c74226fd9236069e20641"
@@ -135,8 +140,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 103131,
-      "sha256": "03af942fc916f527df00768a30fbf72e3cea47701fec417d87c5793f902cf7ea"
+      "bytes": 138787,
+      "sha256": "79f06d53a43c149f752c996fb543cafc92a08e896312c7b466a9725745448282"
     },
     {
       "path": "lessons.css",
@@ -147,6 +152,16 @@
       "path": "math.js",
       "bytes": 1167,
       "sha256": "72ee74c07426e5679f9230471963fa4a68de0f7b15db3de9d5e42ac31d7635b1"
+    },
+    {
+      "path": "model-io.css",
+      "bytes": 10653,
+      "sha256": "1ae0022052619541211d802972f00bb3099edf2505926bb68b20e98573374f42"
+    },
+    {
+      "path": "model-io.js",
+      "bytes": 1789,
+      "sha256": "d103cff1c9d738842d683ae843cfeec6036860536faa5d8ae4e80c68f8316042"
     },
     {
       "path": "representations.css",
@@ -160,8 +175,8 @@
     },
     {
       "path": "review.md",
-      "bytes": 53185,
-      "sha256": "92b43ec02c4156d0bbefb5d822732b88a67e3a213a36bfa3b72fd790783dc63b"
+      "bytes": 69925,
+      "sha256": "7411e2be271877a5e4b410d108c1d151c6c812bc4b64df92ea7a065ddd40c5f1"
     },
     {
       "path": "style.css",
@@ -204,5 +219,25 @@
       "url": "https://gnina.github.io/gnina/rsc_workshop2021/",
       "snapshot_sha256": "859026add2ff0e2d7ee9567ff1ec4e62a831366c9065ac171599b9abb993adca"
     }
-  ]
+  ],
+  "model_io_walkthrough": {
+    "reviewed_date": "2026-11-13",
+    "pair": "1IEP c-Abl kinase-domain construct / imatinib +1",
+    "status": "real retained input material; authored fictional output values and illustrative filenames; no engine execution",
+    "sources": {
+      "gnina": "https://github.com/gnina/gnina#usage",
+      "bind": "https://github.com/Chokyotager/BIND#performing-forwardreverse-virtual-screening-with-bind",
+      "flow": "https://github.com/BioinfoMachineLearning/FlowDock#how-to-predict-new-protein-ligand-complex-structures-and-their-affinities-using-flowdock",
+      "dynamic": "https://github.com/luwei0917/DynamicBind#docking-outputs"
+    },
+    "csv_wrapper": "assets/input-example/ligand.csv",
+    "information_example": {
+      "status": "authored two-dimensional five-residue concept diagram; not an actual c-Abl pocket or conformational simulation",
+      "residue_labels": "GAMDP",
+      "sources": [
+        "https://www.rcsb.org/docs/tools/pairwise-structure-alignment",
+        "https://github.com/Chokyotager/BIND#about"
+      ]
+    }
+  }
 }

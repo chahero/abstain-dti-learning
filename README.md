@@ -43,7 +43,7 @@ Vina·Vina-GPU의 공통 `dock(request)`·CLI와 DiffDock-L 별도 실행 경로
 
 Hong et al., *Trustworthy Protein–Ligand Binding Affinity Prediction via Reliability-Aware Multi-Engine Fusion* (arXiv:2607.17601v1)를 한국어로 해설합니다. 문제 이해 → 모델 개요와 여섯 세부 장 → 모델별 오차 → 결과 통합 → 학습 데이터 → 공동 학습 → 실험 결과와 한계 → 에이전트 연결 순서입니다. 본장 8개·세부 장 6개·용어와 출처를 합쳐 15개 화면으로 구성했습니다.
 
-2장 개요와 2-1~2-6은 질문형 제목으로 나뉘며, 각각 질문 → 그림·예시 → 원리 → 핵심 요약 순서로 읽습니다. [2장 개요](https://chahero.github.io/abstain-dti-learning/papers/reliable-ba/#models)에서 입력 파일, 원자 격자·CNN, ESM-2, 분자 그래프·attention, 생성 모델과 출력 해석으로 이어집니다. 계층형 목차와 이전·다음 링크, 모바일 접이식 목차를 제공합니다.
+2장 개요와 2-1~2-6은 질문형 제목으로 나뉘며, 각각 질문 → 그림·예시 → 원리 → 핵심 요약 순서로 읽습니다. [2장 개요](https://chahero.github.io/abstain-dti-learning/papers/reliable-ba/#models)는 공통 대상(c-Abl·이마티닙)과 모델별 단백질·화합물 입력 정보를 구분하는 요약표부터 시작합니다. 서열과 3D 배치의 차이, 표현 변환과 구조 예측의 차이를 가상 그림으로 본 뒤, 네 모델의 입력 파일 → 내부 처리 → 출력 파일·숫자 도식을 선택해 읽습니다. 출력 숫자는 실제 엔진 실행값과 구분한 가상 예시입니다. 그다음 입력 파일, 원자 격자·CNN, ESM-2, 분자 그래프·attention, 생성 모델과 출력 해석으로 이어집니다. 계층형 목차와 이전·다음 링크, 모바일 카드형 비교표와 접이식 목차를 제공합니다.
 
 NIG 전문가·신뢰성 조절·MoNIG 결합을 가상 값으로 조작하고, PDBbind·BDB2020+의 평가셋과 지표를 바꾸어 원문 수치를 비교합니다. 실제 1IEP 입력 형식과 ESM-2 8M 표현, 공식 CSV의 네 사례를 설명용 예시와 구분합니다. 원문 표 4개, 그림 4개, 용어 47개, 해설 원고·표·입력 및 표현 데이터 다운로드와 인쇄를 제공합니다. 원문 그림에는 CC BY 4.0에 따라 저자와 출처를 표시했습니다.
 
