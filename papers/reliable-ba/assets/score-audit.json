@@ -1,0 +1,469 @@
+{
+  "checked_date": "2026-11-14",
+  "paper": "https://arxiv.org/html/2607.17601v1",
+  "reliable_ba_revision": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+  "method": "Read paper v1, complete non-truncated RELIABLE-BA tree and all 13 released py/md/sh files, plus selected native output, label and inference sources from four upstream repositories. No engines or trained fusion models run.",
+  "scope_limit": "Upstream snapshots describe native capabilities. Except GNINA v1.3 tag, their commits are inspection snapshots, not identified experiment commits. No native-output-to-CSV producer found in inspected RELIABLE-BA revision; column names alone do not prove extraction, units, pose aggregation, checkpoint or settings.",
+  "paper_engine_versions": {
+    "GNINA": "1.3",
+    "BIND": "1.4",
+    "FlowDock": "0.0.3",
+    "DynamicBind": "1.0"
+  },
+  "rows": [
+    {
+      "engine": "GNINA",
+      "column": "GNINA_Affinity",
+      "status": "열 확인 · 원출력 대응 미확인",
+      "confirmed": "이 이름의 숫자 열을 그대로 읽습니다. 원도구에는 Affinity(에너지, kcal/mol)와 CNNaffinity(pK)가 따로 있습니다.",
+      "unknown": "어느 원출력을 이 열로 옮겼는지 알 수 없어, 이 CSV 열의 의미·단위는 확정할 수 없습니다."
+    },
+    {
+      "engine": "BIND",
+      "column": "BIND_pIC50",
+      "status": "열·지표 의미 확인",
+      "confirmed": "pIC50 예측: −log₁₀(IC50 / 1 M). 무차원 로그 척도이며 pKd나 결합 확률과 다릅니다.",
+      "unknown": "원도구도 pIC50를 별도 출력합니다. 다만 실험의 체크포인트와 원출력 → CSV 추출 과정은 검토한 공개 버전에서 확인되지 않습니다."
+    },
+    {
+      "engine": "FlowDock",
+      "column": "flowdock_score",
+      "status": "열 확인 · 원출력 대응 미확인",
+      "confirmed": "원도구는 pK로 학습하는 친화도 회귀 출력과 구조 신뢰도(pLDDT)를 따로 계산합니다.",
+      "unknown": "이 열이 친화도 출력인지, 어떤 후보를 골라 집계했는지 확인되지 않아 열의 단위도 확정하지 않습니다."
+    },
+    {
+      "engine": "DynamicBind",
+      "column": "DynamicBind_score",
+      "status": "열 확인 · 원출력 대응 미확인",
+      "confirmed": "원도구는 로그 친화도와 구조 점수(cLDDT)를 따로 출력합니다. 자세별 친화도와 가중 평균 출력도 구분됩니다.",
+      "unknown": "이 열이 어느 출력·집계값인지 공개 추출 코드로 이어지지 않아 의미·단위는 미확정입니다."
+    }
+  ],
+  "sources": {
+    "yongchand/RELIABLE-BA": {
+      "sha": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+      "branch": "main",
+      "tree_truncated": false,
+      "commit_date": "2026-06-07T02:11:15Z",
+      "files": [
+        {
+          "file": "yongchand--RELIABLE-BA--README.md",
+          "repo": "yongchand/RELIABLE-BA",
+          "revision": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/yongchand/RELIABLE-BA/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/README.md",
+          "sha256": "ba0d0a204540db7d7da3c7cfb5aaebb194eab32964834db97b766cb08a4575fe"
+        },
+        {
+          "file": "yongchand--RELIABLE-BA--examples--README.md",
+          "repo": "yongchand/RELIABLE-BA",
+          "revision": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+          "path": "examples/README.md",
+          "url": "https://raw.githubusercontent.com/yongchand/RELIABLE-BA/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/examples/README.md",
+          "sha256": "dc96a32779d1c466ccdb133a4eb9e3ec338866b48bdd70b736eb256b82e7e0be"
+        },
+        {
+          "file": "yongchand--RELIABLE-BA--examples--generate_embeddings.py",
+          "repo": "yongchand/RELIABLE-BA",
+          "revision": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+          "path": "examples/generate_embeddings.py",
+          "url": "https://raw.githubusercontent.com/yongchand/RELIABLE-BA/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/examples/generate_embeddings.py",
+          "sha256": "70bc1201de2d15db4d0c50eebd42ef3592bdb6723a88337dd2191cdb36ba8b52"
+        },
+        {
+          "file": "yongchand--RELIABLE-BA--examples--generate_sample_data.py",
+          "repo": "yongchand/RELIABLE-BA",
+          "revision": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+          "path": "examples/generate_sample_data.py",
+          "url": "https://raw.githubusercontent.com/yongchand/RELIABLE-BA/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/examples/generate_sample_data.py",
+          "sha256": "c895cec3776a82baebba0164f5050929b5ec3b377d2cc6d3970004c758e44356"
+        },
+        {
+          "file": "yongchand--RELIABLE-BA--examples--run_example.sh",
+          "repo": "yongchand/RELIABLE-BA",
+          "revision": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+          "path": "examples/run_example.sh",
+          "url": "https://raw.githubusercontent.com/yongchand/RELIABLE-BA/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/examples/run_example.sh",
+          "sha256": "6ab511bd42eb98b13ecbcc81bd6b7f54e9dde8d08e9519272b80a05b56db50d7"
+        },
+        {
+          "file": "yongchand--RELIABLE-BA--main.py",
+          "repo": "yongchand/RELIABLE-BA",
+          "revision": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+          "path": "main.py",
+          "url": "https://raw.githubusercontent.com/yongchand/RELIABLE-BA/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/main.py",
+          "sha256": "72b231fb18839be9b3baddb69185395ac133b0859a6557bef8a53b358b9daa2f"
+        },
+        {
+          "file": "yongchand--RELIABLE-BA--src--__init__.py",
+          "repo": "yongchand/RELIABLE-BA",
+          "revision": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+          "path": "src/__init__.py",
+          "url": "https://raw.githubusercontent.com/yongchand/RELIABLE-BA/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/src/__init__.py",
+          "sha256": "e2a74b61bc445729567f2f7a740fe85de797e0b3f08a4f79ea6338e96dcdb901"
+        },
+        {
+          "file": "yongchand--RELIABLE-BA--src--analyze_uncertainty.py",
+          "repo": "yongchand/RELIABLE-BA",
+          "revision": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+          "path": "src/analyze_uncertainty.py",
+          "url": "https://raw.githubusercontent.com/yongchand/RELIABLE-BA/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/src/analyze_uncertainty.py",
+          "sha256": "8a4fb091c33aa6349284f00ccbe98327aa67719ad5ddc6039d1078ca4621ac7d"
+        },
+        {
+          "file": "yongchand--RELIABLE-BA--src--drug_dataset_emb.py",
+          "repo": "yongchand/RELIABLE-BA",
+          "revision": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+          "path": "src/drug_dataset_emb.py",
+          "url": "https://raw.githubusercontent.com/yongchand/RELIABLE-BA/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/src/drug_dataset_emb.py",
+          "sha256": "5ea4c7cb39deefcbcab580c00d936cb65bd6e764451e924faf6f9f2e0b17693b"
+        },
+        {
+          "file": "yongchand--RELIABLE-BA--src--drug_models_emb.py",
+          "repo": "yongchand/RELIABLE-BA",
+          "revision": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+          "path": "src/drug_models_emb.py",
+          "url": "https://raw.githubusercontent.com/yongchand/RELIABLE-BA/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/src/drug_models_emb.py",
+          "sha256": "d48e782c6ba034079a7fc1fc6d305a52393229b354298b49935225d104dc3687"
+        },
+        {
+          "file": "yongchand--RELIABLE-BA--src--inference_drug_discovery.py",
+          "repo": "yongchand/RELIABLE-BA",
+          "revision": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+          "path": "src/inference_drug_discovery.py",
+          "url": "https://raw.githubusercontent.com/yongchand/RELIABLE-BA/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/src/inference_drug_discovery.py",
+          "sha256": "d703d9faf8bf0df09c48f656cdac7f9eb1f616a5694303639d53d6a733fc0b32"
+        },
+        {
+          "file": "yongchand--RELIABLE-BA--src--train_drug_discovery_emb.py",
+          "repo": "yongchand/RELIABLE-BA",
+          "revision": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+          "path": "src/train_drug_discovery_emb.py",
+          "url": "https://raw.githubusercontent.com/yongchand/RELIABLE-BA/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/src/train_drug_discovery_emb.py",
+          "sha256": "78e30e6b0775748d56864a47b4d60c01761656eebe690d5e9c3b81f2db6d0922"
+        },
+        {
+          "file": "yongchand--RELIABLE-BA--src--utils.py",
+          "repo": "yongchand/RELIABLE-BA",
+          "revision": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+          "path": "src/utils.py",
+          "url": "https://raw.githubusercontent.com/yongchand/RELIABLE-BA/fec924ff7c9fd439415ff0c8baa8a3bda34d240b/src/utils.py",
+          "sha256": "c87d66ee39232a5dd25de36df05ecbe95880daf67dbbb70ee300ee069ec3afa3"
+        }
+      ]
+    },
+    "gnina/gnina": {
+      "sha": "0002d8b59bbc62aa1d1ff165cacc79e76b0d4452",
+      "branch": "master",
+      "tree_truncated": false,
+      "commit_date": "2026-10-30T18:59:01Z",
+      "files": [
+        {
+          "file": "gnina--gnina--README.md",
+          "repo": "gnina/gnina",
+          "revision": "0002d8b59bbc62aa1d1ff165cacc79e76b0d4452",
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/gnina/gnina/0002d8b59bbc62aa1d1ff165cacc79e76b0d4452/README.md",
+          "sha256": "b6ed3a633154d49044478f2f9af3199b6fdecb0ed75ec566c1a9903ceddcafb9"
+        },
+        {
+          "file": "gnina--gnina--gninasrc--lib--result_components.h",
+          "repo": "gnina/gnina",
+          "revision": "0002d8b59bbc62aa1d1ff165cacc79e76b0d4452",
+          "path": "gninasrc/lib/result_components.h",
+          "url": "https://raw.githubusercontent.com/gnina/gnina/0002d8b59bbc62aa1d1ff165cacc79e76b0d4452/gninasrc/lib/result_components.h",
+          "sha256": "0014cec9a96e983083edf45550bb2eb705d4299872cafc186bcaa5d0c010d004"
+        },
+        {
+          "file": "gnina--gnina--gninasrc--lib--result_info.cpp",
+          "repo": "gnina/gnina",
+          "revision": "0002d8b59bbc62aa1d1ff165cacc79e76b0d4452",
+          "path": "gninasrc/lib/result_info.cpp",
+          "url": "https://raw.githubusercontent.com/gnina/gnina/0002d8b59bbc62aa1d1ff165cacc79e76b0d4452/gninasrc/lib/result_info.cpp",
+          "sha256": "0c6c50d6f804a32f7ab0fb9a256b5a1950a8648bfcfcfe6976414eb030a981fa"
+        },
+        {
+          "file": "gnina--gnina--gninasrc--lib--result_info.h",
+          "repo": "gnina/gnina",
+          "revision": "0002d8b59bbc62aa1d1ff165cacc79e76b0d4452",
+          "path": "gninasrc/lib/result_info.h",
+          "url": "https://raw.githubusercontent.com/gnina/gnina/0002d8b59bbc62aa1d1ff165cacc79e76b0d4452/gninasrc/lib/result_info.h",
+          "sha256": "df900705e6d5f041190c3350dad554c969ed5508fd7fc2e187ef06a42e1404af"
+        },
+        {
+          "file": "gnina--gnina--gninasrc--main--main.cpp",
+          "repo": "gnina/gnina",
+          "revision": "0002d8b59bbc62aa1d1ff165cacc79e76b0d4452",
+          "path": "gninasrc/main/main.cpp",
+          "url": "https://raw.githubusercontent.com/gnina/gnina/0002d8b59bbc62aa1d1ff165cacc79e76b0d4452/gninasrc/main/main.cpp",
+          "sha256": "dee2e446425f94893473fd0c419147a1a64b01b61f6be8ce0fa369f845631249"
+        },
+        {
+          "file": "gnina--v1.3--gninasrc--main--main.cpp",
+          "repo": "gnina/gnina",
+          "revision": "97fa6bcc465d62b40d87ccc85d3c53e9921a7cc0",
+          "paper_version_tag": "v1.3",
+          "path": "gninasrc/main/main.cpp",
+          "url": "https://raw.githubusercontent.com/gnina/gnina/97fa6bcc465d62b40d87ccc85d3c53e9921a7cc0/gninasrc/main/main.cpp",
+          "sha256": "cf8dd4c9957cdfc71bea590b2bb88d88398af9ec4a5f01a9c1c75d9b49f6dc97"
+        },
+        {
+          "file": "gnina--v1.3--gninasrc--lib--result_info.cpp",
+          "repo": "gnina/gnina",
+          "revision": "97fa6bcc465d62b40d87ccc85d3c53e9921a7cc0",
+          "paper_version_tag": "v1.3",
+          "path": "gninasrc/lib/result_info.cpp",
+          "url": "https://raw.githubusercontent.com/gnina/gnina/97fa6bcc465d62b40d87ccc85d3c53e9921a7cc0/gninasrc/lib/result_info.cpp",
+          "sha256": "737683b493b9fa17460d1136413e1520075d1935b16649f27c4f81a72a40cf78"
+        }
+      ],
+      "paper_version_tag": {
+        "name": "v1.3",
+        "sha": "97fa6bcc465d62b40d87ccc85d3c53e9921a7cc0",
+        "files": [
+          {
+            "file": "gnina--v1.3--gninasrc--main--main.cpp",
+            "repo": "gnina/gnina",
+            "revision": "97fa6bcc465d62b40d87ccc85d3c53e9921a7cc0",
+            "path": "gninasrc/main/main.cpp",
+            "url": "https://raw.githubusercontent.com/gnina/gnina/97fa6bcc465d62b40d87ccc85d3c53e9921a7cc0/gninasrc/main/main.cpp",
+            "sha256": "cf8dd4c9957cdfc71bea590b2bb88d88398af9ec4a5f01a9c1c75d9b49f6dc97"
+          },
+          {
+            "file": "gnina--v1.3--gninasrc--lib--result_info.cpp",
+            "repo": "gnina/gnina",
+            "revision": "97fa6bcc465d62b40d87ccc85d3c53e9921a7cc0",
+            "path": "gninasrc/lib/result_info.cpp",
+            "url": "https://raw.githubusercontent.com/gnina/gnina/97fa6bcc465d62b40d87ccc85d3c53e9921a7cc0/gninasrc/lib/result_info.cpp",
+            "sha256": "737683b493b9fa17460d1136413e1520075d1935b16649f27c4f81a72a40cf78"
+          }
+        ]
+      }
+    },
+    "Chokyotager/BIND": {
+      "sha": "bb25d776964c1d37ad3e7b41b3451dab1ce9266b",
+      "branch": "main",
+      "tree_truncated": false,
+      "commit_date": "2024-06-05T02:49:53Z",
+      "files": [
+        {
+          "file": "Chokyotager--BIND--README.md",
+          "repo": "Chokyotager/BIND",
+          "revision": "bb25d776964c1d37ad3e7b41b3451dab1ce9266b",
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/Chokyotager/BIND/bb25d776964c1d37ad3e7b41b3451dab1ce9266b/README.md",
+          "sha256": "3f6106edd115eb8f336b501960676469fea02d206ae7c7a7e2ed2459913767df"
+        },
+        {
+          "file": "Chokyotager--BIND--bind.py",
+          "repo": "Chokyotager/BIND",
+          "revision": "bb25d776964c1d37ad3e7b41b3451dab1ce9266b",
+          "path": "bind.py",
+          "url": "https://raw.githubusercontent.com/Chokyotager/BIND/bb25d776964c1d37ad3e7b41b3451dab1ce9266b/bind.py",
+          "sha256": "5b3def9e3e5042b95d44052f27a63151f03163ac53d22bdb740652b6b3e68690"
+        },
+        {
+          "file": "Chokyotager--BIND--data.py",
+          "repo": "Chokyotager/BIND",
+          "revision": "bb25d776964c1d37ad3e7b41b3451dab1ce9266b",
+          "path": "data.py",
+          "url": "https://raw.githubusercontent.com/Chokyotager/BIND/bb25d776964c1d37ad3e7b41b3451dab1ce9266b/data.py",
+          "sha256": "030ebcf146d8b3f1bdea2c7f85acada32e39d89eb59e43d02600f3d941449fd6"
+        },
+        {
+          "file": "Chokyotager--BIND--dataset.py",
+          "repo": "Chokyotager/BIND",
+          "revision": "bb25d776964c1d37ad3e7b41b3451dab1ce9266b",
+          "path": "dataset.py",
+          "url": "https://raw.githubusercontent.com/Chokyotager/BIND/bb25d776964c1d37ad3e7b41b3451dab1ce9266b/dataset.py",
+          "sha256": "23685b59f9a50988bdd0b850d2fc47345c39422407478dc01c8186671626ed95"
+        },
+        {
+          "file": "Chokyotager--BIND--loading.py",
+          "repo": "Chokyotager/BIND",
+          "revision": "bb25d776964c1d37ad3e7b41b3451dab1ce9266b",
+          "path": "loading.py",
+          "url": "https://raw.githubusercontent.com/Chokyotager/BIND/bb25d776964c1d37ad3e7b41b3451dab1ce9266b/loading.py",
+          "sha256": "c9e47d3a6fa9091dd919a4f29ae1ab59c8b3ef1d2776339c6918441543e9f0c1"
+        },
+        {
+          "file": "Chokyotager--BIND--model_graph.py",
+          "repo": "Chokyotager/BIND",
+          "revision": "bb25d776964c1d37ad3e7b41b3451dab1ce9266b",
+          "path": "model_graph.py",
+          "url": "https://raw.githubusercontent.com/Chokyotager/BIND/bb25d776964c1d37ad3e7b41b3451dab1ce9266b/model_graph.py",
+          "sha256": "afdd97beb94a656b5c6c851f0855163d42a40978e8a2c12cd656fd5678e95afa"
+        }
+      ]
+    },
+    "BioinfoMachineLearning/FlowDock": {
+      "sha": "c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2",
+      "branch": "main",
+      "tree_truncated": false,
+      "commit_date": "2026-09-07T21:02:21Z",
+      "files": [
+        {
+          "file": "BioinfoMachineLearning--FlowDock--README.md",
+          "repo": "BioinfoMachineLearning/FlowDock",
+          "revision": "c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2",
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/BioinfoMachineLearning/FlowDock/c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2/README.md",
+          "sha256": "0a049a120a07923122115b6dfc6033c4bb304249c0dedb9f5b15157978dc2ec5"
+        },
+        {
+          "file": "BioinfoMachineLearning--FlowDock--flowdock--data--components--pdbbind_dataset.py",
+          "repo": "BioinfoMachineLearning/FlowDock",
+          "revision": "c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2",
+          "path": "flowdock/data/components/pdbbind_dataset.py",
+          "url": "https://raw.githubusercontent.com/BioinfoMachineLearning/FlowDock/c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2/flowdock/data/components/pdbbind_dataset.py",
+          "sha256": "4581ee27e998af808c46a38e05b530c9bfdc7c7640de2bb6a913757b5c1475c7"
+        },
+        {
+          "file": "BioinfoMachineLearning--FlowDock--flowdock--models--components--losses.py",
+          "repo": "BioinfoMachineLearning/FlowDock",
+          "revision": "c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2",
+          "path": "flowdock/models/components/losses.py",
+          "url": "https://raw.githubusercontent.com/BioinfoMachineLearning/FlowDock/c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2/flowdock/models/components/losses.py",
+          "sha256": "fd24f2f7f01ffaa53674f192abd892edde4e3b956a503d7023704dfa5382d0db"
+        },
+        {
+          "file": "BioinfoMachineLearning--FlowDock--flowdock--sample.py",
+          "repo": "BioinfoMachineLearning/FlowDock",
+          "revision": "c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2",
+          "path": "flowdock/sample.py",
+          "url": "https://raw.githubusercontent.com/BioinfoMachineLearning/FlowDock/c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2/flowdock/sample.py",
+          "sha256": "44b67c2c52b4da688d22b7648a76d5c1db106e0236d9ee1d3125fc6541f4470a"
+        },
+        {
+          "file": "BioinfoMachineLearning--FlowDock--flowdock--utils--data_utils.py",
+          "repo": "BioinfoMachineLearning/FlowDock",
+          "revision": "c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2",
+          "path": "flowdock/utils/data_utils.py",
+          "url": "https://raw.githubusercontent.com/BioinfoMachineLearning/FlowDock/c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2/flowdock/utils/data_utils.py",
+          "sha256": "dda5d2443ec753d6aa026b97fbc580aa4a57ef7f63ccec211d0ae38f7a6de292"
+        },
+        {
+          "file": "BioinfoMachineLearning--FlowDock--flowdock--models--flowdock_fm_module.py",
+          "repo": "BioinfoMachineLearning/FlowDock",
+          "revision": "c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2",
+          "path": "flowdock/models/flowdock_fm_module.py",
+          "url": "https://raw.githubusercontent.com/BioinfoMachineLearning/FlowDock/c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2/flowdock/models/flowdock_fm_module.py",
+          "sha256": "e62194b70cefe18b03daa06b543c2c49b8c40eba848d252b2c751494b10f68c3"
+        },
+        {
+          "file": "BioinfoMachineLearning--FlowDock--flowdock--models--components--flowdock.py",
+          "repo": "BioinfoMachineLearning/FlowDock",
+          "revision": "c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2",
+          "path": "flowdock/models/components/flowdock.py",
+          "url": "https://raw.githubusercontent.com/BioinfoMachineLearning/FlowDock/c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2/flowdock/models/components/flowdock.py",
+          "sha256": "26f2a5172aab264a02de05f5e5180ef09389e9866047e8b6a88cb193ba2a8d39"
+        },
+        {
+          "file": "BioinfoMachineLearning--FlowDock--flowdock--data--combined_datamodule.py",
+          "repo": "BioinfoMachineLearning/FlowDock",
+          "revision": "c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2",
+          "path": "flowdock/data/combined_datamodule.py",
+          "url": "https://raw.githubusercontent.com/BioinfoMachineLearning/FlowDock/c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2/flowdock/data/combined_datamodule.py",
+          "sha256": "0efd2d70cca0c7e8b0132f87614160da7035782ccaf1031c0dc6eef96d7f3c8a"
+        },
+        {
+          "file": "BioinfoMachineLearning--FlowDock--flowdock--utils--sampling_utils.py",
+          "repo": "BioinfoMachineLearning/FlowDock",
+          "revision": "c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2",
+          "path": "flowdock/utils/sampling_utils.py",
+          "url": "https://raw.githubusercontent.com/BioinfoMachineLearning/FlowDock/c233fd8be67f9c9d174f0db7f9e7b7ea613bbaf2/flowdock/utils/sampling_utils.py",
+          "sha256": "2e7040d35e3d6a82600989fa69c196b397fe185ade2f89753eafc4e777a727f2"
+        }
+      ]
+    },
+    "luwei0917/DynamicBind": {
+      "sha": "817f565c70be95a53bc5ce9ee6125ffc9aeb6555",
+      "branch": "main",
+      "tree_truncated": false,
+      "commit_date": "2025-12-23T09:55:35Z",
+      "files": [
+        {
+          "file": "luwei0917--DynamicBind--README.md",
+          "repo": "luwei0917/DynamicBind",
+          "revision": "817f565c70be95a53bc5ce9ee6125ffc9aeb6555",
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/luwei0917/DynamicBind/817f565c70be95a53bc5ce9ee6125ffc9aeb6555/README.md",
+          "sha256": "f45c61609d7bde0e0ea99a054f1b11ea8a025416670d9b7ec2dac460583fe08d"
+        },
+        {
+          "file": "luwei0917--DynamicBind--confidence--confidence_train.py",
+          "repo": "luwei0917/DynamicBind",
+          "revision": "817f565c70be95a53bc5ce9ee6125ffc9aeb6555",
+          "path": "confidence/confidence_train.py",
+          "url": "https://raw.githubusercontent.com/luwei0917/DynamicBind/817f565c70be95a53bc5ce9ee6125ffc9aeb6555/confidence/confidence_train.py",
+          "sha256": "86bc1ad8a2e5cb0cd33315e296015fe45db8eb4cb6dc70026147ce943b95af4a"
+        },
+        {
+          "file": "luwei0917--DynamicBind--confidence--dataset.py",
+          "repo": "luwei0917/DynamicBind",
+          "revision": "817f565c70be95a53bc5ce9ee6125ffc9aeb6555",
+          "path": "confidence/dataset.py",
+          "url": "https://raw.githubusercontent.com/luwei0917/DynamicBind/817f565c70be95a53bc5ce9ee6125ffc9aeb6555/confidence/dataset.py",
+          "sha256": "92826556cbe5a4ae9d7172173bdd82d66426cd4d78521232b689f7189e16088f"
+        },
+        {
+          "file": "luwei0917--DynamicBind--datasets--pdbbind.py",
+          "repo": "luwei0917/DynamicBind",
+          "revision": "817f565c70be95a53bc5ce9ee6125ffc9aeb6555",
+          "path": "datasets/pdbbind.py",
+          "url": "https://raw.githubusercontent.com/luwei0917/DynamicBind/817f565c70be95a53bc5ce9ee6125ffc9aeb6555/datasets/pdbbind.py",
+          "sha256": "a6710e1b1456bf0719aba2a8063cdfe07fa640d7362ceceb36d070addadc3c2d"
+        },
+        {
+          "file": "luwei0917--DynamicBind--inference.py",
+          "repo": "luwei0917/DynamicBind",
+          "revision": "817f565c70be95a53bc5ce9ee6125ffc9aeb6555",
+          "path": "inference.py",
+          "url": "https://raw.githubusercontent.com/luwei0917/DynamicBind/817f565c70be95a53bc5ce9ee6125ffc9aeb6555/inference.py",
+          "sha256": "610031d5aa2798575ba55fa6ff596a997e7daee1e162a19a10cf46c96fc6223b"
+        },
+        {
+          "file": "luwei0917--DynamicBind--models--score_model.py",
+          "repo": "luwei0917/DynamicBind",
+          "revision": "817f565c70be95a53bc5ce9ee6125ffc9aeb6555",
+          "path": "models/score_model.py",
+          "url": "https://raw.githubusercontent.com/luwei0917/DynamicBind/817f565c70be95a53bc5ce9ee6125ffc9aeb6555/models/score_model.py",
+          "sha256": "c72d17f2e8c1dcfdc09c88339ed0b8ebbcc9bc85636cc6a878b7c714037152e2"
+        },
+        {
+          "file": "luwei0917--DynamicBind--run_single_protein_inference.py",
+          "repo": "luwei0917/DynamicBind",
+          "revision": "817f565c70be95a53bc5ce9ee6125ffc9aeb6555",
+          "path": "run_single_protein_inference.py",
+          "url": "https://raw.githubusercontent.com/luwei0917/DynamicBind/817f565c70be95a53bc5ce9ee6125ffc9aeb6555/run_single_protein_inference.py",
+          "sha256": "0db6f483f0e78ea9d4be4dc8729fbc255041b31aeca372786c503b155b320b04"
+        },
+        {
+          "file": "luwei0917--DynamicBind--scoring.py",
+          "repo": "luwei0917/DynamicBind",
+          "revision": "817f565c70be95a53bc5ce9ee6125ffc9aeb6555",
+          "path": "scoring.py",
+          "url": "https://raw.githubusercontent.com/luwei0917/DynamicBind/817f565c70be95a53bc5ce9ee6125ffc9aeb6555/scoring.py",
+          "sha256": "6b7b182a36ec91d8aa1c8ad865afd6325727895c53d39f7a04803e0e1bdef902"
+        },
+        {
+          "file": "luwei0917--DynamicBind--utils--sampling.py",
+          "repo": "luwei0917/DynamicBind",
+          "revision": "817f565c70be95a53bc5ce9ee6125ffc9aeb6555",
+          "path": "utils/sampling.py",
+          "url": "https://raw.githubusercontent.com/luwei0917/DynamicBind/817f565c70be95a53bc5ce9ee6125ffc9aeb6555/utils/sampling.py",
+          "sha256": "8a6e0eb7a5006f24b658e681d2273d185d95682584bb8eafd7899a17a215974e"
+        },
+        {
+          "file": "luwei0917--DynamicBind--utils--training.py",
+          "repo": "luwei0917/DynamicBind",
+          "revision": "817f565c70be95a53bc5ce9ee6125ffc9aeb6555",
+          "path": "utils/training.py",
+          "url": "https://raw.githubusercontent.com/luwei0917/DynamicBind/817f565c70be95a53bc5ce9ee6125ffc9aeb6555/utils/training.py",
+          "sha256": "f97287f6a8d3804a586e8491a0e278fcd31ca276e67d0b4493f09e4946e1e1ec"
+        }
+      ]
+    }
+  }
+}

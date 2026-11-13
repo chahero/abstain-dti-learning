@@ -124,6 +124,11 @@
       "sha256": "7d7f4ba07f20c5fbb82c1b4bc73670397198edbc8f91e805a755b007fd48e334"
     },
     {
+      "path": "assets/score-audit.json",
+      "bytes": 26402,
+      "sha256": "5fef5459603c79ff564b0041452a68473af46204c13208f422c725093a009b22"
+    },
+    {
       "path": "data.js",
       "bytes": 38766,
       "sha256": "4fb2c5eeeea75aa511eafc81a0670b1f6aaebc060584ea88b415d27bf2970f9c"
@@ -135,8 +140,8 @@
     },
     {
       "path": "diagram.css",
-      "bytes": 9832,
-      "sha256": "b17c7515203c40536d1b0f642ef6a562173627e29a564c57e87f13b62a4be3d4"
+      "bytes": 11626,
+      "sha256": "ff4489f2c5589090d69cf6f82a440b8906c8796d9c96d7ed62913f3eb8a64db3"
     },
     {
       "path": "diagram.js",
@@ -170,8 +175,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 243748,
-      "sha256": "b7f1ed6257da58243d5d610e6a8429bd54fe4823227a6e713aadd01ecb0bc3b1"
+      "bytes": 252829,
+      "sha256": "e7ea2ffe4bd7961b657cb345d27af210aa3ccddc1096ddfa63c4b6d960678572"
     },
     {
       "path": "lessons.css",
@@ -220,8 +225,8 @@
     },
     {
       "path": "review.md",
-      "bytes": 116659,
-      "sha256": "45b9eb1b5b07f95e7ddbcdd48fc1f142add424ee4b684c37930509089c2af0ef"
+      "bytes": 122320,
+      "sha256": "62a9ddb943dfbd2aee41ae5c50eb03c18a2921f7b889dcdf1c5495797f5ffa2c"
     },
     {
       "path": "style.css",
@@ -583,6 +588,13 @@
     "old_links": "anchors follow their actual DOM owners; old incoming chapter/anchor URLs are canonicalized",
     "deletions": "no original source assets or reference data removed",
     "reviewed_date": "2026-11-13"
+  },
+  "native_score_audit": {
+    "reviewed_date": "2026-11-14",
+    "artifact": "assets/score-audit.json",
+    "reliable_ba_revision": "fec924ff7c9fd439415ff0c8baa8a3bda34d240b",
+    "status": "native tool definitions separated from unresolved experiment output-to-CSV mappings; BIND pIC50 column meaning identified; no engine execution",
+    "corrected_example": "model_io native output illustrations no longer assert CNNaffinity/FlowDock affinity/DynamicBind affinity equals the RELIABLE-BA input column"
   },
   "content_scope": {
     "main_chapters": 6,
