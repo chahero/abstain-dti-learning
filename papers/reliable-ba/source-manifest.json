@@ -134,14 +134,24 @@
       "sha256": "0ffda25e25601aca4378d42d86b4323d15cfb1bde53ae227ce670b56623031fa"
     },
     {
+      "path": "errors.css",
+      "bytes": 8348,
+      "sha256": "37a4477ff3211a450c5b481839697b35a15c41029df5f321d759837a2d9a707c"
+    },
+    {
+      "path": "errors.js",
+      "bytes": 1997,
+      "sha256": "dfb8348171d38580419635c68c93aa84b608d5f1ec029e52b9d67be856468328"
+    },
+    {
       "path": "expansion.css",
       "bytes": 10853,
       "sha256": "327434bab7e3d0c494362a4e210ea7229000927fc699a3614b041adb9d630930"
     },
     {
       "path": "index.html",
-      "bytes": 138787,
-      "sha256": "79f06d53a43c149f752c996fb543cafc92a08e896312c7b466a9725745448282"
+      "bytes": 166543,
+      "sha256": "f4b72326c6db0f0e7f05b4bf59fbc174e489f0b9555d81133bfacb297dce9a05"
     },
     {
       "path": "lessons.css",
@@ -175,8 +185,8 @@
     },
     {
       "path": "review.md",
-      "bytes": 69925,
-      "sha256": "7411e2be271877a5e4b410d108c1d151c6c812bc4b64df92ea7a065ddd40c5f1"
+      "bytes": 79673,
+      "sha256": "2d5f0e6e53f2f2e8f0533754d81469717d13f48c943f0d82427cbdeb21bc161f"
     },
     {
       "path": "style.css",
@@ -239,5 +249,42 @@
         "https://github.com/Chokyotager/BIND#about"
       ]
     }
+  },
+  "error_walkthrough": {
+    "reviewed_date": "2026-11-13",
+    "pair": "c-Abl / imatinib",
+    "status": "authored 2D teaching diagrams, hypothetical failure paths and common-pKd predictions; no engine execution or causal error attribution",
+    "sources": {
+      "structure": "https://www.rcsb.org/structure/1IEP",
+      "gnina": "https://github.com/gnina/gnina#usage",
+      "bind": "https://github.com/Chokyotager/BIND#about",
+      "flow": "https://github.com/BioinfoMachineLearning/FlowDock",
+      "dynamic": "https://github.com/luwei0917/DynamicBind#docking-outputs"
+    },
+    "fictional_target_pKd": 8.0,
+    "fictional_predictions": [
+      {
+        "engine": "GNINA",
+        "common_target_pKd": 7.0,
+        "absolute_error": 1.0
+      },
+      {
+        "engine": "BIND",
+        "common_target_pKd": 7.5,
+        "absolute_error": 0.5
+      },
+      {
+        "engine": "FlowDock",
+        "common_target_pKd": 8.2,
+        "absolute_error": 0.2
+      },
+      {
+        "engine": "DynamicBind",
+        "common_target_pKd": 8.8,
+        "absolute_error": 0.8
+      }
+    ],
+    "coordinate_states": "illustrative favorable/unfavorable input states; not actual 1IEP conformers, apo/holo states or equilibrium simulation",
+    "separation": "paper tables, original Fig. 1 and public CSV rows retained separately after teaching examples"
   }
 }
