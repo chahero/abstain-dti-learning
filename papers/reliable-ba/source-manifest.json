@@ -125,13 +125,13 @@
     },
     {
       "path": "data.js",
-      "bytes": 38174,
-      "sha256": "eea6fd4ea7e76c849929100ba67a988c117bf657bf18ac5b4c87381cd6ddb7f0"
+      "bytes": 38766,
+      "sha256": "4fb2c5eeeea75aa511eafc81a0670b1f6aaebc060584ea88b415d27bf2970f9c"
     },
     {
       "path": "details.js",
-      "bytes": 6659,
-      "sha256": "0ffda25e25601aca4378d42d86b4323d15cfb1bde53ae227ce670b56623031fa"
+      "bytes": 7201,
+      "sha256": "7f07771bbac0536a039607f1cc69bb6ab2adf825b72544ace016ab9b238fa4b4"
     },
     {
       "path": "errors.css",
@@ -160,8 +160,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 186899,
-      "sha256": "d4e47039e879f94bd197eb44ff6eefa1671934534a4d663c1340ec2876b88904"
+      "bytes": 201250,
+      "sha256": "ab178e29dbbe60f03874e5ee4af02167ab175ff76f5ce2eac7a3fbe8136d22de"
     },
     {
       "path": "lessons.css",
@@ -195,13 +195,23 @@
     },
     {
       "path": "review.md",
-      "bytes": 87100,
-      "sha256": "d16bdc380c2c75834a31f6a395bb153db2afd8fa4e26c0c7b43553952fa05e38"
+      "bytes": 93938,
+      "sha256": "25a17d5bf005a2e7416a733be75f68a9755f2b5f029121c7e3a2011cb7463382"
     },
     {
       "path": "style.css",
       "bytes": 18307,
       "sha256": "9b114ec86bc5fa00ddcee08395c06e3f6ca9806a1a51f348750a663bff8f393f"
+    },
+    {
+      "path": "training.css",
+      "bytes": 11656,
+      "sha256": "9541a9326fce3bcef1f029771c9426225a87145c6dd5dd9da1ce287f08f7235a"
+    },
+    {
+      "path": "training.js",
+      "bytes": 3960,
+      "sha256": "970b3ff1a55527b8414f49dad402696955b7dff6ae79a931c13799f5010ffe8f"
     }
   ],
   "input_example": {
@@ -386,5 +396,39 @@
     "uncertainty_units": "variance on the squared pKd teaching scale; not a confidence interval or correctness probability",
     "implementation": "site/math.js equations (8)-(17); same helper as retained two-expert calculation",
     "evidence_separation": "fictional calculator and retained optional examples precede unchanged original Fig. 2; actual benchmark results remain in chapter 7"
+  },
+  "training_and_evaluation_walkthrough": {
+    "pair": "c-Abl / imatinib",
+    "fictional_record_id": "DEMO-cABL-IMATINIB",
+    "fictional_experimental": "Kd=10nM",
+    "fictional_target_pKd": 8.0,
+    "fictional_native_scores": [
+      6.5,
+      8.1,
+      7.6,
+      6.9
+    ],
+    "status": "authored preparation and training/inference diagrams; no engine inference, measured c-Abl affinity or training run",
+    "real_example_status": "four exact retained public CSV records; 1IEP is absent from the 150-row sample, not a claim about the full dataset",
+    "data_paths": "704 embeddings -> reliability net; four scalar scores -> separate expert heads; experimental y -> loss only",
+    "training_scope": "precomputed engines and frozen encoders; small heads and reliability network train jointly",
+    "loss": "individual and fused evidential NIG Student-t negative log likelihood plus evidence regularization; not MAE-only or best-engine labels",
+    "evaluation_status": "unchanged paper tables/figures; new overview reads Tables 1-2; coverage graphic is conceptual, not per-sample model output",
+    "source_sections": [
+      "S3.SS5",
+      "S4.SS1",
+      "S4.SS2",
+      "A2",
+      "A3"
+    ],
+    "reviewed_date": "2026-11-13",
+    "report_methods": [
+      "GNINA",
+      "BIND",
+      "FlowDock",
+      "DynamicBind",
+      "Deep Ensemble",
+      "RELIABLE-BA"
+    ]
   }
 }

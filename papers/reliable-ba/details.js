@@ -27,12 +27,21 @@
     b.addEventListener('keydown',e=>{let next=index;if(e.key==='ArrowRight')next=(index+1)%cases.length;else if(e.key==='ArrowLeft')next=(index+cases.length-1)%cases.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=cases.length-1;else return;e.preventDefault();showCase(cases[next].id,true);});
   });
   showCase(cases[0].id);
-  const real=cases[0];
-  $('#real-training-row').innerHTML=`<div class="table-scroll"><table><caption>공식 예제 CSV · ComplexID=${escape(real.id)} · 값 일부만 표시</caption><thead><tr><th>열</th><th>실제 기록</th><th>처리</th></tr></thead><tbody><tr><th>ComplexID</th><td>${escape(real.id)}</td><td>분할과 기록의 식별자</td></tr><tr><th>Binding_Affinity</th><td>${escape(real.experimental)}</td><td>목표 y = ${escape(real.endpoint)} ${n(real.target)}</td></tr>${real.columns.map((column,i)=>`<tr><th><code>${escape(column)}</code></th><td>${n(real.scores[i])}</td><td>전문가 변환망의 입력</td></tr>`).join('')}<tr><th>Emb_0…Emb_703</th><td>${Object.entries(real.embedding_preview).map(([key,v])=>`${key}=${v}`).join('<br>')}<br>…</td><td>${real.embedding_dimension}개 특징 숫자 중 일부 표시</td></tr></tbody></table></div><p class="small">원본 CSV의 ${real.csv_line}번째 줄입니다. 위 숫자는 가상 P1–L1 사례와 다르며, 추가로 모델을 학습하거나 실행하지 않고 공개 기록을 읽은 것입니다.</p>`;
+  function showTrainingCase(id){
+    const real=cases.find(c=>c.id===id);if(!real)return;
+    $('#real-training-row').innerHTML=`<div class="table-scroll"><table class="actual-training-table"><caption>공식 예제 CSV · ComplexID=${escape(real.id)} · 값 일부만 표시</caption><thead><tr><th>열</th><th>실제 기록</th><th>처리</th></tr></thead><tbody><tr><th scope="row">ComplexID</th><td>${escape(real.id)}</td><td>분할과 기록의 식별자</td></tr><tr><th scope="row">Binding_Affinity</th><td>${escape(real.experimental)}</td><td>목표 y = ${escape(real.endpoint)} ${n(real.target)}</td></tr>${real.columns.map((column,i)=>`<tr><th scope="row"><code>${escape(column)}</code></th><td>${n(real.scores[i])}</td><td>전문가 변환망의 입력</td></tr>`).join('')}<tr><th scope="row">Emb_0…Emb_703</th><td>${Object.entries(real.embedding_preview).map(([key,v])=>`${key}=${v}`).join('<br>')}<br>…</td><td>${real.embedding_dimension}개 특징 숫자 중 일부 표시</td></tr></tbody></table></div><p class="small">원본 CSV의 ${real.csv_line}번째 줄입니다. 위 숫자는 가상 c-Abl·이마티닙 사례와 다르며, 추가로 모델을 학습하거나 실행하지 않고 공개 기록을 읽은 것입니다.</p>`;
+  }
+  $('#training-real-select').addEventListener('change',e=>showTrainingCase(e.target.value));
+  showTrainingCase($('#training-real-select').value);
   const learnButtons=$$('.learning-tabs button');
   function showLearn(step,focus=false){
     learnButtons.forEach(b=>{const active=Number(b.dataset.learn)===step;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;if(active&&focus)b.focus();});
     $$('.learning-panel').forEach(p=>p.hidden=p.id!=='learn-panel-'+step);
   }
   learnButtons.forEach((b,i)=>{b.addEventListener('click',()=>showLearn(i+1));b.addEventListener('keydown',e=>{let next=i;if(e.key==='ArrowRight')next=(i+1)%5;else if(e.key==='ArrowLeft')next=(i+4)%5;else if(e.key==='Home')next=0;else if(e.key==='End')next=4;else return;e.preventDefault();showLearn(next+1,true);});});
+  function followLearningAnchor(){
+    const match=location.hash.match(/^#learning\/learn-panel-([1-5])$/);
+    if(match)showLearn(Number(match[1]));
+  }
+  addEventListener('hashchange',followLearningAnchor);followLearningAnchor();
 })();

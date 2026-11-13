@@ -1283,5 +1283,9 @@ window.REVIEW_DATA = {
     "artifact": "assets/input-example/esm2-8m-representations.npz",
     "artifact_sha256": "f48fbb5c9d1932e0f9f8508eddfd671c2d078418ef8df8243a95cdb20a175433",
     "status": "actual last-layer ESM-2 8M representation, no BIND/RELIABLE-BA training or affinity prediction; distinct from BIND ESM-2 650M 1280-wide features"
+  },
+  "reportNotes": {
+    "table1": "PDBbind에서는 DynamicBind의 MAE 0.8095가 RELIABLE-BA의 0.8247보다 낮습니다. 반면 RELIABLE-BA의 ECE는 0.0149로 Deep Ensemble의 0.0540보다 낮습니다. 평균 오차와 불확실성 품질은 따로 평가해야 합니다.",
+    "table2": "BDB2020+에서 RELIABLE-BA의 MAE는 0.7220, Deep Ensemble은 0.7230입니다. RMSE는 반대로 Deep Ensemble이 0.9310로 RELIABLE-BA의 0.9320보다 조금 낮습니다. RELIABLE-BA의 ECE는 0.0550입니다. 작은 평균 차이만으로 유의한 우위를 단정하지 않습니다."
   }
 };

@@ -49,6 +49,12 @@ Hong et al., *Trustworthy Protein–Ligand Binding Affinity Prediction via Relia
 
 [4장 결과 통합](https://chahero.github.io/abstain-dti-learning/papers/reliable-ba/#method)에서는 같은 c-Abl·이마티닙의 엔진 점수 경로와 분자 특징 기반 신뢰성 경로를 나누어 그립니다. 네 모델의 신뢰성 r과 증거량 ν를 조절해 r × ν → 최종 비중 → 통합 평균·분산을 확인하고, 신뢰성 조절 전·후와 의견 차이의 효과를 비교합니다. 모든 계산기 수치는 가상 매개변수로 논문 수식만 적용한 값이며 실제 모델 추론이나 학습 결과가 아닙니다. 원문 Fig. 2는 별도 근거 영역에 두고 실제 성능표는 7장으로 연결합니다.
 
+[5장 학습 데이터와 정답](https://chahero.github.io/abstain-dti-learning/papers/reliable-ba/#training-data)은 같은 c-Abl·이마티닙에서 특징·엔진 점수·실험 정답을 준비하는 세 경로를 그림으로 보여줍니다. 가상 Kd 10 nM → pKd 8.0과 실제 공개 CSV 4개 행을 구분하고, 데이터 역할 강조와 행 선택을 제공합니다.
+
+[6장 공동 학습](https://chahero.github.io/abstain-dti-learning/papers/reliable-ba/#learning)은 입력 → 예측 → 정답 비교 → 가중치 조정 → 추론의 5단계입니다. 앞 장과 같은 가상 숫자를 사용하며, y는 손실 비교에만 사용한다는 점과 전문가 변환망·신뢰성 망의 학습 범위를 구분합니다. 학습과 추론의 차이를 먼저 도식으로 봅니다.
+
+[7장 실제 효과와 한계](https://chahero.github.io/abstain-dti-learning/papers/reliable-ba/#results)는 실제 논문의 오차·불확실성·선택적 예측을 구분합니다. 6개 방법 요약표와 기존 전체 표·차트가 같은 평가셋 선택을 따르며, 100% 유지와 10% 유지 개념도를 비교합니다. 원문 수치·그림과 한계 분석을 보존합니다.
+
 NIG 전문가·신뢰성 조절·MoNIG 결합을 가상 값으로 조작하고, PDBbind·BDB2020+의 평가셋과 지표를 바꾸어 원문 수치를 비교합니다. 실제 1IEP 입력 형식과 ESM-2 8M 표현, 공식 CSV의 네 사례를 설명용 예시와 구분합니다. 원문 표 4개, 그림 4개, 용어 47개, 해설 원고·표·입력 및 표현 데이터 다운로드와 인쇄를 제공합니다. 원문 그림에는 CC BY 4.0에 따라 저자와 출처를 표시했습니다.
 
 논문 보고값과 해설자의 적용 아이디어를 구분하며, 재현 실행 결과나 공식 프로젝트 결과를 뜻하지 않습니다. 공개 코드의 검토 버전과 원문·파일 해시는 페이지의 출처와 `source-manifest.json`에서 확인할 수 있습니다.
