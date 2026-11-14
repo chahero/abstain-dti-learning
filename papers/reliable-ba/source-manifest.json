@@ -145,8 +145,8 @@
     },
     {
       "path": "diagram.js",
-      "bytes": 4940,
-      "sha256": "cfb42219621f92abcbba05570ad2144dcb673f1b0190eb3bdae3d9f44a820ee2"
+      "bytes": 5150,
+      "sha256": "c9673f1a94131a648d546eb59d13ff426b5b37fca64814daad833521ef0bfab4"
     },
     {
       "path": "errors.css",
@@ -175,8 +175,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 290121,
-      "sha256": "573367d212edbbef550413ddf41a55301c8440d63fa7b595dda9b35a144803a6"
+      "bytes": 289510,
+      "sha256": "46b32fbfa65c8c4295f2b4821f3fd9b0ddcc7b28e22a941cfa188e377a82e6ae"
     },
     {
       "path": "lessons.css",
@@ -230,8 +230,8 @@
     },
     {
       "path": "review.md",
-      "bytes": 135730,
-      "sha256": "aadbb7b8642881d23967bea6fcfa8760704be0bdaf936cac2d1af2eb68dff3bb"
+      "bytes": 135391,
+      "sha256": "4637ad6ab888f4bc79c427ee46cc4aac000f543a1ab324f9a87e2bee91911d2d"
     },
     {
       "path": "style.css",
@@ -541,7 +541,7 @@
   "figure_reading": {
     "status": "five-stage teaching reader; original bitmap unchanged; highlight overlays and top-pipeline framing added",
     "source_figure": "assets/architecture.png",
-    "displayed_region": "Figure 2 upper pipeline, viewBox 0 0 1439 525; full unmodified bitmap in disclosure",
+    "displayed_region": "Figure 2 upper pipeline, viewBox 0 0 1439 525; original PNG asset unchanged; redundant full-image drawer removed; source paper link retained",
     "stages": [
       "모델의 원래 출력",
       "평균·불확실성",
@@ -834,10 +834,11 @@
     "reviewed_date": "2026-11-13"
   },
   "plain_reading": {
-    "status": "default reading simplified; existing source material, figures, data, widgets and deep-link IDs retained in closed disclosures",
+    "status": "default reading simplified; detailed source material, data, widgets and deep-link IDs retained in closed disclosures; redundant full-original-image drawer removed",
     "default_example": "fictional c-Abl/imatinib BIND path: native pIC50 8.1 -> learned pKd mean 7.5; reliability .3; evidence 5 -> 1.5; mean weight 20%; four-expert fused mean 7.94",
     "score_definition": "native model output selected as an input, not a new scoring transform added by RELIABLE-BA",
     "scope": "six main chapters and five stage panels; optional appendices retained",
+    "step_order": "core explanation -> shared current-position figure -> stage-specific details -> navigation; one original SVG and control set moved between active panels",
     "source_boundaries": "fictional numerical example labeled once in the reader; score provenance audit retained; reported 25.7 percent reduction retains 10 percent coverage condition",
     "reviewed_date": "2026-11-14"
   },

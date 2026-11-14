@@ -9,6 +9,7 @@
   const dimmer = root.querySelector('#diagram-dimmer');
   const emphasis = [...root.querySelectorAll('[data-map-emphasis]')];
   const zoomButton = root.querySelector('#diagram-zoom');
+  const originalFigure = root.querySelector('#plain-original-figure');
   const previous = root.querySelector('#diagram-previous');
   const next = root.querySelector('#diagram-next');
   const names = tabs.map(tab=>tab.dataset.figureTitle);
@@ -39,7 +40,12 @@
       tab.tabIndex = i === step ? 0 : -1;
     });
     panels.forEach((panel,i) => { panel.hidden = i !== step; });
-    if(step===0&&root.querySelector('#plain-original-figure'))root.querySelector('#plain-original-figure').open=true;
+    if(originalFigure){
+      const detail=panels[step].querySelector(':scope > #plain-step-'+step+'-details');
+      if(detail)detail.before(originalFigure);
+      else panels[step].append(originalFigure);
+      if(step===0)originalFigure.open=true;
+    }
     previous.disabled = step === 0;
     next.disabled = step === 5;
     root.querySelector('#diagram-progress').textContent = step ? `${step} / 5` : '전체 그림';
