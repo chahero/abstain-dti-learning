@@ -58,7 +58,7 @@
     if(compactNav.matches)outline.open=false;
     document.title=$('#'+id+' h1').textContent+' · RELIABLE-BA';
     if(anchor){
-      let parent=document.getElementById(anchor).parentElement;
+      let parent=document.getElementById(anchor);
       while(parent&&parent!==chapter){if(parent.tagName==='DETAILS')parent.open=true;parent=parent.parentElement;}
     }
     if(document.readyState!=='loading'){

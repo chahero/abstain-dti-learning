@@ -39,6 +39,7 @@
       tab.tabIndex = i === step ? 0 : -1;
     });
     panels.forEach((panel,i) => { panel.hidden = i !== step; });
+    if(step===0&&root.querySelector('#plain-original-figure'))root.querySelector('#plain-original-figure').open=true;
     previous.disabled = step === 0;
     next.disabled = step === 5;
     root.querySelector('#diagram-progress').textContent = step ? `${step} / 5` : '전체 그림';
@@ -68,7 +69,12 @@
   function fromHash() {
     const match = location.hash.match(/^#(?:walkthrough|overview)\/figure-step-([0-5])$/);
     if (match) select(Number(match[1]),{updateUrl:false});
-    else if (location.hash === '#walkthrough' || !location.hash) select(0,{updateUrl:false});
+    else {
+      const target=document.getElementById(location.hash.slice(1).split('/')[1]||'');
+      const panel=target?.closest('.diagram-panel');
+      if(panel)select(Number(panel.id.replace('figure-step-','')),{updateUrl:false});
+      else if(location.hash==='#walkthrough'||!location.hash)select(1,{updateUrl:false});
+    }
   }
   addEventListener('hashchange',fromHash);
   fromHash();

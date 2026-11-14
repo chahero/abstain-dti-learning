@@ -1,0 +1,38 @@
+/* One definition, one representative example, optional supporting detail. */
+.plain-flow{display:flex;gap:12px;align-items:stretch;margin:22px 0}
+.plain-node{flex:1;min-width:0;background:#f4f8fb;border:1px solid #d6e2e9;border-radius:12px;padding:20px;display:flex;flex-direction:column;justify-content:center;gap:13px}
+.plain-node:last-child{background:#edf8f3;border-color:#bbdccd}
+.plain-node>span{font-size:13px;color:#567081}
+.plain-node>strong{font-size:20px;line-height:1.6;color:#163d50;overflow-wrap:anywhere}
+.plain-arrow{align-self:center;color:#78929b;font-size:24px}
+.plain-definition{font-size:18px!important;line-height:1.85!important;margin:18px 0}
+.plain-point{border-left:3px solid #52998b;background:#f3faf7;padding:15px 18px;font-size:15px;line-height:1.9}
+.plain-details{border-top:1px solid #d9e4e9;margin-top:24px;padding-top:14px}
+.plain-details>summary{cursor:pointer;color:#55717e;font-size:13px;font-weight:600;padding:8px 0}
+.plain-details[open]>summary{margin-bottom:18px}
+.plain-two-paths{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:23px 0}
+.plain-two-paths>section{border:1px solid #d7e3e9;border-radius:12px;padding:21px;background:#f5f9fc}
+.plain-two-paths>section:last-child{background:#f6f1fa;border-color:#ddcee9}
+.plain-two-paths h2{font-size:18px;margin:0 0 12px}.plain-two-paths p{line-height:1.95;font-size:16px;margin:0}
+.plain-join{text-align:center;font-size:14px;color:#597383;margin:12px}
+.plain-main{margin:20px 0}
+.plain-result{display:grid;grid-template-columns:230px 1fr;gap:30px;align-items:center;margin:22px 0}
+.plain-result>svg{width:100%;max-width:230px;height:auto}
+.plain-result p{line-height:1.8}.plain-result .plain-result-number{font-size:26px;font-weight:750;color:#087f8c;line-height:1.7}
+.plain-result figcaption{grid-column:1/-1;color:#617985;font-size:12px;line-height:1.8}
+.plain-comparison{width:100%;font-size:15px;line-height:1.85}
+#figure-reader>.diagram-tabs{margin-bottom:18px}
+#figure-reader{scroll-margin-top:95px}
+#plain-original-figure{margin-top:14px}
+@media(max-width:650px){
+ .plain-flow{flex-direction:column;gap:7px;margin:18px 0}
+ .plain-node{padding:17px 18px;gap:8px}.plain-node>strong{font-size:19px}
+ .plain-arrow{transform:rotate(90deg);font-size:20px;line-height:1}
+ .plain-definition{font-size:16px!important}.plain-point{font-size:14px}
+ .plain-two-paths{grid-template-columns:1fr;gap:12px}
+ .plain-result{grid-template-columns:1fr;gap:15px}.plain-result>svg{max-width:190px;margin:auto}
+ .plain-result .plain-result-number{font-size:23px}
+ .plain-comparison{min-width:0!important;font-size:13px}
+ .plain-comparison th,.plain-comparison td{overflow-wrap:anywhere}
+}
+@media print{.plain-flow{break-inside:avoid}.plain-details>summary{color:#102f43}}
