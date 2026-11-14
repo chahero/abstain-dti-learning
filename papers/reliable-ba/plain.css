@@ -24,7 +24,28 @@
 #figure-reader>.diagram-tabs{margin-bottom:18px}
 #figure-reader{scroll-margin-top:95px}
 #plain-original-figure{margin-top:14px}
+.plain-step[data-plain-step="4"] .plain-node>strong{font-size:22px}
+.plain-step[data-plain-step="4"] .plain-node small{display:inline-block;font-size:15px;line-height:1.9;font-weight:500}
+.scaling-effects{margin:22px 0}
+.scaling-effects-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.scaling-effect-card{padding:18px 20px;border:1px solid #c9ddd6;border-radius:12px;background:#f3faf7;min-width:0}
+.scaling-effect-card.epistemic{border-color:#d8cbe7;background:#f8f4fc}
+.scaling-effect-title{font-size:16px!important;font-weight:650;margin:0 0 9px!important}
+.scaling-effect-result{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin:0 0 16px!important;line-height:1.5!important}
+.scaling-effect-result strong{font-size:25px;color:#176d5e;font-variant-numeric:tabular-nums}
+.scaling-effect-result span{font-size:13px;font-weight:650;color:#176d5e}
+.epistemic .scaling-effect-result strong,.epistemic .scaling-effect-result span{color:#765299}
+.scaling-bar-row{display:grid;grid-template-columns:48px minmax(0,1fr) 45px;align-items:center;gap:8px;font-size:12px;line-height:1.6;margin:8px 0}
+.scaling-bar-row b{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.scaling-bar-track{display:block;height:8px;background:#ddebe5;border-radius:5px;overflow:hidden}
+.scaling-bar-track>span{display:block;height:100%;background:#398778;border-radius:5px}
+.epistemic .scaling-bar-track{background:#e8dfef}.epistemic .scaling-bar-track>span{background:#8b68ad}
+.scaling-effect-help{font-size:13px!important;line-height:1.8!important;color:#516875;margin:12px 0 0!important}
+.scaling-effects figcaption{font-size:12px;color:#607683;line-height:1.8;margin-top:10px}
+#bind-scaling-table{width:100%;font-variant-numeric:tabular-nums;font-size:14px}
 @media(max-width:650px){
+ .scaling-effects-grid{grid-template-columns:minmax(0,1fr)}
+ .scaling-effect-card{padding:17px 18px}
  .plain-flow{flex-direction:column;gap:7px;margin:18px 0}
  .plain-node{padding:17px 18px;gap:8px}.plain-node>strong{font-size:19px}
  .plain-arrow{transform:rotate(90deg);font-size:20px;line-height:1}

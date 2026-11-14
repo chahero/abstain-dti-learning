@@ -175,8 +175,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 289510,
-      "sha256": "46b32fbfa65c8c4295f2b4821f3fd9b0ddcc7b28e22a941cfa188e377a82e6ae"
+      "bytes": 292014,
+      "sha256": "489b4eb3022856247aa7ce010a87191d6fd73eb56e40e1ff9aba699dfcd3582a"
     },
     {
       "path": "lessons.css",
@@ -205,8 +205,8 @@
     },
     {
       "path": "plain.css",
-      "bytes": 2755,
-      "sha256": "6cba9ac984ca529d9ac6ad78a31a0ebcdc441c20e95b30599102468db059c75f"
+      "bytes": 4649,
+      "sha256": "ce3011be06e4dc1a354418962e1123eddec0a0710c0d8526734dd7491ce55221"
     },
     {
       "path": "reading.css",
@@ -230,8 +230,8 @@
     },
     {
       "path": "review.md",
-      "bytes": 135391,
-      "sha256": "4637ad6ab888f4bc79c427ee46cc4aac000f543a1ab324f9a87e2bee91911d2d"
+      "bytes": 137632,
+      "sha256": "51895aa78429f7eaa326e3627cbfa9a50f32c5aaf56aa1d0dddaacf46c40f670"
     },
     {
       "path": "style.css",
@@ -803,6 +803,31 @@
           }
         ]
       }
+    },
+    "stage_four_bind_example": {
+      "before": {
+        "engine": "BIND",
+        "field": "BIND_pIC50",
+        "raw_score": 8.1,
+        "mean": 7.5,
+        "r": 0.3,
+        "nu": 5.0,
+        "alpha": 3.0,
+        "beta": 2.0,
+        "effective": 1.5,
+        "weight": 0.2,
+        "contribution": 1.5
+      },
+      "after": {
+        "mean": 7.5,
+        "nu": 1.5,
+        "alpha": 1.6,
+        "beta": 0.6
+      },
+      "data_before": 1.0,
+      "data_after": 0.9999999999999998,
+      "epistemic_before": 0.2,
+      "epistemic_after": 0.6666666666666665
     },
     "evidence_boundary": "architecture, dimensionality and equations verified; r, raw scores, NIG parameters and pair predictions fictional; native field provenance unresolved as in step 1",
     "semantics": "r is not correctness probability or final mixture weight; scaling preserves mean and aleatoric variance; displayed weights apply to fused mean; expert disagreements affect fusion uncertainty"
