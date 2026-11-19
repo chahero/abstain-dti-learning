@@ -19,3 +19,9 @@
 .evidence-list .brief-list{margin-bottom:0}
 @media(max-width:700px){.hero h1{font-size:30px}.hero-points{font-size:14px}.brief-list>li{margin:8px 0}.finding .brief-list{font-size:14px}}
 @media print{.hero h1{font-size:27pt}.brief-list>li{break-inside:avoid}}
+/* Rank-first comparison: raw scores remain secondary. */
+.rank-table{min-width:650px}.rank-table td.numeric{font-size:18px;font-weight:650}
+.rank-table button{font:inherit;color:var(--teal);border:0;background:transparent;text-decoration:underline;cursor:pointer;padding:3px}
+.rank-table tr.selected{background:#edf6f5}.rank-table td,.rank-table th{white-space:nowrap}
+#absolute-limits{scroll-margin-top:110px}.case-numbers small{line-height:1.5}
+@media print{.rank-table{min-width:0}.rank-table td.numeric{font-size:12pt}}

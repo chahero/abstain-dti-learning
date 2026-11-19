@@ -206,5 +206,103 @@
       "large_gap_total": 12
     }
   ],
+  "rankings": [
+    {
+      "case_id": "C01",
+      "target": "CA1",
+      "ligand": "L01",
+      "reference_rank": 2,
+      "deepdta_rank": 5,
+      "boltz_rank": 1
+    },
+    {
+      "case_id": "C02",
+      "target": "CA13",
+      "ligand": "L01",
+      "reference_rank": 1,
+      "deepdta_rank": 5,
+      "boltz_rank": 1
+    },
+    {
+      "case_id": "C03",
+      "target": "CA1",
+      "ligand": "L02",
+      "reference_rank": 3,
+      "deepdta_rank": 1,
+      "boltz_rank": 2
+    },
+    {
+      "case_id": "C04",
+      "target": "CA13",
+      "ligand": "L02",
+      "reference_rank": 2,
+      "deepdta_rank": 1,
+      "boltz_rank": 2
+    },
+    {
+      "case_id": "C05",
+      "target": "CA1",
+      "ligand": "L03",
+      "reference_rank": 4,
+      "deepdta_rank": 6,
+      "boltz_rank": 3
+    },
+    {
+      "case_id": "C06",
+      "target": "CA13",
+      "ligand": "L03",
+      "reference_rank": 3,
+      "deepdta_rank": 6,
+      "boltz_rank": 3
+    },
+    {
+      "case_id": "C07",
+      "target": "CA1",
+      "ligand": "L04",
+      "reference_rank": 1,
+      "deepdta_rank": 2,
+      "boltz_rank": 4
+    },
+    {
+      "case_id": "C08",
+      "target": "CA13",
+      "ligand": "L04",
+      "reference_rank": 4,
+      "deepdta_rank": 4,
+      "boltz_rank": 5
+    },
+    {
+      "case_id": "C09",
+      "target": "CA1",
+      "ligand": "L05",
+      "reference_rank": 5,
+      "deepdta_rank": 3,
+      "boltz_rank": 5
+    },
+    {
+      "case_id": "C10",
+      "target": "CA13",
+      "ligand": "L05",
+      "reference_rank": 5,
+      "deepdta_rank": 3,
+      "boltz_rank": 4
+    },
+    {
+      "case_id": "C11",
+      "target": "CA1",
+      "ligand": "L06",
+      "reference_rank": 6,
+      "deepdta_rank": 4,
+      "boltz_rank": 6
+    },
+    {
+      "case_id": "C12",
+      "target": "CA13",
+      "ligand": "L06",
+      "reference_rank": 6,
+      "deepdta_rank": 2,
+      "boltz_rank": 6
+    }
+  ],
   "scope": "within-target ranking pilot; no additional training; Boltz score is not measured Kd"
 }

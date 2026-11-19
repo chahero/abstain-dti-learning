@@ -20,6 +20,8 @@
     "affinity_samples": 5,
     "seed": 42,
     "native_endpoint": "log10(IC50 in micromolar) scale",
+    "training_endpoints": "mixed biochemical quantities including Ki, Kd and IC50; general binding strength, approximately IC50-like",
+    "endpoint_source": "https://jeremywohlwend.com/assets/boltz2.pdf#page=5",
     "display_transform": "6 - native value; not an IC50-to-Kd conversion",
     "Zn_chain": "C",
     "affinity_binder": "B",
