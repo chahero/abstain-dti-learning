@@ -45,3 +45,6 @@ h1{margin:0;font-size:clamp(33px,4vw,48px);line-height:1.22;letter-spacing:-1.8p
 .resource.docking{--accent:#7051bc;--tint:#f3effb}.resource.docking h2{font-size:31px}.resource.docking .features{grid-template-columns:1fr;gap:11px}@media(max-width:760px){.resource.docking .features{grid-template-columns:1fr;gap:11px}}
 
 .resource.reliable{--accent:#087f8c;--tint:#edf7f7}.resource.reliable h2{font-size:30px;line-height:1.35}
+
+/* Scoped typography for the full experiment title. */
+.resource.comparison h2{font-size:clamp(24px,2.35vw,28px);line-height:1.45;word-break:keep-all}.resource.comparison .comparison-subtitle{font-weight:550;color:var(--ink)}

@@ -2,7 +2,7 @@
 
 [학습 사이트 열기](https://chahero.github.io/abstain-dti-learning/)
 
-신약 발굴 AI를 공부하기 위한 한국어 개인 학습 자료입니다. 메인 화면에서 **포켓 그림 교재**, **Docking Agent 구현·실험 기록**, **논문 음성 웹 발표**, **RELIABLE-BA 논문 핵심 해설**, **DeepDTA·Boltz-2의 12쌍 모델 비교**를 선택할 수 있습니다.
+신약 발굴 AI를 공부하기 위한 한국어 개인 학습 자료입니다. 메인 화면에서 **포켓 그림 교재**, **Docking Agent 구현·실험 기록**, **논문 음성 웹 발표**, **RELIABLE-BA 논문 핵심 해설**, **벤치마크 데이터셋을 이용한 DeepDTA·Boltz-2 결합 친화도 예측 비교**를 선택할 수 있습니다.
 
 ## 단백질 포켓과 결합 구조 예측
 
@@ -31,15 +31,22 @@ Vina·Vina-GPU의 공통 `dock(request)`·CLI와 DiffDock-L 별도 실행 경로
 
 개인 개발·실행 확인이며 탐색 조건과 후보 수가 달랐습니다. 학습 데이터 겹침과 미검증 범위를 표시했으며, 일반적인 성능 순위나 친화도 개선 검증으로 해석하지 않습니다. 브라우저에서 모델 추론이나 유료 API를 호출하지 않습니다.
 
-## DeepDTA와 Boltz-2 · 12쌍 모델 비교
+## 벤치마크 데이터셋을 이용한 DeepDTA·Boltz-2 결합 친화도 예측 비교
 
-[비교 자료 열기](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/) · [12쌍 전체 결과](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/#results) · [공유용 설명문](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/report.md)
+**CA1·CA13 × 화합물 6개 — 총 12쌍의 실행 결과와 해석**
 
-CA1·CA13 두 단백질과 같은 여섯 화합물의 12쌍에 대해, 공개 사전학습 DeepDTA 재현 체크포인트와 Boltz-2를 실행한 개인 학습용 파일럿입니다. 입력·내부 처리·출력의 차이 → 실험 Kd와 전체 예측값 → 같은 타겟 안의 강약 구분 → 결과 해석 순서로 설명합니다. 추가 학습·보정은 하지 않았습니다.
+[비교 자료](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/) · [실험 결과](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/#results) · [공유용 설명문](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/report.md)
 
-단백질별 점수 분포와 강한 순서 전환, 실제 화합물 구조와 사례별 상세 보기, 12쌍 표, 순위 지표, 용어·원 출처를 제공합니다. 설명문·그림·CSV·JSON을 내려받을 수 있습니다. 숫자는 원래 실행 결과와 대조했고, 파일 해시는 `manifest.json`과 `data/reproducibility.json`에 있습니다.
-
-이번 표본에서는 Boltz-2가 강약 순서를 더 잘 구분했지만, 학습 분포와 Zn·MSA 입력 조건이 다릅니다. 일반적 모델 우열이나 정확한 Kd 예측으로 확대 해석하지 않습니다. Boltz 점수 `6 - affinity_pred_value`는 실험 Kd로의 환산이 아닙니다. 타겟 간 선호도는 접힌 보조 관찰로 구분했습니다. 브라우저에서 모델이나 API를 호출하지 않습니다.
+- 평가 목적: 같은 타겟 내 화합물의 결합 강도 차이 구분
+- 평가 구성: CA1·CA13 × 같은 화합물 6개 · 공개 사전학습 모델별 12개, 총 24개 예측
+- 본문 구성: 실험 구성 → 모델별 입력·예측 방식 → 실험 결과 → 결과 해석 → 출처·자료 다운로드
+- 제공 자료: 실제 화합물 구조·점수/순위 그래프·사례별 상세·12쌍 결과표·순위 지표·용어 정의
+- 다운로드: 개조식 설명문·그림·CSV·JSON · 파일 해시: `manifest.json`·`data/reproducibility.json`
+- 관찰 결과: 이번 표본에서 Boltz-2의 타겟 내 강약 구분 우세
+- 해석 한계: 서로 다른 학습 분포·Zn/MSA 입력 조건 · 일반적 모델 우열·정확한 Kd 예측으로 확대 해석 제한
+- 출력 척도: Boltz 표시 점수 `6 - affinity_pred_value`는 실험 Kd로의 물리적 환산 아님
+- 보조 관찰: 타겟 간 선호도는 접힌 항목으로 구분
+- 실행 범위: 개인 학습용 파일럿 · 추가 학습·보정 없음 · 브라우저의 모델·API 호출 없음
 
 ## AI Agents That Matter · 웹 발표
 
