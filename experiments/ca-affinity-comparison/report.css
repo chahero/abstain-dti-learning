@@ -25,3 +25,7 @@
 .rank-table tr.selected{background:#edf6f5}.rank-table td,.rank-table th{white-space:nowrap}
 #absolute-limits{scroll-margin-top:110px}.case-numbers small{line-height:1.5}
 @media print{.rank-table{min-width:0}.rank-table td.numeric{font-size:12pt}}
+
+/* Original numeric outputs and within-target ranks shown together. */
+.result-table .table-rank{display:block;font-size:12px;color:var(--muted);font-weight:500;margin-top:4px;white-space:nowrap}
+.result-table td.numeric{font-variant-numeric:tabular-nums}.case-numbers small{display:block;line-height:1.7}
