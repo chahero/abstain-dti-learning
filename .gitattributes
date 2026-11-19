@@ -22,3 +22,8 @@ papers/reliable-ba/** -text whitespace=cr-at-eol
 papers/reliable-ba/assets/input-example/*.pdb whitespace=-blank-at-eol
 papers/reliable-ba/assets/input-example/*.sdf whitespace=-blank-at-eol
 papers/reliable-ba/review.md whitespace=-blank-at-eol
+
+# Preserve report manifests and published scientific figure bytes.
+experiments/ca-affinity-comparison/** -text whitespace=cr-at-eol
+experiments/ca-affinity-comparison/assets/Pretendard-LICENSE.txt whitespace=-blank-at-eol
+experiments/ca-affinity-comparison/assets/*.svg whitespace=cr-at-eol,-blank-at-eol

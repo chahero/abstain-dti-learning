@@ -1,0 +1,113 @@
+{
+  "meaning": "basic identity and operational distance screen; not experimental pose or affinity accuracy",
+  "cases": [
+    {
+      "case_id": "C01",
+      "identity_verified": true,
+      "coordination_screen_passed": true,
+      "ligand_N_Zn_A": 1.912532971,
+      "His95_N_Zn_A": 1.993507188,
+      "His97_N_Zn_A": 2.080493382,
+      "His120_N_Zn_A": 2.073303226
+    },
+    {
+      "case_id": "C02",
+      "identity_verified": true,
+      "coordination_screen_passed": true,
+      "ligand_N_Zn_A": 1.972967513,
+      "His95_N_Zn_A": 1.941572918,
+      "His97_N_Zn_A": 2.079988234,
+      "His120_N_Zn_A": 2.024226741
+    },
+    {
+      "case_id": "C03",
+      "identity_verified": true,
+      "coordination_screen_passed": true,
+      "ligand_N_Zn_A": 1.889671835,
+      "His95_N_Zn_A": 1.985628888,
+      "His97_N_Zn_A": 2.075348012,
+      "His120_N_Zn_A": 2.056078167
+    },
+    {
+      "case_id": "C04",
+      "identity_verified": true,
+      "coordination_screen_passed": true,
+      "ligand_N_Zn_A": 1.972306725,
+      "His95_N_Zn_A": 1.94362935,
+      "His97_N_Zn_A": 2.080782431,
+      "His120_N_Zn_A": 2.029720955
+    },
+    {
+      "case_id": "C05",
+      "identity_verified": true,
+      "coordination_screen_passed": true,
+      "ligand_N_Zn_A": 1.951666851,
+      "His95_N_Zn_A": 1.960863509,
+      "His97_N_Zn_A": 2.044459031,
+      "His120_N_Zn_A": 2.056409864
+    },
+    {
+      "case_id": "C06",
+      "identity_verified": true,
+      "coordination_screen_passed": true,
+      "ligand_N_Zn_A": 1.980961038,
+      "His95_N_Zn_A": 1.914047788,
+      "His97_N_Zn_A": 2.057208996,
+      "His120_N_Zn_A": 2.017056911
+    },
+    {
+      "case_id": "C07",
+      "identity_verified": true,
+      "coordination_screen_passed": true,
+      "ligand_N_Zn_A": 1.928945792,
+      "His95_N_Zn_A": 1.969148987,
+      "His97_N_Zn_A": 2.065684702,
+      "His120_N_Zn_A": 2.068615558
+    },
+    {
+      "case_id": "C08",
+      "identity_verified": true,
+      "coordination_screen_passed": true,
+      "ligand_N_Zn_A": 1.991020145,
+      "His95_N_Zn_A": 1.944606843,
+      "His97_N_Zn_A": 2.085766034,
+      "His120_N_Zn_A": 1.993499265
+    },
+    {
+      "case_id": "C09",
+      "identity_verified": true,
+      "coordination_screen_passed": true,
+      "ligand_N_Zn_A": 1.965242684,
+      "His95_N_Zn_A": 1.964826336,
+      "His97_N_Zn_A": 2.055892813,
+      "His120_N_Zn_A": 2.035397968
+    },
+    {
+      "case_id": "C10",
+      "identity_verified": true,
+      "coordination_screen_passed": true,
+      "ligand_N_Zn_A": 2.033017301,
+      "His95_N_Zn_A": 1.931374416,
+      "His97_N_Zn_A": 2.064574769,
+      "His120_N_Zn_A": 2.01364988
+    },
+    {
+      "case_id": "C11",
+      "identity_verified": true,
+      "coordination_screen_passed": true,
+      "ligand_N_Zn_A": 1.946059466,
+      "His95_N_Zn_A": 1.987765398,
+      "His97_N_Zn_A": 2.061973132,
+      "His120_N_Zn_A": 2.049396424
+    },
+    {
+      "case_id": "C12",
+      "identity_verified": true,
+      "coordination_screen_passed": true,
+      "ligand_N_Zn_A": 1.996272093,
+      "His95_N_Zn_A": 1.928249198,
+      "His97_N_Zn_A": 2.081190542,
+      "His120_N_Zn_A": 2.007785623
+    }
+  ]
+}

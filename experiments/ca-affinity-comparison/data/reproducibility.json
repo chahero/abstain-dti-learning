@@ -1,0 +1,59 @@
+{
+  "build_date": "2026-11-19",
+  "models_rerun": false,
+  "additional_training": false,
+  "DeepDTA": {
+    "implementation": "DeepPurpose CNN_CNN_DAVIS",
+    "source_commit": "866be98bad0b11e78d4363589b9ee59b5befa307",
+    "native_endpoint": "pKd",
+    "metal_input": false
+  },
+  "Boltz-2": {
+    "version": "2.2.1",
+    "torch": "2.5.1+cu121",
+    "gpu": "NVIDIA TITAN RTX",
+    "dtype": "float32",
+    "recycling": 3,
+    "structure_sampling_steps": 200,
+    "structure_samples": 1,
+    "affinity_sampling_steps": 200,
+    "affinity_samples": 5,
+    "seed": 42,
+    "native_endpoint": "log10(IC50 in micromolar) scale",
+    "display_transform": "6 - native value; not an IC50-to-Kd conversion",
+    "Zn_chain": "C",
+    "affinity_binder": "B",
+    "known_site_contacts": "His95, His97, His120 to Zn; native minimum residue atom distance <=4 A, force true",
+    "seed_note": "single calls, batch continuation, and restart do not share identical per-case RNG realizations"
+  },
+  "source_files": [
+    {
+      "file": "docking-agent/benchmark/2026-11-18-v1/comparison-design/ca1-ca13-proposal/model-runs/all12-zinc-v1/results.csv",
+      "sha256": "dbbe2e957b4f2f20dcc2f319dc623c20415edcf79ea55ccf85e715e64130b8fb"
+    },
+    {
+      "file": "docking-agent/benchmark/2026-11-18-v1/comparison-design/ca1-ca13-proposal/model-runs/all12-zinc-v1/metrics.json",
+      "sha256": "b09008fe924cc19ace2ba02389253903ded45837210132d313edf8030490e364"
+    },
+    {
+      "file": "docking-agent/benchmark/2026-11-18-v1/comparison-design/ca1-ca13-proposal/model-runs/all12-zinc-v1/final-check.json",
+      "sha256": "78c1de21fdb0995a0e4c0fcc99efd75a781da2a2ee542dc52b5c1d5530c40ade"
+    },
+    {
+      "file": "docking-agent/benchmark/2026-11-18-v1/comparison-design/ca1-ca13-proposal/queries.jsonl",
+      "sha256": "50c7123dba73f4cf173e0fcf91a7bc4fdf935f6be759b61905e241d0c24fb3f1"
+    },
+    {
+      "file": "docking-agent/benchmark/2026-11-18-v1/comparison-design/ca1-ca13-proposal/proposed12.csv",
+      "sha256": "22fdc3e5c243cedc1a5cba34553d44d1409abb5135c40d6276aeaef1f768ebb2"
+    }
+  ],
+  "site_checks": {
+    "cases": 12,
+    "targets": 2,
+    "matching_selected_identities": true,
+    "transform_checks": true,
+    "independent_rank_checks": true,
+    "independent_gap_checks": true
+  }
+}

@@ -1,0 +1,5 @@
+﻿target,model,case_count,Spearman_rho,large_gap_correct,large_gap_total
+CA1,DeepDTA,6,0.2571428571428572,4,7
+CA1,Boltz-2,6,0.6571428571428573,7,7
+CA13,DeepDTA,6,-0.3142857142857143,4,12
+CA13,Boltz-2,6,0.942857142857143,12,12
