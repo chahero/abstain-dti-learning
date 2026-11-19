@@ -5,7 +5,7 @@
   <meta name="description" content="벤치마크 데이터셋을 이용한 DeepDTA·Boltz-2 결합 친화도 예측 비교. CA1·CA13 × 화합물 6개, 총 12쌍의 타겟별 순위 비교·Kd와 Boltz 점수의 차이·절대값 비교 한계.">
   <title>벤치마크 데이터셋을 이용한 DeepDTA·Boltz-2 결합 친화도 예측 비교</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='10' cy='16' r='6' fill='%237654b8'/%3E%3Ccircle cx='23' cy='16' r='6' fill='%23087f8c'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="report.css?v=20261120-values"><script src="data/results.js?v=20261120-values" defer></script><script src="report.js?v=20261120-values" defer></script>
+  <link rel="stylesheet" href="report.css?v=20261120-visible-graphs"><script src="data/results.js?v=20261120-visible-graphs" defer></script><script src="report.js?v=20261120-visible-graphs" defer></script>
 </head>
 <body>
 <a class="skip" href="#experiment">본문으로 이동</a>
@@ -19,7 +19,7 @@
     <div class="verdict"><strong>핵심 결과: 이번 표본에서 Boltz-2의 타겟 내 강약 구분 우세</strong><ul class="brief-list compact"><li>순위 상관: CA1 0.257 → 0.657 / CA13 −0.314 → 0.943 · DeepDTA → Boltz-2</li><li>해석 범위: 타겟 내 순위 · 모든 후보의 순위 우세·정확한 Kd 예측으로 확대 해석 제한</li></ul></div>
     <div class="facts" aria-label="실험 규모"><div><strong>2 × 6 = 12쌍</strong><span>단백질 2종 · 화합물 6개</span></div><div><strong>2개 모델</strong><span>각각 12쌍 · 총 24개 예측</span></div><div><strong>실험 Kd</strong><span>동일 논문의 측정값을 정답으로 사용</span></div><div><strong>추가 학습 0회</strong><span>공개 체크포인트 그대로 추론</span></div></div>
   </section>
-  <nav class="section-nav" aria-label="본문 목차"><div class="container nav-inner"><a href="#experiment"><b>01</b>실험 구성</a><a href="#models"><b>02</b>모델별 입력·예측 방식</a><a href="#results"><b>03</b>순위 비교 결과</a><a href="#reading"><b>04</b>결과 해석</a><a href="#sources"><b>05</b>출처·자료 다운로드</a></div></nav>
+  <nav class="section-nav" aria-label="본문 목차"><div class="container nav-inner"><a href="#experiment"><b>01</b>실험 구성</a><a href="#models"><b>02</b>모델별 입력·예측 방식</a><a href="#results"><b>03</b>예측값·순위 비교</a><a href="#reading"><b>04</b>결과 해석</a><a href="#sources"><b>05</b>출처·자료 다운로드</a></div></nav>
   <noscript><div class="container"><p>JavaScript 비활성 상태: 전체 결과표·CA1 그래프 열람 가능 · CA13 그림은 다운로드 링크 이용</p></div></noscript>
 
   <section class="section container" id="experiment" aria-labelledby="experiment-title">
@@ -52,13 +52,28 @@ SMILES: NS(=O)(=O)c1c(F)c(F)c(N2CCOCC2)c(F)c1F</code></pre><ul class="brief-list
   </section>
 
   <section class="section container" id="results" aria-labelledby="results-title">
-    <div class="section-head"><span class="section-number">03</span><h2 id="results-title">순위 비교 결과</h2></div>
+    <div class="section-head"><span class="section-number">03</span><h2 id="results-title">화합물별 예측값·순위 비교</h2></div>
     <ul class="brief-list"><li><strong>비교 단위:</strong> CA1·CA13 각각의 화합물 6개 · 타겟을 섞은 12개 통합 순위 제외</li><li><strong>순위 정의:</strong> 1위 = 가장 강한 결합 · 실험 Kd 오름차순 / DeepDTA pKd·Boltz 표시 점수 내림차순</li><li><strong>분석 범위:</strong> 저장된 24개 모델 예측의 재정리 · 추가 추론·학습·보정 없음</li></ul>
     <div class="toolbar"><div class="tabs" role="group" aria-label="그래프 단백질 선택"><button type="button" data-target="CA1" aria-pressed="true">CA1</button><button type="button" data-target="CA13" aria-pressed="false">CA13</button></div></div>
     <div class="score-legend" aria-label="범례"><span>실험 Kd·순위</span><span class="deep">DeepDTA pKd·순위</span><span class="boltz-text">Boltz 점수·순위</span></div>
     <p class="scroll-hint">모바일: 그래프·넓은 표 좌우 스크롤</p>
-    <figure class="figure-panel"><img id="result-figure" src="assets/ranks-ca1.svg?v=20261120-values" alt="CA1 실험 정답·DeepDTA·Boltz-2의 강도 순위 비교 · 각 열의 상단: 강한 화합물 · 실제 출력 수치 포함"><figcaption class="figure-footer"><span id="figure-caption">각 열: 강한 순서 1–6위 · 수치와 실험 순위 함께 표시</span><a id="figure-download" href="assets/ranks-ca1.png?v=20261120-values" download>순위 그림 다운로드 · PNG</a></figcaption></figure>
+    <h3>화합물별 순위</h3>
+    <figure class="figure-panel"><img id="result-figure" src="assets/ranks-ca1.svg?v=20261120-visible-graphs" alt="CA1 실험 정답·DeepDTA·Boltz-2의 강도 순위 비교 · 각 열의 상단: 강한 화합물 · 실제 출력 수치 포함"><figcaption class="figure-footer"><span id="figure-caption">각 열: 강한 순서 1–6위 · 수치와 실험 순위 함께 표시</span><a id="figure-download" href="assets/ranks-ca1.png?v=20261120-visible-graphs" download>순위 그림 다운로드 · PNG</a></figcaption></figure>
     <ul class="brief-list caption"><li>큰 숫자: 실험 Kd[nM]·DeepDTA pKd·Boltz 표시 점수 / 작은 글씨: 실험 pKd 또는 해당 화합물의 실험 순위</li><li>순위의 일치 여부: 비교 가능 · 순위만으로 실제 결합 강도의 배율·절대값 정확도 판단 불가</li><li>측정 오차·예측 변동성 미반영 · 가까운 후보의 작은 점수 차이 해석 제한</li></ul>
+    <section class="score-comparison" id="score-reference" aria-labelledby="score-title">
+      <h3 id="score-title">화합물별 예측값</h3>
+      <p class="caption">같은 행: 같은 화합물 · 실험 pKd가 큰 순서로 정렬 · CA1·CA13 선택은 두 그래프에 함께 적용</p>
+      <div class="score-layout">
+        <figure class="figure-panel"><img id="score-figure" src="assets/scores-ca1.svg?v=20261120-visible-graphs" alt="CA1 화합물별 실험 pKd·DeepDTA pKd·Boltz 표시 점수"><figcaption class="figure-footer"><span id="score-caption">CA1 · 동일 행: 동일 화합물 · 서로 다른 측정량</span><a id="score-download" href="assets/scores-ca1.png?v=20261120-visible-graphs" download>예측값 그림 다운로드 · PNG</a></figcaption></figure>
+        <aside class="scale-note" aria-labelledby="scale-title">
+          <h4 id="scale-title">그래프의 척도</h4>
+          <dl><div><dt>실험 정답</dt><dd>실험 Kd를 pKd로 변환한 값<br>pKd = 9 − log₁₀(Kd[nM])</dd></div><div><dt class="deep">DeepDTA</dt><dd>모델이 예측한 pKd<br>실험 pKd와 같은 목표 척도</dd></div><div><dt class="boltz-text">Boltz-2</dt><dd>표시 점수 = 6 − 원출력<br>Ki·Kd·IC50 혼합 학습의 일반 친화도 점수</dd></div></dl>
+          <p class="scale-takeaway">세 그래프 모두 큰 값이 강한 방향.<br><strong>같은 눈금이어도 Boltz 점수는 보정된 pKd가 아님.</strong></p>
+          <p>모델별 예측 폭과 강약 추세 비교에 사용. 실험 pKd와 숫자가 가깝다는 이유만으로 Kd 정확도 판정 불가.</p>
+          <a href="#absolute-limits">절대값 비교의 한계·평가 조건</a>
+        </aside>
+      </div>
+    </section>
     <div class="case-reader" aria-live="polite"><img id="case-molecule" src="assets/L04.svg" alt="L04의 실제 2차원 화학 구조"><div><div class="case-header"><h3 id="case-title">CA1 · L04 · C07</h3><div class="case-select"><label for="case-picker">사례 선택</label><select id="case-picker"><option value="C01">CA1 · L01 (C01)</option><option value="C02">CA13 · L01 (C02)</option><option value="C03">CA1 · L02 (C03)</option><option value="C04">CA13 · L02 (C04)</option><option value="C05">CA1 · L03 (C05)</option><option value="C06">CA13 · L03 (C06)</option><option value="C07" selected>CA1 · L04 (C07)</option><option value="C08">CA13 · L04 (C08)</option><option value="C09">CA1 · L05 (C09)</option><option value="C10">CA13 · L05 (C10)</option><option value="C11">CA1 · L06 (C11)</option><option value="C12">CA13 · L06 (C12)</option></select></div></div><div class="case-numbers"><div><span>실험 Kd ↓</span><strong id="case-kd">0.13 nM</strong><small id="case-reference">1위 · 실험 pKd 9.886</small></div><div><span class="deep">DeepDTA pKd ↑</span><strong id="case-deep">5.009</strong><small id="case-deep-kd">2위 · 예측 Kd 약 9,784 nM</small></div><div><span class="boltz-text">Boltz 표시 점수 ↑</span><strong id="case-boltz">8.396</strong><small id="case-native">4위 · 원출력 −2.396</small></div></div><ul id="case-reading" class="brief-list case-notes"><li>CA1 최강 L04: 실험 1위 / DeepDTA 2위 / Boltz-2 4위</li><li>이번 사례의 순위는 DeepDTA가 실험에 더 가까운 결과</li><li>전체 순위 지표의 우세와 모든 개별 후보의 순위 우세는 별개</li></ul></div></div>
     <h3>12쌍 전체 수치·순위</h3>
     <ul class="brief-list small"><li>실제 수치와 타겟별 1–6위 함께 표시 · 작은 순위 숫자 = 강한 결합</li><li>사례 번호 선택 → 위 상세 영역에서 해당 화합물의 순위·원점수 확인</li><li>동일 순위 없음 · 소수점 반올림 전 원출력으로 순위 산정</li></ul>
@@ -67,10 +82,6 @@ SMILES: NS(=O)(=O)c1c(F)c(F)c(N2CCOCC2)c(F)c1F</code></pre><ul class="brief-list
     <ul class="brief-list"><li><strong>순위 상관:</strong> 여섯 화합물의 실험 강도 순서와 예측 순서의 일치 정도</li><li><strong>큰 차이 비교:</strong> 실험 Kd가 10배 이상 차이 나는 화합물 쌍에서 강한 쪽의 선택 여부</li></ul>
     <div class="table-wrap"><table class="metric-table"><caption>타겟별 순위 비교</caption><thead><tr><th>단백질</th><th>비교 기준</th><th class="deep">DeepDTA</th><th class="boltz-text">Boltz-2</th></tr></thead><tbody><tr><th>CA1</th><td>전체 순위 상관</td><td>0.257</td><td>0.657</td></tr><tr><th>CA1</th><td>실험 Kd 10배 이상 차이: 강한 쪽 선택</td><td>4/7</td><td>7/7</td></tr><tr><th>CA13</th><td>전체 순위 상관</td><td>-0.314</td><td>0.943</td></tr><tr><th>CA13</th><td>실험 Kd 10배 이상 차이: 강한 쪽 선택</td><td>4/12</td><td>12/12</td></tr></tbody></table></div>
     <ul class="brief-list caption"><li>Spearman: +1 동일 순서 / 0 부근 약한 관계 / −1 반대 순서</li><li>10배 이상 차이의 순서 정답: DeepDTA 8/19 · Boltz-2 19/19</li><li>19개 비교: 동일 화합물의 파생 조합 · 독립 실험 19건·일반적 정확도 100%와 구분</li></ul>
-    <details class="detail" id="score-reference"><summary>보조 자료: 수치 분포·절대값 비교 한계</summary><div class="detail-body"><ul class="brief-list"><li><strong>용도:</strong> 모델별 예측 폭 관찰 · Kd 정확도 우열의 근거와 구분</li><li><strong>수치 근접성:</strong> Boltz 표시 점수가 실험 pKd에 더 가까운 관측과 Kd 물리량을 더 정확하게 예측한다는 주장은 별개</li><li><strong>공통 눈금:</strong> 시각적 표현의 통일 · 실험 측정량의 통일·Kd 보정 아님</li><li><strong>원자료:</strong> 모든 사례·예측 수치·정밀도 보존 · 절대값 차이는 미보정 점수–참조값의 차이로만 해석</li></ul>
-    <figure class="figure-panel"><img id="score-figure" src="assets/scores-ca1.svg?v=20261120-values" alt="CA1 보조 수치 분포 · Boltz 표시 점수와 pKd는 다른 측정량"><figcaption class="figure-footer"><span id="score-caption">CA1 · 동일 행: 동일 화합물 · 서로 다른 측정량</span><a id="score-download" href="assets/scores-ca1.png?v=20261120-values" download>보조 그림 다운로드 · PNG</a></figcaption></figure>
-
-    <ul class="brief-list small"><li>표시: 소수 셋째 자리 · CSV 원래 수치 자리수 보존</li><li>DeepDTA 예측 Kd: 예측 pKd 역변환 · 실험값과 구분</li><li>Boltz 점수: Kd[nM] 역변환·실험 대비 배율 환산 제외</li></ul></div></details>
   </section>
 
   <section class="section container" id="reading" aria-labelledby="reading-title">
@@ -100,7 +111,7 @@ SMILES: NS(=O)(=O)c1c(F)c(F)c(N2CCOCC2)c(F)c1F</code></pre><ul class="brief-list
       <div><h3>Boltz-2 원출력·사용 버전</h3><ul class="brief-list small"><li><a href="https://github.com/jwohlwend/boltz/blob/v2.2.1/docs/prediction.md" target="_blank" rel="noopener">Boltz 2.2.1 공식 입력·출력 문서</a></li><li><a href="https://jeremywohlwend.com/assets/boltz2.pdf#page=5" target="_blank" rel="noopener">논문 §3 · Ki·Kd·IC50 혼합 학습·순위용 일반 친화도 점수</a></li><li>결합 여부 확률: 친화도 수치가 맞을 확률과 구분</li></ul></div>
     </div>
     <details class="detail"><summary>재현 조건·검증 기록</summary><div class="detail-body"><ul class="brief-list"><li>DeepPurpose 고정 소스: <code>866be98bad0b11e78d4363589b9ee59b5befa307</code></li><li>DeepDTA: 엄격한 가중치 로딩 · 12개 입력의 잘림·미지원 문자 없음 · 동일 순전파 재확인</li><li>Boltz 2.2.1 · PyTorch 2.5.1+cu121 · TITAN RTX · float32·fallback kernels</li><li>구조 설정: recycling 3 / sampling 200 / sample 1</li><li>친화도 설정: sampling 200 / sample 5 · max_parallel_samples 1 · seed 42 · potentials 사용</li><li>단백질별 MSA 캐시 해시 대조 · 이전 3개 출력 재사용 + 나머지 9개 배치 실행</li><li>배치 메모리 정리·재개 시 저장 구조 해시 확인</li><li>시드 42 유지 · 호출·배치·재개별 난수 진행 상이 → 동일한 사례별 난수 실현 아님</li><li>검증: 12개 고유 사례·원자료 식별자·점수 변환·순위 상관·비교 수·구조 기본 검사</li><li>자료 재생성: 저장 결과만 사용 · 모델 재추론 없음</li></ul><p><a href="data/reproducibility.json" download>파일 해시·실행 조건 JSON</a> · <a href="data/output-validation.json" download>기본 구조 검사 기록</a></p></div></details>
-    <div id="downloads"><h3>그림·표·설명문 다운로드</h3><div class="download-links"><a href="report.md" download>공유용 설명문 · Markdown</a><a href="data/results.csv" download>12쌍 결과 · CSV</a><a href="data/rankings.csv" download>12쌍 순위표 · CSV</a><a href="data/metrics.csv" download>순위 평가 · CSV</a><a href="assets/scores-ca1.png" download>CA1 보조 점수 그림</a><a href="assets/scores-ca13.png" download>CA13 보조 점수 그림</a><a href="assets/ranks-ca1.png" download>CA1 순위 그림</a><a href="assets/ranks-ca13.png" download>CA13 순위 그림</a><a href="data/results.json" download>데이터 · JSON</a></div><ul class="brief-list small"><li>CSV: UTF-8 · 원자료 수치 자리수 보존</li><li>정적 페이지: 열람·선택 시 모델·API 호출 없음</li></ul></div>
+    <div id="downloads"><h3>그림·표·설명문 다운로드</h3><div class="download-links"><a href="report.md" download>공유용 설명문 · Markdown</a><a href="data/results.csv" download>12쌍 결과 · CSV</a><a href="data/rankings.csv" download>12쌍 순위표 · CSV</a><a href="data/metrics.csv" download>순위 평가 · CSV</a><a href="assets/scores-ca1.png" download>CA1 예측값 그림</a><a href="assets/scores-ca13.png" download>CA13 예측값 그림</a><a href="assets/ranks-ca1.png" download>CA1 순위 그림</a><a href="assets/ranks-ca13.png" download>CA13 순위 그림</a><a href="data/results.json" download>데이터 · JSON</a></div><ul class="brief-list small"><li>CSV: UTF-8 · 원자료 수치 자리수 보존</li><li>정적 페이지: 열람·선택 시 모델·API 호출 없음</li></ul></div>
     <details class="detail" id="glossary"><summary>용어 정의</summary><div class="detail-body"><dl class="glossary"><div><dt>친화도 · Affinity</dt><dd>화합물과 단백질의 결합 세기</dd></div><div><dt>Kd · 해리 상수</dt><dd>평형 상태의 결합 세기 지표 · 작을수록 강한 결합</dd></div><div><dt>pKd</dt><dd>Kd의 음의 로그 표현 · 클수록 강한 결합 · 1 차이 ↔ Kd 10배</dd></div><div><dt>IC50</dt><dd>반응을 절반으로 억제하는 데 필요한 농도 · Kd와 다른 측정량</dd></div><div><dt>SMILES</dt><dd>화합물의 원자·결합을 기록한 문자열 · 일반적으로 3D 좌표 자체는 미포함</dd></div><div><dt>CNN · 합성곱 신경망</dt><dd>이번 DeepDTA에서 문자열 주변 패턴의 특징을 추출하는 학습 모델</dd></div><div><dt>MSA · 다중 서열 정렬</dt><dd>유사 단백질 서열을 나란히 정렬한 정보</dd></div><div><dt>확산 기반 구조 생성</dt><dd>학습 모델로 원자 배치를 여러 단계 조정하여 3D 후보 구조 생성</dd></div><div><dt>체크포인트</dt><dd>사전학습 가중치 파일 · 이번 추론에 공개 체크포인트 사용</dd></div><div><dt>순위 상관 · Spearman</dt><dd>정답과 예측의 화합물 강도 순서 일치 정도</dd></div><div><dt>CIF</dt><dd>원자 종류·3차원 좌표 등의 구조 파일 형식</dd></div><div><dt>Zn²⁺ · 아연 이온</dt><dd>CA 효소 촉매 부위의 금속 보조인자</dd></div></dl></div></details>
   </section>
 </main>

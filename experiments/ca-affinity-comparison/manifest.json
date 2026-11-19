@@ -43,7 +43,7 @@
     },
     {
       "path": "assets/ranks-ca1.svg",
-      "sha256": "2b4d9a95f81005f573b4caf3d2322f446b2a29d053ecc791f951061cc9ac41f3"
+      "sha256": "ed81000971579e45120bfe480eb5a59b207140063f8789e3759101aa218ae52f"
     },
     {
       "path": "assets/ranks-ca13.png",
@@ -51,23 +51,23 @@
     },
     {
       "path": "assets/ranks-ca13.svg",
-      "sha256": "210a6aa274e08506db660480ce11be21dde6ddf2cf201f8c693ffc6c05aa6393"
+      "sha256": "80f5e3c991583dde67ac42b941947b64c23af4886e6a2c9b5420a34567fbcc0e"
     },
     {
       "path": "assets/scores-ca1.png",
-      "sha256": "6ea1b529f42a5a22e5821ee959a4eb864633ae7b02eb230777f2c86c38f35f1b"
+      "sha256": "8bff3dfe4ab3e41e33d361141c27231a66e3ab228828a48a8100ef739b2f45a5"
     },
     {
       "path": "assets/scores-ca1.svg",
-      "sha256": "8f28ef180657da5966feef813727353cd41ef2594f9428ff104d025d18f13c1a"
+      "sha256": "5aafe1aa695bc78bbc5a5998a544baadfd47d12b627a8c8aa7de6fb32b1ea3ca"
     },
     {
       "path": "assets/scores-ca13.png",
-      "sha256": "292212ad163accdb34cb73b9f8ed8c67c572dcac404875c21625400b4587bf8b"
+      "sha256": "e7a54622ec255c38a21f225c266e99d004eeba61848cf38bd6bdbd7b18e7c476"
     },
     {
       "path": "assets/scores-ca13.svg",
-      "sha256": "00cd73c7068d17703fb3d0cd01c0aa1a083412530a6076493d18bb5d2a34c058"
+      "sha256": "2e840331a3da1644242f989905e8226f1af383c5ac48ced916ddf7a729dfaf43"
     },
     {
       "path": "data/metrics.csv",
@@ -107,19 +107,19 @@
     },
     {
       "path": "index.html",
-      "sha256": "40dd7de831a25133891bcff253abf74c49a2fad5a7aa371b0d622a8f6679c07c"
+      "sha256": "fd7e09713358eb5e2c68b34e48ab061bc8cb31aee28fcfe1b4cd4ee9d18075f0"
     },
     {
       "path": "report.css",
-      "sha256": "3faf750160ee07b7a527cc7c5b6172f2eb1acef0a8c39f55cffb7bb79c4b5401"
+      "sha256": "2c429956c5916810b1a7599d1aea9bdb380c403cd308722dac328290d9c4ea74"
     },
     {
       "path": "report.js",
-      "sha256": "32038b3cb34ebed41590530d987cd59588a9414ffd61ebd7f99f23ebea225a67"
+      "sha256": "9e24f69fa3e658bd1d601d9b51f0789d4d5fa3a5980116d17496b8b655e09204"
     },
     {
       "path": "report.md",
-      "sha256": "bbe5ad7567f6460f30ad1a57a06ddb1bcb2d6a248496d901161eefd0af2d62be"
+      "sha256": "a4d1d442481da08e483564982e02c84c5d8d63d8b3d38e4453f962b0964f01bd"
     }
   ]
 }

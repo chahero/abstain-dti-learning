@@ -39,12 +39,15 @@
 - 실험 리간드 자세·구조 템플릿·리간드–Zn 직접 제약 미제공
 - [출력 의미 근거: Boltz-2 논문 §3](https://jeremywohlwend.com/assets/boltz2.pdf#page=5) / [사용 버전 공식 문서](https://github.com/jwohlwend/boltz/blob/v2.2.1/docs/prediction.md)
 
-## 3. 순위 비교 결과
+## 3. 화합물별 예측값·순위 비교
 
 - 순위 단위: 타겟별 화합물 6개 · 타겟 혼합 순위 제외
 - 1위: 가장 강한 결합 · 실험 Kd 오름차순 / 예측 pKd·표시 점수 내림차순
 - 순위 산정: 반올림 전 원출력 · 동순위 없음
 - 웹 표시: 순위와 실제 실험·예측 수치를 함께 표시 · 전체 수치표 상시 공개
+- 그래프: 화합물별 순위·예측값을 모두 기본 표시 · CA1·CA13 선택 시 함께 전환
+- 척도 안내: 실험·DeepDTA는 pKd / Boltz는 표시 점수 · 같은 눈금이어도 측정량 상이
+- [CA1 예측값 그림](assets/scores-ca1.png) / [CA13 예측값 그림](assets/scores-ca13.png)
 
 | 사례 | 대상 | 화합물 | 실험 순위 | DeepDTA 순위 | Boltz-2 순위 |
 |---|---|---|---:|---:|---:|
@@ -112,7 +115,7 @@
 | C11 | CA1 | L06 | 200 | 6.699 | 4.993 | 10,153 | 6.324 |
 | C12 | CA13 | L06 | 1400 | 5.854 | 5.246 | 5,674 | 6.420 |
 
-- [보조 수치 분포 CA1](assets/scores-ca1.png) / [CA13](assets/scores-ca13.png) · 같은 눈금과 같은 측정량의 구분
+- [화합물별 예측값 CA1](assets/scores-ca1.png) / [CA13](assets/scores-ca13.png) · 같은 눈금과 같은 측정량의 구분
 - [원결과 CSV](data/results.csv) / [순위 지표 CSV](data/metrics.csv) / [실행 조건·파일 해시](data/reproducibility.json)
 - [실험 Kd 원 논문](https://doi.org/10.1016/j.bmc.2013.01.008) / [CA1 assay](https://www.ebi.ac.uk/chembl/explore/assay/CHEMBL2340479) / [CA13 assay](https://www.ebi.ac.uk/chembl/explore/assay/CHEMBL2340475)
 - [DeepDTA 원 논문](https://arxiv.org/abs/1801.10193) / [고정 DeepPurpose 소스](https://github.com/kexinhuang12345/DeepPurpose/tree/866be98bad0b11e78d4363589b9ee59b5befa307)

@@ -9,13 +9,13 @@
   const fmt = value => Number(value).toLocaleString('ko-KR', {maximumFractionDigits:3});
   function showFigure() {
     const key = state.target.toLowerCase();
-    $('#result-figure').src = `assets/ranks-${key}.svg?v=20261120-values`;
-    $('#figure-download').href = `assets/ranks-${key}.png?v=20261120-values`;
+    $('#result-figure').src = `assets/ranks-${key}.svg?v=20261120-visible-graphs`;
+    $('#figure-download').href = `assets/ranks-${key}.png?v=20261120-visible-graphs`;
     $('#result-figure').alt = `${state.target} 실험 정답·DeepDTA·Boltz-2의 강도 순위 비교 · 각 열의 상단: 강한 화합물 · 실제 출력 수치 포함`;
     $('#figure-caption').textContent = `${state.target} · 각 열: 강한 순서 1–6위 · 수치와 실험 순위 함께 표시`;
-    $('#score-figure').src = `assets/scores-${key}.svg?v=20261120-values`;
-    $('#score-figure').alt = `${state.target} 보조 수치 분포 · Boltz 표시 점수와 pKd는 다른 측정량`;
-    $('#score-download').href = `assets/scores-${key}.png?v=20261120-values`;
+    $('#score-figure').src = `assets/scores-${key}.svg?v=20261120-visible-graphs`;
+    $('#score-figure').alt = `${state.target} 화합물별 실험 pKd·DeepDTA pKd·Boltz 표시 점수`;
+    $('#score-download').href = `assets/scores-${key}.png?v=20261120-visible-graphs`;
     $('#score-caption').textContent = `${state.target} · 동일 행: 동일 화합물 · 서로 다른 측정량`;
     document.querySelectorAll('[data-target]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.target === state.target)));
   }
