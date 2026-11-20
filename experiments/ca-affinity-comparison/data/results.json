@@ -305,13 +305,15 @@
     }
   ],
   "affinity_evaluation": {
-    "method": "Boltz-2 Appendix D.2.2 definitions applied to existing CA predictions; not benchmark reproduction",
+    "method": "Within-assay relative-strength evaluation; Boltz-2 numerical diagnostics retained as reference",
     "reference": "experimental pKd = 9 - log10(Kd[nM])",
     "Boltz_score": "6 - saved affinity_pred_value; no molecular-weight correction added",
     "primary_metrics": [
-      "mae_log_score",
+      "Spearman_rho",
       "pearson_r"
     ],
+    "raw_MAE_role": "Descriptive score-to-pKd distance only; not a common-endpoint Kd accuracy comparison",
+    "conclusion": "Boltz better reproduces relative binding strength on these selected CA compounds; absolute Kd accuracy superiority not established",
     "centering": "Add reference mean minus prediction mean within evaluated assay; evaluation-label diagnostic, not independent calibration",
     "PMAE": "MAE of differences over all unordered compound pairs within an assay; dependent comparisons",
     "aggregation": "Per assay, then average metrics weighted by compound count; not pooled correlation",
@@ -381,5 +383,5 @@
       }
     ]
   },
-  "scope": "Experimental pKd-reference MAE and Pearson r; label-centered diagnostics separated; original predictions unchanged; no independent calibration"
+  "scope": "Within-assay relative-strength comparison; raw score distances and centering are references, not absolute Kd accuracy evidence"
 }

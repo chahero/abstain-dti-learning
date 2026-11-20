@@ -35,19 +35,15 @@ Vina·Vina-GPU의 공통 `dock(request)`·CLI와 DiffDock-L 별도 실행 경로
 
 **CA1·CA13 × 화합물 6개 — 총 12쌍의 실행 결과와 해석**
 
-[비교 자료](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/) · [원래 MAE·상관 평가](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/#primary-evaluation) · [공유용 설명문](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/report.md)
+[비교 자료](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/) · [결론과 한계](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/#reading) · [공유용 설명문](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/report.md)
 
-- 평가 목적: 실험 pKd 기준 두 모델의 예측 성능 비교 · Boltz-2 논문 D.2.2의 assay별 지표 적용
-- 주평가: 원래 MAE·Pearson r · CA1과 CA13 각각 동일 assay의 화합물 6개
-- 결과: CA1 MAE DeepDTA 4.003 / Boltz 0.935, Pearson −0.030 / 0.926 · CA13 MAE 2.889 / 0.385, Pearson −0.299 / 0.983
-- 단위: MAE는 로그 점수 · 논문 표의 kcal/mol과 구분 · Boltz 표시는 `6 - affinity_pred_value`
-- 중심화: 평가 정답 평균을 이용한 별도 진단 · 원래 MAE와 분리 · 독립 보정 성능 아님
-- 제공 자료: 원래 예측값·순위 그래프 모두 기본 표시 · 개별 사례·전체 12쌍 수치표·보조 순위 평가
-- 다운로드: 결과 CSV·MAE/상관/중심화 지표 CSV·평가 정의 JSON·그림·Markdown
-- 척도 해석: 실험 pKd 기준 점수 오차 평가 가능 · IC50형 Boltz 점수의 정확한 물리적 Kd 출력 입증과 구분
-- 프로토콜: 기존 구조 recycling 3 / sample 1 / 분자량 보정 꺼짐 · 논문 전체 추론 설정의 재현 아님
-- 해석 범위: 타겟 2종·관련 화합물 6개·학습 범위와 Zn/MSA 입력 차이 · 일반적 모델 우열로 확대 제한
-- 실행 범위: 개인 학습용 파일럿 · 저장 예측 재평가 · 재추론·추가 학습·독립 보정 없음
+- 결론: 이번 CA 표본에서 Boltz-2가 결합 강약을 더 잘 구분 · 정확한 Kd 수치 예측의 우열은 미확인
+- 비교: 타겟별 같은 assay의 화합물 6개 · Spearman 순위 상관과 Pearson 상관
+- 출력: DeepDTA pKd / Boltz IC50형 일반 친화도 점수 · 표시 변환이 물리적 IC50→Kd 환산은 아님
+- 자료: 원래 예측값·순위 그래프·전체 12조합 수치표·개별 사례·다운로드
+- 참고 통계: 원래 MAE·중심화는 접힌 항목 · 두 모델의 Kd 정확도 우열 판정에 사용하지 않음
+- 한계: 관련 타겟 2종·목적 선정 화합물 6개 · 학습 범위·Zn/MSA 입력 차이 · Boltz 학습 중복 미확인
+- 범위: 개인 학습용 모델 비교 · 저장 예측 보존 · 재추론·추가 학습·독립 보정 없음
 
 ## AI Agents That Matter · 웹 발표
 

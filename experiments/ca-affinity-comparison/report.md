@@ -2,181 +2,57 @@
 
 **CA1·CA13 × 화합물 6개 — 총 12쌍의 실행 결과와 해석**
 
-- 평가 목적: 실험 pKd 기준 원래 MAE·Pearson 상관으로 두 모델의 예측 성능 비교
-- 평가 구성: CA1·CA13 각각 6쌍 · 모델별 12개, 총 24개 예측
-- 핵심 결과: 이번 표본에서 Boltz-2의 원래 MAE가 작고 실험값과의 상관이 높음
-- 해석 범위: 실험 pKd 기준 점수 성능 · 정확한 물리적 Kd 출력·새 타겟 일반화 검증과 구분
-- 실행 범위: 저장 예측의 재평가 · 중심화는 별도 진단 · 모델 재실행·추가 학습·독립 Kd 보정 없음
+> 이번 CA 표본에서는 Boltz-2가 결합 강약을 더 잘 구분했지만, 정확한 Kd 예측의 우열은 확인하지 못함.
 
 ## 1. 실험 구성
 
-- 단백질: CA1(P00915, 261잔기)·CA13(Q8N1Q1, 262잔기) · 아연을 사용하는 탄산무수화효소 계열
-- 화합물: 두 타겟에 공통인 6개 · L01–L06은 로컬 식별자
-- 전체 조합: 2 × 6 = 12쌍 · 두 모델 모두 모든 쌍 추론 완료
-- 선정: 공통 Kd 후보 23개의 두 타겟 평균 pKd 정렬 → 1·5·10·14·19·23번째
-- 선정 목적: 넓은 강도 범위 확보 · 모델 예측 미사용 · 대표성 있는 무작위 표본과 구분
-- 정답: 동일 논문의 ChEMBL Kd 기록 · thermal shift assay, 37°C, pH 7.0 · 모든 세부 조건의 동일성 미확인
-- 정답 관리: 추론 입력에서 분리 → 예측 후 평가에 사용
+- 대상: CA1(P00915)·CA13(Q8N1Q1) × 공통 화합물 6개(L01–L06)
+- 실행: 두 모델이 각각 같은 12조합 예측 · 총 24개 모델 출력
+- 정답: 동일 논문에서 측정한 실험 Kd · 타겟별 동일 assay의 6개 화합물
+- 측정 기록: thermal shift assay · 37°C · pH 7.0 · 세부 조건 전체의 동일성은 미확인
+- 선정: 공통 후보 23개를 실험 강도에 따라 정렬하여 6개 선정 · 모델 예측 미사용 · 무작위 대표 표본 아님
+- 자료 범위: 개인 학습용 모델 비교 · 공식 프로젝트 결과와 구분
 
-## 2. 모델별 입력·출력과 척도
+## 2. 모델별 입력·출력
 
-| 구분 | DeepDTA | Boltz-2 |
+| 항목 | DeepDTA | Boltz-2 |
 |---|---|---|
-| 구현 | DeepPurpose CNN_CNN_DAVIS | Boltz 2.2.1 |
-| 입력 | 단백질 서열 + SMILES | 서열 + SMILES + MSA + Zn²⁺·His 접촉 조건 |
-| 처리 | 각각 1D CNN → 특징 결합 → 회귀 | 복합체 3D 구조 생성 → 친화도 모델 |
-| 출력 | 예측 pKd | 구조 CIF + 일반 친화도 점수 |
-| 학습 측정값 | DAVIS Kd | Ki·Kd·IC50 등 혼합 |
-| 강한 결합 방향 | pKd 높음 | 원출력 낮음 / 표시 점수 높음 |
+| 사용 구현 | DeepPurpose CNN_CNN_DAVIS | Boltz 2.2.1 |
+| 입력 | 단백질 서열 + SMILES | 서열 + SMILES + MSA + Zn 조건 |
+| 처리 | 문자열 특징 추출 → 회귀 | 3D 복합체 생성 → 친화도 점수 |
+| 출력 | 예측 pKd | IC50형 일반 친화도 점수 |
+| 표시 | 원래 pKd | 6 − affinity_pred_value |
 
-- Kd: 평형 결합 세기 · 작은 값이 강한 결합
-- pKd = 9 − log₁₀(Kd[nM]): 같은 측정량의 정확한 로그 변환
-- IC50: 반응을 50% 억제하는 농도 · 실험 조건에 의존 · Kd와 다른 측정량
-- Boltz 점수: 일반 결합 강도 추정 · 근사적 IC50형 해석 · 보정된 Kd와 구분
-- Boltz 표시 점수 = 6 − affinity_pred_value: 로그 농도 표현·강한 방향 통일 · IC50→Kd 환산·Kd 보정 아님
-- DeepDTA: 원 저자의 TensorFlow 가중치가 아닌 DeepPurpose 재현 체크포인트
-- Boltz 추가 조건: Zn 한 개, His95·97·120 잔기–Zn 최소 원자 거리 4 Å 이내 유도 · force true
-- 실험 리간드 자세·구조 템플릿·리간드–Zn 직접 제약 미제공
-- [출력 의미 근거: Boltz-2 논문 §3](https://jeremywohlwend.com/assets/boltz2.pdf#page=5) / [사용 버전 공식 문서](https://github.com/jwohlwend/boltz/blob/v2.2.1/docs/prediction.md)
+- pKd: Kd의 로그 표현 · `pKd = 9 - log10(Kd[nM])` · 큰 값이 강한 결합
+- Boltz 표시 변환: 큰 값이 강한 방향으로 통일 · pKd 자체 또는 IC50→Kd 환산과 구분
+- 비교 대상: 같은 타겟 안에서 실험 Kd의 강약 순서와 예측 점수의 순서
+- [Boltz 공식 출력 설명](https://github.com/jwohlwend/boltz/blob/v2.2.1/docs/prediction.md)
 
-## 3. 실험값·예측값 비교
+## 3. 상대적 결합 강도 비교
 
-- 주평가: 같은 assay 안의 미보정 MAE·Pearson r · 실험 pKd 공통 정답
-- 원래 예측값 사용: DeepDTA pKd / Boltz 표시 점수 `6 - affinity_pred_value`
-
-| 타겟 | 모델 | 화합물 수 | 원래 MAE ↓ | Pearson r ↑ |
-|---|---|---:|---:|---:|
-| CA1 | DeepDTA | 6 | 4.003 | -0.030 |
-| CA1 | Boltz-2 | 6 | 0.935 | 0.926 |
-| CA13 | DeepDTA | 6 | 2.889 | -0.299 |
-| CA13 | Boltz-2 | 6 | 0.385 | 0.983 |
-
-- MAE: 평균 |예측 점수 − 실험 pKd| · 로그 점수 단위 · nM 또는 kcal/mol과 구분
-- Pearson r: 실험 강도 변화의 선형적 대응 · 0.926은 정확도 92.6%가 아님
-- assay별 계산 후 집계 시 화합물 수 가중 평균 · pooled 상관과 구분
-- [원래 MAE·상관·보조 지표 CSV](data/affinity-metrics.csv) / [평가 정의 JSON](data/affinity-evaluation.json)
-
-- 그래프: 예측값 먼저, 순위는 보조 비교로 배치 · 두 그래프 모두 기본 표시
-- 웹 표시: CA1·CA13 선택 시 두 그래프·사례 정보 동시 전환 · 전체 수치표 상시 공개
-- 척도 안내: 실험·DeepDTA는 pKd / Boltz는 표시 점수 · 같은 눈금이어도 측정량 상이
-- [CA1 예측값 그림](assets/scores-ca1.png) / [CA13 예측값 그림](assets/scores-ca13.png)
-
-## 4. 결과 해석
-
-### 원래 MAE·상관에 따른 모델별 해석
-
-| 타겟 | 실험 Kd (nM) | 실험 pKd | DeepDTA 예측 pKd | Boltz 표시 점수 |
-|---|---:|---:|---:|---:|
-| CA1 | 0.13–200 | 6.699–9.886 | 4.920–5.013 | 6.324–9.075 |
-| CA13 | 0.22–1,400 | 5.854–9.658 | 5.069–5.273 | 6.420–9.357 |
-
-- 표: 타겟별 6쌍의 최솟값–최댓값 · Boltz 점수는 보정된 pKd와 구분
-- **DeepDTA**
-  - 예측이 pKd 5 근처에 집중 · 실험보다 약한 결합으로 예측
-  - CA1 변화 폭: 실험 약 3.19 / 예측 약 0.09 pKd
-  - CA13 변화 폭: 실험 약 3.80 / 예측 약 0.20 pKd
-  - 평균 절대 pKd 오차: CA1 **4.003** / CA13 **2.889** · 타겟별 6쌍의 동일 pKd 척도 비교
-  - 해석: 이번 CA 표본에서 화합물별 강도 차이 반영 부족
-- **Boltz-2**
-  - 원래 MAE: CA1 0.935 / CA13 0.385 · 로그 점수 단위
-  - Pearson r: CA1 0.926 / CA13 0.983
-  - 12쌍 중 **12쌍**에서 DeepDTA보다 작은 실험 pKd 기준 점수 오차
-  - 해석: 이번 표본에서 수치와 결합 강도 변화를 더 잘 재현
-- **결론: 이번 CA 12조합에서 Boltz-2의 원래 MAE와 상관이 모두 양호**
-- 한계: 타겟 2종·관련 화합물 6개 · 광범위한 모델 우열·정확한 물리적 Kd 검증과 구분
-
-### 중심화 결과 · 평가 정답을 사용한 보조 진단
-
-- 중심화: 예측값 + (해당 assay의 실험 평균 − 예측 평균)
-- 목적: 전체적인 높고 낮음의 편향을 제거한 뒤 남는 오차 확인
-
-| 타겟 | 모델 | 원래 MAE | 더한 이동값 | 중심화 MAE |
-|---|---|---:|---:|---:|
-| CA1 | DeepDTA | 4.003 | +4.003 | 0.880 |
-| CA1 | Boltz-2 | 0.935 | +0.935 | 0.364 |
-| CA13 | DeepDTA | 2.889 | +2.889 | 1.163 |
-| CA13 | Boltz-2 | 0.385 | -0.122 | 0.352 |
-
-- 단위: 로그 점수 · 원래 MAE와 중심화 MAE 분리
-- 예시: 정답 [6, 7, 8], 예측 [5, 6, 7] → +1 이동 → MAE 1 → 0
-- 평가 정답의 평균 사용 · 새로운 화합물의 독립 보정 성능으로 해석 불가
-- 중심화로 Pearson·순위·화합물 사이 차이(PMAE)는 변하지 않음
-
-### 척도 차이·수치 오차의 해석 범위
-
-- 평가 가능: 공통 정답 pKd 대비 두 모델의 미보정 MAE·상관
-- Boltz: IC50형 일반 친화도 점수 · `6 - 원출력`은 물리적 IC50→Kd 환산 아님
-- 현재 결론: 이번 표본에서 Boltz의 실험 pKd 기준 점수 오차가 더 작음
-- 독립 보정이 필요하면 별도 데이터에서 방법·계수 결정 → 겹치지 않는 평가 데이터에서 미중심화 MAE 측정
-- 현재 실행: 중심화 진단만 수행 · 추가 모델 추론·독립 보정 미수행
-- 원인 해석 제한: DAVIS 키나아제 학습 vs CA 평가 / Boltz의 MSA·Zn·3D 추가 정보 · 원인 하나를 분리한 실험 아님
-
-### 논문 평가 준거·실행 조건 차이
-
-- [Boltz-2 D.2.2](https://jeremywohlwend.com/assets/boltz2.pdf#page=37): assay별 Pearson·Kendall·PMAE·원래 MAE·중심화 MAE
-- PMAE: 같은 assay의 모든 화합물 쌍에서 예측 차이와 실험 차이의 오차 평균 · 독립 표본 수 증가와 구분
-- 단위: 본문은 로그 점수 / [논문 표 11](https://jeremywohlwend.com/assets/boltz2.pdf#page=42)은 kcal/mol 척도
-- 비교 배율: 로그 점수 오차 × 1.364 · 1 kcal/mol ≈ 0.733 로그 단위 · endpoint 환산·37°C 자유에너지 측정 아님
-- 해당 배율의 원래 MAE: DeepDTA CA1 5.460 / CA13 3.940 · Boltz CA1 1.275 / CA13 0.525
-- 기존 실행: 구조 recycling 3 / sample 1 / 분자량 보정 꺼짐
-- 논문: 구조 recycling 5 / sample 5 · validation 기반 분자량 보정 포함
-- 범위: 논문 평가 지표 적용 · 논문 데이터셋·성능 수치·전체 추론 설정 재현 아님
-
-### 보조 지표: 타겟별 순위 평가
-
-| 타겟 | 평가 항목 | DeepDTA | Boltz-2 |
+| 타겟 | 모델 | Spearman ρ · 강약 순서 ↑ | Pearson r · 선형 추세 ↑ |
 |---|---|---:|---:|
-| CA1 | Spearman 순위 상관 | 0.257 | 0.657 |
-| CA1 | 실험 Kd 10배 이상 차이의 순서 정답 | 4/7 | 7/7 |
-| CA13 | Spearman 순위 상관 | −0.314 | 0.943 |
-| CA13 | 실험 Kd 10배 이상 차이의 순서 정답 | 4/12 | 12/12 |
+| CA1 | DeepDTA | 0.257 | -0.030 |
+| CA1 | Boltz-2 | 0.657 | 0.926 |
+| CA13 | DeepDTA | -0.314 | -0.299 |
+| CA13 | Boltz-2 | 0.943 | 0.983 |
 
-- Spearman: +1 같은 순서 / 0 부근 약한 관계 / −1 반대 순서
-- 큰 차이 비교: 10배 이상 차이의 후보 쌍에서 강한 화합물 선택 여부
-- 합계: DeepDTA 8/19 / Boltz-2 19/19 · 같은 화합물의 파생 조합 · 독립 실험 19건·일반적 정확도 100%와 구분
-- [CA1 순위 그림](assets/ranks-ca1.png) / [CA13 순위 그림](assets/ranks-ca13.png) / [12쌍 순위 CSV](data/rankings.csv)
+- 타겟별 화합물 6개 · 범위 −1 ~ +1 · 높은 상관일수록 실험 강도에 잘 대응
+- 상관 0.943은 정확도 94.3%라는 뜻이 아님
+- [CA1 예측값 그림](assets/scores-ca1.png) / [CA13 예측값 그림](assets/scores-ca13.png)
+- [CA1 순위 그림](assets/ranks-ca1.png) / [CA13 순위 그림](assets/ranks-ca13.png)
+- 웹 화면: 예측값·순위 그래프 기본 표시 · 타겟·개별 사례 전환 가능
 
-| 사례 | 대상 | 화합물 | 실험 순위 | DeepDTA 순위 | Boltz-2 순위 |
-|---|---|---|---:|---:|---:|
-| C01 | CA1 | L01 | 2 | 5 | 1 |
-| C02 | CA13 | L01 | 1 | 5 | 1 |
-| C03 | CA1 | L02 | 3 | 1 | 2 |
-| C04 | CA13 | L02 | 2 | 1 | 2 |
-| C05 | CA1 | L03 | 4 | 6 | 3 |
-| C06 | CA13 | L03 | 3 | 6 | 3 |
-| C07 | CA1 | L04 | 1 | 2 | 4 |
-| C08 | CA13 | L04 | 4 | 4 | 5 |
-| C09 | CA1 | L05 | 5 | 3 | 5 |
-| C10 | CA13 | L05 | 5 | 3 | 4 |
-| C11 | CA1 | L06 | 6 | 4 | 6 |
-| C12 | CA13 | L06 | 6 | 2 | 6 |
+## 4. 결론과 한계
 
-### 보조 사례: L04의 수치와 순위
+- **DeepDTA:** 예측 pKd가 약 4.92–5.27에 집중 · 실제 화합물별 강도 차이 반영 부족
+- **Boltz-2:** 이번 표본의 결합 강약 순서와 변화 추세를 더 잘 재현
+- **정확한 Kd 수치:** 출력 측정량이 다르므로 원시 MAE만으로 두 모델의 Kd 정확도 우열 판정 불가
+- **일반화:** 관련 타겟 2종·목적 선정 화합물 6개 · 전체 단백질·화합물 성능으로 확대 불가
+- **원인:** DAVIS 키나아제 학습 범위와 CA 평가의 차이, MSA·Zn·구조 정보 차이 존재 · 원인 하나를 분리한 실험 아님
+- **미확인:** Boltz 학습 데이터와의 중복·새 타겟 일반화·독립 Kd 보정 성능
 
-| CA1 · L04 | 수치 | CA1 내 순위 |
-|---|---:|---:|
-| 실험 pKd | 9.886 | 1위 |
-| DeepDTA pKd | 5.009 | 2위 |
-| Boltz 표시 점수 | 8.396 | 4위 |
-
-- 실험 Kd 0.13 nM · 실험 pKd와 수치상 더 가까운 쪽은 Boltz-2
-- L04의 순위만 실험에 더 가까운 쪽은 DeepDTA
-- 한 후보의 순위 근접성과 전체 표본의 예측 성능을 구분
-- 약한 후보 L06: 두 타겟 실험 6위 / Boltz-2 6위 / DeepDTA CA1 4위·CA13 2위
-- 큰 차이 사례: CA1 L04 0.13 nM vs L06 200 nM · 실험상 약 1,538배 · 두 모델 모두 L04를 더 강하게 정렬
-- 순위 해석: 올바른 강약 순서와 실제 강도 배율·정확한 Kd 예측은 별개
-
-### 표본·구조 검증의 한계
-
-- 표본 한계: 한 논문·관련 타겟 2종·목적 선정 6개 화합물 · 학습 데이터 중복·새 타겟 일반화·여러 seed 반복 미확인
-- 대조 지표: 분자량 내림차순의 Spearman CA1 0.429 / CA13 0.771 → 작은 목적 표본의 과대 해석 제한
-- 구조 검사: Zn 거리 기본 검사 12/12 통과 · 실험 자세·전체 물리적 타당성·친화도 정확도 검증과 구분
-- 보조 관찰: L05 타겟 선호 방향은 두 모델 모두 실험과 불일치 · 타겟 내 순위와 타겟 간 선호도는 별도 항목
-
-## 5. 보조 자료: 원출력·다운로드·출처
-
-- 아래 표: 원자료 보존용 · 두 모델의 실험 pKd 기준 점수 평가 · Boltz 점수의 물리적 Kd 환산 제외
-- DeepDTA Kd: 예측 pKd의 역변환 · Boltz 점수의 Kd 역변환·배율 환산 제외
+## 5. 원래 결과와 다운로드
 
 | 사례 | 대상 | 화합물 | 실험 Kd nM | 실험 pKd | DeepDTA pKd | DeepDTA Kd nM | Boltz 표시 점수 |
 |---|---|---|---:|---:|---:|---:|---:|
@@ -193,9 +69,36 @@
 | C11 | CA1 | L06 | 200 | 6.699 | 4.993 | 10,153 | 6.324 |
 | C12 | CA13 | L06 | 1400 | 5.854 | 5.246 | 5,674 | 6.420 |
 
-- [화합물별 예측값 CA1](assets/scores-ca1.png) / [CA13](assets/scores-ca13.png) · 같은 눈금과 같은 측정량의 구분
-- [원결과 CSV](data/results.csv) / [순위 지표 CSV](data/metrics.csv) / [실행 조건·파일 해시](data/reproducibility.json)
-- [실험 Kd 원 논문](https://doi.org/10.1016/j.bmc.2013.01.008) / [CA1 assay](https://www.ebi.ac.uk/chembl/explore/assay/CHEMBL2340479) / [CA13 assay](https://www.ebi.ac.uk/chembl/explore/assay/CHEMBL2340475)
-- [DeepDTA 원 논문](https://arxiv.org/abs/1801.10193) / [고정 DeepPurpose 소스](https://github.com/kexinhuang12345/DeepPurpose/tree/866be98bad0b11e78d4363589b9ee59b5befa307)
-- 그림: 저장 결과·실제 SMILES 사용 · 처리 흐름은 설명용 도식
-- 자료 범위: 개인 학습용 파일럿 · 공식 프로젝트 평가 규약과 구분
+- [원결과 CSV](data/results.csv) / [순위표 CSV](data/rankings.csv) / [순위 지표 CSV](data/metrics.csv)
+- [입력·실행 조건·파일 해시](data/reproducibility.json) / [참고 통계 CSV](data/affinity-metrics.csv)
+- [실험 Kd 원 논문](https://doi.org/10.1016/j.bmc.2013.01.008)
+- [CA1 assay](https://www.ebi.ac.uk/chembl/explore/assay/CHEMBL2340479) / [CA13 assay](https://www.ebi.ac.uk/chembl/explore/assay/CHEMBL2340475)
+- [DeepDTA 원 논문](https://arxiv.org/abs/1801.10193) / [고정 DeepPurpose 구현](https://github.com/kexinhuang12345/DeepPurpose/tree/866be98bad0b11e78d4363589b9ee59b5befa307)
+- 모델 재실행·추가 학습·독립 보정 없음 · 원래 12조합의 예측값 보존
+
+<details>
+<summary>참고 수치: 원래 MAE·중심화 결과</summary>
+
+- MAE: 실험 pKd와 모델 점수 사이의 절대 차이 평균 · 로그 점수 단위
+- Boltz의 MAE: 일반 점수와 pKd의 수치 차이 · 물리적 Kd 예측 오차로 간주하거나 정확도 순위 판정에 사용하지 않음
+
+| 타겟 | 모델 | 화합물 수 | 원래 MAE | Pearson r |
+|---|---|---:|---:|---:|
+| CA1 | DeepDTA | 6 | 4.003 | -0.030 |
+| CA1 | Boltz-2 | 6 | 0.935 | 0.926 |
+| CA13 | DeepDTA | 6 | 2.889 | -0.299 |
+| CA13 | Boltz-2 | 6 | 0.385 | 0.983 |
+
+- 중심화: 예측값 + (해당 assay의 실험 평균 − 예측 평균)
+- 평가 정답을 사용한 편향 제거 진단 · 새로운 화합물의 독립 보정 성능과 구분
+
+| 타겟 | 모델 | 원래 MAE | 더한 이동값 | 중심화 MAE |
+|---|---|---:|---:|---:|
+| CA1 | DeepDTA | 4.003 | +4.003 | 0.880 |
+| CA1 | Boltz-2 | 0.935 | +0.935 | 0.364 |
+| CA13 | DeepDTA | 2.889 | +2.889 | 1.163 |
+| CA13 | Boltz-2 | 0.385 | -0.122 | 0.352 |
+
+- [계산 정의 JSON](data/affinity-evaluation.json) / [Boltz-2 논문 D.2.2](https://jeremywohlwend.com/assets/boltz2.pdf#page=37)
+
+</details>
