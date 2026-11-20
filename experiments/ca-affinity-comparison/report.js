@@ -4,26 +4,32 @@
   if (!data || data.cases?.length !== 12 || data.rankings?.length !== 12) throw new Error('12쌍 순위 자료 로드 실패');
   const byId = new Map(data.cases.map(row => [row.case_id, row]));
   const rankById = new Map(data.rankings.map(row => [row.case_id, row]));
-  const state = {target:'CA1', caseId:'C01'};
   const $ = selector => document.querySelector(selector);
+  const caSection = $('#results');
+  let selectedCase = 'C01';
   const fmt = value => Number(value).toLocaleString('ko-KR', {maximumFractionDigits:3});
-  function showFigure() {
-    const key = state.target.toLowerCase();
-    $('#result-figure').src = `assets/ranks-${key}.svg?v=20261120-conclusion`;
-    $('#figure-download').href = `assets/ranks-${key}.png?v=20261120-conclusion`;
-    $('#result-figure').alt = `${state.target} 실험 정답·DeepDTA·Boltz-2의 강도 순위 비교 · 각 열의 상단: 강한 화합물 · 실제 출력 수치 포함`;
-    $('#figure-caption').textContent = `${state.target} · 각 열: 강한 순서 1–6위 · 수치와 실험 순위 함께 표시`;
-    $('#score-figure').src = `assets/scores-${key}.svg?v=20261120-conclusion`;
-    $('#score-figure').alt = `${state.target} 화합물별 실험 pKd·DeepDTA pKd·Boltz 표시 점수`;
-    $('#score-download').href = `assets/scores-${key}.png?v=20261120-conclusion`;
-    $('#score-caption').textContent = `${state.target} · 동일 행: 동일 화합물 · 서로 다른 측정량`;
-    document.querySelectorAll('[data-target]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.target === state.target)));
+  function showPlots(section, button) {
+    const slug = button.dataset.plotTarget;
+    const target = button.textContent.trim();
+    const revision = section.dataset.plotRoot;
+    section.querySelectorAll('[data-plot-kind]').forEach(figure => {
+      const stem = `assets/${figure.dataset.plotKind}-${slug}`;
+      const image = figure.querySelector('img');
+      image.src = `${stem}.svg?v=${revision}`;
+      image.alt = `${target} ${figure.dataset.plotDescription}`;
+      figure.querySelector('[data-plot-label]').textContent = `${target} · ${figure.dataset.plotDescription}`;
+      figure.querySelector('a[download]').href = `${stem}.png?v=${revision}`;
+    });
+    section.querySelectorAll('[data-plot-target]').forEach(control => control.setAttribute('aria-pressed', String(control === button)));
   }
   function showCase(id, followTarget = true) {
     const row = byId.get(id), rank = rankById.get(id);
     if (!row || !rank) return;
-    state.caseId = id;
-    if (followTarget) {state.target = row.target; showFigure();}
+    selectedCase = id;
+    if (followTarget) {
+      const button = caSection.querySelector(`[data-plot-target="${row.target.toLowerCase()}"]`);
+      showPlots(caSection, button);
+    }
     $('#case-picker').value = id;
     $('#case-title').textContent = `${row.target} · ${row.ligand} · ${id}`;
     $('#case-molecule').src = `assets/${row.ligand}.svg`;
@@ -42,11 +48,14 @@
     $('#case-reading').replaceChildren(...notes.map(text => {const li=document.createElement('li');li.textContent=text;return li;}));
     document.querySelectorAll('[data-case-row],[data-rank-row]').forEach(tr => tr.classList.toggle('selected', (tr.dataset.caseRow || tr.dataset.rankRow) === id));
   }
-  document.querySelectorAll('[data-target]').forEach(button => button.addEventListener('click', () => {
-    state.target=button.dataset.target;
-    const ligand=byId.get(state.caseId).ligand;
-    showCase(data.cases.find(row => row.target === state.target && row.ligand === ligand).case_id, false);
-    showFigure();
+  document.querySelectorAll('[data-plot-target]').forEach(button => button.addEventListener('click', () => {
+    const section = button.closest('[data-plot-root]');
+    if (section === caSection) {
+      const ligand = byId.get(selectedCase).ligand;
+      const target = button.textContent.trim();
+      showCase(data.cases.find(row => row.target === target && row.ligand === ligand).case_id, false);
+    }
+    showPlots(section, button);
   }));
   $('#case-picker').addEventListener('change', event => showCase(event.target.value));
   document.querySelectorAll('[data-case]').forEach(button => button.addEventListener('click', () => {
@@ -59,5 +68,5 @@
     const observer=new IntersectionObserver(entries => {for(const entry of entries) if(entry.isIntersecting) links.forEach(a=>a.classList.toggle('active',a.hash===`#${entry.target.id}`));}, {rootMargin:'-15% 0px -65% 0px'});
     document.querySelectorAll('main>section[id]').forEach(section=>observer.observe(section));
   }
-  showFigure();showCase(state.caseId,false);
+  showCase(selectedCase, false);
 })();

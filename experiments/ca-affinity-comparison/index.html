@@ -5,7 +5,7 @@
   <meta name="description" content="CA1·CA13의 DeepDTA·Boltz-2 결합 친화도 예측 비교와 DDR2·p38α 추가 실험. 타겟별 실험값, 예측값 및 강약 순위 비교.">
   <title>벤치마크 데이터셋을 이용한 DeepDTA·Boltz-2 결합 친화도 예측 비교</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='10' cy='16' r='6' fill='%237654b8'/%3E%3Ccircle cx='23' cy='16' r='6' fill='%23087f8c'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="report.css?v=20261120-aligned-analysis"><script src="data/results.js?v=20261120-conclusion" defer></script><script src="report.js?v=20261120-conclusion" defer></script>
+  <link rel="stylesheet" href="report.css?v=20261120-experiment-design"><script src="data/results.js?v=20261120-conclusion" defer></script><script src="report.js?v=20261120-experiment-design" defer></script>
 </head>
 <body>
 <a class="skip" href="#experiment">본문으로 이동</a>
@@ -15,79 +15,105 @@
     <p class="meta">개인 학습용 파일럿 · 정리 2026.11.20</p>
     <h1 id="title">벤치마크 데이터셋을 이용한 <span class="no-break">DeepDTA·Boltz-2</span> 결합 친화도 예측 비교</h1>
     <p class="lead" id="subtitle">실험 1 · CA1·CA13 / 실험 2 · DDR2·p38α</p>
-    <ul class="brief-list hero-points"><li><a href="#results">실험 1 · CA 예측 결과</a> · 12쌍</li><li><a href="#kinase-study">실험 2 · 키나아제 예측 결과</a> · 12쌍</li><li>비교 기준 · 같은 assay 안에서 화합물의 결합 강약 순서 재현</li></ul>
+    <ul class="brief-list hero-points"><li><a href="#results">실험 1 · CA1·CA13</a> · 12쌍</li><li><a href="#kinase-study">실험 2 · DDR2·p38α</a> · 12쌍</li><li>비교 기준 · 같은 assay 안에서 화합물의 결합 강약 순서 재현</li></ul>
     <div class="verdict"><strong>두 실험의 네 타겟 모두에서 Boltz-2의 순위 상관이 더 높음</strong><ul class="brief-list compact"><li>같은 타겟 내 결합 강약 순서를 비교 · DeepDTA pKd와 Boltz-2 IC50형 점수 사용</li></ul><a href="#experiment-summary">두 실험 종합 보기 →</a></div>
     <div class="facts" aria-label="실험 규모"><div><strong>24쌍</strong><span>타겟 4종 · 타겟별 6쌍</span></div><div><strong>2개 모델</strong><span>각각 24쌍 · 총 48개 예측</span></div><div><strong>실험 Kd</strong><span>타겟별 assay의 측정값</span></div><div><strong>추가 학습 0회</strong><span>공개 체크포인트 그대로 추론</span></div></div>
   </section>
-  <nav class="section-nav" aria-label="본문 목차"><div class="container nav-inner"><a href="#experiment"><b>01</b>CA 실험 구성</a><a href="#models"><b>02</b>모델별 입력·예측 방식</a><a href="#results"><b>03</b>실험 1 · CA 예측 결과</a><a href="#reading"><b>04</b>실험 1 · CA 결과 해석</a><a href="#kinase-study"><b>05</b>실험 2 · 키나아제 예측 결과</a><a href="#experiment-summary"><b>06</b>두 실험 종합</a><a href="#sources"><b>07</b>출처·자료 다운로드</a></div></nav>
-  <noscript><div class="container"><p>JavaScript 비활성 상태: 전체 결과표·CA1 그래프 열람 가능 · CA13 그림은 다운로드 링크 이용</p></div></noscript>
+  <nav class="section-nav" aria-label="본문 목차"><div class="container nav-inner"><a href="#experiment"><b>01</b>두 실험의 설계</a><a href="#models"><b>02</b>모델별 입력·예측 방식</a><a href="#results"><b>03</b>실험 1 · CA1·CA13</a><a href="#kinase-study"><b>04</b>실험 2 · DDR2·p38α</a><a href="#experiment-summary"><b>05</b>두 실험 종합</a><a href="#sources"><b>06</b>출처·자료 다운로드</a></div></nav>
+  <noscript><div class="container"><p>JavaScript 비활성 상태 · 전체 결과표와 CA1·DDR2 그래프 표시 · 다른 타겟의 그림은 설명문에서 열람</p></div></noscript>
 
   <section class="section container" id="experiment" aria-labelledby="experiment-title">
-    <div class="section-head"><span class="section-number">01</span><h2 id="experiment-title">CA 실험 구성</h2></div>
-    <ul class="brief-list"><li><strong>평가 대상:</strong> CA1·CA13 각각에 대한 여섯 화합물의 친화도 예측</li><li><strong>주요 비교:</strong> 실험값 대비 모델별 예측 차이 · 화합물별 결합 강도 변화의 재현</li><li><strong>실험 유형:</strong> 기존 실험값을 정답으로 사용하는 컴퓨터 기반 모델 평가</li></ul>
-    <div class="setup-flow" aria-label="단백질 두 종 곱하기 화합물 여섯 개, 총 열두 쌍을 두 모델에 각각 입력"><div><strong>단백질 2종</strong><span>CA1 · CA13</span></div><b aria-hidden="true">×</b><div><strong>화합물 6개</strong><span>L01 · L02 · L03 · L04 · L05 · L06</span></div><b aria-hidden="true" class="last-arrow">→</b><div class="last-flow"><strong>같은 12쌍</strong><span>DeepDTA·Boltz-2에 각각 입력</span></div></div>
-    <div class="two-columns">
-      <div><h3>평가 대상: CA1·CA13</h3><ul class="brief-list"><li>탄산무수화효소(Carbonic Anhydrase, CA) 계열의 서로 다른 두 단백질</li><li>CA1·CA13: 단백질 이름 · 숫자는 실험 차수와 무관</li><li>공통 특성: 촉매 작용에 Zn²⁺ 사용</li><li>CA1: P00915 · 261잔기 / CA13: Q8N1Q1 · 262잔기</li></ul><p class="small">잔기: 단백질 사슬을 이루는 아미노산 단위</p></div>
-      <div><h3>평가 기준: Kd·pKd</h3><ul class="brief-list"><li><strong>Kd:</strong> 작을수록 강한 결합 · 1 nM가 100 nM보다 강한 결합</li><li><strong>pKd:</strong> 큰 값이 강한 방향으로 변환한 Kd 표현</li><li>pKd 1 증가 ↔ Kd 10분의 1</li></ul><div class="formula-line">Kd ↓ = 강한 결합 &nbsp; / &nbsp; pKd ↑ = 강한 결합</div><p class="small">pKd = 9 − log₁₀(Kd[nM]) · nM: 나노몰/리터</p></div>
-    </div>
-    <h3>화합물 구성</h3><div class="compound-grid"><article class="compound"><img src="assets/L01.svg" alt="L01의 화학 구조" loading="lazy"><strong>L01</strong><a href="https://www.ebi.ac.uk/chembl/explore/compound/CHEMBL2333406" target="_blank" rel="noopener">CHEMBL2333406</a></article><article class="compound"><img src="assets/L02.svg" alt="L02의 화학 구조" loading="lazy"><strong>L02</strong><a href="https://www.ebi.ac.uk/chembl/explore/compound/CHEMBL2333407" target="_blank" rel="noopener">CHEMBL2333407</a></article><article class="compound"><img src="assets/L03.svg" alt="L03의 화학 구조" loading="lazy"><strong>L03</strong><a href="https://www.ebi.ac.uk/chembl/explore/compound/CHEMBL2333398" target="_blank" rel="noopener">CHEMBL2333398</a></article><article class="compound"><img src="assets/L04.svg" alt="L04의 화학 구조" loading="lazy"><strong>L04</strong><a href="https://www.ebi.ac.uk/chembl/explore/compound/CHEMBL2333408" target="_blank" rel="noopener">CHEMBL2333408</a></article><article class="compound"><img src="assets/L05.svg" alt="L05의 화학 구조" loading="lazy"><strong>L05</strong><a href="https://www.ebi.ac.uk/chembl/explore/compound/CHEMBL2333413" target="_blank" rel="noopener">CHEMBL2333413</a></article><article class="compound"><img src="assets/L06.svg" alt="L06의 화학 구조" loading="lazy"><strong>L06</strong><a href="https://www.ebi.ac.uk/chembl/explore/compound/CHEMBL106848" target="_blank" rel="noopener">CHEMBL106848</a></article></div>
-    <ul class="brief-list caption"><li>실제 SMILES를 RDKit으로 렌더링한 2차원 화학 구조</li><li>L01–L06: 이번 비교의 로컬 식별자 · 약 이름·원 논문의 화합물 번호와 구분</li></ul>
-    <details class="detail"><summary>화합물 선정 기준·실험 정답 출처</summary><div class="detail-body"><ul class="brief-list"><li>공통 후보: CA1·CA13 모두에 Kd가 있는 화합물 23개</li><li>선정 절차: 두 타겟 평균 실험 pKd 정렬 → 1·5·10·14·19·23번째 선정</li><li>선정 목적: 강한 결합부터 약한 결합까지 넓은 강도 범위 확보 · 모집단 대표 표본 아님</li><li>모델 예측값: 화합물 선정에 미사용</li><li>출처: <a href="https://doi.org/10.1016/j.bmc.2013.01.008" target="_blank" rel="noopener">4-Substituted-2,3,5,6-tetrafluorobenzenesulfonamides as inhibitors of carbonic anhydrases I, II, VII, XII, and XIII</a></li><li>ChEMBL 두 assay의 기재 조건: thermal shift assay · 37°C · pH 7.0 · 모든 세부 조건의 동일성은 미확인</li><li>공식 API 대조: 12개 기록의 분자 InChIKey·Kd·nM·등호 조건·수치 일치</li><li>정답 관리: 실험 Kd를 추론 입력에서 분리 → 예측 완료 후 평가에 사용</li></ul></div></details>
+    <div class="section-head"><span class="section-number">01</span><h2 id="experiment-title">두 실험의 설계</h2></div>
+    <p>DeepDTA와 Boltz-2가 같은 타겟에서 화합물의 결합 강약을 얼마나 잘 구분하는지 평가.</p>
+    <div class="setup-flow" aria-label="총 스물네 쌍을 두 모델로 예측한 뒤 각 타겟의 실험 순위와 비교"><div><strong>단백질–화합물 24쌍</strong><span>실험별 12쌍</span></div><b aria-hidden="true">×</b><div><strong>두 모델로 예측</strong><span>DeepDTA · Boltz-2</span></div><b aria-hidden="true" class="last-arrow">→</b><div class="last-flow"><strong>실험값과 비교</strong><span>타겟별로 화합물 6개 평가</span></div></div>
+    <p class="scroll-hint">모바일에서 설계 비교표는 좌우로 스크롤</p>
+    <div class="table-wrap" tabindex="0" aria-label="실험 1과 실험 2의 설계 비교"><table class="design-table">
+      <caption>두 실험의 대상과 선정 기준</caption>
+      <thead><tr><th scope="col">항목</th><th scope="col">실험 1 · CA1·CA13</th><th scope="col">실험 2 · DDR2·p38α</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">단백질</th><td>탄산무수화효소 2종</td><td>DAVIS에 포함된 키나아제 2종</td></tr>
+        <tr><th scope="row">12쌍 구성</th><td>공통 화합물 6개를 두 타겟에 각각 적용</td><td>타겟별로 화합물 6개씩 선정</td></tr>
+        <tr><th scope="row">후보 선정</th><td>공통 후보 23개 중 결합 강도 범위가 넓도록 선정</td><td>공개 DAVIS의 68개 화합물과 중복되는 구조를 제외하고 선정</td></tr>
+        <tr><th scope="row">실험 정답</th><td>CA1·CA13 각각의 assay에서 측정한 Kd</td><td>DDR2·p38α 각각의 assay에서 측정한 Kd</td></tr>
+      </tbody>
+    </table></div>
+    <h3>공통 평가 기준</h3>
+    <ul class="brief-list"><li>타겟별로 같은 assay에서 측정한 6개 화합물의 강약 순서를 비교.</li><li>기존 Kd 측정값은 정답으로 보관하고 모델 예측을 마친 뒤 평가에 사용.</li><li>스피어만으로 순위를, 피어슨으로 점수의 변화 추세를 확인.</li></ul>
+    <div class="formula-line">Kd가 작을수록 강한 결합 &nbsp; / &nbsp; pKd로 바꾸면 클수록 강한 결합</div>
   </section>
 
   <section class="section container" id="models" aria-labelledby="models-title">
     <div class="section-head"><span class="section-number">02</span><h2 id="models-title">모델별 입력·예측 방식</h2></div>
-    <ul class="brief-list"><li><strong>공통 입력:</strong> 단백질 서열 + 화합물 SMILES</li><li><strong>Boltz-2 추가 정보(실험 1):</strong> MSA + Zn²⁺ + 알려진 촉매 부위의 접촉 조건</li><li><strong>비교 조건:</strong> 동일한 단백질·화합물 조합 · 모델별 입력 정보와 계산 경로는 상이</li></ul>
+    <ul class="brief-list"><li><strong>공통 입력</strong> · 두 실험에서 각 모델에 단백질 서열과 화합물 SMILES 제공</li><li><strong>Boltz-2 추가 입력</strong> · 두 실험 모두 MSA 사용 · 실험 1에 Zn²⁺와 촉매 부위 접촉 조건 추가</li></ul>
     <div class="method-row"><div class="method-label"><strong>DeepDTA</strong><span>서열·문자열 기반</span></div><div class="method-flow" role="img" aria-label="서열·SMILES 숫자 인코딩 → 각각의 1D CNN 특징 추출 → 특징 결합·회귀 → pKd 출력"><div class="method-box"><span>입력</span><strong>단백질 서열<br>화합물 SMILES</strong><small>문자열 → 숫자 배열</small></div><b class="arrow" aria-hidden="true">→</b><div class="method-box"><span>처리</span><strong>각각 CNN으로 특징 추출<br>특징 결합 → 회귀</strong><small>문자열의 주변 패턴을 학습한 모델</small></div><b class="arrow" aria-hidden="true">→</b><div class="method-box"><span>출력</span><strong>예측 pKd 한 값</strong><small>3D 구조 생성 없음</small></div></div><ul class="brief-list method-note"><li>사용 구현: DeepPurpose CNN_CNN_DAVIS 공개 재현 체크포인트</li><li>학습 데이터: DAVIS 키나아제 · 원 저자의 TensorFlow 가중치와 구분</li></ul></div>
-    <div class="method-row boltz"><div class="method-label"><strong>Boltz-2</strong><span>구조·친화도 예측</span></div><div class="method-flow" role="img" aria-label="서열·MSA·SMILES·Zn 조건 → 복합체 3D 구조 생성·친화도 예측 → CIF 구조·친화도 JSON 출력"><div class="method-box"><span>입력</span><strong>서열 + MSA + SMILES<br>Zn²⁺ + 접촉 조건</strong><small>MSA: 유사 단백질의 다중 서열 정렬</small></div><b class="arrow" aria-hidden="true">→</b><div class="method-box"><span>처리</span><strong>복합체 3D 구조 생성<br>친화도 모델로 점수 계산</strong><small>확산 기반 구조 생성 + 친화도 예측 경로</small></div><b class="arrow" aria-hidden="true">→</b><div class="method-box"><span>출력</span><strong>구조 파일 + 친화도 점수</strong><small>CIF 좌표 · affinity JSON</small></div></div><ul class="brief-list method-note"><li>체인 구성: 단백질 A + 화합물 B + Zn 한 개 C · 친화도 binder: B</li><li>실험 리간드 자세·구조 템플릿 미제공</li></ul></div>
+    <div class="method-row boltz"><div class="method-label"><strong>Boltz-2</strong><span>구조·친화도 예측</span></div><div class="method-flow" role="img" aria-label="서열·MSA·SMILES → 복합체 3D 구조 생성·친화도 예측 → CIF 구조·친화도 JSON 출력"><div class="method-box"><span>입력</span><strong>단백질 서열 + MSA<br>화합물 SMILES</strong><small>MSA · 유사 단백질의 다중 서열 정렬</small></div><b class="arrow" aria-hidden="true">→</b><div class="method-box"><span>처리</span><strong>복합체 3D 구조 생성<br>친화도 모델로 점수 계산</strong><small>확산 기반 구조 생성 + 친화도 예측 경로</small></div><b class="arrow" aria-hidden="true">→</b><div class="method-box"><span>출력</span><strong>구조 파일 + 친화도 점수</strong><small>CIF 좌표 · affinity JSON</small></div></div><ul class="brief-list method-note"><li>실험 1 · 단백질 A + 화합물 B + Zn 한 개 C · Zn–His 접촉 조건 적용</li><li>실험 2 · 단백질 A + 화합물 B · 타겟별 고정 MSA와 축소 샘플링 설정 적용</li></ul></div>
     <p class="caption">도식 범위: 계산 경로 설명 · 실제 단백질 형상의 묘사·이번 작업의 신규 학습 과정 아님</p>
-    <div class="table-wrap"><table><caption>모델별 공통 조건·차이점</caption><thead><tr><th>항목</th><th class="deep">DeepDTA</th><th class="boltz-text">Boltz-2</th></tr></thead><tbody><tr><th>예측 대상</th><td colspan="2">같은 12개 단백질–화합물 조합</td></tr><tr><th>입력 정보</th><td>서열 + SMILES</td><td>서열 + SMILES + MSA + Zn·접촉 조건</td></tr><tr><th>3D 구조</th><td>사용·생성 없음</td><td>복합체 구조 생성·활용</td></tr><tr><th>친화도 출력</th><td>pKd · 큰 값이 강한 결합</td><td>일반 친화도 점수 · 공식 문서의 IC50형 로그 μM 척도 · 작은 값이 강한 결합</td></tr><tr><th>자료의 표시 방식</th><td>예측 pKd · 전체 결과표에 역변환한 예측 Kd</td><td><code>6 − 원출력</code> · 큰 값이 강한 방향</td></tr><tr><th>추가 학습·보정</th><td colspan="2">없음 · 공개 가중치 그대로 추론</td></tr></tbody></table></div>
+    <div class="table-wrap"><table><caption>두 실험에 공통인 모델 비교</caption><thead><tr><th>항목</th><th class="deep">DeepDTA</th><th class="boltz-text">Boltz-2</th></tr></thead><tbody><tr><th>예측 대상</th><td colspan="2">두 모델에 같은 단백질–화합물 24쌍 입력 · 실험별 12쌍</td></tr><tr><th>입력 정보</th><td>서열 + SMILES</td><td>서열 + SMILES + MSA · 실험 1은 Zn·접촉 조건 추가</td></tr><tr><th>3D 구조</th><td>사용·생성 없음</td><td>복합체 구조 생성·활용</td></tr><tr><th>친화도 출력</th><td>pKd · 큰 값이 강한 결합</td><td>일반 친화도 점수 · 공식 문서의 IC50형 로그 μM 척도 · 작은 값이 강한 결합</td></tr><tr><th>자료의 표시 방식</th><td>예측 pKd</td><td><code>6 − 원출력</code> · 큰 값이 강한 방향</td></tr><tr><th>추가 학습·보정</th><td colspan="2">없음 · 공개 가중치 그대로 추론</td></tr></tbody></table></div>
     <h3>Kd·IC50·Boltz 점수의 차이</h3>
     <div class="table-wrap"><table><caption>측정값·모델 출력의 의미와 해석 범위</caption><thead><tr><th>구분</th><th>의미·척도</th><th>이번 비교에서의 역할</th></tr></thead><tbody><tr><th>실험 Kd / pKd</th><td>평형 결합 세기 / pKd = 9 − log₁₀(Kd[nM])</td><td>실험 정답 · Kd와 pKd는 정확히 변환 가능한 같은 측정량</td></tr><tr><th>IC50</th><td>반응을 50% 억제하는 농도 · 실험 조건에 의존</td><td>Kd와 다른 측정량 · 농도 단위가 같아도 동일값으로 간주 불가</td></tr><tr><th>DeepDTA</th><td>DAVIS Kd로 학습한 예측 pKd</td><td>높은 값부터 정렬 · pKd 수치 오차도 계산 가능한 출력</td></tr><tr><th>Boltz-2</th><td>Ki·Kd·IC50 등 혼합 측정값으로 학습한 일반 친화도 점수</td><td>근사적인 IC50형 해석 · 개별 사례의 보정된 Kd와 구분</td></tr></tbody></table></div>
     <div class="mild"><ul class="brief-list compact"><li><strong>표시 방식:</strong> Boltz 점수 = <code>6 − affinity_pred_value</code> · 두 모델 모두 큰 값이 강한 방향</li><li><strong>평가 기준:</strong> 실험 Kd의 강약 순서와 예측 점수 순서 비교 · Boltz 점수를 pKd 자체로 간주하지 않음</li><li><strong>출처:</strong> <a href="https://github.com/jwohlwend/boltz/blob/v2.2.1/docs/prediction.md" target="_blank" rel="noopener">Boltz 2.2.1 공식 출력 설명</a></li></ul></div>
-    <details class="detail"><summary>실제 입력 예시·Zn²⁺ 조건</summary><div class="detail-body"><h3>CA1 + L04 입력 예시</h3><ul class="brief-list"><li>서열: 아미노산의 순서를 기록한 문자열</li><li>SMILES: 화합물의 원자·결합을 기록한 문자열</li><li>공통 원칙: 실험 Kd 정답을 모델 입력에서 제외</li></ul><pre><code>단백질: CA1 / UniProt P00915 / 261잔기
+    <details class="detail"><summary>실험 1 입력 예시·Zn²⁺ 조건</summary><div class="detail-body"><h3>CA1 + L04 입력 예시</h3><ul class="brief-list"><li>서열: 아미노산의 순서를 기록한 문자열</li><li>SMILES: 화합물의 원자·결합을 기록한 문자열</li><li>공통 원칙: 실험 Kd 정답을 모델 입력에서 제외</li></ul><pre><code>단백질: CA1 / UniProt P00915 / 261잔기
 서열 시작: MASPDWGYDDKNGPEQWSKLYPIANGNNQSPVDIKTSETKHDTS…
 화합물: L04 / CHEMBL2333408
 SMILES: NS(=O)(=O)c1c(F)c(F)c(N2CCOCC2)c(F)c1F</code></pre><ul class="brief-list"><li>DeepDTA: 위 서열·SMILES 사용</li><li>Boltz-2: 같은 서열·분자 + MSA + Zn 한 개 + His95·His97·His120 접촉 조건</li><li>접촉 조건: 각 His 잔기–Zn의 최소 원자 거리 4 Å 이내 유도 · <code>force: true</code></li><li>Zn 설정: CCD ZN(+2) · 특정 질소 원자 고정·리간드–Zn 직접 제약 없음</li><li>DeepDTA의 명시적 금속 입력 미지원 → 원래 인터페이스 유지 · 입력 정보 완전 통제 실험 아님</li></ul><p><a href="data/queries.json" download>12쌍 서열·SMILES 입력</a> · <a href="data/references.csv" download>별도 실험 정답</a></p></div></details>
   </section>
 
-  <section class="section container" id="results" aria-labelledby="results-title">
-    <div class="section-head"><span class="section-number">03</span><h2 id="results-title">실험 1 · CA 예측 결과</h2></div>
-    <ul class="brief-list"><li>같은 단백질·같은 assay의 화합물 6개씩 비교</li><li>주지표: Spearman 순위 상관 / 보조 지표: Pearson 상관</li><li>기존 예측값·실험값·순위를 모두 표시 · 모델 재실행 없음</li></ul>
+  <section class="section container" id="results" aria-labelledby="results-title" data-plot-root="20261120-experiment-design">
+    <div class="section-head"><span class="section-number">03</span><h2 id="results-title">실험 1 · CA1·CA13</h2></div>
+    <p>탄산무수화효소 CA1·CA13에 공통 화합물 6개를 각각 적용해 총 12쌍을 비교.</p>
+    <details class="detail"><summary>실험 1의 타겟·화합물 선정</summary><div class="detail-body">
+      <ul class="brief-list"><li>CA1(P00915, 261잔기)과 CA13(Q8N1Q1, 262잔기)은 촉매 작용에 Zn²⁺를 사용하는 탄산무수화효소.</li><li>공통 후보 23개를 두 타겟의 평균 실험 pKd로 정렬해 1·5·10·14·19·23번째를 선정. 모델 점수는 선정에 미사용.</li><li>실험 Kd 출처 · 같은 논문의 ChEMBL 기록 · thermal shift assay, 37°C, pH 7.0 · 세부 조건 전체의 동일성은 미확인.</li><li>12개 기록의 분자 InChIKey·Kd·nM·등호 조건·수치를 공식 API와 대조.</li></ul>
+      <h3>공통 화합물 6개의 구조</h3><div class="compound-grid"><article class="compound"><img src="assets/L01.svg" alt="L01의 화학 구조" loading="lazy"><strong>L01</strong><a href="https://www.ebi.ac.uk/chembl/explore/compound/CHEMBL2333406" target="_blank" rel="noopener">CHEMBL2333406</a></article><article class="compound"><img src="assets/L02.svg" alt="L02의 화학 구조" loading="lazy"><strong>L02</strong><a href="https://www.ebi.ac.uk/chembl/explore/compound/CHEMBL2333407" target="_blank" rel="noopener">CHEMBL2333407</a></article><article class="compound"><img src="assets/L03.svg" alt="L03의 화학 구조" loading="lazy"><strong>L03</strong><a href="https://www.ebi.ac.uk/chembl/explore/compound/CHEMBL2333398" target="_blank" rel="noopener">CHEMBL2333398</a></article><article class="compound"><img src="assets/L04.svg" alt="L04의 화학 구조" loading="lazy"><strong>L04</strong><a href="https://www.ebi.ac.uk/chembl/explore/compound/CHEMBL2333408" target="_blank" rel="noopener">CHEMBL2333408</a></article><article class="compound"><img src="assets/L05.svg" alt="L05의 화학 구조" loading="lazy"><strong>L05</strong><a href="https://www.ebi.ac.uk/chembl/explore/compound/CHEMBL2333413" target="_blank" rel="noopener">CHEMBL2333413</a></article><article class="compound"><img src="assets/L06.svg" alt="L06의 화학 구조" loading="lazy"><strong>L06</strong><a href="https://www.ebi.ac.uk/chembl/explore/compound/CHEMBL106848" target="_blank" rel="noopener">CHEMBL106848</a></article></div>
+      <p class="caption">실제 SMILES에서 그린 2차원 구조 · L01–L06은 이 자료의 사례 식별자.</p>
+    </div></details>
     <section class="primary-evaluation" id="primary-evaluation" aria-labelledby="evaluation-title">
       <div class="evaluation-heading"><h3 id="evaluation-title">비교 지표</h3></div>
       <div class="table-wrap"><table class="correlation-table"><caption>타겟별 6개 화합물 · 높은 상관일수록 실험 강도와 잘 대응</caption><thead><tr><th>타겟</th><th>모델</th><th class="numeric">Spearman ρ ↑<br><small>강약 순서</small></th><th class="numeric">Pearson r ↑<br><small>선형적 변화 추세</small></th></tr></thead><tbody><tr data-correlation-metric="CA1:DeepDTA"><th>CA1</th><td class="deep">DeepDTA</td><td class="numeric primary-value">0.257</td><td class="numeric primary-value">-0.030</td></tr><tr data-correlation-metric="CA1:Boltz-2"><th>CA1</th><td class="boltz-text">Boltz-2</td><td class="numeric primary-value">0.657</td><td class="numeric primary-value">0.926</td></tr><tr data-correlation-metric="CA13:DeepDTA"><th>CA13</th><td class="deep">DeepDTA</td><td class="numeric primary-value">-0.314</td><td class="numeric primary-value">-0.299</td></tr><tr data-correlation-metric="CA13:Boltz-2"><th>CA13</th><td class="boltz-text">Boltz-2</td><td class="numeric primary-value">0.943</td><td class="numeric primary-value">0.983</td></tr></tbody></table></div>
       <ul class="brief-list caption"><li>두 지표 범위: −1 ~ +1 · 상관 0.943은 정확도 94.3%라는 뜻이 아님</li></ul>
+      <div class="metric-guide two-columns">
+  <article class="metric-explanation">
+    <h4>스피어만 ρ · 강약 순서</h4>
+    <p>실험 pKd와 모델 점수를 각각 1–6위로 정렬한 뒤 비교. +1이면 순서가 일치하고, −1이면 역순.</p>
+    <p><strong>주지표</strong> · 출력 척도가 다른 두 모델이 같은 후보를 높은 순위에 두는지 확인.</p>
+  </article>
+  <article class="metric-explanation">
+    <h4>피어슨 r · 점수의 변화 추세</h4>
+    <p>화합물별 실험 pKd와 모델 점수의 직선 관계를 측정. +1에 가까울수록 실험 pKd가 증가할 때 점수도 직선에 가깝게 증가.</p>
+    <p><strong>보조 지표</strong> · 점수가 실험값의 변화 추세를 따라가는지 확인. 절대 Kd 오차는 별도 평가.</p>
+  </article>
+</div>
     </section>
-    <div class="toolbar"><div class="tabs" role="group" aria-label="그래프 단백질 선택"><button type="button" data-target="CA1" aria-pressed="true">CA1</button><button type="button" data-target="CA13" aria-pressed="false">CA13</button></div></div>
-    <div class="score-legend" aria-label="범례"><span>실험 pKd</span><span class="deep">DeepDTA 예측 pKd</span><span class="boltz-text">Boltz 표시 점수</span></div>
     <p class="scroll-hint">모바일: 그래프·넓은 표 좌우 스크롤</p>
     <section class="score-comparison" id="score-reference" aria-labelledby="score-title">
       <h3 id="score-title">화합물별 예측값</h3>
-      <p class="caption">같은 행: 같은 화합물 · 실험 pKd가 큰 순서로 정렬 · CA1·CA13 선택은 두 그래프에 함께 적용</p>
+      <div class="toolbar"><div class="tabs" role="group" aria-label="그래프 단백질 선택"><button type="button" data-plot-target="ca1" aria-pressed="true">CA1</button><button type="button" data-plot-target="ca13" aria-pressed="false">CA13</button></div></div>
+      <p class="caption">같은 행은 같은 화합물 · 타겟 선택을 예측값·스피어만·피어슨 그래프에 함께 적용</p>
       <div class="score-layout">
-        <figure class="figure-panel"><img id="score-figure" src="assets/scores-ca1.svg?v=20261120-conclusion" alt="CA1 화합물별 실험 pKd·DeepDTA pKd·Boltz 표시 점수"><figcaption class="figure-footer"><span id="score-caption">CA1 · 동일 행: 동일 화합물 · 서로 다른 측정량</span><a id="score-download" href="assets/scores-ca1.png?v=20261120-conclusion" download>예측값 그림 다운로드 · PNG</a></figcaption></figure>
-        <aside class="scale-note" aria-labelledby="scale-title">
-          <h4 id="scale-title">그래프의 척도</h4>
-          <dl><div><dt>실험 정답</dt><dd>실험 Kd를 pKd로 변환한 값<br>pKd = 9 − log₁₀(Kd[nM])</dd></div><div><dt class="deep">DeepDTA</dt><dd>모델이 예측한 pKd<br>실험 pKd와 같은 목표 척도</dd></div><div><dt class="boltz-text">Boltz-2</dt><dd>표시 점수 = 6 − 원출력<br>Ki·Kd·IC50 혼합 학습의 일반 친화도 점수</dd></div></dl>
-          <p class="scale-takeaway">세 그래프 모두 큰 값이 강한 방향.<br><strong>같은 눈금이어도 Boltz 점수는 보정된 pKd가 아님.</strong></p>
-          <p>모델별 출력 범위와 강약 경향 확인용. 같은 눈금에 표시해도 Boltz 점수가 pKd가 되는 것은 아님.</p>
-          <a href="#absolute-limits">절대값 비교의 한계·평가 조건</a>
-        </aside>
+        <figure class="figure-panel" data-plot-kind="scores" data-plot-description="화합물별 실험 pKd와 DeepDTA·Boltz-2 예측값" tabindex="0"><img src="assets/scores-ca1.svg?v=20261120-experiment-design" alt="CA1 화합물별 실험 pKd와 DeepDTA·Boltz-2 예측값" width="1200" height="640" loading="lazy"><figcaption class="figure-footer"><span data-plot-label>CA1 · 화합물별 실험 pKd와 DeepDTA·Boltz-2 예측값</span><a href="assets/scores-ca1.png?v=20261120-experiment-design" download>그림 다운로드 · PNG</a></figcaption></figure>
+        <aside class="scale-note" aria-label="그래프의 척도">
+  <h4>그래프의 척도</h4>
+  <dl>
+    <div><dt>실험 정답</dt><dd>실험 Kd를 pKd로 변환한 값<br>pKd = 9 − log₁₀(Kd[nM])</dd></div>
+    <div><dt class="deep">DeepDTA</dt><dd>모델이 예측한 pKd</dd></div>
+    <div><dt class="boltz-text">Boltz-2</dt><dd>표시 점수 = 6 − 원출력<br>IC50형 일반 친화도 점수</dd></div>
+  </dl>
+  <p class="scale-takeaway">예측값 그림의 세 패널에서 오른쪽일수록 강한 결합.</p>
+</aside>
       </div>
     </section>
+    <h3 id="ca-pearson-title">피어슨 · 실험값과 예측 점수</h3>
+    <p class="caption">점 하나는 화합물 하나 · 점선은 점수의 직선 추세 · 세로축은 모델별 점수 척도</p>
+    <figure class="figure-panel" data-plot-kind="pearson" data-plot-description="피어슨 실험값과 예측 점수의 산점도" tabindex="0"><img src="assets/pearson-ca1.svg?v=20261120-experiment-design" alt="CA1 피어슨 실험값과 예측 점수의 산점도" width="1200" height="470" loading="lazy"><figcaption class="figure-footer"><span data-plot-label>CA1 · 피어슨 실험값과 예측 점수의 산점도</span><a href="assets/pearson-ca1.png?v=20261120-experiment-design" download>그림 다운로드 · PNG</a></figcaption></figure>
     <div class="case-reader" aria-live="polite"><img id="case-molecule" src="assets/L01.svg" alt="L01의 실제 2차원 화학 구조"><div><div class="case-header"><h3 id="case-title">CA1 · L01 · C01</h3><div class="case-select"><label for="case-picker">사례 선택</label><select id="case-picker"><option value="C01" selected>CA1 · L01 (C01)</option><option value="C02">CA13 · L01 (C02)</option><option value="C03">CA1 · L02 (C03)</option><option value="C04">CA13 · L02 (C04)</option><option value="C05">CA1 · L03 (C05)</option><option value="C06">CA13 · L03 (C06)</option><option value="C07">CA1 · L04 (C07)</option><option value="C08">CA13 · L04 (C08)</option><option value="C09">CA1 · L05 (C09)</option><option value="C10">CA13 · L05 (C10)</option><option value="C11">CA1 · L06 (C11)</option><option value="C12">CA13 · L06 (C12)</option></select></div></div><div class="case-numbers"><div><span>실험 Kd ↓</span><strong id="case-kd">0.2 nM</strong><small id="case-reference">2위 · 실험 pKd 9.699</small></div><div><span class="deep">DeepDTA pKd ↑</span><strong id="case-deep">4.991</strong><small id="case-deep-kd">5위 · 예측 Kd 약 10,200 nM</small></div><div><span class="boltz-text">Boltz 표시 점수 ↑</span><strong id="case-boltz">9.075</strong><small id="case-native">1위 · 원출력 −3.075</small></div></div><ul id="case-reading" class="brief-list case-notes"><li>실험 pKd 9.699 / DeepDTA pKd 4.991 / Boltz 점수 9.075</li><li>같은 단백질의 강한 순서: 실험 2위 / DeepDTA 5위 / Boltz-2 1위</li><li>비교 범위: 화합물 6개의 상대적 강도 · Boltz 점수를 pKd 자체로 해석하지 않음</li></ul></div></div>
     <h3 id="ca-cases-title">12쌍 전체 수치·순위</h3>
     <ul class="brief-list small"><li>실제 수치와 타겟별 1–6위 함께 표시 · 작은 순위 숫자 = 강한 결합</li><li>사례 번호 선택 → 위 상세 영역에서 해당 화합물의 순위·원점수 확인</li><li>동일 순위 없음 · 소수점 반올림 전 원출력으로 순위 산정</li></ul>
     <div class="table-wrap"><table class="result-table"><caption>12쌍 전체 예측 수치·순위 · 측정량별 척도 구분</caption><thead><tr><th>사례</th><th>대상</th><th>화합물</th><th class="numeric">실험 Kd ↓<br>nM · 순위</th><th class="numeric">실험 pKd ↑</th><th class="numeric deep">DeepDTA<br>pKd ↑ · 순위</th><th class="numeric deep">DeepDTA<br>예측 Kd ↓ · nM</th><th class="numeric boltz-text">Boltz 점수 ↑<br>6 − 원출력 · 순위</th></tr></thead><tbody><tr data-case-row="C01" data-rank-row="C01"><td class=""><button type="button" data-case="C01">C01</button></td><td class="">CA1</td><td class="">L01</td><td class="numeric">0.2<small class="table-rank"> · 2위</small></td><td class="numeric">9.699</td><td class="numeric">4.991<small class="table-rank"> · 5위</small></td><td class="numeric">10,200</td><td class="numeric">9.075<small class="table-rank"> · 1위</small></td></tr><tr data-case-row="C02" data-rank-row="C02"><td class=""><button type="button" data-case="C02">C02</button></td><td class="">CA13</td><td class="">L01</td><td class="numeric">0.22<small class="table-rank"> · 1위</small></td><td class="numeric">9.658</td><td class="numeric">5.160<small class="table-rank"> · 5위</small></td><td class="numeric">6,923</td><td class="numeric">9.357<small class="table-rank"> · 1위</small></td></tr><tr data-case-row="C03" data-rank-row="C03"><td class=""><button type="button" data-case="C03">C03</button></td><td class="">CA1</td><td class="">L02</td><td class="numeric">0.25<small class="table-rank"> · 3위</small></td><td class="numeric">9.602</td><td class="numeric">5.013<small class="table-rank"> · 1위</small></td><td class="numeric">9,710</td><td class="numeric">8.889<small class="table-rank"> · 2위</small></td></tr><tr data-case-row="C04" data-rank-row="C04"><td class=""><button type="button" data-case="C04">C04</button></td><td class="">CA13</td><td class="">L02</td><td class="numeric">0.4<small class="table-rank"> · 2위</small></td><td class="numeric">9.398</td><td class="numeric">5.273<small class="table-rank"> · 1위</small></td><td class="numeric">5,331</td><td class="numeric">8.911<small class="table-rank"> · 2위</small></td></tr><tr data-case-row="C05" data-rank-row="C05"><td class=""><button type="button" data-case="C05">C05</button></td><td class="">CA1</td><td class="">L03</td><td class="numeric">0.4<small class="table-rank"> · 4위</small></td><td class="numeric">9.398</td><td class="numeric">4.920<small class="table-rank"> · 6위</small></td><td class="numeric">12,030</td><td class="numeric">8.444<small class="table-rank"> · 3위</small></td></tr><tr data-case-row="C06" data-rank-row="C06"><td class=""><button type="button" data-case="C06">C06</button></td><td class="">CA13</td><td class="">L03</td><td class="numeric">2.5<small class="table-rank"> · 3위</small></td><td class="numeric">8.602</td><td class="numeric">5.069<small class="table-rank"> · 6위</small></td><td class="numeric">8,526</td><td class="numeric">8.701<small class="table-rank"> · 3위</small></td></tr><tr data-case-row="C07" data-rank-row="C07"><td class=""><button type="button" data-case="C07">C07</button></td><td class="">CA1</td><td class="">L04</td><td class="numeric">0.13<small class="table-rank"> · 1위</small></td><td class="numeric">9.886</td><td class="numeric">5.009<small class="table-rank"> · 2위</small></td><td class="numeric">9,784</td><td class="numeric">8.396<small class="table-rank"> · 4위</small></td></tr><tr data-case-row="C08" data-rank-row="C08"><td class=""><button type="button" data-case="C08">C08</button></td><td class="">CA13</td><td class="">L04</td><td class="numeric">25<small class="table-rank"> · 4위</small></td><td class="numeric">7.602</td><td class="numeric">5.214<small class="table-rank"> · 4위</small></td><td class="numeric">6,106</td><td class="numeric">7.862<small class="table-rank"> · 5위</small></td></tr><tr data-case-row="C09" data-rank-row="C09"><td class=""><button type="button" data-case="C09">C09</button></td><td class="">CA1</td><td class="">L05</td><td class="numeric">2.2<small class="table-rank"> · 5위</small></td><td class="numeric">8.658</td><td class="numeric">4.996<small class="table-rank"> · 3위</small></td><td class="numeric">10,087</td><td class="numeric">7.206<small class="table-rank"> · 5위</small></td></tr><tr data-case-row="C10" data-rank-row="C10"><td class=""><button type="button" data-case="C10">C10</button></td><td class="">CA13</td><td class="">L05</td><td class="numeric">40<small class="table-rank"> · 5위</small></td><td class="numeric">7.398</td><td class="numeric">5.216<small class="table-rank"> · 3위</small></td><td class="numeric">6,087</td><td class="numeric">7.993<small class="table-rank"> · 4위</small></td></tr><tr data-case-row="C11" data-rank-row="C11"><td class=""><button type="button" data-case="C11">C11</button></td><td class="">CA1</td><td class="">L06</td><td class="numeric">200<small class="table-rank"> · 6위</small></td><td class="numeric">6.699</td><td class="numeric">4.993<small class="table-rank"> · 4위</small></td><td class="numeric">10,153</td><td class="numeric">6.324<small class="table-rank"> · 6위</small></td></tr><tr data-case-row="C12" data-rank-row="C12"><td class=""><button type="button" data-case="C12">C12</button></td><td class="">CA13</td><td class="">L06</td><td class="numeric">1,400<small class="table-rank"> · 6위</small></td><td class="numeric">5.854</td><td class="numeric">5.246<small class="table-rank"> · 2위</small></td><td class="numeric">5,674</td><td class="numeric">6.420<small class="table-rank"> · 6위</small></td></tr></tbody></table></div>
-    <h3 id="ca-ranks-title">화합물별 순위 그래프</h3>
-    <figure class="figure-panel"><img id="result-figure" src="assets/ranks-ca1.svg?v=20261120-conclusion" alt="CA1 실험 정답·DeepDTA·Boltz-2의 강도 순위 비교 · 각 열의 상단: 강한 화합물 · 실제 출력 수치 포함"><figcaption class="figure-footer"><span id="figure-caption">각 열: 강한 순서 1–6위 · 수치와 실험 순위 함께 표시</span><a id="figure-download" href="assets/ranks-ca1.png?v=20261120-conclusion" download>순위 그림 다운로드 · PNG</a></figcaption></figure>
-    <ul class="brief-list caption"><li>큰 숫자: 실험 Kd[nM]·DeepDTA pKd·Boltz 표시 점수 / 작은 글씨: 실험 pKd 또는 해당 화합물의 실험 순위</li><li>순위의 일치 여부: 비교 가능 · 순위만으로 실제 결합 강도의 배율·절대값 정확도 판단 불가</li><li>측정 오차·예측 변동성 미반영 · 가까운 후보의 작은 점수 차이 해석 제한</li></ul>
-  </section>
-
-  <section class="section container" id="reading" aria-labelledby="reading-title">
-    <div class="section-head"><span class="section-number">04</span><h2 id="reading-title">실험 1 · CA 결과 해석</h2></div>
-    <h3 id="prediction-summary">모델별 관찰 결과</h3>
+    <h3 id="ca-ranks-title">스피어만 · 실험 순위와 예측 순위</h3>
+    <p class="caption">가로축은 실험 순위 · 세로축은 예측 순위 · 점선에 가까울수록 순위가 일치</p>
+    <figure class="figure-panel" data-plot-kind="spearman" data-plot-description="스피어만 순위 비교" tabindex="0"><img src="assets/spearman-ca1.svg?v=20261120-experiment-design" alt="CA1 스피어만 순위 비교" width="1200" height="470" loading="lazy"><figcaption class="figure-footer"><span data-plot-label>CA1 · 스피어만 순위 비교</span><a href="assets/spearman-ca1.png?v=20261120-experiment-design" download>그림 다운로드 · PNG</a></figcaption></figure>
+    <section class="experiment-reading" id="reading" aria-labelledby="reading-title">
+    <h3 id="reading-title">결과 해석</h3>
+    <h4 id="prediction-summary">모델별 관찰 결과</h4>
     <div class="two-columns model-results">
       <article class="model-result"><h3 class="deep">DeepDTA</h3><ul class="brief-list"><li>12조합 모두 예측 pKd가 약 4.92–5.27에 집중</li><li>실험에서 나타난 큰 결합 강도 차이를 충분히 반영하지 못함</li><li>DAVIS 키나아제 학습 모델을 CA 효소에 적용한 결과</li></ul></article>
       <article class="model-result boltz-result"><h3 class="boltz-text">Boltz-2</h3><ul class="brief-list"><li>강한 화합물에는 높은 점수, 약한 화합물에는 낮은 점수의 경향</li><li>두 타겟 모두에서 DeepDTA보다 높은 순위·선형 상관</li><li>이번 표본의 상대적 결합 강도 재현이 더 양호</li></ul></article>
@@ -103,34 +129,63 @@ SMILES: NS(=O)(=O)c1c(F)c(F)c(N2CCOCC2)c(F)c1F</code></pre><ul class="brief-list
       <p><a href="data/affinity-metrics.csv" download>전체 참고 통계 CSV</a> · <a href="data/affinity-evaluation.json" download>계산 정의 JSON</a> · <a href="https://jeremywohlwend.com/assets/boltz2.pdf#page=37" target="_blank" rel="noopener">Boltz-2 논문 평가 정의</a></p>
     </div></details>
     <details class="detail"><summary>구조 기본 검사·학습 데이터 중복 확인 범위</summary><div class="detail-body"><ul class="brief-list"><li>Zn 거리 기본 검사: 12/12 통과 · 실험 결합 자세·친화도 정확도 검증과 구분</li><li>Boltz 학습 데이터와의 중복·새 화합물 일반화 미확인</li><li>여러 seed 반복·독립 Kd 보정·새 평가셋 실험 미수행</li></ul></div></details>
+    </section>
   </section>
 
-  <section class="section container" id="kinase-study" aria-labelledby="kinase-title">
-    <div class="section-head"><span class="section-number">05</span><h2 id="kinase-title">실험 2 · 키나아제 예측 결과</h2></div>
-    <p>DAVIS에 들어 있는 DDR2·p38α · DAVIS의 68개 화합물과 중복되지 않는 후보를 타겟별 6개씩 평가</p>
+  <section class="section container" id="kinase-study" aria-labelledby="kinase-title" data-plot-root="20261120-experiment-design">
+    <div class="section-head"><span class="section-number">04</span><h2 id="kinase-title">실험 2 · DDR2·p38α</h2></div>
+    <p>DAVIS에 들어 있는 DDR2·p38α에서 타겟별로 화합물 6개를 선정해 총 12쌍을 비교.</p>
+    <details class="detail"><summary>실험 2의 타겟·화합물 선정</summary><div class="detail-body">
+      <ul class="brief-list"><li>DDR2(Q16832) · 같은 assay에서 Kd 15–915 nM로 측정된 6개 화합물 · S01–S06.</li><li>p38α(Q16539) · 같은 assay에서 Kd 196–1,656 nM로 측정된 6개 화합물 · S07–S12.</li><li>공개 DAVIS의 68개 화합물 목록과 구조 중복을 확인하고, 각 assay에서 결합 강도 범위가 넓도록 선정.</li></ul>
+    </div></details>
     <section class="primary-evaluation" id="kinase-evaluation" aria-labelledby="kinase-evaluation-title">
       <div class="evaluation-heading"><h3 id="kinase-evaluation-title">비교 지표</h3></div>
       <div class="table-wrap"><table class="correlation-table"><caption>타겟별 6개 화합물 · 높은 상관일수록 실험 강도와 잘 대응</caption><thead><tr><th scope="col">타겟</th><th scope="col">모델</th><th class="numeric" scope="col">Spearman ρ ↑<br><small>강약 순서</small></th><th class="numeric" scope="col">Pearson r ↑<br><small>선형적 변화 추세</small></th></tr></thead><tbody><tr data-kinase-metric="ddr2:DeepDTA"><th scope="row">DDR2</th><td>DeepDTA</td><td class="numeric primary-value">-0.086</td><td class="numeric primary-value">-0.174</td></tr><tr data-kinase-metric="ddr2:Boltz-2"><th scope="row">DDR2</th><td>Boltz-2</td><td class="numeric primary-value">0.486</td><td class="numeric primary-value">0.591</td></tr><tr data-kinase-metric="p38-alpha:DeepDTA"><th scope="row">p38α</th><td>DeepDTA</td><td class="numeric primary-value">-0.543</td><td class="numeric primary-value">-0.493</td></tr><tr data-kinase-metric="p38-alpha:Boltz-2"><th scope="row">p38α</th><td>Boltz-2</td><td class="numeric primary-value">0.600</td><td class="numeric primary-value">0.622</td></tr></tbody></table></div>
+      <div class="metric-guide two-columns">
+  <article class="metric-explanation">
+    <h4>스피어만 ρ · 강약 순서</h4>
+    <p>실험 pKd와 모델 점수를 각각 1–6위로 정렬한 뒤 비교. +1이면 순서가 일치하고, −1이면 역순.</p>
+    <p><strong>주지표</strong> · 출력 척도가 다른 두 모델이 같은 후보를 높은 순위에 두는지 확인.</p>
+  </article>
+  <article class="metric-explanation">
+    <h4>피어슨 r · 점수의 변화 추세</h4>
+    <p>화합물별 실험 pKd와 모델 점수의 직선 관계를 측정. +1에 가까울수록 실험 pKd가 증가할 때 점수도 직선에 가깝게 증가.</p>
+    <p><strong>보조 지표</strong> · 점수가 실험값의 변화 추세를 따라가는지 확인. 절대 Kd 오차는 별도 평가.</p>
+  </article>
+</div>
     </section>
-    <p class="scroll-hint">모바일에서 그래프와 표는 좌우로 스크롤</p>
-
-    <h3 id="kinase-scores-title">화합물별 예측값</h3>
-    <p class="caption">같은 행은 같은 화합물 · 실험 pKd와 DeepDTA 예측 pKd, Boltz-2의 IC50형 표시 점수를 나란히 비교</p>
-    <figure class="figure-panel" tabindex="0"><img src="assets/kinase-ddr2-scores.png" alt="DDR2 여섯 화합물의 실험 pKd, DeepDTA pKd, Boltz-2 표시 점수" width="1856" height="656" loading="lazy"><figcaption class="figure-footer"><span>DDR2 · 실험 Kd 15–915 nM</span><a href="assets/kinase-ddr2-scores.png" download>예측값 그림 다운로드 · PNG</a></figcaption></figure>
-    <figure class="figure-panel" tabindex="0"><img src="assets/kinase-p38-alpha-scores.png" alt="p38α 여섯 화합물의 실험 pKd, DeepDTA pKd, Boltz-2 표시 점수" width="1856" height="656" loading="lazy"><figcaption class="figure-footer"><span>p38α · 실험 Kd 196–1,656 nM</span><a href="assets/kinase-p38-alpha-scores.png" download>예측값 그림 다운로드 · PNG</a></figcaption></figure>
+    <p class="scroll-hint">모바일: 그래프·넓은 표 좌우 스크롤</p>
+    <section class="score-comparison" id="kinase-score-reference" aria-labelledby="kinase-scores-title">
+      <h3 id="kinase-scores-title">화합물별 예측값</h3>
+      <div class="toolbar"><div class="tabs" role="group" aria-label="그래프 단백질 선택"><button type="button" data-plot-target="ddr2" aria-pressed="true">DDR2</button><button type="button" data-plot-target="p38-alpha" aria-pressed="false">p38α</button></div></div>
+      <p class="caption">같은 행은 같은 화합물 · 타겟 선택을 예측값·스피어만·피어슨 그래프에 함께 적용</p>
+      <div class="score-layout">
+        <figure class="figure-panel" data-plot-kind="scores" data-plot-description="화합물별 실험 pKd와 DeepDTA·Boltz-2 예측값" tabindex="0"><img src="assets/scores-ddr2.svg?v=20261120-experiment-design" alt="DDR2 화합물별 실험 pKd와 DeepDTA·Boltz-2 예측값" width="1200" height="640" loading="lazy"><figcaption class="figure-footer"><span data-plot-label>DDR2 · 화합물별 실험 pKd와 DeepDTA·Boltz-2 예측값</span><a href="assets/scores-ddr2.png?v=20261120-experiment-design" download>그림 다운로드 · PNG</a></figcaption></figure>
+        <aside class="scale-note" aria-label="그래프의 척도">
+  <h4>그래프의 척도</h4>
+  <dl>
+    <div><dt>실험 정답</dt><dd>실험 Kd를 pKd로 변환한 값<br>pKd = 9 − log₁₀(Kd[nM])</dd></div>
+    <div><dt class="deep">DeepDTA</dt><dd>모델이 예측한 pKd</dd></div>
+    <div><dt class="boltz-text">Boltz-2</dt><dd>표시 점수 = 6 − 원출력<br>IC50형 일반 친화도 점수</dd></div>
+  </dl>
+  <p class="scale-takeaway">예측값 그림의 세 패널에서 오른쪽일수록 강한 결합.</p>
+</aside>
+      </div>
+    </section>
+    <h3 id="kinase-pearson-title">피어슨 · 실험값과 예측 점수</h3>
+    <p class="caption">점 하나는 화합물 하나 · 점선은 점수의 직선 추세 · 세로축은 모델별 점수 척도</p>
+    <figure class="figure-panel" data-plot-kind="pearson" data-plot-description="피어슨 실험값과 예측 점수의 산점도" tabindex="0"><img src="assets/pearson-ddr2.svg?v=20261120-experiment-design" alt="DDR2 피어슨 실험값과 예측 점수의 산점도" width="1200" height="470" loading="lazy"><figcaption class="figure-footer"><span data-plot-label>DDR2 · 피어슨 실험값과 예측 점수의 산점도</span><a href="assets/pearson-ddr2.png?v=20261120-experiment-design" download>그림 다운로드 · PNG</a></figcaption></figure>
 
     <h3 id="kinase-cases-title">12쌍 전체 수치·순위</h3>
     <p class="caption">타겟 안에서 1위가 가장 강한 결합 · 반올림 전 점수로 순위 산정</p>
     <div class="table-wrap" tabindex="0" aria-label="DDR2와 p38α의 예측값과 순위"><table class="result-table"><caption>DDR2·p38α 전체 예측 수치·순위</caption><thead><tr><th scope="col">사례</th><th scope="col">타겟</th><th class="numeric" scope="col">실험 Kd ↓<br>nM · 순위</th><th class="numeric" scope="col">실험 pKd ↑</th><th class="numeric deep" scope="col">DeepDTA<br>pKd ↑ · 순위</th><th class="numeric boltz-text" scope="col">Boltz 점수 ↑<br>6 − 원출력 · 순위</th></tr></thead><tbody><tr data-kinase-case="S01"><th scope="row">S01</th><td>DDR2</td><td class="numeric">15<small class="table-rank"> · 1위</small></td><td class="numeric">7.824</td><td class="numeric deep">5.022<small class="table-rank"> · 5위</small></td><td class="numeric boltz-text">6.357<small class="table-rank"> · 4위</small></td></tr><tr data-kinase-case="S02"><th scope="row">S02</th><td>DDR2</td><td class="numeric">30<small class="table-rank"> · 2위</small></td><td class="numeric">7.523</td><td class="numeric deep">5.076<small class="table-rank"> · 1위</small></td><td class="numeric boltz-text">6.690<small class="table-rank"> · 3위</small></td></tr><tr data-kinase-case="S03"><th scope="row">S03</th><td>DDR2</td><td class="numeric">93<small class="table-rank"> · 3위</small></td><td class="numeric">7.032</td><td class="numeric deep">5.065<small class="table-rank"> · 3위</small></td><td class="numeric boltz-text">7.595<small class="table-rank"> · 1위</small></td></tr><tr data-kinase-case="S04"><th scope="row">S04</th><td>DDR2</td><td class="numeric">178<small class="table-rank"> · 4위</small></td><td class="numeric">6.750</td><td class="numeric deep">5.021<small class="table-rank"> · 6위</small></td><td class="numeric boltz-text">7.101<small class="table-rank"> · 2위</small></td></tr><tr data-kinase-case="S05"><th scope="row">S05</th><td>DDR2</td><td class="numeric">406<small class="table-rank"> · 5위</small></td><td class="numeric">6.391</td><td class="numeric deep">5.035<small class="table-rank"> · 4위</small></td><td class="numeric boltz-text">5.530<small class="table-rank"> · 5위</small></td></tr><tr data-kinase-case="S06"><th scope="row">S06</th><td>DDR2</td><td class="numeric">915<small class="table-rank"> · 6위</small></td><td class="numeric">6.039</td><td class="numeric deep">5.073<small class="table-rank"> · 2위</small></td><td class="numeric boltz-text">4.685<small class="table-rank"> · 6위</small></td></tr><tr data-kinase-case="S07"><th scope="row">S07</th><td>p38α</td><td class="numeric">196<small class="table-rank"> · 1위</small></td><td class="numeric">6.708</td><td class="numeric deep">5.039<small class="table-rank"> · 6위</small></td><td class="numeric boltz-text">6.652<small class="table-rank"> · 3위</small></td></tr><tr data-kinase-case="S08"><th scope="row">S08</th><td>p38α</td><td class="numeric">303<small class="table-rank"> · 2위</small></td><td class="numeric">6.519</td><td class="numeric deep">5.776<small class="table-rank"> · 3위</small></td><td class="numeric boltz-text">7.009<small class="table-rank"> · 1위</small></td></tr><tr data-kinase-case="S09"><th scope="row">S09</th><td>p38α</td><td class="numeric">382<small class="table-rank"> · 3위</small></td><td class="numeric">6.418</td><td class="numeric deep">5.858<small class="table-rank"> · 2위</small></td><td class="numeric boltz-text">6.814<small class="table-rank"> · 2위</small></td></tr><tr data-kinase-case="S10"><th scope="row">S10</th><td>p38α</td><td class="numeric">675<small class="table-rank"> · 4위</small></td><td class="numeric">6.171</td><td class="numeric deep">5.416<small class="table-rank"> · 5위</small></td><td class="numeric boltz-text">6.400<small class="table-rank"> · 6위</small></td></tr><tr data-kinase-case="S11"><th scope="row">S11</th><td>p38α</td><td class="numeric">990<small class="table-rank"> · 5위</small></td><td class="numeric">6.004</td><td class="numeric deep">5.592<small class="table-rank"> · 4위</small></td><td class="numeric boltz-text">6.450<small class="table-rank"> · 5위</small></td></tr><tr data-kinase-case="S12"><th scope="row">S12</th><td>p38α</td><td class="numeric">1656<small class="table-rank"> · 6위</small></td><td class="numeric">5.781</td><td class="numeric deep">5.864<small class="table-rank"> · 1위</small></td><td class="numeric boltz-text">6.532<small class="table-rank"> · 4위</small></td></tr></tbody></table></div>
     <p class="caption"><a href="data/kinase-ddr2.csv" download>DDR2 결과 CSV</a> · <a href="data/kinase-p38-alpha.csv" download>p38α 결과 CSV</a></p>
 
-    <h3 id="kinase-ranks-title">화합물별 순위 그래프</h3>
-    <p class="caption">가로축은 실험 순위 · 세로축은 예측 순위 · 점선 위는 두 순위가 같은 경우</p>
-    <div class="two-columns kinase-rank-figures">
-      <figure class="figure-panel" tabindex="0"><img src="assets/kinase-ddr2-ranks.png" alt="DDR2 실험 순위와 두 모델의 예측 순위를 비교한 그림" width="1472" height="720" loading="lazy"><figcaption class="figure-footer"><span>DDR2 순위</span><a href="assets/kinase-ddr2-ranks.png">순위 그래프 크게 보기</a></figcaption></figure>
-      <figure class="figure-panel" tabindex="0"><img src="assets/kinase-p38-alpha-ranks.png" alt="p38α 실험 순위와 두 모델의 예측 순위를 비교한 그림" width="1472" height="720" loading="lazy"><figcaption class="figure-footer"><span>p38α 순위</span><a href="assets/kinase-p38-alpha-ranks.png">순위 그래프 크게 보기</a></figcaption></figure>
-    </div>
+    <h3 id="kinase-ranks-title">스피어만 · 실험 순위와 예측 순위</h3>
+    <p class="caption">가로축은 실험 순위 · 세로축은 예측 순위 · 점선에 가까울수록 순위가 일치</p>
+    <figure class="figure-panel" data-plot-kind="spearman" data-plot-description="스피어만 순위 비교" tabindex="0"><img src="assets/spearman-ddr2.svg?v=20261120-experiment-design" alt="DDR2 스피어만 순위 비교" width="1200" height="470" loading="lazy"><figcaption class="figure-footer"><span data-plot-label>DDR2 · 스피어만 순위 비교</span><a href="assets/spearman-ddr2.png?v=20261120-experiment-design" download>그림 다운로드 · PNG</a></figcaption></figure>
 
+    <section class="experiment-reading" aria-labelledby="kinase-reading-title">
     <h3 id="kinase-reading-title">결과 해석</h3>
     <div class="two-columns model-results">
       <article class="model-result"><h3 class="deep">DeepDTA</h3><ul class="brief-list"><li>DDR2 · 예측 pKd가 5.02–5.08에 집중</li><li>p38α · 실험 1위 S07과 6위 S12를 정반대로 정렬</li></ul></article>
@@ -139,10 +194,11 @@ SMILES: NS(=O)(=O)c1c(F)c(F)c(N2CCOCC2)c(F)c1F</code></pre><ul class="brief-list
     <div class="verdict" id="kinase-verdict"><strong>두 키나아제에서 Boltz-2가 화합물의 결합 강약 순서를 더 잘 재현</strong></div>
     <ul class="brief-list caption"><li>강약 순서 일치 · DeepDTA → Boltz-2 · DDR2 7/15 → 10/15, p38α 4/15 → 10/15 · 타겟별 15가지 쌍 비교</li><li>실행 조건 · 두 모델은 전체 서열 사용 · Boltz-2는 두 타겟에 같은 축소 설정 적용 · DDR2의 실험값은 키나아제 도메인에서 측정</li></ul>
     <p class="caption">실험 정답 출처 · <a href="https://www.ebi.ac.uk/chembl/explore/assay/CHEMBL3265733">DDR2 assay</a> · <a href="https://www.ebi.ac.uk/chembl/explore/assay/CHEMBL1943082">p38α assay</a></p>
+    </section>
   </section>
 
   <section class="section container" id="experiment-summary" aria-labelledby="experiment-summary-title">
-    <div class="section-head"><span class="section-number">06</span><h2 id="experiment-summary-title">두 실험 종합</h2></div>
+    <div class="section-head"><span class="section-number">05</span><h2 id="experiment-summary-title">두 실험 종합</h2></div>
     <p><strong>두 실험의 네 타겟 모두에서 Boltz-2가 결합 강약 순서를 더 잘 재현</strong></p>
     <div class="table-wrap" tabindex="0" aria-label="네 타겟의 순위 상관 비교"><table class="cross-experiment-table">
       <caption>Spearman 순위 상관 · 타겟별 화합물 6개 · 1에 가까울수록 실험 순서와 일치</caption>
@@ -153,7 +209,7 @@ SMILES: NS(=O)(=O)c1c(F)c(F)c(N2CCOCC2)c(F)c1F</code></pre><ul class="brief-list
   </section>
 
   <section class="section container" id="sources" aria-labelledby="sources-title">
-    <div class="section-head"><span class="section-number">07</span><h2 id="sources-title">출처·자료 다운로드</h2></div>
+    <div class="section-head"><span class="section-number">06</span><h2 id="sources-title">출처·자료 다운로드</h2></div>
     <div class="evidence-list">
       <div><h3>실험 정답</h3><ul class="brief-list small"><li><a href="https://doi.org/10.1016/j.bmc.2013.01.008" target="_blank" rel="noopener">원 논문 · Bioorganic &amp; Medicinal Chemistry, 2013</a></li><li><a href="https://www.ebi.ac.uk/chembl/explore/assay/CHEMBL2340479" target="_blank" rel="noopener">CA1 assay: CHEMBL2340479</a></li><li><a href="https://www.ebi.ac.uk/chembl/explore/assay/CHEMBL2340475" target="_blank" rel="noopener">CA13 assay: CHEMBL2340475</a></li></ul></div>
       <div><h3>단백질·Zn 조건</h3><ul class="brief-list small"><li><a href="https://www.uniprot.org/uniprotkb/P00915/entry" target="_blank" rel="noopener">CA1 · UniProt P00915</a> / <a href="https://www.uniprot.org/uniprotkb/Q8N1Q1/entry" target="_blank" rel="noopener">CA13 · Q8N1Q1</a></li><li>공식 서열·촉매 His 부위·CCD ZN(+2) 확인</li></ul></div>

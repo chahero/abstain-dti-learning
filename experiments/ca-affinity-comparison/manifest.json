@@ -46,6 +46,38 @@
       "sha256": "042b26150c0cb32f448525d54766cd51c3add6fe588be74f216133cec6db2ebd"
     },
     {
+      "path": "assets/pearson-ca1.png",
+      "sha256": "d96a98d3f454efabe10e1f3b376028fb6bfd59ffdf22254aa3e3ec845306ad8e"
+    },
+    {
+      "path": "assets/pearson-ca1.svg",
+      "sha256": "9e0a8889e82bcddf21dcac96070f7e2d203bc613d7a58582d66eaa706ac8e406"
+    },
+    {
+      "path": "assets/pearson-ca13.png",
+      "sha256": "3dea4482142531c645c9c4728fcb511580b53d6fc521980877cd2b4c0fe9e2a1"
+    },
+    {
+      "path": "assets/pearson-ca13.svg",
+      "sha256": "d34d8f17a2e03158f7f468c853e7e45b6d720eda8474462aaa3c92081e9f0006"
+    },
+    {
+      "path": "assets/pearson-ddr2.png",
+      "sha256": "d96f1265c89504e37f29d5d685d179f976d184bacd5a9de052fb63cd085c54f3"
+    },
+    {
+      "path": "assets/pearson-ddr2.svg",
+      "sha256": "eeb5560e52a1adc0da65cd1c9e0978076876c775112360819e95791034693540"
+    },
+    {
+      "path": "assets/pearson-p38-alpha.png",
+      "sha256": "db52d920b6359dee83766d7d866ee69668f5bf9f8c7d2fc65132fe8111b98401"
+    },
+    {
+      "path": "assets/pearson-p38-alpha.svg",
+      "sha256": "c943d04bb986b1bb19e153183b71eabc1d8dd2507d62d43a85ed80cbfe4919fb"
+    },
+    {
       "path": "assets/Pretendard-LICENSE.txt",
       "sha256": "82e9c8a4b203261f10ddba1296422d64914ff3d4b7bd8a12896d03f0f088d70a"
     },
@@ -84,6 +116,54 @@
     {
       "path": "assets/scores-ca13.svg",
       "sha256": "288b83684229cdbd4f2db70e53acc013a7a2e8a00e204b00aeac393c37c8fde8"
+    },
+    {
+      "path": "assets/scores-ddr2.png",
+      "sha256": "e90f9599d08939cb6893628e36a6c9b7c26fb09deed39dc7d98fbc050233c324"
+    },
+    {
+      "path": "assets/scores-ddr2.svg",
+      "sha256": "b122f02e6866556342529bfbe5cce69592641e5abc8199daba81f9fb5d4d78ea"
+    },
+    {
+      "path": "assets/scores-p38-alpha.png",
+      "sha256": "e97ebfb2efc4e5094de347649a0bc1cfb1154af782569f56f1e4dfb3c083e585"
+    },
+    {
+      "path": "assets/scores-p38-alpha.svg",
+      "sha256": "951b53124acdd6b0c078a5a89635d5a35fbc63e42ae92efc334a79426fdb1c5f"
+    },
+    {
+      "path": "assets/spearman-ca1.png",
+      "sha256": "324ba5096d604e6f0ffb367b6f99eae5c6c6b14f7fcce62fdda3d4d33208b7ce"
+    },
+    {
+      "path": "assets/spearman-ca1.svg",
+      "sha256": "714148f00d0378df779a428d2caa7bceb0460caedc714f4351baa2ef492a971c"
+    },
+    {
+      "path": "assets/spearman-ca13.png",
+      "sha256": "6c6fbd20edc03f7347e1702a18097cc33868d15947b12b79123e53682038b2de"
+    },
+    {
+      "path": "assets/spearman-ca13.svg",
+      "sha256": "e4d82cbedf16d4174f82c8bcf9e354152544093142dc5301509465b9c6759531"
+    },
+    {
+      "path": "assets/spearman-ddr2.png",
+      "sha256": "166432cab04a38560107a1fc0a611022dabd3cd8ef7b7d7ad860739468f24bc0"
+    },
+    {
+      "path": "assets/spearman-ddr2.svg",
+      "sha256": "60c7451a8436fc46a0d31dc01440690cec7310abad8a12818ebf8f4d2bceb3dc"
+    },
+    {
+      "path": "assets/spearman-p38-alpha.png",
+      "sha256": "ccda2848857f7ade9793e6fa95bbc6b19691dee17fd94ed84f51f23e72fd3882"
+    },
+    {
+      "path": "assets/spearman-p38-alpha.svg",
+      "sha256": "890055be293c778de63d4abd32573c1b4965481daad1a744b7545a26fad08485"
     },
     {
       "path": "data/affinity-evaluation.json",
@@ -139,19 +219,19 @@
     },
     {
       "path": "index.html",
-      "sha256": "b335a415b10b48c155f45668737441355e77081c3897afcc27ee290a84c15e6d"
+      "sha256": "04fbdd3d98ef586239e3ffd59acfba0f00ba00cb91b918cc990f1ad89cd7c73a"
     },
     {
       "path": "report.css",
-      "sha256": "0adeeb271671d84f4f24d2540afa09c67960488822b19f089a7e7a8a2b5f62f8"
+      "sha256": "6b06394b0e0592605c9f3f5366df484731c188f04217f707bd7bb3f516b101c6"
     },
     {
       "path": "report.js",
-      "sha256": "ab7407c8c2b5d2f953a6f4ced78cb5654e959d9916f669a7dc56bbaa533ff57c"
+      "sha256": "b07fc51076f9a0ae6caab47947924ac5bdccb3b9ee1994ab1b7dccaa7d683612"
     },
     {
       "path": "report.md",
-      "sha256": "b0129c5c8a154ca900125b1425d4b40f583aa57eea7648b652b0768839c26d99"
+      "sha256": "77438bf43e452b7c6235a43c4c32a919b0d8dcf94c14f9fe8e991cc53d189dc0"
     }
   ]
 }
