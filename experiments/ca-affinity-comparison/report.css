@@ -60,10 +60,7 @@
 @media(max-width:700px){.primary-evaluation{padding:18px 14px}.primary-evaluation h3{font-size:21px}.correlation-table th,.correlation-table td{padding:12px 5px;font-size:11px}.correlation-table thead th{font-size:10px}.correlation-table small{font-size:10px}.correlation-table .primary-value{font-size:19px}.evaluation-links{display:grid;gap:10px}}
 @media print{.primary-evaluation{padding:16px}.affinity-table,.centered-table{min-width:0}.correlation-table .primary-value{font-size:14pt}}
 
-.kinase-table{min-width:460px}
-.kinase-table td{font-variant-numeric:tabular-nums;white-space:nowrap}
-.kinase-table td:nth-child(3),.kinase-table td:nth-child(5){color:var(--teal);font-weight:700}
-.kinase-panel{margin-top:34px}
-.kinase-panel .figure-panel{margin:15px 0 0}
-.kinase-panel img{height:auto}
-@media print{.kinase-table{min-width:0}}
+#kinase-study .figure-panel img{aspect-ratio:auto}
+.kinase-rank-figures>.figure-panel{min-width:0}
+.cross-experiment-table td.numeric{font-variant-numeric:tabular-nums;white-space:nowrap}
+.cross-experiment-table td.boltz-text{font-weight:700}
