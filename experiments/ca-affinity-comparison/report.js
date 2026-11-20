@@ -4,18 +4,18 @@
   if (!data || data.cases?.length !== 12 || data.rankings?.length !== 12) throw new Error('12쌍 순위 자료 로드 실패');
   const byId = new Map(data.cases.map(row => [row.case_id, row]));
   const rankById = new Map(data.rankings.map(row => [row.case_id, row]));
-  const state = {target:'CA1', caseId:'C07'};
+  const state = {target:'CA1', caseId:'C01'};
   const $ = selector => document.querySelector(selector);
   const fmt = value => Number(value).toLocaleString('ko-KR', {maximumFractionDigits:3});
   function showFigure() {
     const key = state.target.toLowerCase();
-    $('#result-figure').src = `assets/ranks-${key}.svg?v=20261120-visible-graphs`;
-    $('#figure-download').href = `assets/ranks-${key}.png?v=20261120-visible-graphs`;
+    $('#result-figure').src = `assets/ranks-${key}.svg?v=20261120-prediction-focus`;
+    $('#figure-download').href = `assets/ranks-${key}.png?v=20261120-prediction-focus`;
     $('#result-figure').alt = `${state.target} 실험 정답·DeepDTA·Boltz-2의 강도 순위 비교 · 각 열의 상단: 강한 화합물 · 실제 출력 수치 포함`;
     $('#figure-caption').textContent = `${state.target} · 각 열: 강한 순서 1–6위 · 수치와 실험 순위 함께 표시`;
-    $('#score-figure').src = `assets/scores-${key}.svg?v=20261120-visible-graphs`;
+    $('#score-figure').src = `assets/scores-${key}.svg?v=20261120-prediction-focus`;
     $('#score-figure').alt = `${state.target} 화합물별 실험 pKd·DeepDTA pKd·Boltz 표시 점수`;
-    $('#score-download').href = `assets/scores-${key}.png?v=20261120-visible-graphs`;
+    $('#score-download').href = `assets/scores-${key}.png?v=20261120-prediction-focus`;
     $('#score-caption').textContent = `${state.target} · 동일 행: 동일 화합물 · 서로 다른 측정량`;
     document.querySelectorAll('[data-target]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.target === state.target)));
   }
@@ -35,10 +35,9 @@
     $('#case-boltz').textContent = row.boltz_score.toFixed(3);
     $('#case-native').textContent = `${rank.boltz_rank}위 · 원출력 ${row.boltz_native_log_micromolar.toFixed(3)}`;
     const notes = [
-      `${row.target} 안에서의 순위: 실험 ${rank.reference_rank}위 / DeepDTA ${rank.deepdta_rank}위 / Boltz-2 ${rank.boltz_rank}위`,
-      `실험 순위와의 차이: DeepDTA ${Math.abs(rank.deepdta_rank-rank.reference_rank)}계단 / Boltz-2 ${Math.abs(rank.boltz_rank-rank.reference_rank)}계단`,
-      id === 'C07' ? '이번 사례의 순위는 DeepDTA가 더 가까운 결과 · 전체 지표 우세와 개별 후보 우세는 별개'
-        : '타겟별 6개 안에서의 상대 순서 · 원점수의 절대값·Kd 배율 정확도와 구분'
+      `실험 pKd ${row.reference_pKd.toFixed(3)} 대비 DeepDTA 예측 pKd ${row.deepdta_pKd.toFixed(3)} · 절대 pKd 오차 ${Math.abs(row.deepdta_pKd-row.reference_pKd).toFixed(3)}`,
+      `Boltz 표시 점수 ${row.boltz_score.toFixed(3)} · 실험 pKd와의 수치 근접성 관찰`,
+      'Boltz 점수는 보정된 pKd가 아님 · 수치 차이를 실제 Kd 예측 오차로 해석하지 않음'
     ];
     $('#case-reading').replaceChildren(...notes.map(text => {const li=document.createElement('li');li.textContent=text;return li;}));
     document.querySelectorAll('[data-case-row],[data-rank-row]').forEach(tr => tr.classList.toggle('selected', (tr.dataset.caseRow || tr.dataset.rankRow) === id));

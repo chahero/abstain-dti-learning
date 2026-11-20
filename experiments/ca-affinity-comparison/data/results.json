@@ -304,5 +304,5 @@
       "boltz_rank": 6
     }
   ],
-  "scope": "within-target ranking pilot; no additional training; Boltz score is not measured Kd"
+  "scope": "experimental-reference prediction comparison; ranking as support; no additional training or calibration; Boltz score is not measured Kd"
 }

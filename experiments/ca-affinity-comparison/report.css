@@ -42,3 +42,12 @@
 @media(max-width:1050px){.score-layout{grid-template-columns:minmax(0,1fr)}.scale-note dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.scale-note dl>div{margin-bottom:0}}
 @media(max-width:700px){.scale-note dl{grid-template-columns:minmax(0,1fr);gap:14px}.score-comparison{scroll-margin-top:80px}}
 @media print{.score-layout{grid-template-columns:minmax(0,1fr)}.scale-note{break-inside:avoid}.scale-note dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
+
+/* Experimental-reference prediction differences lead the interpretation. */
+.prediction-summary-table{min-width:740px}.prediction-summary-table td{white-space:nowrap;font-variant-numeric:tabular-nums}
+.model-results{margin:24px 0;align-items:start}.model-result{border:1px solid var(--line);border-top:3px solid var(--purple);border-radius:8px;padding:22px;min-width:0}
+.model-result.boltz-result{border-top-color:var(--teal)}.model-result h3{margin-top:0;font-size:21px}
+.model-result .brief-list{font-size:14px}.model-result .caption{margin-bottom:0}
+#prediction-summary,#prediction-verdict,#rank-support{scroll-margin-top:90px}
+@media(max-width:700px){.model-result{padding:18px}.model-result h3{font-size:20px}}
+@media print{.model-results{grid-template-columns:1fr}.model-result{break-inside:avoid}}
