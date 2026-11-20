@@ -1,0 +1,77 @@
+{
+  "method": "Boltz-2 Appendix D.2.2 definitions applied to existing CA predictions; not benchmark reproduction",
+  "reference": "experimental pKd = 9 - log10(Kd[nM])",
+  "Boltz_score": "6 - saved affinity_pred_value; no molecular-weight correction added",
+  "primary_metrics": [
+    "mae_log_score",
+    "pearson_r"
+  ],
+  "centering": "Add reference mean minus prediction mean within evaluated assay; evaluation-label diagnostic, not independent calibration",
+  "PMAE": "MAE of differences over all unordered compound pairs within an assay; dependent comparisons",
+  "aggregation": "Per assay, then average metrics weighted by compound count; not pooled correlation",
+  "kcal_scaling": "1.364 times log-score error; conventional paper-comparison scale, not IC50-to-Kd conversion or 37 C free energy",
+  "paper_url": "https://jeremywohlwend.com/assets/boltz2.pdf#page=37",
+  "protocol_limits": "Existing 3 recycles/1 structure sample; paper B.5.1 uses 5/5; CLI MW correction off",
+  "rows": [
+    {
+      "target": "CA1",
+      "assay_chembl_id": "CHEMBL2340479",
+      "model": "DeepDTA",
+      "n_compounds": 6,
+      "mae_log_score": 4.0030898845,
+      "pearson_r": -0.03012720316644796,
+      "kendall_tau": 0.2,
+      "pmae_log_score": 1.2736616303333335,
+      "diagnostic_offset_log_score": 4.0030898845,
+      "centered_mae_log_score": 0.8797648720000001,
+      "mae_kcal_scaled": 5.460214602458,
+      "centered_mae_kcal_scaled": 1.1999992854080002,
+      "pmae_kcal_scaled": 1.7372744637746669
+    },
+    {
+      "target": "CA1",
+      "assay_chembl_id": "CHEMBL2340479",
+      "model": "Boltz-2",
+      "n_compounds": 6,
+      "mae_log_score": 0.9346798851666667,
+      "pearson_r": 0.9260502953889707,
+      "kendall_tau": 0.6,
+      "pmae_log_score": 0.5534017170000004,
+      "diagnostic_offset_log_score": 0.9346798851666667,
+      "centered_mae_log_score": 0.3640541831666669,
+      "mae_kcal_scaled": 1.2749033633673335,
+      "centered_mae_kcal_scaled": 0.49656990583933364,
+      "pmae_kcal_scaled": 0.7548399419880006
+    },
+    {
+      "target": "CA13",
+      "assay_chembl_id": "CHEMBL2340475",
+      "model": "DeepDTA",
+      "n_compounds": 6,
+      "mae_log_score": 2.888879449333333,
+      "pearson_r": -0.2992827966445771,
+      "kendall_tau": -0.3333333333333333,
+      "pmae_log_score": 1.7615224985333333,
+      "diagnostic_offset_log_score": 2.888879449333333,
+      "centered_mae_log_score": 1.1629235976666668,
+      "mae_kcal_scaled": 3.9404315688906664,
+      "centered_mae_kcal_scaled": 1.5862277872173336,
+      "pmae_kcal_scaled": 2.402716687999467
+    },
+    {
+      "target": "CA13",
+      "assay_chembl_id": "CHEMBL2340475",
+      "model": "Boltz-2",
+      "n_compounds": 6,
+      "mae_log_score": 0.3847680864999992,
+      "pearson_r": 0.9828150656988819,
+      "kendall_tau": 0.8666666666666666,
+      "pmae_log_score": 0.5447930751333325,
+      "diagnostic_offset_log_score": -0.12221220516666682,
+      "centered_mae_log_score": 0.3516321661666665,
+      "mae_kcal_scaled": 0.5248236699859989,
+      "centered_mae_kcal_scaled": 0.4796262746513331,
+      "pmae_kcal_scaled": 0.7430977544818657
+    }
+  ]
+}

@@ -35,21 +35,19 @@ Vina·Vina-GPU의 공통 `dock(request)`·CLI와 DiffDock-L 별도 실행 경로
 
 **CA1·CA13 × 화합물 6개 — 총 12쌍의 실행 결과와 해석**
 
-[비교 자료](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/) · [실험값·예측값 비교](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/#results) · [공유용 설명문](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/report.md)
+[비교 자료](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/) · [원래 MAE·상관 평가](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/#primary-evaluation) · [공유용 설명문](https://chahero.github.io/abstain-dti-learning/experiments/ca-affinity-comparison/report.md)
 
-- 평가 목적: 실험값 대비 두 모델의 예측 성능 비교 · 예측 범위·수치 차이·결합 강도 변화 중심
-- 평가 구성: CA1·CA13 × 같은 화합물 6개 · 공개 사전학습 모델별 12개, 총 24개 예측
-- 본문 구성: 실험 구성 → 모델별 입력·예측 방식 → 실험값·예측값 비교 → 결과 해석 → 출처·자료 다운로드
-- 제공 자료: 실제 화합물 구조·수치·순위 그래프·사례별 예측값·12쌍 전체 수치·순위표·순위 지표·용어 정의
-- 다운로드: 개조식 설명문·순위 그림·순위/원결과 CSV·JSON · 파일 해시: `manifest.json`·`data/reproducibility.json`
-- 관찰 결과: DeepDTA는 pKd 5 근처에 집중 · Boltz-2는 화합물별 실험 강도 변화를 더 잘 반영
-- 해석 한계: 서로 다른 학습 분포·Zn/MSA 입력 조건 · 일반적 모델 우열·정확한 Kd 예측으로 확대 해석 제한
-- 출력 척도: Ki·Kd·IC50 혼합 학습의 일반 친화도 점수 · Boltz 표시 점수 `6 - affinity_pred_value`는 실험 Kd로의 물리적 환산 아님
-- 절대값 해석: pKd와의 수치 근접성만으로 Kd 정확도 우열 판정 불가 · 독립 데이터의 Kd 보정·평가 미수행
-- 수치 표시: 화합물별 예측값·순위 그래프를 모두 기본 표시 · CA1·CA13 선택 시 함께 전환 · 그래프 옆에 척도 차이 설명
-- 해석 순서: 모델별 예측 차이 → 척도 한계 → 보조 순위 평가·L04 사례
-- 보조 관찰: L04의 수치·순위와 타겟 간 선호도는 접힌 항목으로 구분
-- 실행 범위: 개인 학습용 파일럿 · 추가 학습·보정 없음 · 브라우저의 모델·API 호출 없음
+- 평가 목적: 실험 pKd 기준 두 모델의 예측 성능 비교 · Boltz-2 논문 D.2.2의 assay별 지표 적용
+- 주평가: 원래 MAE·Pearson r · CA1과 CA13 각각 동일 assay의 화합물 6개
+- 결과: CA1 MAE DeepDTA 4.003 / Boltz 0.935, Pearson −0.030 / 0.926 · CA13 MAE 2.889 / 0.385, Pearson −0.299 / 0.983
+- 단위: MAE는 로그 점수 · 논문 표의 kcal/mol과 구분 · Boltz 표시는 `6 - affinity_pred_value`
+- 중심화: 평가 정답 평균을 이용한 별도 진단 · 원래 MAE와 분리 · 독립 보정 성능 아님
+- 제공 자료: 원래 예측값·순위 그래프 모두 기본 표시 · 개별 사례·전체 12쌍 수치표·보조 순위 평가
+- 다운로드: 결과 CSV·MAE/상관/중심화 지표 CSV·평가 정의 JSON·그림·Markdown
+- 척도 해석: 실험 pKd 기준 점수 오차 평가 가능 · IC50형 Boltz 점수의 정확한 물리적 Kd 출력 입증과 구분
+- 프로토콜: 기존 구조 recycling 3 / sample 1 / 분자량 보정 꺼짐 · 논문 전체 추론 설정의 재현 아님
+- 해석 범위: 타겟 2종·관련 화합물 6개·학습 범위와 Zn/MSA 입력 차이 · 일반적 모델 우열로 확대 제한
+- 실행 범위: 개인 학습용 파일럿 · 저장 예측 재평가 · 재추론·추가 학습·독립 보정 없음
 
 ## AI Agents That Matter · 웹 발표
 

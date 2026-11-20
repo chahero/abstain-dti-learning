@@ -9,13 +9,13 @@
   const fmt = value => Number(value).toLocaleString('ko-KR', {maximumFractionDigits:3});
   function showFigure() {
     const key = state.target.toLowerCase();
-    $('#result-figure').src = `assets/ranks-${key}.svg?v=20261120-prediction-focus`;
-    $('#figure-download').href = `assets/ranks-${key}.png?v=20261120-prediction-focus`;
+    $('#result-figure').src = `assets/ranks-${key}.svg?v=20261120-paper-evaluation`;
+    $('#figure-download').href = `assets/ranks-${key}.png?v=20261120-paper-evaluation`;
     $('#result-figure').alt = `${state.target} 실험 정답·DeepDTA·Boltz-2의 강도 순위 비교 · 각 열의 상단: 강한 화합물 · 실제 출력 수치 포함`;
     $('#figure-caption').textContent = `${state.target} · 각 열: 강한 순서 1–6위 · 수치와 실험 순위 함께 표시`;
-    $('#score-figure').src = `assets/scores-${key}.svg?v=20261120-prediction-focus`;
+    $('#score-figure').src = `assets/scores-${key}.svg?v=20261120-paper-evaluation`;
     $('#score-figure').alt = `${state.target} 화합물별 실험 pKd·DeepDTA pKd·Boltz 표시 점수`;
-    $('#score-download').href = `assets/scores-${key}.png?v=20261120-prediction-focus`;
+    $('#score-download').href = `assets/scores-${key}.png?v=20261120-paper-evaluation`;
     $('#score-caption').textContent = `${state.target} · 동일 행: 동일 화합물 · 서로 다른 측정량`;
     document.querySelectorAll('[data-target]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.target === state.target)));
   }
@@ -36,8 +36,8 @@
     $('#case-native').textContent = `${rank.boltz_rank}위 · 원출력 ${row.boltz_native_log_micromolar.toFixed(3)}`;
     const notes = [
       `실험 pKd ${row.reference_pKd.toFixed(3)} 대비 DeepDTA 예측 pKd ${row.deepdta_pKd.toFixed(3)} · 절대 pKd 오차 ${Math.abs(row.deepdta_pKd-row.reference_pKd).toFixed(3)}`,
-      `Boltz 표시 점수 ${row.boltz_score.toFixed(3)} · 실험 pKd와의 수치 근접성 관찰`,
-      'Boltz 점수는 보정된 pKd가 아님 · 수치 차이를 실제 Kd 예측 오차로 해석하지 않음'
+      `Boltz 표시 점수 ${row.boltz_score.toFixed(3)} · 실험 pKd 기준 점수 오차 ${Math.abs(row.boltz_score-row.reference_pKd).toFixed(3)}`,
+      '개별 오차의 타겟별 평균이 원래 MAE · Boltz 점수는 물리적 Kd 환산과 구분'
     ];
     $('#case-reading').replaceChildren(...notes.map(text => {const li=document.createElement('li');li.textContent=text;return li;}));
     document.querySelectorAll('[data-case-row],[data-rank-row]').forEach(tr => tr.classList.toggle('selected', (tr.dataset.caseRow || tr.dataset.rankRow) === id));
