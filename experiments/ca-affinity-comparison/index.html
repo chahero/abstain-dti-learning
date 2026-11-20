@@ -2,10 +2,10 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="CA1·CA13와 화합물 6개의 DeepDTA·Boltz-2 예측 비교. Boltz-2의 상대적 결합 강도 재현과 정확한 Kd 수치 평가의 한계를 구분한 12쌍 실험 기록.">
+  <meta name="description" content="CA1·CA13의 DeepDTA·Boltz-2 결합 친화도 예측 비교와 DDR2·p38α 추가 실험. 타겟별 실험값, 예측값 및 강약 순위 비교.">
   <title>벤치마크 데이터셋을 이용한 DeepDTA·Boltz-2 결합 친화도 예측 비교</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='10' cy='16' r='6' fill='%237654b8'/%3E%3Ccircle cx='23' cy='16' r='6' fill='%23087f8c'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="report.css?v=20261120-conclusion"><script src="data/results.js?v=20261120-conclusion" defer></script><script src="report.js?v=20261120-conclusion" defer></script>
+  <link rel="stylesheet" href="report.css?v=20261120-kinases"><script src="data/results.js?v=20261120-conclusion" defer></script><script src="report.js?v=20261120-conclusion" defer></script>
 </head>
 <body>
 <a class="skip" href="#experiment">본문으로 이동</a>
@@ -15,11 +15,11 @@
     <p class="meta">개인 학습용 파일럿 · 정리 2026.11.20</p>
     <h1 id="title">벤치마크 데이터셋을 이용한 <span class="no-break">DeepDTA·Boltz-2</span> 결합 친화도 예측 비교</h1>
     <p class="lead" id="subtitle">CA1·CA13 × 화합물 6개 — 총 12쌍의 실행 결과와 해석</p>
-    <ul class="brief-list hero-points"><li>비교 대상: CA1·CA13 × 화합물 6개 · 두 모델 모두 같은 12조합 실행</li><li>확인 항목: 같은 단백질 안에서 화합물의 결합 강약과 변화 추세 재현</li><li>수치 구분: DeepDTA는 pKd / Boltz-2는 IC50형 일반 친화도 점수</li></ul>
+    <ul class="brief-list hero-points"><li>비교 대상: CA1·CA13 × 화합물 6개 · 두 모델 모두 같은 12조합 실행</li><li>확인 항목: 같은 단백질 안에서 화합물의 결합 강약과 변화 추세 재현</li><li>수치 구분: DeepDTA는 pKd / Boltz-2는 IC50형 일반 친화도 점수</li><li>추가 실험: <a href="#kinase-study">DDR2·p38α 비교</a> · 타겟별 6조합</li></ul>
     <div class="verdict"><strong>결론: 이번 CA 표본에서 Boltz-2가 결합 강약을 더 잘 구분</strong><ul class="brief-list compact"><li>DeepDTA: pKd 5 근처에 몰린 예측 · 강도 차이 반영 부족</li><li>Boltz-2: 실험값의 강약 순서와 변화 추세를 더 잘 재현</li><li>확인하지 못한 점: 정확한 Kd 수치 예측의 우열 · 새로운 타겟에서의 일반적 성능</li></ul><a href="#primary-evaluation">비교 지표 확인 →</a></div>
     <div class="facts" aria-label="실험 규모"><div><strong>2 × 6 = 12쌍</strong><span>단백질 2종 · 화합물 6개</span></div><div><strong>2개 모델</strong><span>각각 12쌍 · 총 24개 예측</span></div><div><strong>실험 Kd</strong><span>동일 논문의 측정값을 정답으로 사용</span></div><div><strong>추가 학습 0회</strong><span>공개 체크포인트 그대로 추론</span></div></div>
   </section>
-  <nav class="section-nav" aria-label="본문 목차"><div class="container nav-inner"><a href="#experiment"><b>01</b>실험 구성</a><a href="#models"><b>02</b>모델별 입력·예측 방식</a><a href="#results"><b>03</b>실험값·예측값 비교</a><a href="#reading"><b>04</b>결과 해석</a><a href="#sources"><b>05</b>출처·자료 다운로드</a></div></nav>
+  <nav class="section-nav" aria-label="본문 목차"><div class="container nav-inner"><a href="#experiment"><b>01</b>실험 구성</a><a href="#models"><b>02</b>모델별 입력·예측 방식</a><a href="#results"><b>03</b>실험값·예측값 비교</a><a href="#reading"><b>04</b>결과 해석</a><a href="#kinase-study"><b>05</b>키나아제 추가 실험</a><a href="#sources"><b>06</b>출처·자료 다운로드</a></div></nav>
   <noscript><div class="container"><p>JavaScript 비활성 상태: 전체 결과표·CA1 그래프 열람 가능 · CA13 그림은 다운로드 링크 이용</p></div></noscript>
 
   <section class="section container" id="experiment" aria-labelledby="experiment-title">
@@ -106,8 +106,36 @@ SMILES: NS(=O)(=O)c1c(F)c(F)c(N2CCOCC2)c(F)c1F</code></pre><ul class="brief-list
     <details class="detail"><summary>구조 기본 검사·학습 데이터 중복 확인 범위</summary><div class="detail-body"><ul class="brief-list"><li>Zn 거리 기본 검사: 12/12 통과 · 실험 결합 자세·친화도 정확도 검증과 구분</li><li>Boltz 학습 데이터와의 중복·새 화합물 일반화 미확인</li><li>여러 seed 반복·독립 Kd 보정·새 평가셋 실험 미수행</li></ul></div></details>
   </section>
 
+  <section class="section container" id="kinase-study" aria-labelledby="kinase-title">
+    <div class="section-head"><span class="section-number">05</span><h2 id="kinase-title">키나아제 추가 실험 · DDR2와 p38α</h2></div>
+    <p>DAVIS에 들어 있는 키나아제 2종 · DAVIS의 68개 화합물과 중복되지 않는 후보를 타겟별 6개씩 평가</p>
+    <div class="verdict"><strong>두 키나아제에서 Boltz-2가 화합물의 결합 강약 순서를 더 잘 재현</strong></div>
+    <div class="table-wrap" tabindex="0" aria-label="DDR2와 p38α 순위 지표"><table class="kinase-table">
+      <caption>타겟별 실험 순위와의 일치</caption>
+      <colgroup span="1"></colgroup><colgroup span="2"></colgroup><colgroup span="2"></colgroup>
+      <thead><tr><th rowspan="2" scope="col">타겟</th><th colspan="2" scope="colgroup">Spearman 순위 상관</th><th colspan="2" scope="colgroup">강약 순서 일치</th></tr><tr><th class="deep" scope="col">DeepDTA</th><th class="boltz-text" scope="col">Boltz-2</th><th class="deep" scope="col">DeepDTA</th><th class="boltz-text" scope="col">Boltz-2</th></tr></thead>
+      <tbody><tr data-kinase-target="ddr2"><th scope="row">DDR2</th><td class="numeric">-0.09</td><td class="numeric">+0.49</td><td class="numeric">7/15</td><td class="numeric">10/15</td></tr><tr data-kinase-target="p38-alpha"><th scope="row">p38α</th><td class="numeric">-0.54</td><td class="numeric">+0.60</td><td class="numeric">4/15</td><td class="numeric">10/15</td></tr></tbody>
+    </table></div>
+    <ul class="brief-list caption"><li>강약 순서 일치: 같은 타겟 안에서 6개 화합물을 두 개씩 비교한 15가지 조합 기준</li><li>평가 범위: 타겟별 상대 강도 · DeepDTA의 pKd와 Boltz-2의 IC50형 점수는 각각의 척도로 표시</li><li>실행 조건: 전체 단백질 서열 사용 · Boltz-2는 두 타겟에 같은 축소 설정 적용 · DDR2 실험 정답은 키나아제 도메인에서 측정</li></ul>
+    <p class="scroll-hint">모바일에서 그래프와 표는 좌우로 스크롤</p>
+
+    <article class="kinase-panel" aria-labelledby="kinase-ddr2-title">
+      <h3 id="kinase-ddr2-title">DDR2 · 실험 Kd 15–915 nM</h3>
+      <ul class="brief-list compact"><li>DeepDTA 예측은 pKd 5.02–5.08에 집중</li><li>Boltz-2에서 실험 1위 S01은 4위 · 약한 두 후보는 실험과 같은 5·6위</li></ul>
+      <figure class="figure-panel" tabindex="0"><img src="assets/kinase-ddr2-scores.png" alt="DDR2 여섯 화합물의 실험 pKd, DeepDTA pKd, Boltz-2 표시 점수" width="1856" height="656" loading="lazy"><figcaption class="figure-footer"><span>DDR2 화합물별 수치</span><a href="assets/kinase-ddr2-ranks.png">순위 그래프</a><a href="data/kinase-ddr2.csv" download>결과 CSV</a></figcaption></figure>
+      <p class="caption">실험 정답 출처 · <a href="https://www.ebi.ac.uk/chembl/explore/assay/CHEMBL3265733">ChEMBL CHEMBL3265733</a></p>
+    </article>
+
+    <article class="kinase-panel" aria-labelledby="kinase-p38-title">
+      <h3 id="kinase-p38-title">p38α · 실험 Kd 196–1,656 nM</h3>
+      <ul class="brief-list compact"><li>DeepDTA는 실험 1위 S07을 6위로, 실험 6위 S12를 1위로 정렬</li><li>Boltz-2에서 S07은 3위 · 실험 2위 S08은 1위</li></ul>
+      <figure class="figure-panel" tabindex="0"><img src="assets/kinase-p38-alpha-scores.png" alt="p38α 여섯 화합물의 실험 pKd, DeepDTA pKd, Boltz-2 표시 점수" width="1856" height="656" loading="lazy"><figcaption class="figure-footer"><span>p38α 화합물별 수치</span><a href="assets/kinase-p38-alpha-ranks.png">순위 그래프</a><a href="data/kinase-p38-alpha.csv" download>결과 CSV</a></figcaption></figure>
+      <p class="caption">실험 정답 출처 · <a href="https://www.ebi.ac.uk/chembl/explore/assay/CHEMBL1943082">ChEMBL CHEMBL1943082</a></p>
+    </article>
+  </section>
+
   <section class="section container" id="sources" aria-labelledby="sources-title">
-    <div class="section-head"><span class="section-number">05</span><h2 id="sources-title">출처·자료 다운로드</h2></div>
+    <div class="section-head"><span class="section-number">06</span><h2 id="sources-title">출처·자료 다운로드</h2></div>
     <div class="evidence-list">
       <div><h3>실험 정답</h3><ul class="brief-list small"><li><a href="https://doi.org/10.1016/j.bmc.2013.01.008" target="_blank" rel="noopener">원 논문 · Bioorganic &amp; Medicinal Chemistry, 2013</a></li><li><a href="https://www.ebi.ac.uk/chembl/explore/assay/CHEMBL2340479" target="_blank" rel="noopener">CA1 assay: CHEMBL2340479</a></li><li><a href="https://www.ebi.ac.uk/chembl/explore/assay/CHEMBL2340475" target="_blank" rel="noopener">CA13 assay: CHEMBL2340475</a></li></ul></div>
       <div><h3>단백질·Zn 조건</h3><ul class="brief-list small"><li><a href="https://www.uniprot.org/uniprotkb/P00915/entry" target="_blank" rel="noopener">CA1 · UniProt P00915</a> / <a href="https://www.uniprot.org/uniprotkb/Q8N1Q1/entry" target="_blank" rel="noopener">CA13 · Q8N1Q1</a></li><li>공식 서열·촉매 His 부위·CCD ZN(+2) 확인</li></ul></div>

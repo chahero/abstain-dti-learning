@@ -52,7 +52,22 @@
 - **원인:** DAVIS 키나아제 학습 범위와 CA 평가의 차이, MSA·Zn·구조 정보 차이 존재 · 원인 하나를 분리한 실험 아님
 - **미확인:** Boltz 학습 데이터와의 중복·새 타겟 일반화·독립 Kd 보정 성능
 
-## 5. 원래 결과와 다운로드
+## 5. 키나아제 추가 실험 · DDR2와 p38α
+
+- DAVIS 키나아제 2종에서 타겟별 같은 assay 6조합 · 공개 DAVIS 화합물 68개와 구조 중복 제외
+- 두 타겟 모두 Boltz-2의 결합 강약 순서 재현이 더 양호 · 표본 범위 내 해석
+- 강약 순서 일치: 6개를 두 개씩 고른 15가지 상대적 비교
+- 두 모델의 출력은 DeepDTA pKd와 Boltz-2 IC50형 점수로 구분 · 절대 Kd 오차 우열과 별개
+
+| 타겟 | DeepDTA 순위 상관 | Boltz-2 순위 상관 | DeepDTA 강약 순서 | Boltz-2 강약 순서 |
+|---|---:|---:|---:|---:|
+| DDR2 | -0.09 | +0.49 | 7/15 | 10/15 |
+| p38α | -0.54 | +0.60 | 4/15 | 10/15 |
+
+- DDR2 · 실험 1위 S01을 Boltz-2는 4위로 예측 · [화합물별 수치](assets/kinase-ddr2-scores.png) · [순위 그래프](assets/kinase-ddr2-ranks.png) · [CSV](data/kinase-ddr2.csv)
+- p38α · 실험 1위 S07을 DeepDTA는 6위, Boltz-2는 3위로 예측 · [화합물별 수치](assets/kinase-p38-alpha-scores.png) · [순위 그래프](assets/kinase-p38-alpha-ranks.png) · [CSV](data/kinase-p38-alpha.csv)
+
+## 6. 원래 결과와 다운로드
 
 | 사례 | 대상 | 화합물 | 실험 Kd nM | 실험 pKd | DeepDTA pKd | DeepDTA Kd nM | Boltz 표시 점수 |
 |---|---|---|---:|---:|---:|---:|---:|

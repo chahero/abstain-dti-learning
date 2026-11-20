@@ -6,6 +6,22 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
+      "path": "assets/kinase-ddr2-ranks.png",
+      "sha256": "625ed0769074d3168744f0e85829bcfa370ba5442efbc9e3ce1029acf18cebe4"
+    },
+    {
+      "path": "assets/kinase-ddr2-scores.png",
+      "sha256": "a4a0c41ef55d75232de3964145c763cbb9cc338c9d9ac8f6fd16f2fe4e29f669"
+    },
+    {
+      "path": "assets/kinase-p38-alpha-ranks.png",
+      "sha256": "741341d686da62eedd2a928e317d3232546c8dfcf146e014da0f4e9bdbc3f5f5"
+    },
+    {
+      "path": "assets/kinase-p38-alpha-scores.png",
+      "sha256": "07876bac3fe3fcf0c13757c74410a99409260d83c79ae01a9ece8ccd4fa552cd"
+    },
+    {
       "path": "assets/L01.svg",
       "sha256": "2e422b25570716d50989746f53e49f6b6599f9dcb15ad9d529f2dcd1fc4df5f1"
     },
@@ -78,6 +94,14 @@
       "sha256": "0b5f0a2bc206d847c822d482399fcb8d70693a0e0ba504ec6e0044b48ecb6581"
     },
     {
+      "path": "data/kinase-ddr2.csv",
+      "sha256": "c6e8b21061e67b246a64136a4ca8773d9c6dc1936e7faff6f106e18fe2233391"
+    },
+    {
+      "path": "data/kinase-p38-alpha.csv",
+      "sha256": "a749301a0022ab66f208f2a47098cef04ba2bba4b5efa00e1bd134d7ac76c51d"
+    },
+    {
       "path": "data/metrics.csv",
       "sha256": "a548eac5c312c7d826f94a080eabbd7e5b5064031737a80c6817b60e23baa8cc"
     },
@@ -115,11 +139,11 @@
     },
     {
       "path": "index.html",
-      "sha256": "050481703338296db0c3c9251bc555f30d07b6b6b401ec11e60c53775a9a46ee"
+      "sha256": "0df2867ec3aa02f88f4fe019b06e4e59e836ca2048972eeaffa253655f6610b0"
     },
     {
       "path": "report.css",
-      "sha256": "b5ce1e6bce60df853c4c9ea3a277ba5a7791b29b127bff0507523e1530b32bbf"
+      "sha256": "2fa571ecf792379d487f93623701608a2ed91bc442db2fbdd6acc1e87ff6811d"
     },
     {
       "path": "report.js",
@@ -127,7 +151,7 @@
     },
     {
       "path": "report.md",
-      "sha256": "57e2f03a8f79c862a003fbbac0e34ec3171c8ed4ce8ff9094b643d1ed48436f5"
+      "sha256": "78f58987ab4b2dbb14b8df89b8ab821ac6c594387ea7b800bdce2a0038f2ead5"
     }
   ]
 }
